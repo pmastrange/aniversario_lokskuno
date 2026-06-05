@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uma surpresa para Loayne</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(180deg,#dff4df,#f5fff5);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+overflow:hidden;
+}
+
+.card{
+background:white;
+padding:35px;
+border-radius:25px;
+max-width:600px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+z-index:10;
+margin:20px;
+}
+
+h1{
+color:#5d8f66;
+}
+
+.lock{
+font-size:70px;
+cursor:pointer;
+margin:20px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+50%{transform:scale(1.1);}
+}
+
+#countdown{
+font-size:22px;
+font-weight:bold;
+color:#4f7b57;
+margin-top:20px;
+}
+
+.petal{
+position:fixed;
+top:-20px;
+animation:fall linear infinite;
+pointer-events:none;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🌸 Uma pequena surpresa para Miguxa 🌸</h1>
+
+<p>
+Existe algo esperando por você.
+Mas ainda não chegou a hora. 💚
+</p>
+
+<div class="lock" onclick="window.location='mensagem.html'">
+🔒
+</div>
+
+<p>Toque no cadeado.</p>
+
+<div id="countdown"></div>
+
+</div>
+
+<script>
+
+const targetDate = new Date("2026-06-21T00:00:00");
+
+function updateCountdown(){
+
+const now = new Date();
+const diff = targetDate - now;
+
+const days = Math.floor(diff/(1000*60*60*24));
+const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((diff%(1000*60*60))/(1000*60));
+const seconds = Math.floor((diff%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML =
+`${days} dias • ${hours}h • ${minutes}m • ${seconds}s`;
+
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+for(let i=0;i<35;i++){
+
+const petal=document.createElement("div");
+
+petal.classList.add("petal");
+
+petal.innerHTML="🌸";
+
+petal.style.left=Math.random()*100+"vw";
+petal.style.fontSize=(15+Math.random()*15)+"px";
+petal.style.animationDuration=(8+Math.random()*10)+"s";
+
+document.body.appendChild(petal);
+
+}
+
+</script>
+
+</body>
+</html>
