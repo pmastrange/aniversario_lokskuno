@@ -9,30 +9,45 @@
 
 body{
 margin:0;
-font-family:Arial,sans-serif;
-background:linear-gradient(180deg,#e8f7ea,#f7fff8);
+font-family:'Georgia',serif;
+background:
+linear-gradient(rgba(232,247,234,0.9), rgba(247,255,248,0.9)),
+url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=80");
+background-size:cover;
+background-position:center;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 padding:30px;
 }
 
-.card{
-max-width:800px;
-margin:auto;
-background:white;
-padding:35px;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.1);
-line-height:1.8;
+.letter{
+background:#fffdf7;
+max-width:750px;
+padding:50px;
+border-radius:20px;
+box-shadow:0 20px 50px rgba(0,0,0,.18);
+line-height:1.9;
+animation:abrirCarta 1.5s ease forwards;
+transform:translateY(100px) scale(.9);
+opacity:0;
 }
 
 h1{
 text-align:center;
 color:#5d8f66;
+margin-bottom:30px;
+}
+
+.assinatura{
+margin-top:35px;
+font-style:italic;
 }
 
 .back{
-display:block;
 text-align:center;
-margin-top:25px;
+margin-top:30px;
 }
 
 a{
@@ -41,14 +56,25 @@ text-decoration:none;
 font-weight:bold;
 }
 
+@keyframes abrirCarta{
+0%{
+transform:translateY(100px) scale(.9);
+opacity:0;
+}
+100%{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="letter">
 
-<h1>💚 Para minha miguxa! 💚</h1>
+<h1>💚 Para minha miguxa 💚</h1>
 
 <p>
 Uma pequena surpresa para alegrar o seu dia.
@@ -78,10 +104,10 @@ Existe uma surpresa esperando por você, mas ainda não chegou a hora. O cadeado
 Quando chegar o dia, você receberá a chave.
 </p>
 
-<p>
+<div class="assinatura">
 Com todo meu carinho,<br>
 Da sua ÚNICA melhor amiga. 💚
-</p>
+</div>
 
 <div class="back">
 <a href="index.html">← Voltar</a>
