@@ -9,7 +9,11 @@
 body{
 margin:0;
 font-family:Arial,sans-serif;
-background:linear-gradient(180deg,#dff4df,#f5fff5);
+background:
+linear-gradient(rgba(232,247,234,0.85), rgba(247,255,248,0.85)),
+url("https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=1200&q=80");
+background-size:cover;
+background-position:center;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -18,22 +22,21 @@ overflow:hidden;
 }
 
 .card{
-background:white;
-padding:35px;
-border-radius:25px;
-max-width:600px;
+background:rgba(255,255,255,0.88);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:30px;
+max-width:650px;
 text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,.1);
+box-shadow:0 15px 40px rgba(0,0,0,.15);
 z-index:10;
 margin:20px;
-}
-
-h1{
-color:#5d8f66;
+border:1px solid rgba(255,255,255,.4);
 }
 
 .lock{
-font-size:70px;
+font-size:85px;
+filter:drop-shadow(0 0 10px rgba(255,215,0,.5));
 cursor:pointer;
 margin:20px;
 animation:pulse 2s infinite;
@@ -44,10 +47,13 @@ animation:pulse 2s infinite;
 }
 
 #countdown{
-font-size:22px;
+font-size:28px;
 font-weight:bold;
 color:#4f7b57;
-margin-top:20px;
+margin-top:25px;
+padding:15px;
+background:rgba(255,255,255,.5);
+border-radius:20px;
 }
 
 .petal{
@@ -83,7 +89,16 @@ Mas ainda não chegou a hora rsrsrs. 💚
 <p>Toque no cadeado.</p>
 
 <div id="countdown"></div>
+  <p style="margin-top:20px;color:#5d8f66;line-height:1.8;">
 
+🌸 Brasil ↔ Japão 🌸
+
+<br><br>
+
+A chave será entregue no seu aniversário, então fica mais alegre.
+
+</p>
+  
 </div>
 
 <script>
