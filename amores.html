@@ -16,6 +16,13 @@ body {
     overflow-x: hidden;
     position: relative;
 }
+.progress-dots {
+    position: absolute;
+    top: 20px;
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: #b8375d;
+}
 .lock-card {
     background: white;
     padding: 40px;
@@ -33,16 +40,9 @@ body {
     animation: bounce 2s infinite;
     display: inline-block;
 }
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-.dica {
-    color: #d15175;
-    font-style: italic;
-    font-size: 15px;
-    margin-top: 15px;
-}
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.dica { color: #d15175; font-style: italic; font-size: 15px; margin-top: 15px; }
+
 #conteudo-secreto {
     display: none;
     max-width: 600px;
@@ -51,10 +51,8 @@ body {
     padding: 30px 0;
     animation: fadeIn 1.5s ease-in-out forwards;
 }
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-}
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
 .carrossel-container {
     position: relative;
     max-width: 420px;
@@ -76,8 +74,7 @@ body {
 }
 .carrossel-btn {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 50%; transform: translateY(-50%);
     background: rgba(255,255,255,0.8);
     border: none;
     font-size: 20px;
@@ -89,6 +86,7 @@ body {
 }
 .btn-prev { left: 10px; }
 .btn-next { right: 10px; }
+
 .texto-final {
     font-family: 'Comic Sans MS', cursive, sans-serif;
     font-size: 22px;
@@ -97,7 +95,6 @@ body {
     background: #fff;
     padding: 25px;
     border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(230,150,170,0.15);
     max-width: 420px;
     margin: 0 auto;
 }
@@ -107,13 +104,12 @@ body {
     z-index: 100;
     animation: voar 1.2s ease-out forwards;
 }
-@keyframes voar {
-    0% { transform: translate(0, 0) scale(1); opacity: 1; }
-    100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; }
-}
+@keyframes voar { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; } }
 </style>
 </head>
 <body>
+
+<div class="progress-dots">● ● ● ●</div>
 
 <div class="lock-card" id="card-trancado">
     <h2 style="color: #b8375d;">Uma última caixinha... 🐾</h2>
@@ -124,21 +120,23 @@ body {
 <div id="conteudo-secreto">
     <div class="carrossel-container">
         <div class="carrossel-slides" id="slides">
-            <img src="jullyjun.explosao.jpeg" alt="Jully e Jun Explosão">
-            <img src="jully1.jpg.jpeg" alt="Jully 1">
-            <img src="jun2.jpg.jpeg" alt="Jun 2">
+            <img src="jullyjun.explosao.jpeg" alt="Jully e Jun">
+            <img src="jully1.jpg.jpeg" alt="Jully">
+            <img src="jun2.jpg.jpeg" alt="Jun">
         </div>
         <button class="carrossel-btn btn-prev" onclick="mudarSlide(-1)">❮</button>
         <button class="carrossel-btn btn-next" onclick="mudarSlide(1)">❯</button>
     </div>
 
     <div class="texto-final">
-        "Mensagem mais especial: "Voce foi a melhor que tivemos, nossos melhores momentos, nosso maior amparo, nosso amor mais puro... te protegemos e amamos pra sempre, mamain! Feliz aniversario, dos seus maiores amores!" 💖
+        “Você foi a melhor que tivemos, te protegemos e amamos pra sempre mamain!” 💖🐾
     </div>
 </div>
 
 <script>
 let slideIndex = 0;
+let autoPlayTimer;
+
 function mudarSlide(direcao) {
     const slides = document.getElementById("slides");
     const totalSlides = 3;
@@ -146,9 +144,23 @@ function mudarSlide(direcao) {
     slides.style.transform = `translateX(${-slideIndex * 100}%)`;
 }
 
+function iniciarAutoplay() {
+    autoPlayTimer = setInterval(() => {
+        mudarSlide(1);
+    }, 3000);
+}
+
+document.querySelectorAll('.carrossel-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        clearInterval(autoPlayTimer);
+        iniciarAutoplay();
+    });
+});
+
 window.addEventListener('pageshow', function () {
     document.getElementById("card-trancado").style.display = "block";
     document.getElementById("conteudo-secreto").style.display = "none";
+    clearInterval(autoPlayTimer);
 });
 
 function abrirTerceiraTela() {
@@ -156,12 +168,21 @@ function abrirTerceiraTela() {
     if (senha === null) return;
     let senhaLimpa = senha.trim().toLowerCase();
 
-    if (senhaLimpa === "jullyjun" || senhaLimpa === "jullyejun") {
+    // Hashes correspondentes a: jullyjun, jullyejun, junelully e junjully
+    const hashesValidos = [
+        "anVsbHlqdW4=", // jullyjun
+        "anVsbHllanVu", // jullyejun
+        "anVuZWx1bGx5", // junelully
+        "anVuanVsbHk="  // junjully
+    ];
+
+    if (hashesValidos.includes(btoa(senhaLimpa))) {
         criarExplosao();
         document.getElementById("card-trancado").style.display = "none";
         document.getElementById("conteudo-secreto").style.display = "block";
+        iniciarAutoplay();
     } else {
-        alert("Senha incorreta! Pensa mais um pouquinho...");
+        alert("Senha incorreta! Pensa mais um pouquinho! 😜");
     }
 }
 
