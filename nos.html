@@ -12,13 +12,32 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px;
+    padding: 60px 20px;
+    position: relative;
 }
+.progress-dots {
+    position: absolute;
+    top: 20px;
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: #d9b3bb;
+}
+.progress-dots span { color: #4f7b57; }
+
+.btn-voltar {
+    align-self: flex-start;
+    color: #6e8a75;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
 .secao-fotos {
     width: 100%;
-    max-width: 900px;
+    max-width: 950px;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 .spotify-btn {
     background-color: #1DB954;
@@ -28,41 +47,62 @@ body {
     font-size: 16px;
     font-weight: bold;
     border-radius: 50px;
-    cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.4);
+    margin-bottom: 30px;
     animation: pulsarBotao 1.2s infinite alternate;
 }
 @keyframes pulsarBotao {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(29, 185, 84, 0.7); }
-    100% { transform: scale(1.06); box-shadow: 0 0 0 12px rgba(29, 185, 84, 0); }
+    0% { transform: scale(1); } 100% { transform: scale(1.05); }
 }
+
+/* Rolo de Filme Aprimorado para Mobile */
 .rolo-filme {
     background: #111;
-    padding: 30px 10px;
+    padding: 30px 15px;
     display: flex;
     overflow-x: auto;
     gap: 20px;
     border-top: 14px dashed #fff;
     border-bottom: 14px dashed #fff;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     border-radius: 4px;
+    -webkit-overflow-scrolling: touch;
 }
+
+/* Scrollbar visível e customizada */
+.rolo-filme::-webkit-scrollbar {
+    height: 10px;
+}
+.rolo-filme::-webkit-scrollbar-track {
+    background: #222;
+}
+.rolo-filme::-webkit-scrollbar-thumb {
+    background: #4f7b57;
+    border-radius: 5px;
+}
+
+/* Indicador de Swipe para Mobile */
+.swipe-hint {
+    color: #888;
+    font-size: 13px;
+    margin-top: 12px;
+    animation: moverSeta 1.5s infinite;
+}
+@keyframes moverSeta {
+    0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); }
+}
+
 .foto-quadro {
     flex-shrink: 0;
     background: #fff;
     padding: 12px 12px 35px 12px;
     width: 230px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     transform: rotate(calc(var(--r, 0) * 1deg));
 }
 .foto-quadro img {
     width: 100%;
     height: 230px;
     object-fit: cover;
-    filter: sepia(0.15) contrast(1.05);
 }
 .foto-quadro span {
     display: block;
@@ -70,7 +110,6 @@ body {
     font-family: 'Courier New', monospace;
     font-weight: bold;
     color: #444;
-    font-size: 13px;
 }
 .btn-proximo {
     background: #4f7b57;
@@ -80,47 +119,28 @@ body {
     text-decoration: none;
     font-weight: bold;
     display: inline-block;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: 0.3s;
 }
-.btn-proximo:hover { background: #3d6144; }
 </style>
 </head>
 <body>
+
+<div class="progress-dots"><span>● ● ●</span> ○</div>
+
+<a href="mensagem.html" class="btn-voltar">← Voltar para a carta</a>
 
 <div class="secao-fotos">
     <a href="https://open.spotify.com/playlist/3fhl0NZ3Tg7ipf1AczB8wg?si=0AB-eHgDT9uUucq4jvzLEw&pi=mYYPIFcvQpqCp" target="_blank" class="spotify-btn">🎵 Ouvir trilha da surpresa 🎵</a>
 
     <div class="rolo-filme">
-        <div class="foto-quadro" style="--r: -2">
-            <img src="Fotoescada.jpg.jpeg" alt="Foto Escada">
-            <span>MEMORIES 01</span>
-        </div>
-        <div class="foto-quadro" style="--r: 3">
-            <img src="Foto2.jpg.jpeg" alt="Foto 2">
-            <span>MEMORIES 02</span>
-        </div>
-        <div class="foto-quadro" style="--r: -1">
-            <img src="Foto3.jpg.jpeg" alt="Foto 3">
-            <span>MEMORIES 03</span>
-        </div>
-        <div class="foto-quadro" style="--r: 4">
-            <img src="Foto4.jpg.jpeg" alt="Foto 4">
-            <span>MEMORIES 04</span>
-        </div>
-        <div class="foto-quadro" style="--r: -3">
-            <img src="Foto5.png.PNG" alt="Foto 5">
-            <span>MEMORIES 05</span>
-        </div>
-        <div class="foto-quadro" style="--r: 2">
-            <img src="Foto6.png.PNG" alt="Foto 6">
-            <span>MEMORIES 06</span>
-        </div>
-        <div class="foto-quadro" style="--r: -1">
-            <img src="Foto7.png.png" alt="Foto 7">
-            <span>MEMORIES 07</span>
-        </div>
+        <div class="foto-quadro" style="--r: -2"><img src="Fotoescada.jpg.jpeg" alt="1"><span>MEMORIES 01</span></div>
+        <div class="foto-quadro" style="--r: 3"><img src="Foto2.jpg.jpeg" alt="2"><span>MEMORIES 02</span></div>
+        <div class="foto-quadro" style="--r: -1"><img src="Foto3.jpg.jpeg" alt="3"><span>MEMORIES 03</span></div>
+        <div class="foto-quadro" style="--r: 4"><img src="Foto4.jpg.jpeg" alt="4"><span>MEMORIES 04</span></div>
+        <div class="foto-quadro" style="--r: -3"><img src="Foto5.png.PNG" alt="5"><span>MEMORIES 05</span></div>
+        <div class="foto-quadro" style="--r: 2"><img src="Foto6.png.PNG" alt="6"><span>MEMORIES 06</span></div>
+        <div class="foto-quadro" style="--r: -1"><img src="Foto7.png.png" alt="7"><span>MEMORIES 07</span></div>
     </div>
+    <div class="swipe-hint">Arraste para o lado para ver mais ➔</div>
 </div>
 
 <div>
