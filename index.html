@@ -40,7 +40,7 @@ filter:drop-shadow(0 0 10px rgba(255,215,0,.5));
 cursor:pointer;
 margin:20px;
 animation:pulse 2s infinite;
-transition: transform 0.3s;
+display: inline-block;
 }
 
 @keyframes pulse{
@@ -75,39 +75,23 @@ transform:translateY(110vh) rotate(360deg);
 <body>
 
 <div class="card">
-
 <h1>🌸 Uma pequena surpresa para minha miguxa 🌸</h1>
+<p>Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs. 💚</p>
 
-<p>
-Tem uma surpresa pra você.
-Mas ainda não chegou a hora rsrsrs. 💚
-</p>
-
-<div class="lock" id="cadeado" onclick="verificarSenha()">
-🔒
-</div>
-
+<div class="lock" id="cadeado" onclick="verificarSenha()">🔒</div>
 <p>Toque no cadeado.</p>
 
 <div id="countdown"></div>
-  <p style="margin-top:20px;color:#5d8f66;line-height:1.8;">
-
-🌸 Brasil ↔ Japão 🌸
-
-<br><br>
-
+<p style="margin-top:20px;color:#5d8f66;line-height:1.8;">
+🌸 Brasil ↔ Japão 🌸<br><br>
 A chave será entregue no seu aniversário, então fica mais alegre.
-
 </p>
-  
 </div>
 
 <script>
-
 const targetDate = new Date("2026-06-21T00:00:00");
 
 function updateCountdown(){
-
 const now = new Date();
 const diff = targetDate - now;
 
@@ -118,56 +102,43 @@ const seconds = Math.floor((diff%(1000*60))/1000);
 
 document.getElementById("countdown").innerHTML =
 `${days} dias • ${hours}h • ${minutes}m • ${seconds}s`;
-
 }
 
 setInterval(updateCountdown,1000);
 updateCountdown();
 
 for(let i=0;i<35;i++){
-
 const petal=document.createElement("div");
-
 petal.classList.add("petal");
-
 petal.innerHTML="🌸";
-
 petal.style.left=Math.random()*100+"vw";
 petal.style.fontSize=(15+Math.random()*15)+"px";
 petal.style.animationDuration=(8+Math.random()*10)+"s";
-
 document.body.appendChild(petal);
-
 }
 
-// --- NOVA FUNÇÃO PARA A SENHA ---
+// Garante que o cadeado sempre volte a fechar ao retornar para a página
+window.addEventListener('pageshow', function (event) {
+    document.getElementById("cadeado").innerHTML = "🔒";
+});
+
 function verificarSenha() {
-    // Defina a senha que você quer aqui (coloquei em letras maiúsculas)
-    const senhaCorreta = "AMIGA123"; 
+    const senhaCorreta = "soumelhorqueajose";
+    let senhaDigitada = prompt("Digite a chave para abrir o cadeado: 🔑");
     
-    // Abre a caixinha perguntando a senha
-    let senhaDigitada = prompt("Digite a senha para abrir o cadeado: 🔑");
-    
-    // Se ela cancelar ou não digitar nada, não faz nada
     if (senhaDigitada === null) return;
 
-    // .toUpperCase() serve para aceitar a senha mesmo se ela digitar com letras minúsculas
-    if (senhaDigitada.toUpperCase() === senhaCorreta.toUpperCase()) {
+    if (senhaDigitada.trim().toLowerCase() === senhaCorreta.toLowerCase()) {
         const cadeado = document.getElementById("cadeado");
-        
-        // Muda o emoji para aberto
         cadeado.innerHTML = "🔓";
-        alert("Senha correta! Abrindo a surpresa... 🎉");
         
-        // Espera 1 segundo (1000 milissegundos) para ela ver o cadeado abrir e depois redireciona
         setTimeout(function() {
             window.location.href = 'mensagem.html';
-        }, 1000);
+        }, 800);
     } else {
-        alert("Senha incorreta! Hmmm... tenta de novo ou espera o aniversário! 😜");
+        alert("Senha incorreta! Hmmm... pensa mais um pouquinho! 😜");
     }
 }
-
 </script>
 
 </body>
