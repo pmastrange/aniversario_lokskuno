@@ -12,8 +12,32 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px;
+    padding: 60px 20px;
+    position: relative;
 }
+.progress-dots {
+    position: absolute;
+    top: 20px;
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: #d9b3bb;
+}
+.progress-dots span { color: #4f7b57; }
+
+/* Botão de Controle de Música */
+.music-toggle {
+    background: #4f7b57;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(79,123,87,0.2);
+}
+
 .carta-container {
     background: #fffdf9;
     border: 1px solid #e3dac9;
@@ -25,12 +49,8 @@ body {
     font-size: 17px;
     line-height: 1.8;
     color: #2c3e2f;
-    text-shadow: 0 0 1px rgba(0,0,0,0.05);
-    margin-bottom: 40px;
 }
-.carta-text {
-    white-space: pre-line;
-}
+.carta-text { white-space: pre-line; }
 .musica-citada {
     background: rgba(79, 123, 87, 0.06);
     border-left: 3px solid #4f7b57;
@@ -47,14 +67,20 @@ body {
     font-weight: bold;
     display: inline-block;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: 0.3s;
+    margin-top: 20px;
 }
-.btn-proximo:hover { background: #3d6144; }
 </style>
 </head>
 <body>
 
+<div class="progress-dots"><span>● ●</span> ○ ○</div>
+
+<!-- Player HTML5 embutido. Certifique-se de salvar seu arquivo de música como "aguaviva.mp3" no seu repositório -->
+<audio id="trilhaSonora" src="aguaviva.mp3" loop></audio>
+<button class="music-toggle" id="btnMusica" onclick="controlarMusica()">🎵 Ouvir Trilha</button>
+
 <div class="carta-container">
+    <!-- O texto da carta permanece o mesmo enviado anteriormente -->
     <div class="carta-text">
         Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chicão somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é porque é seu. Sua data, seu dia, sua vida, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
 
@@ -73,7 +99,7 @@ body {
     </div>
 
     <div class="carta-text">
-        Você é uma das mulheres mais fortes que eu já conheci, de uma inteligência admirável, uma força que pouquíssimas pessoas aguentariam, um coração que quase ninguém merece e, definitivamente, o top 1 de mulheres mais bonitas que eu conheço. Com certeza é uma das pessoas que eu mais admiro. Ter sua amizade é um dos maiores privilégios que eu poderia ter e, realmente, rezei muito para que, se fosse para retornarmos, que fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas que isso jamais abale nossa amizade novamente. Já te pedi desculpas muitas vezes pelos erros que cometi e por ter aberto mão de algo que era muito importante para mim e que, de fato, poderia ter salvado nós duas de tanta mágoa que veio depois... mas hoje não é dia de coisa triste. Apenas saiba que eu não cometo os mesmos erros duas vezes, não com você.
+        Você é uma das mulheres mais fortes que eu já conheci, de uma inteligência admirável, uma força que pouquíssimas pessoas aguentariam, um coração que quase ninguém merece e, definitivamente, o top 1 de mulheres mais bonitas que eu conheço. Com certeza é uma das pessoas que eu mais admiro. Ter sua amizade é um dos maiores privileges que eu poderia ter e, realmente, rezei muito para que, se fosse para retornarmos, que fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas que isso jamais abale nossa amizade novamente. Já te pedi desculpas muitas vezes pelos erros que cometi e por ter aberto mão de algo que era muito importante para mim e que, de fato, poderia ter salvado nós duas de tanta mágoa que veio depois... mas hoje não é dia de coisa triste. Apenas saiba que eu não cometo os mesmos erros duas vezes, não com você.
 
         Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam elas boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, big diva!
     </div>
@@ -83,5 +109,28 @@ body {
     <a href="nos.html" class="btn-proximo">Ver nossas lembranças... ✨</a>
 </div>
 
+<script>
+const musica = document.getElementById('trilhaSonora');
+const btn = document.getElementById('btnMusica');
+
+// Tentativa de tocar automaticamente na primeira interação com a tela
+document.body.addEventListener('click', () => {
+    if(musica.paused && btn.innerText === "🎵 Ouvir Trilha") {
+        musica.play().catch(e => console.log("Aguardando clique direto"));
+        btn.innerText = "⏸️ Pausar Trilha";
+    }
+}, {once: true});
+
+function controlarMusica() {
+    if (musica.paused) {
+        musica.play();
+        btn.innerText = "⏸️ Pausar Trilha";
+    } else {
+        musica.focus();
+        musica.pause();
+        btn.innerText = "🎵 Ouvir Trilha";
+    }
+}
+</script>
 </body>
 </html>
