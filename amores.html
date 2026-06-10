@@ -55,23 +55,14 @@ body {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
-.foto-principal {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
+.carrossel-container {
+    position: relative;
+    max-width: 420px;
+    margin: 20px auto 40px auto;
+    overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     border: 6px solid #fff;
-    margin-bottom: 30px;
-}
-.carrossel-container {
-    position: relative;
-    max-width: 400px;
-    margin: 0 auto 40px auto;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border: 5px solid #fff;
 }
 .carrossel-slides {
     display: flex;
@@ -79,7 +70,7 @@ body {
 }
 .carrossel-slides img {
     width: 100%;
-    height: 350px;
+    height: 380px;
     object-fit: cover;
     flex-shrink: 0;
 }
@@ -94,6 +85,7 @@ body {
     cursor: pointer;
     border-radius: 50%;
     color: #d15175;
+    z-index: 5;
 }
 .btn-prev { left: 10px; }
 .btn-next { right: 10px; }
@@ -106,6 +98,8 @@ body {
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(230,150,170,0.15);
+    max-width: 420px;
+    margin: 0 auto;
 }
 .confeti {
     position: absolute;
@@ -124,27 +118,22 @@ body {
 <div class="lock-card" id="card-trancado">
     <h2 style="color: #b8375d;">Uma última caixinha... 🐾</h2>
     <div class="lock-btn" onclick="abrirTerceiraTela()">🔒</div>
-    <p class="dica">Dica: seus dois amores mais puros...</p>
+    <p class="dica">Dica: os seus dois amores mais puros...</p>
 </div>
 
 <div id="conteudo-secreto">
-    <!-- Foto 7 abrindo na explosão -->
-    <img src="Foto7.png.png" class="foto-principal" alt="Foto Principal">
-
-    <!-- Carrossel com as fotos dos pets e a foto 8 -->
     <div class="carrossel-container">
         <div class="carrossel-slides" id="slides">
+            <img src="jullyjun.explosao.jpeg" alt="Jully e Jun Explosão">
             <img src="jully1.jpg.jpeg" alt="Jully 1">
             <img src="jun2.jpg.jpeg" alt="Jun 2">
-            <img src="jullyjun.explosao.jpeg" alt="Jully e Jun Explosão">
-            <img src="Foto8.jpg.jpeg" alt="Foto 8">
         </div>
         <button class="carrossel-btn btn-prev" onclick="mudarSlide(-1)">❮</button>
         <button class="carrossel-btn btn-next" onclick="mudarSlide(1)">❯</button>
     </div>
 
     <div class="texto-final">
-        "Voce foi a melhor que tivemos, te protegemos e amamos pra sempre mamain!" 💖🐾
+        "Mensagem mais especial: "Voce foi a melhor que tivemos, nossos melhores momentos, nosso amor mais puro... te protegemos e amamos pra sempre mamain!" 💖
     </div>
 </div>
 
@@ -152,7 +141,7 @@ body {
 let slideIndex = 0;
 function mudarSlide(direcao) {
     const slides = document.getElementById("slides");
-    const totalSlides = 4; // Agora são 4 fotos no carrossel dos pets
+    const totalSlides = 3;
     slideIndex = (slideIndex + direcao + totalSlides) % totalSlides;
     slides.style.transform = `translateX(${-slideIndex * 100}%)`;
 }
@@ -172,7 +161,7 @@ function abrirTerceiraTela() {
         document.getElementById("card-trancado").style.display = "none";
         document.getElementById("conteudo-secreto").style.display = "block";
     } else {
-        alert("Senha errada! Pense nos seus dois maiores companheirinhos fofos... 🐶🐱");
+        alert("Senha incorreta! Pensa mais um pouquinho...");
     }
 }
 
