@@ -9,36 +9,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
 <style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 :root {
     --verde-pastel: #e8f7ea;
     --rosa-pastel: #fff0f3;
-    --roxo-orquidea: #793A57; /* Identidade e tom principal */
+    --roxo-orquidea: #793A57; 
     --texto-escuro: #2c3e2f;
 }
 
-/* Estrutura Base */
 body {
-    margin: 0;
     font-family: 'Quicksand', sans-serif;
     background: 
         linear-gradient(135deg, rgba(232, 247, 234, 0.85), rgba(255, 240, 243, 0.85)),
         url("https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&w=1200&q=80");
-    background-size: 110% 110%;
+    background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
+    padding: 15px;
 }
 
-/* Indicador de Progresso */
+/* Indicador de Jornada Expandido */
 .progress-container {
     position: absolute;
     top: 25px;
     display: flex;
-    gap: 12px;
+    gap: 10px;
     z-index: 100;
 }
 .dot {
@@ -59,17 +64,17 @@ body {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(121, 58, 87, 0.2);
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: 30px;
     display: flex;
     align-items: center;
     gap: 10px;
     z-index: 200;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
     transform: translateY(-100px);
     opacity: 0;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -89,58 +94,56 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 12px;
-    box-shadow: 0 2px 6px rgba(121, 58, 87, 0.3);
+    font-size: 11px;
 }
 .music-status {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     color: var(--roxo-orquidea);
     letter-spacing: 0.5px;
 }
 
-/* Cards Estilo Glassmorphism Seguros */
+/* Card Base Adaptável */
 .card {
     display: none;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 40px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 30px 20px;
     border-radius: 24px;
-    max-width: 600px;
-    width: 85%;
+    max-width: 500px;
+    width: 100%;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(74, 107, 82, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 20px 45px rgba(74, 107, 82, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     z-index: 10;
 }
 .card.active {
     display: block;
-    animation: fadeInCard 0.5s ease-in-out forwards;
+    animation: transitionCard 0.4s ease-out forwards;
 }
-@keyframes fadeInCard {
-    from { opacity: 0; transform: scale(0.96); }
-    to { opacity: 1; transform: scale(1); }
+@keyframes transitionCard {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Tipografia Geral */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 30px;
+    font-size: 24px;
     color: var(--roxo-orquidea);
-    margin-top: 0;
+    margin-bottom: 15px;
 }
-.italic { font-style: italic; color: #556e5a; }
+.italic { font-style: italic; color: #556e5a; margin-bottom: 15px; font-size: 14px; }
 
 .btn-navigation {
     background: var(--roxo-orquidea);
     color: white;
-    padding: 13px 32px;
+    padding: 13px 28px;
     border-radius: 30px;
     border: none;
     cursor: pointer;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
     box-shadow: 0 4px 12px rgba(121, 58, 87, 0.2);
     transition: all 0.3s ease;
 }
@@ -152,245 +155,187 @@ h1 {
     color: var(--roxo-orquidea);
     cursor: pointer;
     font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 1px;
+    font-size: 12px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 25px;
-    transition: transform 0.2s;
-    padding: 0;
+    margin-bottom: 15px;
 }
-.btn-back:hover { transform: translateX(-4px); }
 
-/* TELA 1: Countdown */
-.audio-hint { font-size: 11px; font-weight: bold; color: var(--roxo-orquidea); letter-spacing: 2px; margin-bottom: 5px; }
-.lock { font-size: 75px; cursor: pointer; margin: 15px; display: inline-block; transition: transform 0.2s; }
-.lock:hover { transform: scale(1.08); }
-#countdown { font-size: 24px; font-weight: 600; color: #4a6b52; padding: 10px 22px; background: var(--rosa-pastel); border-radius: 50px; display: inline-block; margin: 20px 0; }
+/* TELA 1 */
+.lock { font-size: 65px; cursor: pointer; margin: 10px display: inline-block; }
+#countdown { font-size: 20px; font-weight: 600; color: #4a6b52; padding: 8px 20px; background: var(--rosa-pastel); border-radius: 50px; display: inline-block; margin: 15px 0; }
 
-/* TELA 2: Mecânica Exclusiva do Envelope e Carta */
+/* TELA 2: Novo Envelope com Geometria Fluida (Clip-Path) */
 .envelope-container {
     position: relative;
     width: 100%;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    max-width: 380px;
+    height: 240px;
+    margin: 0 auto;
     perspective: 1000px;
 }
 .envelope {
     position: absolute;
     width: 100%;
-    max-width: 460px;
-    height: 280px;
+    height: 100%;
     background: #fdf6f7;
     border-radius: 0 0 12px 12px;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     z-index: 5;
-    transition: all 0.6s ease;
-    transform-style: preserve-3d;
+    transition: all 0.5s ease;
 }
 .envelope-flap {
-    position: absolute; top: 0; left: 0; width: 0; height: 0;
-    border-left: 230px solid transparent; border-right: 230px solid transparent;
-    border-top: 145px solid #f7e2e5; transform-origin: top;
-    transition: transform 0.5s ease; z-index: 7;
+    position: absolute; top: 0; left: 0; width: 100%; height: 60%;
+    background: #f7e2e5;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top; z-index: 7; transition: transform 0.4s ease;
 }
 .envelope-body {
     position: absolute; width: 100%; height: 100%; top: 0; left: 0;
     background: linear-gradient(135deg, #fce4e8, #fdf6f7);
+    clip-path: polygon(0 35%, 50% 70%, 100% 35%, 100% 100%, 0 100%);
     border-radius: 0 0 12px 12px; z-index: 2;
 }
-
-/* Selo de Cera Centralizado Cirurgicamente */
 .wax-seal {
     position: absolute; 
-    top: 109px; /* Posicionado exatamente sobre a ponta do flap triangular */
-    left: 50%; 
-    transform: translateX(-50%); /* Centralização horizontal perfeita */
-    width: 72px; 
-    height: 72px;
+    top: 115px; left: 50%; 
+    transform: translateX(-50%); 
+    width: 64px; height: 64px;
     background: radial-gradient(circle at 30% 30%, #944d6e, var(--roxo-orquidea) 75%);
-    border-radius: 48% 52% 49% 51% / 51% 47% 54% 46%; 
+    border-radius: 50%; 
     z-index: 10; cursor: pointer; display: flex; justify-content: center;
-    align-items: center; color: rgba(255,255,255,0.9); font-family: 'Playfair Display', serif;
-    font-weight: 800; font-size: 19px; letter-spacing: 1px;
-    box-shadow: 
-        0 6px 15px rgba(121, 58, 87, 0.45),
-        inset 0 2px 4px rgba(255,255,255,0.35),
-        inset 0 -4px 10px rgba(0,0,0,0.4);
-    border: 2px double rgba(255,255,255,0.15);
-    text-shadow: -1px -1px 1px rgba(0,0,0,0.4), 1px 1px 0px rgba(255,255,255,0.1);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    align-items: center; color: white; font-family: 'Playfair Display', serif;
+    font-weight: 800; font-size: 16px;
+    box-shadow: 0 4px 12px rgba(121, 58, 87, 0.35);
+    transition: transform 0.2s;
 }
-.wax-seal:hover { 
-    transform: translateX(-50%) scale(1.08) rotate(-4deg); /* Mantém centralizado no hover com animação */
-}
+.wax-seal:hover { transform: translateX(-50%) scale(1.05); }
 
 .carta-scroller {
-    width: 90%; max-height: 380px; overflow-y: auto; text-align: left;
-    font-family: 'Georgia', serif; font-size: 16.5px; line-height: 1.9; color: var(--texto-escuro);
-    background: #fffdf9; padding: 30px; border-radius: 8px;
-    box-shadow: inset 0 0 40px rgba(240,230,210,0.4), 0 4px 15px rgba(0,0,0,0.05);
-    border: 1px solid #e3dac9;
-    display: none; opacity: 0; transform: translateY(50px);
-    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    width: 100%; max-height: 340px; overflow-y: auto; text-align: left;
+    font-family: 'Georgia', serif; font-size: 15px; line-height: 1.8; color: var(--texto-escuro);
+    background: #fffdf9; padding: 20px; border-radius: 12px;
+    border: 1px solid #e3dac9; display: none; opacity: 0;
+    transform: translateY(20px); transition: all 0.5s ease;
 }
-.quote-box { background: rgba(121, 58, 87, 0.04); border-left: 3px solid var(--roxo-orquidea); padding: 15px; margin: 15px 0; font-style: italic; }
-.carta-scroller::-webkit-scrollbar { width: 5px; }
-.carta-scroller::-webkit-scrollbar-thumb { background: var(--roxo-orquidea); border-radius: 10px; }
-
 .envelope-container.opened .envelope-flap { transform: rotateX(180deg); z-index: 1; }
-.envelope-container.opened .envelope { transform: translateY(100px) scale(0.9); opacity: 0; pointer-events: none; transition-delay: 0.4s; }
-.envelope-container.opened .carta-scroller { display: block; opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+.envelope-container.opened .envelope { transform: translateY(40px); opacity: 0; pointer-events: none; }
+.envelope-container.opened .cartaScrollerContainer { display: block; width: 100%; }
+.envelope-container.opened .carta-scroller { display: block; opacity: 1; transform: translateY(0); }
 
-/* TELA 3: Varal Clean de Polaroids Flutuantes */
-.spotify-btn { background: #1DB954; color: white; text-decoration: none; padding: 12px 24px; border-radius: 50px; font-weight: bold; display: inline-block; margin-bottom: 25px; font-size: 13px; }
-
-.rolo-filme { 
-    background: rgba(255, 255, 255, 0.4); 
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    padding: 35px 15px; 
-    display: flex; 
-    overflow-x: auto; 
-    gap: 25px; 
-    border-radius: 20px;
-    box-shadow: inset 0 0 20px rgba(121, 58, 87, 0.02);
-}
-.rolo-filme::-webkit-scrollbar { height: 8px; }
-.rolo-filme::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); border-radius: 10px; }
-.rolo-filme::-webkit-scrollbar-thumb { background: rgba(121, 58, 87, 0.3); border-radius: 10px; }
-
+/* TELA 3: Galeria Clean */
+.rolo-filme { display: flex; overflow-x: auto; gap: 15px; padding: 20px 5px; }
 .foto-quadro { 
-    flex-shrink: 0; 
-    background: #ffffff; 
-    padding: 12px 12px 42px 12px; 
-    width: 200px; 
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(121, 58, 87, 0.06);
-    transform: rotate(calc(var(--r, 0) * 1deg)) translateY(0); 
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+    flex-shrink: 0; background: #ffffff; padding: 10px 10px 30px 10px; width: 160px; 
+    border-radius: 8px; box-shadow: 0 5px 15px rgba(121, 58, 87, 0.05);
+    transform: rotate(calc(var(--r, 0) * 1deg)); transition: transform 0.3s;
 }
-.foto-quadro:hover {
-    transform: rotate(0deg) translateY(-12px) scale(1.05);
-    box-shadow: 0 16px 35px rgba(121, 58, 87, 0.15);
-    z-index: 5;
-}
-.foto-quadro img { 
-    width: 100%; 
-    height: 200px; 
-    object-fit: cover; 
-    border-radius: 8px;
-}
-.foto-quadro span { 
-    display: block; 
-    margin-top: 14px; 
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700; 
-    font-size: 11px; 
-    color: var(--roxo-orquidea);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-.swipe-hint { font-size: 12px; color: #777; margin: 15px 0 20px 0; }
+.foto-quadro:hover { transform: rotate(0deg) translateY(-5px); }
+.foto-quadro img { width: 100%; height: 160px; object-fit: cover; border-radius: 4px; }
+.foto-quadro span { display: block; margin-top: 8px; font-size: 10px; color: var(--roxo-orquidea); font-weight: 700; }
 
-/* TELA 4: Pets Carrossel */
-.carrossel-container { position: relative; max-width: 380px; margin: 0 auto 25px auto; overflow: hidden; border-radius: 15px; border: 5px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+/* TELA 4: Pets */
+.carrossel-container { position: relative; width: 100%; max-width: 300px; margin: 0 auto 20px auto; overflow: hidden; border-radius: 12px; border: 4px solid #fff; }
 .carrossel-slides { display: flex; transition: transform 0.5s ease-in-out; }
-.carrossel-slides img { width: 100%; height: 340px; object-fit: cover; flex-shrink: 0; }
-.carrossel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; font-size: 18px; padding: 8px 12px; cursor: pointer; border-radius: 50%; color: var(--roxo-orquidea); z-index: 5; }
-.arrow-prev { left: 10px; } .arrow-next { right: 10px; }
-.texto-final { font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 20px; color: var(--roxo-orquidea); line-height: 1.5; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+.carrossel-slides img { width: 100%; height: 280px; object-fit: cover; flex-shrink: 0; }
+.carrossel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; width: 32px; height: 32px; cursor: pointer; border-radius: 50%; color: var(--roxo-orquidea); }
+.arrow-prev { left: 5px; } .arrow-next { right: 5px; }
+.texto-final { font-size: 15px; color: var(--roxo-orquidea); line-height: 1.5; background: white; padding: 15px; border-radius: 12px; }
 
-/* Elementos Fluidos (Pétalas e Confetes) */
+/* TELA 5: CSS do Quiz Interativo */
+.quiz-box { background: white; padding: 20px; border-radius: 16px; border: 1px solid rgba(121, 58, 87, 0.1); margin: 15px 0; }
+.quiz-options { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+.quiz-btn { background: var(--rosa-pastel); color: var(--roxo-orquidea); border: 1px solid rgba(121, 58, 87, 0.1); padding: 12px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.quiz-btn:hover { background: var(--roxo-orquidea); color: white; }
+#quizFeedback { font-size: 13px; font-weight: bold; color: #a94442; margin-top: 12px; min-height: 20px; }
+
+/* TELA 6: Vales Customizados */
+.mural-vales { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 15px 0; }
+.vale-card { background: #fffdfa; border: 1px dashed var(--roxo-orquidea); padding: 14px; border-radius: 12px; position: relative; cursor: pointer; overflow: hidden; text-align: left; }
+.vale-card h3 { font-size: 14px; color: var(--roxo-orquidea); margin-bottom: 2px; }
+.vale-card p { font-size: 12px; color: #666; }
+.carimbo-resgatado { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(3) rotate(-15deg); color: #a94442; border: 2px solid #a94442; padding: 2px 8px; font-weight: 900; font-size: 12px; border-radius: 4px; text-transform: uppercase; opacity: 0; background: rgba(255,255,255,0.95); transition: all 0.2s ease; }
+.vale-card.claimed .carimbo-resgatado { opacity: 0.9; transform: translate(-50%, -50%) scale(1) rotate(-10deg); }
+
 .petal { position: fixed; top: -20px; animation: fall linear infinite; pointer-events: none; z-index: 1; opacity: 0.65; }
 .confeti { position: absolute; pointer-events: none; z-index: 100; animation: voar 1.2s ease-out forwards; }
+@keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 @keyframes voar { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; } }
 </style>
 </head>
 <body>
 
-<!-- Player de Áudio Unificado -->
 <audio id="trilhaSonora" src="aguaviva.m4a" loop preload="auto"></audio>
 <div class="music-bar" id="musicBar">
     <span class="music-status" id="musicStatus">🎵 ÁGUA-VIVA TOCOU</span>
     <button class="music-toggle-btn" onclick="controlarMusica()">⏸️</button>
 </div>
 
-<!-- Indicador de Jornada -->
 <div class="progress-container">
     <div class="dot active" id="dot1"></div>
     <div class="dot" id="dot2"></div>
     <div class="dot" id="dot3"></div>
     <div class="dot" id="dot4"></div>
+    <div class="dot" id="dot5"></div>
+    <div class="dot" id="dot6"></div>
 </div>
 
-<!-- TELA 1: COUNTDOWN -->
+<!-- TELA 1 -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
-    
     <div class="audio-hint">AUMENTE O SOM! 🔊</div>
     <div class="lock" id="cadeado" onclick="verificarTela1()">🔒</div>
-    <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--roxo-orquidea); font-weight: 600; margin-bottom: 20px;">Toque para destravar</p>
-
+    <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--roxo-orquidea); font-weight: 600;">Toque para destravar</p>
     <div id="countdown"></div>
-
-    <div style="font-size: 15px; color: #555;">
-        <div style="font-weight:600; color: var(--roxo-orquidea); letter-spacing:1px; margin-bottom:5px;">Brasil ↔ Japão</div>
-        <div class="italic">A chave será entregue no seu aniversário</div>
+    <div style="font-size: 14px; color: #555;">
+        <div style="font-weight:600; color: var(--roxo-orquidea);">Brasil ↔ Japão</div>
+        <div class="italic" style="margin: 0;">A chave será entregue no seu aniversário</div>
     </div>
 </div>
 
-<!-- TELA 2: CARTA INTERATIVA -->
+<!-- TELA 2 -->
 <div class="card" id="tela2">
     <h1>Uma Mensagem Especial</h1>
-    
     <div class="envelope-container" id="envelopeWrapper">
-        <!-- O Envelope Interativo -->
         <div class="envelope" id="envelopeControl">
             <div class="envelope-flap"></div>
             <div class="envelope-body"></div>
             <div class="wax-seal" onclick="abrirEnvelope()">LK</div>
         </div>
-        
-        <!-- O Papel de Carta Oculto com Textura Marfim -->
-        <div class="carta-scroller" id="cartaScroller">
-            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chicão somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é because é seu. Sua data, seu dia, sua life, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
+        <div class="cartaScrollerContainer" style="display:none; width:100%;">
+            <div class="carta-scroller" id="cartaScroller">
+                Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chicão somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é because é seu. Sua data, seu dia, sua life, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
 
-            Sabe, sempre que escuto Anavitória me lembro de você, mas uma música em específico por um trecho em específico:
+                Sabe, sempre que escuto Anavitória me lembro de você, mas uma música em específico por um trecho em específico:
 
-            <div class="quote-box">
-                "Se eu puder ter um pedido a mais<br>
-                Guarde o melhor que tivemos<br>
-                As confidências, mesmo que banais<br>
-                Eu deixo em segredo<br>
-                Nem todo mundo<br>
-                Tem a sorte que nós dois tivemos juntos<br>
-                E é tão bom saber que alguém<br>
-                Que me conhece assim tão bem existe."
+                <div class="quote-box">
+                    "Se eu puder ter um pedido a mais<br>
+                    Guarde o melhor que tivemos<br>
+                    As confidências, mesmo que banais<br>
+                    Eu deixo em segredo<br>
+                    Nem todo mundo<br>
+                    Tem a sorte que nós dois tivemos juntos<br>
+                    E é tão bom saber que alguém<br>
+                    Que me conhece assim tão bem existe."
+                </div>
+
+                Você é uma das mulheres mais fortes que eu já conheci, de uma inteligência admirável, uma força que pouquíssimas pessoas aguentariam, um coração que quase ninguém merece e, definitivamente, o top 1 de mulheres mais bonitas que eu conheço. Com certeza é uma das pessoas que eu mais admiro. Ter sua amizade é um dos maiores privileges que eu poderia ter e, realmente, rezei muito para que, se fosse para retornarmos, que fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas que isso jamais abale nossa amizade novamente. Já te pedi desculpas muitas vezes pelos erros que cometi e por ter aberto mão de algo que era muito importante para mim e que, de fato, poderia ter salvado nós duas de tanta mágoa que veio depois... mas hoje não é dia de coisa triste. Apenas saiba que eu não cometo os mesmos erros duas vezes, não com você.
+
+                Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam eles boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, big diva!
+                <br><br>
+                <button class="btn-navigation" style="width:100%;" onclick="navegarPara(3)">Ver nossas lembranças... ✨</button>
             </div>
-
-            Você é uma das mulheres mais fortes que eu já conheci, de uma inteligência admirável, uma força que pouquíssimas pessoas aguentariam, um coração que quase ninguém merece e, definitivamente, o top 1 de mulheres mais bonitas que eu conheço. Com certeza é uma das pessoas que eu mais admiro. Ter sua amizade é um dos maiores privilégios que eu poderia ter e, realmente, rezei muito para que, se fosse para retornarmos, que fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas que isso jamais abale nossa amizade novamente. Já te pedi desculpas muitas vezes pelos erros que cometi e por ter aberto mão de algo que era muito importante para mim e que, de fato, poderia ter salvado nós duas de tanta mágoa que veio depois... mas hoje não é dia de coisa triste. Apenas saiba que eu não cometo os mesmos erros duas vezes, não com você.
-
-            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam eles boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, big diva!
-            
-            <br><br>
-            <button class="btn-navigation" style="width:100%; margin-top:20px;" onclick="navegarPara(3)">Ver nossas lembranças... ✨</button>
         </div>
     </div>
 </div>
 
-<!-- TELA 3: FOTOS (POLAROIDS FLUTUANTES) -->
+<!-- TELA 3 -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
-    
     <h1>Nossas Memórias 🎞️</h1>
-    <a href="https://open.spotify.com/playlist/3fhl0NZ3Tg7ipf1AczB8wg?si=0AB-eHgDT9uUucq4jvzLEw&pi=mYYPIFcvQpqCp" target="_blank" class="spotify-btn">🎵 Ouvir playlist completa no Spotify</a>
-
+    <a href="https://open.spotify.com/playlist/3fhl0NZ3Tg7ipf1AczB8wg?si=0AB-eHgDT9uUucq4jvzLEw&pi=mYYPIFcvQpqCp" target="_blank" class="spotify-btn">🎵 Playlist no Spotify</a>
     <div class="rolo-filme">
         <div class="foto-quadro" style="--r: -3"><img src="Fotoescada.jpg.jpeg"><span>MEMORIES 01</span></div>
         <div class="foto-quadro" style="--r: 2"><img src="Foto2.jpg.jpeg"><span>MEMORIES 02</span></div>
@@ -401,20 +346,17 @@ h1 {
         <div class="foto-quadro" style="--r: -1"><img src="Foto7.png.png"><span>MEMORIES 07</span></div>
     </div>
     <div class="swipe-hint">Arraste para o lado para ver mais ➔</div>
-
     <button class="btn-navigation" onclick="navegarPara(4)">Mais uma última caixinha... 🐾</button>
 </div>
 
-<!-- TELA 4: AMORES (PETS) -->
+<!-- TELA 4 -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar para as fotos</button>
-
     <div id="pet-trancado">
         <h2 style="color: var(--roxo-orquidea);">Uma última caixinha... 🐾</h2>
         <div class="lock" onclick="verificarTela4()">🔒</div>
-        <p class="italic" style="color: var(--roxo-orquidea);">Dica: os seus dois amores mais puros...</p>
+        <p class="italic" style="color: var(--roxo-orquidea); margin-top: 10px;">Dica: os seus dois amores mais puros...</p>
     </div>
-    
     <div id="pet-aberto" style="display: none;">
         <div class="carrossel-container">
             <div class="carrossel-slides" id="carouselSlides">
@@ -425,15 +367,63 @@ h1 {
             <button class="carrossel-arrow arrow-prev" onclick="mudarSlide(-1)">❮</button>
             <button class="carrossel-arrow arrow-next" onclick="mudarSlide(1)">❯</button>
         </div>
-        <div class="texto-final">
-            “Você foi a melhor que tivemos, nossos melhores momentos foram com você, e o amor mais puro que alguém poderia ter por nós. Te protegemos e amamos pra sempre mamain, feliz seu dia!” 
-        Com amor: Jully e Xun... 💖🐾
+        <div class="texto-final" style="margin-bottom: 20px;">
+            “Você foi a melhor que tivemos, nossos melhores momentos foram com você, e o amor mais puro que alguém poderia ter por nós. Te protegemos e amamos pra sempre mamain, feliz seu dia!”<br>Com amor: Jully e Xun... 💖🐾
         </div>
+        <button class="btn-navigation" onclick="navegarPara(5)">Avançar para o teste... 🧠</button>
     </div>
 </div>
 
+<!-- TELA 5: NOVA TELA INTERATIVA (QUIZ) -->
+<div class="card" id="tela5">
+    <button class="btn-back" onclick="navegarPara(4)">← Voltar para os pets</button>
+    <h1>Teste de Sobrevivência 🧠</h1>
+    <p class="italic">Responda corretamente para liberar os seus presentes finais!</p>
+    
+    <div class="quiz-box">
+        <p id="quizQuestion" style="font-weight: 700; color: var(--texto-escuro);">Quem tem mais tendência a mandar um áudio de 7 minutos reclamando da vida às duas da manhã?</p>
+        <div class="quiz-options">
+            <button class="quiz-btn" onclick="respostaQuiz('errado')">Paloma</button>
+            <button class="quiz-btn" onclick="respostaQuiz('certo')">Eu mesma (Com certeza)</button>
+        </div>
+        <p id="quizFeedback"></p>
+    </div>
+    
+    <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="navegarPara(6)">Resgatar meus mimos! 🎟️</button>
+</div>
+
+<!-- TELA 6: VALES ATUALIZADOS -->
+<div class="card" id="tela6">
+    <button class="btn-back" onclick="navegarPara(5)">← Voltar para o teste</button>
+    <h1>Seu Mural de Mimos 🎟️</h1>
+    <p class="italic">Tire um print da tela para resgatar o voucher comigo quando quiser!</p>
+    
+    <div class="mural-vales">
+        <div class="vale-card" onclick="claimVale(this)">
+            <h3>🗣️ Vale Conversas com o Chico Bento</h3>
+            <p>Direito a debater as grandes fofocas e filosofias com a participação especial do Chicão.</p>
+            <div class="carimbo-resgatado">Resgatado</div>
+        </div>
+        <div class="vale-card" onclick="claimVale(this)">
+            <h3>📞 Vale Ligação Ilimitada</h3>
+            <p>Zero fuso horário vai nos parar. Ligue a qualquer hora para surtar, rir ou chorar.</p>
+            <div class="carimbo-resgatado">Resgatado</div>
+        </div>
+        <div class="vale-card" onclick="claimVale(this)">
+            <h3>🥂 Vale 1 Noite/Festa Sem Reclamação</h3>
+            <p>Eu vou aceitar ir para o rolê mais duvidoso do mundo sorrindo e sem dar um pingo de close errado.</p>
+            <div class="carimbo-resgatado">Resgatado</div>
+        </div>
+        <div class="vale-card" onclick="claimVale(this)">
+            <h3>🎙️ Vale um Áudio de 10 Minutos</h3>
+            <p>Espaço livre para desabafar sobre tudo, prometo ouvir em 1x e comentar ponto por ponto.</p>
+            <div class="carimbo-resgatado">Resgatado</div>
+        </div>
+    </div>
+    <p style="font-size: 13px; color: var(--roxo-orquidea); font-weight: bold; margin-top: 15px;">Parabéns, Big Diva! Você merece o universo! 👑💜</p>
+</div>
+
 <script>
-// SPA Engine
 function navegarPara(telaNumero) {
     document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
     document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
@@ -450,13 +440,30 @@ function navegarPara(telaNumero) {
     }
 }
 
-// Mecânica de Desdobramento do Envelope
 function abrirEnvelope() {
-    const wrapper = document.getElementById('envelopeWrapper');
-    wrapper.classList.add('opened');
+    document.getElementById('envelopeWrapper').classList.add('opened');
 }
 
-// Nova Senha da Tela Inicial ("palomaminhamelhoramiga")
+function respostaQuiz(tipo) {
+    const feedback = document.getElementById('quizFeedback');
+    if(tipo === 'certo') {
+        feedback.style.color = '#2c3e2f';
+        feedback.innerText = "Obviamente! O fuso horário do Japão que lute. Acesso liberado! ✨";
+        document.getElementById('btnIrVales').style.display = 'block';
+        criarExplosao();
+    } else {
+        feedback.style.color = '#a94442';
+        feedback.innerText = "Mentira deslavada! Tente responder a verdade! 😂";
+    }
+}
+
+function claimVale(element) {
+    if(!element.classList.contains('claimed')) {
+        element.classList.add('claimed');
+        criarExplosao();
+    }
+}
+
 function verificarTela1() {
     let senha = prompt("Digite a chave para abrir o cadeado: 🔑");
     if (!senha) return;
@@ -469,12 +476,10 @@ function verificarTela1() {
     }
 }
 
-// Senhas dos Pets
 function verificarTela4() {
     let senha = prompt("Digite a senha secreta: 🔑");
     if (!senha) return;
     const hashesValidos = ["anVsbHlqdW4=", "anVsbHllanVu", "anVuZWx1bGx5", "anVuanVsbHk="];
-    
     if (hashesValidos.includes(btoa(senha.trim().toLowerCase()))) {
         criarExplosao();
         document.getElementById("pet-trancado").style.display = "none";
@@ -485,7 +490,6 @@ function verificarTela4() {
     }
 }
 
-// Controle de Áudio Unificado
 const musica = document.getElementById('trilhaSonora');
 const toggleBtn = document.querySelector('.music-toggle-btn');
 const statusText = document.getElementById('musicStatus');
@@ -494,7 +498,7 @@ function dispararAudioGlobal() {
     musica.play().then(() => {
         toggleBtn.innerText = "⏸️";
         statusText.innerText = "🎵 ÁGUA-VIVA TOCANDO";
-    }).catch(e => console.log("Interação do usuário pendente."));
+    }).catch(e => console.log("Interação pendente."));
 }
 
 function controlarMusica() {
@@ -509,7 +513,6 @@ function controlarMusica() {
     }
 }
 
-// Countdown JST (+09:00)
 const targetDate = new Date("2026-06-21T00:00:00+09:00");
 function updateCountdown(){
     const diff = targetDate - new Date();
@@ -525,14 +528,12 @@ function updateCountdown(){
 }
 setInterval(updateCountdown, 1000); updateCountdown();
 
-// Parallax Fuji Effect
 document.addEventListener('mousemove', (e) => {
     const x = (window.innerWidth / 2 - e.clientX) / 45;
     const y = (window.innerHeight / 2 - e.clientY) / 45;
     document.body.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
 });
 
-// Chuva de Pétalas com Matizes de Orquídea
 for(let i=0; i<25; i++){
     const petal = document.createElement("div");
     petal.classList.add("petal");
@@ -544,7 +545,6 @@ for(let i=0; i<25; i++){
     document.body.appendChild(petal);
 }
 
-// Carrossel Engine (Pets)
 let slideIndex = 0;
 let autoPlayTimer;
 function mudarSlide(direcao) {
@@ -554,14 +554,10 @@ function mudarSlide(direcao) {
 function iniciarAutoplay() {
     autoPlayTimer = setInterval(() => mudarSlide(1), 3000);
 }
-document.querySelectorAll('.carrossel-arrow').forEach(btn => {
-    btn.addEventListener('click', () => { clearInterval(autoPlayTimer); iniciarAutoplay(); });
-});
 
-// Explosão Engine Tratada
 function criarExplosao() {
     const simbolos = ["🌸", "✨", "🐾", "💜", "❤️"];
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 60; i++) {
         const confeti = document.createElement("div");
         confeti.classList.add("confeti");
         confeti.innerHTML = simbolos[Math.floor(Math.random() * simbolos.length)];
