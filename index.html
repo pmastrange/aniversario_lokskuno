@@ -12,7 +12,7 @@
 :root {
     --verde-pastel: #e8f7ea;
     --rosa-pastel: #fff0f3;
-    --roxo-orquidea: #793A57; /* Tom de destaque e sofisticação */
+    --roxo-orquidea: #793A57; /* Identidade e tom principal */
     --texto-escuro: #2c3e2f;
 }
 
@@ -99,7 +99,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Cards Estilo Glassmorphism Seguros (Lógica display: none) */
+/* Cards Estilo Glassmorphism Seguros */
 .card {
     display: none;
     background: rgba(255, 255, 255, 0.88);
@@ -202,8 +202,15 @@ h1 {
     background: linear-gradient(135deg, #fce4e8, #fdf6f7);
     border-radius: 0 0 12px 12px; z-index: 2;
 }
+
+/* Selo de Cera Centralizado Cirurgicamente */
 .wax-seal {
-    position: absolute; width: 72px; height: 72px;
+    position: absolute; 
+    top: 109px; /* Posicionado exatamente sobre a ponta do flap triangular */
+    left: 50%; 
+    transform: translateX(-50%); /* Centralização horizontal perfeita */
+    width: 72px; 
+    height: 72px;
     background: radial-gradient(circle at 30% 30%, #944d6e, var(--roxo-orquidea) 75%);
     border-radius: 48% 52% 49% 51% / 51% 47% 54% 46%; 
     z-index: 10; cursor: pointer; display: flex; justify-content: center;
@@ -217,7 +224,9 @@ h1 {
     text-shadow: -1px -1px 1px rgba(0,0,0,0.4), 1px 1px 0px rgba(255,255,255,0.1);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.wax-seal:hover { transform: scale(1.08) rotate(-4deg); }
+.wax-seal:hover { 
+    transform: translateX(-50%) scale(1.08) rotate(-4deg); /* Mantém centralizado no hover com animação */
+}
 
 .carta-scroller {
     width: 90%; max-height: 380px; overflow-y: auto; text-align: left;
@@ -236,11 +245,11 @@ h1 {
 .envelope-container.opened .envelope { transform: translateY(100px) scale(0.9); opacity: 0; pointer-events: none; transition-delay: 0.4s; }
 .envelope-container.opened .carta-scroller { display: block; opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
 
-/* TELA 3: Varal Clean de Polaroids Flutuantes (Adeus fundo preto!) */
+/* TELA 3: Varal Clean de Polaroids Flutuantes */
 .spotify-btn { background: #1DB954; color: white; text-decoration: none; padding: 12px 24px; border-radius: 50px; font-weight: bold; display: inline-block; margin-bottom: 25px; font-size: 13px; }
 
 .rolo-filme { 
-    background: rgba(255, 255, 255, 0.4); /* Fundo vidro fosco ultraleve */
+    background: rgba(255, 255, 255, 0.4); 
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.7);
@@ -255,7 +264,6 @@ h1 {
 .rolo-filme::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); border-radius: 10px; }
 .rolo-filme::-webkit-scrollbar-thumb { background: rgba(121, 58, 87, 0.3); border-radius: 10px; }
 
-/* Cards Individuais de Polaroid */
 .foto-quadro { 
     flex-shrink: 0; 
     background: #ffffff; 
@@ -266,7 +274,6 @@ h1 {
     transform: rotate(calc(var(--r, 0) * 1deg)) translateY(0); 
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
 }
-/* Efeito de flutuar e alinhar ao passar o mouse ou toque */
 .foto-quadro:hover {
     transform: rotate(0deg) translateY(-12px) scale(1.05);
     box-shadow: 0 16px 35px rgba(121, 58, 87, 0.15);
@@ -306,12 +313,14 @@ h1 {
 </head>
 <body>
 
+<!-- Player de Áudio Unificado -->
 <audio id="trilhaSonora" src="aguaviva.m4a" loop preload="auto"></audio>
 <div class="music-bar" id="musicBar">
     <span class="music-status" id="musicStatus">🎵 ÁGUA-VIVA TOCOU</span>
     <button class="music-toggle-btn" onclick="controlarMusica()">⏸️</button>
 </div>
 
+<!-- Indicador de Jornada -->
 <div class="progress-container">
     <div class="dot active" id="dot1"></div>
     <div class="dot" id="dot2"></div>
@@ -319,6 +328,7 @@ h1 {
     <div class="dot" id="dot4"></div>
 </div>
 
+<!-- TELA 1: COUNTDOWN -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
@@ -335,18 +345,21 @@ h1 {
     </div>
 </div>
 
+<!-- TELA 2: CARTA INTERATIVA -->
 <div class="card" id="tela2">
     <h1>Uma Mensagem Especial</h1>
     
     <div class="envelope-container" id="envelopeWrapper">
+        <!-- O Envelope Interativo -->
         <div class="envelope" id="envelopeControl">
             <div class="envelope-flap"></div>
             <div class="envelope-body"></div>
             <div class="wax-seal" onclick="abrirEnvelope()">LK</div>
         </div>
         
+        <!-- O Papel de Carta Oculto com Textura Marfim -->
         <div class="carta-scroller" id="cartaScroller">
-            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chicão somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é porque é seu. Sua data, seu dia, sua life, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
+            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chicão somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é because é seu. Sua data, seu dia, sua life, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
 
             Sabe, sempre que escuto Anavitória me lembro de você, mas uma música em específico por um trecho em específico:
 
@@ -371,6 +384,7 @@ h1 {
     </div>
 </div>
 
+<!-- TELA 3: FOTOS (POLAROIDS FLUTUANTES) -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     
@@ -391,6 +405,7 @@ h1 {
     <button class="btn-navigation" onclick="navegarPara(4)">Mais uma última caixinha... 🐾</button>
 </div>
 
+<!-- TELA 4: AMORES (PETS) -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar para as fotos</button>
 
@@ -418,7 +433,7 @@ h1 {
 </div>
 
 <script>
-// SPA Engine - Alternância Segura de Classes
+// SPA Engine
 function navegarPara(telaNumero) {
     document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
     document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
@@ -441,7 +456,7 @@ function abrirEnvelope() {
     wrapper.classList.add('opened');
 }
 
-// Nova Senha da Tela Inicial ("palomaminhamelhoramiga") validada em Base64
+// Nova Senha da Tela Inicial ("palomaminhamelhoramiga")
 function verificarTela1() {
     let senha = prompt("Digite a chave para abrir o cadeado: 🔑");
     if (!senha) return;
@@ -494,7 +509,7 @@ function controlarMusica() {
     }
 }
 
-// Countdown Estrito JST (+09:00)
+// Countdown JST (+09:00)
 const targetDate = new Date("2026-06-21T00:00:00+09:00");
 function updateCountdown(){
     const diff = targetDate - new Date();
@@ -543,7 +558,7 @@ document.querySelectorAll('.carrossel-arrow').forEach(btn => {
     btn.addEventListener('click', () => { clearInterval(autoPlayTimer); iniciarAutoplay(); });
 });
 
-// Explosão Engine Tratada (Sem bugs de atribuição de tokens)
+// Explosão Engine Tratada
 function criarExplosao() {
     const simbolos = ["🌸", "✨", "🐾", "💜", "❤️"];
     for (let i = 0; i < 80; i++) {
