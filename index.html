@@ -3,185 +3,430 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uma surpresa especial</title>
+<title>Uma Surpresa Especial para Minha Miguxa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
 <style>
-/* Tela de Loading/Abertura */
-#loading-screen {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: #1a261c;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 1s ease;
-}
-.loading-text {
-    color: #fff0f3;
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    letter-spacing: 2px;
-    animation: fadePulse 2s infinite alternate;
-}
-@keyframes fadePulse {
-    0% { opacity: 0.3; } 100% { opacity: 1; }
+:root {
+    --verde-pastel: #e8f7ea;
+    --rosa-pastel: #fff0f3;
+    --roxo-orquidea: #793A57; /* Cor da Orquídea Roxa favorita dela */
+    --texto-escuro: #2c3e2f;
 }
 
+/* Estrutura Base */
 body {
     margin: 0;
     font-family: 'Quicksand', sans-serif;
     background: 
-        linear-gradient(135deg, rgba(232, 247, 234, 0.8), rgba(255, 240, 243, 0.8)),
+        linear-gradient(135deg, rgba(232, 247, 234, 0.85), rgba(255, 240, 243, 0.85)),
         url("https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&w=1200&q=80");
-    background-size: 110% 110%; /* Margem extra para o efeito parallax não cortar a foto */
+    background-size: 110% 110%;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 
-/* Indicador de Progresso */
-.progress-dots {
+/* Indicador de Progresso Minimalista */
+.progress-container {
     position: absolute;
     top: 25px;
-    font-size: 14px;
-    letter-spacing: 6px;
-    color: #4a6b52;
+    display: flex;
+    gap: 12px;
+    z-index: 100;
 }
-.progress-dots span { color: #d9b3bb; }
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(121, 58, 87, 0.2);
+    transition: all 0.3s ease;
+}
+.dot.active {
+    background: var(--roxo-orquidea);
+    transform: scale(1.3);
+    box-shadow: 0 0 8px rgba(121, 58, 87, 0.4);
+}
 
-.card {
+/* Player de Áudio Profissional e Flutuante */
+.music-bar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
     background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 45px 40px;
-    border-radius: 24px;
-    max-width: 580px;
-    text-align: center;
-    box-shadow: 0 12px 35px rgba(165, 185, 168, 0.25);
-    z-index: 10;
-    margin: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(121, 58, 87, 0.2);
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 200;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.music-bar.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+.music-toggle-btn {
+    background: var(--roxo-orquidea);
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    box-shadow: 0 2px 6px rgba(121, 58, 87, 0.3);
+}
+.music-status {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--roxo-orquidea);
+    letter-spacing: 0.5px;
 }
 
+/* Cards Estilo Glassmorphism */
+.card {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 40px;
+    border-radius: 24px;
+    max-width: 600px;
+    width: 85%;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(74, 107, 82, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 10;
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.96);
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.card.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    position: relative;
+}
+
+/* Tipografia */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: 600;
-    color: #4a6b52;
-    margin-bottom: 15px;
+    font-size: 30px;
+    color: var(--roxo-orquidea);
+    margin-top: 0;
 }
+.italic { font-style: italic; color: #556e5a; }
 
-.subtitulo {
-    font-style: italic;
-    color: #6e8a75;
-    font-size: 16px;
-    margin-bottom: 25px;
-}
-
-.audio-hint {
-    font-size: 12px;
-    color: #a88189;
-    font-weight: bold;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
-
-.lock {
-    font-size: 70px;
+.btn-navigation {
+    background: var(--roxo-orquidea);
+    color: white;
+    padding: 13px 32px;
+    border-radius: 30px;
+    border: none;
     cursor: pointer;
-    margin: 15px;
-    display: inline-block;
-    transition: transform 0.3s ease;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(121, 58, 87, 0.2);
+    transition: all 0.3s ease;
 }
+.btn-navigation:hover { transform: translateY(-1px); box-shadow: 0 6px 15px rgba(121, 58, 87, 0.3); }
+.btn-back { background: none; border: none; color: #888; cursor: pointer; font-weight: bold; margin-bottom: 20px; }
+
+/* TELA 1: Countdown */
+.audio-hint { font-size: 11px; font-weight: bold; color: var(--roxo-orquidea); letter-spacing: 2px; margin-bottom: 5px; }
+.lock { font-size: 75px; cursor: pointer; margin: 15px; display: inline-block; transition: transform 0.2s; }
 .lock:hover { transform: scale(1.08); }
+#countdown { font-size: 24px; font-weight: 600; color: #4a6b52; padding: 10px 22px; background: var(--rosa-pastel); border-radius: 50px; display: inline-block; margin: 20px 0; }
 
-.instrucao-cadeado {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #a88189;
-    font-weight: 600;
-    margin-bottom: 25px;
+/* TELA 2: Sistema Interativo do Envelope da Carta */
+.envelope-wrapper {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.envelope {
+    position: absolute;
+    width: 100%;
+    max-width: 450px;
+    height: 280px;
+    background: #fdf5f6;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+    z-index: 5;
+}
+/* Linhas decorativas do envelope tradicional */
+.envelope::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 0; height: 0;
+    border-left: 225px solid transparent; border-right: 225px solid transparent;
+    border-top: 140px solid #f9eaed; transform-origin: top; transition: transform 0.4s ease; z-index: 6;
+}
+/* Parte interna do envelope */
+.envelope-bg {
+    position: absolute; width: 100%; height: 100%; top:0; left:0;
+    background: linear-gradient(135deg, #fce4e8, #fdf5f6); border-radius: 0 0 12px 12px; z-index: 2;
+}
+/* Selo de Cera Mecânico */
+.wax-seal {
+    position: absolute; width: 65px; height: 65px; background: var(--roxo-orquidea);
+    border-radius: 50%; z-index: 10; cursor: pointer; display: flex; justify-content: center;
+    align-items: center; color: #fff0f3; font-family: 'Playfair Display', serif; font-weight: bold;
+    font-size: 18px; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(121, 58, 87, 0.4);
+    border: 3px double rgba(255,255,255,0.3); transition: transform 0.3s;
+}
+.wax-seal:hover { transform: scale(1.08) rotate(-5deg); }
 
-#countdown {
-    font-size: 24px;
-    font-weight: 600;
-    color: #4a6b52;
-    padding: 12px 25px;
-    background: rgba(255, 240, 243, 0.6);
-    border-radius: 50px;
-    display: inline-block;
-    margin-bottom: 30px;
+/* Conteúdo da Carta Oculta que vai deslizar */
+.carta-scroller {
+    width: 100%; max-height: 380px; overflow-y: auto; text-align: left;
+    font-family: 'Georgia', serif; font-size: 16.5px; line-height: 1.8; color: var(--texto-escuro);
+    display: none; opacity: 0; transform: translateY(30px); transition: all 0.6s ease;
 }
+.quote-box { background: rgba(121, 58, 87, 0.04); border-left: 3px solid var(--roxo-orquidea); padding: 15px; margin: 15px 0; font-style: italic; }
+.carta-scroller::-webkit-scrollbar { width: 5px; }
+.carta-scroller::-webkit-scrollbar-thumb { background: var(--roxo-orquidea); border-radius: 10px; }
 
-.rodape .localizacao {
-    font-weight: 600;
-    color: #a88189;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-}
-.rodape .entrega { font-style: italic; color: #6e8a75; }
+/* Estados de Abertura da Carta */
+.envelope-wrapper.opened .envelope::before { transform: rotateX(180deg); z-index: 1; }
+.envelope-wrapper.opened .envelope { opacity: 0; pointer-events: none; transition-delay: 0.4s; }
+.envelope-wrapper.opened .carta-scroller { display: block; opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
 
-.petal {
-    position: fixed;
-    top: -20px;
-    animation: fall linear infinite;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.75;
-}
-@keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+/* TELA 3: Rolo de Fotos */
+.spotify-btn { background: #1DB954; color: white; text-decoration: none; padding: 12px 24px; border-radius: 50px; font-weight: bold; display: inline-block; margin-bottom: 25px; font-size: 13px; }
+.rolo-filme { background: #111; padding: 25px 10px; display: flex; overflow-x: auto; gap: 15px; border-top: 10px dashed #fff; border-bottom: 10px dashed #fff; border-radius: 4px; }
+.rolo-filme::-webkit-scrollbar { height: 8px; }
+.rolo-filme::-webkit-scrollbar-thumb { background: var(--roxo-orquidea); border-radius: 4px; }
+.foto-quadro { flex-shrink: 0; background: #fff; padding: 10px 10px 30px 10px; width: 200px; transform: rotate(calc(var(--r, 0) * 1deg)); }
+.foto-quadro img { width: 100%; height: 200px; object-fit: cover; }
+.foto-quadro span { display: block; margin-top: 8px; font-family: monospace; font-size: 11px; color: #444; }
+.swipe-hint { font-size: 12px; color: #777; margin: 10px 0 20px 0; }
+
+/* TELA 4: Pets Carrossel */
+.carrossel-container { position: relative; max-width: 380px; margin: 0 auto 25px auto; overflow: hidden; border-radius: 15px; border: 5px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.carrossel-slides { display: flex; transition: transform 0.5s ease-in-out; }
+.carrossel-slides img { width: 100%; height: 340px; object-fit: cover; flex-shrink: 0; }
+.carrossel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; font-size: 18px; padding: 8px 12px; cursor: pointer; border-radius: 50%; color: var(--roxo-orquidea); z-index: 5; }
+.arrow-prev { left: 10px; } .arrow-next { right: 10px; }
+.texto-final { font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 20px; color: var(--roxo-orquidea); line-height: 1.5; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+/* Falling Elements */
+.petal { position: fixed; top: -20px; animation: fall linear infinite; pointer-events: none; z-index: 1; opacity: 0.65; }
+.confeti { position: absolute; pointer-events: none; z-index: 100; animation: voar 1.2s ease-out forwards; }
+@keyframes voar { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; } }
 </style>
 </head>
 <body>
 
-<!-- Tela de Loading de 2 segundos -->
-<div id="loading-screen">
-    <div class="loading-text">Preparando sua surpresa... 🌸</div>
+<audio id="trilhaSonora" src="aguaviva.m4a" loop preload="auto"></audio>
+<div class="music-bar" id="musicBar">
+    <span class="music-status" id="musicStatus">🎵 ÁGUA-VIVA TOCOU</span>
+    <button class="music-toggle-btn" onclick="controlarMusica()">⏸️</button>
 </div>
 
-<div class="progress-dots"><span>●</span> ○ ○ ○</div>
+<div class="progress-container">
+    <div class="dot active" id="dot1"></div>
+    <div class="dot" id="dot2"></div>
+    <div class="dot" id="dot3"></div>
+    <div class="dot" id="dot4"></div>
+</div>
 
-<div class="card">
+<div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
-    <p class="subtitulo">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
+    <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
     
-    <div class="audio-hint">AUMENTE O SOM DIVA! 🔊</div>
-    <div class="lock" id="cadeado" onclick="verificarSenha()">🔒</div>
-    <p class="instrucao-cadeado">Toque para destravar</p>
+    <div class="audio-hint">AUMENTE O SOM! 🔊</div>
+    <div class="lock" id="cadeado" onclick="verificarTela1()">🔒</div>
+    <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--roxo-orquidea); font-weight: 600; margin-bottom: 20px;">Toque para destravar</p>
 
     <div id="countdown"></div>
 
-    <div class="rodape">
-        <div class="localizacao">Brasil ↔ Japão</div>
-        <div class="entrega">A chave será entregue no seu aniversário</div>
+    <div style="font-size: 15px; color: #555;">
+        <div style="font-weight:600; color: var(--roxo-orquidea); letter-spacing:1px; margin-bottom:5px;">Brasil ↔ Japão</div>
+        <div class="italic">A chave será entregue no seu aniversário</div>
+    </div>
+</div>
+
+<div class="card" id="tela2">
+    <h1>Uma Mensagem Especial</h1>
+    
+    <div class="envelope-wrapper" id="envelopeWrapper">
+        <div class="envelope" id="envelopeControl">
+            <div class="envelope-bg"></div>
+            <div class="wax-seal" onclick="abrirEnvelope()">LK</div>
+        </div>
+        
+        <div class="carta-scroller" id="cartaScroller">
+            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chicão somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é porque é seu. Sua data, seu dia, sua vida, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
+
+            Sabe, sempre que escuto Anavitória me lembro de você, mas uma música em específico por um trecho em específico:
+
+            <div class="quote-box">
+                "Se eu puder ter um pedido a mais<br>
+                Guarde o melhor que tivemos<br>
+                As confidências, mesmo que banais<br>
+                Eu deixo em segredo<br>
+                Nem todo mundo<br>
+                Tem a sorte que nós dois tivemos juntos<br>
+                E é tão bom saber que alguém<br>
+                Que me conhece assim tão bem existe."
+            </div>
+
+            Você é uma das mulheres mais fortes que eu já conheci, de uma inteligência admirável, uma força que pouquíssimas pessoas aguentariam, um coração que quase ninguém merece e, definitivamente, o top 1 de mulheres mais bonitas que eu conheço. Com certeza é uma das pessoas que eu mais admiro. Ter sua amizade é um dos maiores privilégios que eu poderia ter e, realmente, rezei muito para que, se fosse para retornarmos, que fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas que isso jamais abale nossa amizade novamente. Já te pedi desculpas muitas vezes pelos erros que cometi e por ter aberto mão de algo que era muito importante para mim e que, de fato, poderia ter salvado nós duas de tanta mágoa que veio depois... mas hoje não é dia de coisa triste. Apenas saiba que eu não cometo os mesmos erros duas vezes, não com você.
+
+            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam elas boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, big diva!
+            
+            <br><br>
+            <button class="btn-navigation" style="width:100%; margin-top:20px;" onclick="navegarPara(3)">Ver nossas lembranças... ✨</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" id="tela3">
+    <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
+    <h1>Nossas Memórias 🎞️</h1>
+    <a href="https://open.spotify.com/playlist/3fhl0NZ3Tg7ipf1AczB8wg?si=0AB-eHgDT9uUucq4jvzLEw&pi=mYYPIFcvQpqCp" target="_blank" class="spotify-btn">🎵 Ouvir playlist completa no Spotify</a>
+
+    <div class="rolo-filme">
+        <div class="foto-quadro" style="--r: -2"><img src="Fotoescada.jpg.jpeg"><span>MEMORIES 01</span></div>
+        <div class="foto-quadro" style="--r: 3"><img src="Foto2.jpg.jpeg"><span>MEMORIES 02</span></div>
+        <div class="foto-quadro" style="--r: -1"><img src="Foto3.jpg.jpeg"><span>MEMORIES 03</span></div>
+        <div class="foto-quadro" style="--r: 4"><img src="Foto4.jpg.jpeg"><span>MEMORIES 04</span></div>
+        <div class="foto-quadro" style="--r: -3"><img src="Foto5.png.PNG"><span>MEMORIES 05</span></div>
+        <div class="foto-quadro" style="--r: 2"><img src="Foto6.png.PNG"><span>MEMORIES 06</span></div>
+        <div class="foto-quadro" style="--r: -1"><img src="Foto7.png.png"><span>MEMORIES 07</span></div>
+    </div>
+    <div class="swipe-hint">Arraste para o lado para ver mais ➔</div>
+
+    <button class="btn-navigation" onclick="navegarPara(4)">Mais uma última caixinha... 🐾</button>
+</div>
+
+<div class="card" id="tela4">
+    <div id="pet-trancado">
+        <h2 style="color: var(--roxo-orquidea);">Uma última caixinha... 🐾</h2>
+        <div class="lock" onclick="verificarTela4()">🔒</div>
+        <p class="italic" style="color: var(--roxo-orquidea);">Dica: os seus dois amores mais puros...</p>
+    </div>
+    
+    <div id="pet-aberto" style="display: none;">
+        <div class="carrossel-container">
+            <div class="carrossel-slides" id="carouselSlides">
+                <img src="jullyjun.explosao.jpeg" alt="Jully e Jun">
+                <img src="jully1.jpg.jpeg" alt="Jully">
+                <img src="jun2.jpg.jpeg" alt="Jun">
+            </div>
+            <button class="carrossel-arrow arrow-prev" onclick="mudarSlide(-1)">❮</button>
+            <button class="carrossel-arrow arrow-next" onclick="mudarSlide(1)">❯</button>
+        </div>
+        <div class="texto-final">
+            “Você foi a melhor que tivemos, te protegemos e amamos pra sempre mamain!” 💖🐾
+        </div>
     </div>
 </div>
 
 <script>
-// Forçando o sumiço do Loading após 2 segundos
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        const loader = document.getElementById('loading-screen');
-        loader.style.opacity = '0';
-        setTimeout(() => loader.remove(), 1000);
-    }, 2000);
-});
+// SPA Engine
+function navegarPara(telaNumero) {
+    document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
+    document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+    
+    document.getElementById(`tela${telaNumero}`).classList.add('active');
+    document.getElementById(`dot${telaNumero}`).classList.add('active');
 
-// Fuso horário explícito do Japão (+09:00) para funcionar perfeitamente lá
+    const musicBar = document.getElementById('musicBar');
+    if (telaNumero > 1) {
+        musicBar.classList.add('visible');
+    } else {
+        musicBar.classList.remove('visible');
+        document.getElementById('trilhaSonora').pause();
+    }
+}
+
+// Mecânica do Envelope
+function abrirEnvelope() {
+    const wrapper = document.getElementById('envelopeWrapper');
+    wrapper.classList.add('opened');
+}
+
+// Senha da Tela Inicial (Base64)
+function verificarTela1() {
+    let senha = prompt("Digite a chave para abrir o cadeado: 🔑");
+    if (!senha) return;
+    if (btoa(senha.trim().toLowerCase()) === "c291bWVsaG9ycXVlYWpvc2U=") {
+        document.getElementById("cadeado").innerHTML = "🔓";
+        dispararAudioGlobal();
+        setTimeout(() => navegarPara(2), 800);
+    } else {
+        alert("Senha incorreta! Pensa mais um pouquinho! 😜");
+    }
+}
+
+// Senhas dos Pets com Múltiplas Entradas Permitidas
+function verificarTela4() {
+    let senha = prompt("Digite a senha secreta: 🔑");
+    if (!senha) return;
+    const hashesValidos = ["anVsbHlqdW4=", "anVsbHllanVu", "anVuZWx1bGx5", "anVuanVsbHk="];
+    
+    if (hashesValidos.includes(btoa(senha.trim().toLowerCase()))) {
+        criarExplosao();
+        document.getElementById("pet-trancado").style.display = "none";
+        document.getElementById("pet-aberto").style.display = "block";
+        iniciarAutoplay();
+    } else {
+        alert("Senha incorreta! Pensa mais um pouquinho! 😜");
+    }
+}
+
+// Controle de Áudio sem Interrupção
+const musica = document.getElementById('trilhaSonora');
+const toggleBtn = document.querySelector('.music-toggle-btn');
+const statusText = document.getElementById('musicStatus');
+
+function dispararAudioGlobal() {
+    musica.play().then(() => {
+        toggleBtn.innerText = "⏸️";
+        statusText.innerText = "🎵 ÁGUA-VIVA TOCANDO";
+    }).catch(e => console.log("Permissão pendente de interação do usuário."));
+}
+
+function controlarMusica() {
+    if (musica.paused) {
+        musica.play();
+        toggleBtn.innerText = "⏸️";
+        statusText.innerText = "🎵 ÁGUA-VIVA TOCANDO";
+    } else {
+        musica.pause();
+        toggleBtn.innerText = "▶️";
+        statusText.innerText = "🎵 TRILHA PAUSADA";
+    }
+}
+
+// Countdown para o Fuso do Japão (JST: +09:00)
 const targetDate = new Date("2026-06-21T00:00:00+09:00");
-
 function updateCountdown(){
-    const now = new Date();
-    const diff = targetDate - now;
+    const diff = targetDate - new Date();
     if (diff <= 0) {
         document.getElementById("countdown").innerHTML = "Chegou o momento! ✨";
         return;
@@ -192,41 +437,56 @@ function updateCountdown(){
     const seconds = Math.floor((diff%(1000*60))/1000);
     document.getElementById("countdown").innerHTML = `${days}d  ${hours}h  ${minutes}m  ${seconds}s`;
 }
-setInterval(updateCountdown, 1000);
-updateCountdown();
+setInterval(updateCountdown, 1000); updateCountdown();
 
-// Efeito Parallax suave controlado pelo mouse
+// Parallax Fuji Eficiente
 document.addEventListener('mousemove', (e) => {
-    const x = (window.innerWidth / 2 - e.clientX) / 40;
-    const y = (window.innerHeight / 2 - e.clientY) / 40;
+    const x = (window.innerWidth / 2 - e.clientX) / 45;
+    const y = (window.innerHeight / 2 - e.clientY) / 45;
     document.body.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
 });
 
-// Chuva de pétalas
-for(let i=0; i<30; i++){
+// Chuva de Pétalas com Matizes de Orquídea
+for(let i=0; i<25; i++){
     const petal = document.createElement("div");
     petal.classList.add("petal");
     petal.innerHTML = "🌸";
     petal.style.left = Math.random() * 100 + "vw";
+    if(Math.random() > 0.4) petal.style.filter = "hue-rotate(45deg) saturate(1.2)"; /* Algumas mudam para o tom orquídea */
     petal.style.fontSize = (12 + Math.random() * 12) + "px";
     petal.style.animationDuration = (10 + Math.random() * 12) + "s";
     document.body.appendChild(petal);
 }
 
-window.addEventListener('pageshow', function () {
-    document.getElementById("cadeado").innerHTML = "🔒";
+// Engine do Carrossel dos Pets (Autoplay 3s)
+let slideIndex = 0;
+let autoPlayTimer;
+function mudarSlide(direcao) {
+    slideIndex = (slideIndex + direcao + 3) % 3;
+    document.getElementById("carouselSlides").style.transform = `translateX(${-slideIndex * 100}%)`;
+}
+function iniciarAutoplay() {
+    autoPlayTimer = setInterval(() => mudarSlide(1), 3000);
+}
+document.querySelectorAll('.carrossel-arrow').forEach(btn => {
+    btn.addEventListener('click', () => { clearInterval(autoPlayTimer); iniciarAutoplay(); });
 });
 
-function verificarSenha() {
-    let senhaDigitada = prompt("Digite a chave para abrir o cadeado: 🔑");
-    if (senhaDigitada === null) return;
-
-    // Ofuscação básica em Base64 para evitar truques no DevTools
-    if (btoa(senhaDigitada.trim().toLowerCase()) === "c291bWVsaG9ycXVlYWpvc2U=") {
-        document.getElementById("cadeado").innerHTML = "🔓";
-        setTimeout(function() { window.location.href = 'mensagem.html'; }, 800);
-    } else {
-        alert("Senha incorreta! Para de tentar e espera seu aniversário! 😜");
+// Explosão Estilizada
+function criarExplosao() {
+    const simbolos = ["🌸", "✨", "🐾", "💜", "❤️"];
+    for (let i = 0; i < 80; i++) {
+        const confeti = document.createElement("div");
+        confeti.classList.add("confeti");
+        confeti.innerHTML = simbolos[Math.floor(Math.random() * simbolos.length)];
+        const x = (Math.random() - 0.5) * window.innerWidth;
+        const y = (Math.random() - 0.5) * window.innerHeight;
+        confeti.style.setProperty('--x', `${x}px`);
+        confeti.style.setProperty('--y', `${y}px`);
+        confeti.style.left = "50vw"; confeti.style.top = "50vh";
+        confeti.style.fontSize = (14 + Math.random() * 22) + "px";
+        document.body.appendChild(confeti);
+        setTimeout(() => confeti.remove(), 1200);
     }
 }
 </script>
