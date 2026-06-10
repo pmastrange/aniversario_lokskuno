@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
 <style>
+/* Reset Completo à Prova de Falhas */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -38,7 +39,7 @@ body {
     padding: 15px;
 }
 
-/* Indicador de Jornada Expandido */
+/* Dots de Progresso */
 .progress-container {
     position: absolute;
     top: 25px;
@@ -59,7 +60,7 @@ body {
     box-shadow: 0 0 8px rgba(121, 58, 87, 0.4);
 }
 
-/* Player de Áudio Flutuante */
+/* Player Floating Bar */
 .music-bar {
     position: fixed;
     top: 20px;
@@ -103,7 +104,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Card Base Adaptável */
+/* Cards Base Otimizados */
 .card {
     display: none;
     background: rgba(255, 255, 255, 0.92);
@@ -111,7 +112,7 @@ body {
     -webkit-backdrop-filter: blur(16px);
     padding: 30px 20px;
     border-radius: 24px;
-    max-width: 500px;
+    max-width: 450px;
     width: 100%;
     text-align: center;
     box-shadow: 0 20px 45px rgba(74, 107, 82, 0.1);
@@ -146,6 +147,7 @@ h1 {
     font-size: 13px;
     box-shadow: 0 4px 12px rgba(121, 58, 87, 0.2);
     transition: all 0.3s ease;
+    -webkit-appearance: none;
 }
 .btn-navigation:hover { transform: translateY(-1px); box-shadow: 0 6px 15px rgba(121, 58, 87, 0.3); }
 
@@ -160,57 +162,54 @@ h1 {
     align-items: center;
     gap: 6px;
     margin-bottom: 15px;
+    -webkit-appearance: none;
 }
 
 /* TELA 1 */
-.lock { font-size: 65px; cursor: pointer; margin: 10px display: inline-block; }
+.lock { font-size: 65px; cursor: pointer; margin: 10px; display: inline-block; }
 #countdown { font-size: 20px; font-weight: 600; color: #4a6b52; padding: 8px 20px; background: var(--rosa-pastel); border-radius: 50px; display: inline-block; margin: 15px 0; }
 
-/* TELA 2: Novo Envelope com Geometria Fluida (Clip-Path) */
+/* TELA 2: Arquitetura em Vetores SVG Nativos (Inquebrável no Safari) */
 .envelope-container {
     position: relative;
     width: 100%;
     max-width: 380px;
-    height: 240px;
+    height: 260px;
     margin: 0 auto;
-    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .envelope {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #fdf6f7;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     z-index: 5;
-    transition: all 0.5s ease;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .envelope-flap {
-    position: absolute; top: 0; left: 0; width: 100%; height: 60%;
-    background: #f7e2e5;
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-    transform-origin: top; z-index: 7; transition: transform 0.4s ease;
+    position: absolute; top: 0; left: 0; width: 100%; height: 130px;
+    transform-origin: top; z-index: 7; transition: transform 0.5s ease;
 }
 .envelope-body {
     position: absolute; width: 100%; height: 100%; top: 0; left: 0;
-    background: linear-gradient(135deg, #fce4e8, #fdf6f7);
-    clip-path: polygon(0 35%, 50% 70%, 100% 35%, 100% 100%, 0 100%);
-    border-radius: 0 0 12px 12px; z-index: 2;
+    z-index: 2;
 }
 .wax-seal {
     position: absolute; 
-    top: 115px; left: 50%; 
+    top: 100px; left: 50%; 
     transform: translateX(-50%); 
-    width: 64px; height: 64px;
+    width: 68px; height: 68px;
     background: radial-gradient(circle at 30% 30%, #944d6e, var(--roxo-orquidea) 75%);
     border-radius: 50%; 
     z-index: 10; cursor: pointer; display: flex; justify-content: center;
     align-items: center; color: white; font-family: 'Playfair Display', serif;
-    font-weight: 800; font-size: 16px;
-    box-shadow: 0 4px 12px rgba(121, 58, 87, 0.35);
-    transition: transform 0.2s;
+    font-weight: 800; font-size: 17px;
+    box-shadow: 0 5px 14px rgba(121, 58, 87, 0.4), inset 0 2px 4px rgba(255,255,255,0.3);
+    border: 2px double rgba(255,255,255,0.15);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.wax-seal:hover { transform: translateX(-50%) scale(1.05); }
+.wax-seal:hover { transform: translateX(-50%) scale(1.06) rotate(-4deg); }
 
 .carta-scroller {
     width: 100%; max-height: 340px; overflow-y: auto; text-align: left;
@@ -220,11 +219,11 @@ h1 {
     transform: translateY(20px); transition: all 0.5s ease;
 }
 .envelope-container.opened .envelope-flap { transform: rotateX(180deg); z-index: 1; }
-.envelope-container.opened .envelope { transform: translateY(40px); opacity: 0; pointer-events: none; }
-.envelope-container.opened .cartaScrollerContainer { display: block; width: 100%; }
+.envelope-container.opened .envelope { transform: translateY(80px); opacity: 0; pointer-events: none; }
+.envelope-container.opened .cartaScrollerContainer { display: block; width: 100%; z-index: 12; }
 .envelope-container.opened .carta-scroller { display: block; opacity: 1; transform: translateY(0); }
 
-/* TELA 3: Galeria Clean */
+/* TELA 3 */
 .rolo-filme { display: flex; overflow-x: auto; gap: 15px; padding: 20px 5px; }
 .foto-quadro { 
     flex-shrink: 0; background: #ffffff; padding: 10px 10px 30px 10px; width: 160px; 
@@ -234,23 +233,23 @@ h1 {
 .foto-quadro:hover { transform: rotate(0deg) translateY(-5px); }
 .foto-quadro img { width: 100%; height: 160px; object-fit: cover; border-radius: 4px; }
 .foto-quadro span { display: block; margin-top: 8px; font-size: 10px; color: var(--roxo-orquidea); font-weight: 700; }
+.spotify-btn { background: #1DB954; color: white; text-decoration: none; padding: 12px 24px; border-radius: 50px; font-weight: bold; display: inline-block; margin-bottom: 25px; font-size: 13px; }
 
-/* TELA 4: Pets */
+/* TELA 4 */
 .carrossel-container { position: relative; width: 100%; max-width: 300px; margin: 0 auto 20px auto; overflow: hidden; border-radius: 12px; border: 4px solid #fff; }
 .carrossel-slides { display: flex; transition: transform 0.5s ease-in-out; }
 .carrossel-slides img { width: 100%; height: 280px; object-fit: cover; flex-shrink: 0; }
 .carrossel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; width: 32px; height: 32px; cursor: pointer; border-radius: 50%; color: var(--roxo-orquidea); }
 .arrow-prev { left: 5px; } .arrow-next { right: 5px; }
-.texto-final { font-size: 15px; color: var(--roxo-orquidea); line-height: 1.5; background: white; padding: 15px; border-radius: 12px; }
 
-/* TELA 5: CSS do Quiz Interativo */
+/* TELA 5 */
 .quiz-box { background: white; padding: 20px; border-radius: 16px; border: 1px solid rgba(121, 58, 87, 0.1); margin: 15px 0; }
 .quiz-options { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
-.quiz-btn { background: var(--rosa-pastel); color: var(--roxo-orquidea); border: 1px solid rgba(121, 58, 87, 0.1); padding: 12px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.quiz-btn { background: var(--rosa-pastel); color: var(--roxo-orquidea); border: 1px solid rgba(121, 58, 87, 0.1); padding: 12px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; -webkit-appearance: none; }
 .quiz-btn:hover { background: var(--roxo-orquidea); color: white; }
 #quizFeedback { font-size: 13px; font-weight: bold; color: #a94442; margin-top: 12px; min-height: 20px; }
 
-/* TELA 6: Vales Customizados */
+/* TELA 6 */
 .mural-vales { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 15px 0; }
 .vale-card { background: #fffdfa; border: 1px dashed var(--roxo-orquidea); padding: 14px; border-radius: 12px; position: relative; cursor: pointer; overflow: hidden; text-align: left; }
 .vale-card h3 { font-size: 14px; color: var(--roxo-orquidea); margin-bottom: 2px; }
@@ -295,13 +294,29 @@ h1 {
     </div>
 </div>
 
-<!-- TELA 2 -->
+<!-- TELA 2: RECONSTRUÍDA COM SVGs VETORIAIS SEGUROS -->
 <div class="card" id="tela2">
     <h1>Uma Mensagem Especial</h1>
     <div class="envelope-container" id="envelopeWrapper">
         <div class="envelope" id="envelopeControl">
-            <div class="envelope-flap"></div>
-            <div class="envelope-body"></div>
+            <!-- Flap Superior em SVG Nativo -->
+            <div class="envelope-flap">
+                <svg viewBox="0 0 100 60" preserveAspectRatio="none" style="width: 100%; height: 100%; display: block;">
+                    <polygon points="0,0 100,0 50,60" fill="#f7e2e5"/>
+                </svg>
+            </div>
+            <!-- Corpo do Envelope em SVG Nativo com Gradiente Contido -->
+            <div class="envelope-body">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width: 100%; height: 100%; display: block; border-radius: 0 0 12px 12px;">
+                    <polygon points="0,35 50,70 100,35 100,100 0,100" fill="url(#envelopeGradiente)"/>
+                    <defs>
+                        <linearGradient id="envelopeGradiente" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#fce4e8" />
+                            <stop offset="100%" stop-color="#fdf6f7" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
             <div class="wax-seal" onclick="abrirEnvelope()">LK</div>
         </div>
         <div class="cartaScrollerContainer" style="display:none; width:100%;">
@@ -374,7 +389,7 @@ h1 {
     </div>
 </div>
 
-<!-- TELA 5: NOVA TELA INTERATIVA (QUIZ) -->
+<!-- TELA 5 -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para os pets</button>
     <h1>Teste de Sobrevivência 🧠</h1>
@@ -392,7 +407,7 @@ h1 {
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="navegarPara(6)">Resgatar meus mimos! 🎟️</button>
 </div>
 
-<!-- TELA 6: VALES ATUALIZADOS -->
+<!-- TELA 6 -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos 🎟️</h1>
