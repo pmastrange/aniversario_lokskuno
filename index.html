@@ -9,14 +9,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
 <style>
+/* Tela de Loading/Abertura */
+#loading-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #1a261c;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease;
+}
+.loading-text {
+    color: #fff0f3;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+    animation: fadePulse 2s infinite alternate;
+}
+@keyframes fadePulse {
+    0% { opacity: 0.3; } 100% { opacity: 1; }
+}
+
 body {
     margin: 0;
     font-family: 'Quicksand', sans-serif;
-    /* Fundo verde pastel integrado com uma imagem clean do Monte Fuji */
     background: 
         linear-gradient(135deg, rgba(232, 247, 234, 0.8), rgba(255, 240, 243, 0.8)),
         url("https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&w=1200&q=80");
-    background-size: cover;
+    background-size: 110% 110%; /* Margem extra para o efeito parallax não cortar a foto */
     background-position: center;
     display: flex;
     justify-content: center;
@@ -24,6 +45,16 @@ body {
     min-height: 100vh;
     overflow: hidden;
 }
+
+/* Indicador de Progresso */
+.progress-dots {
+    position: absolute;
+    top: 25px;
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: #4a6b52;
+}
+.progress-dots span { color: #d9b3bb; }
 
 .card {
     background: rgba(255, 255, 255, 0.85);
@@ -43,36 +74,39 @@ h1 {
     font-family: 'Playfair Display', serif;
     font-size: 32px;
     font-weight: 600;
-    color: #4a6b52; /* Verde sofisticado */
-    margin-bottom: 20px;
-    letter-spacing: -0.5px;
+    color: #4a6b52;
+    margin-bottom: 15px;
 }
 
 .subtitulo {
     font-style: italic;
     color: #6e8a75;
     font-size: 16px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+}
+
+.audio-hint {
+    font-size: 12px;
+    color: #a88189;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
 }
 
 .lock {
     font-size: 70px;
     cursor: pointer;
-    margin: 20px;
+    margin: 15px;
     display: inline-block;
     transition: transform 0.3s ease;
-    filter: drop-shadow(0 4px 10px rgba(217, 179, 187, 0.3));
 }
-
-.lock:hover {
-    transform: scale(1.08);
-}
+.lock:hover { transform: scale(1.08); }
 
 .instrucao-cadeado {
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #a88189; /* Rosa queimado profissional */
+    color: #a88189;
     font-weight: 600;
     margin-bottom: 25px;
 }
@@ -82,17 +116,10 @@ h1 {
     font-weight: 600;
     color: #4a6b52;
     padding: 12px 25px;
-    background: rgba(255, 240, 243, 0.6); /* Toque rosa bebê no contador */
+    background: rgba(255, 240, 243, 0.6);
     border-radius: 50px;
     display: inline-block;
     margin-bottom: 30px;
-    border: 1px solid rgba(245, 215, 220, 0.5);
-}
-
-.rodape {
-    font-size: 15px;
-    color: #555;
-    line-height: 1.6;
 }
 
 .rodape .localizacao {
@@ -101,13 +128,8 @@ h1 {
     letter-spacing: 1px;
     margin-bottom: 8px;
 }
+.rodape .entrega { font-style: italic; color: #6e8a75; }
 
-.rodape .entrega {
-    font-style: italic;
-    color: #6e8a75;
-}
-
-/* Efeito sutil e profissional das pétalas caindo */
 .petal {
     position: fixed;
     top: -20px;
@@ -116,20 +138,23 @@ h1 {
     z-index: 1;
     opacity: 0.75;
 }
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(360deg);
-    }
-}
+@keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 </style>
 </head>
 <body>
 
+<!-- Tela de Loading de 2 segundos -->
+<div id="loading-screen">
+    <div class="loading-text">Preparando sua surpresa... 🌸</div>
+</div>
+
+<div class="progress-dots"><span>●</span> ○ ○ ○</div>
+
 <div class="card">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="subtitulo">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
-
+    
+    <div class="audio-hint">AUMENTE O SOM DIVA! 🔊</div>
     <div class="lock" id="cadeado" onclick="verificarSenha()">🔒</div>
     <p class="instrucao-cadeado">Toque para destravar</p>
 
@@ -142,18 +167,25 @@ h1 {
 </div>
 
 <script>
-// Altere para a data exata se necessário
-const targetDate = new Date("2026-06-21T00:00:00");
+// Forçando o sumiço do Loading após 2 segundos
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loader = document.getElementById('loading-screen');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.remove(), 1000);
+    }, 2000);
+});
+
+// Fuso horário explícito do Japão (+09:00) para funcionar perfeitamente lá
+const targetDate = new Date("2026-06-21T00:00:00+09:00");
 
 function updateCountdown(){
     const now = new Date();
     const diff = targetDate - now;
-    
     if (diff <= 0) {
         document.getElementById("countdown").innerHTML = "Chegou o momento! ✨";
         return;
     }
-
     const days = Math.floor(diff/(1000*60*60*24));
     const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
     const minutes = Math.floor((diff%(1000*60))/(1000*60));
@@ -163,7 +195,14 @@ function updateCountdown(){
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Chuva de pétalas suave
+// Efeito Parallax suave controlado pelo mouse
+document.addEventListener('mousemove', (e) => {
+    const x = (window.innerWidth / 2 - e.clientX) / 40;
+    const y = (window.innerHeight / 2 - e.clientY) / 40;
+    document.body.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+});
+
+// Chuva de pétalas
 for(let i=0; i<30; i++){
     const petal = document.createElement("div");
     petal.classList.add("petal");
@@ -179,17 +218,15 @@ window.addEventListener('pageshow', function () {
 });
 
 function verificarSenha() {
-    const senhaCorreta = "soumelhorqueajose";
     let senhaDigitada = prompt("Digite a chave para abrir o cadeado: 🔑");
     if (senhaDigitada === null) return;
 
-    if (senhaDigitada.trim().toLowerCase() === senhaCorreta.toLowerCase()) {
+    // Ofuscação básica em Base64 para evitar truques no DevTools
+    if (btoa(senhaDigitada.trim().toLowerCase()) === "c291bWVsaG9ycXVlYWpvc2U=") {
         document.getElementById("cadeado").innerHTML = "🔓";
-        setTimeout(function() {
-            window.location.href = 'mensagem.html';
-        }, 800);
+        setTimeout(function() { window.location.href = 'mensagem.html'; }, 800);
     } else {
-        alert("Senha incorreta! Para de ser teimosa e espera seu aniversario!");
+        alert("Senha incorreta! Pensa mais um pouquinho! 😜");
     }
 }
 </script>
