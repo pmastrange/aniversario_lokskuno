@@ -12,7 +12,7 @@
 :root {
     --verde-pastel: #e8f7ea;
     --rosa-pastel: #fff0f3;
-    --roxo-orquidea: #793A57; /* Tom principal da flor favorita dela e identidade do site */
+    --roxo-orquidea: #793A57; /* Tom de destaque e sofisticação */
     --texto-escuro: #2c3e2f;
 }
 
@@ -33,7 +33,7 @@ body {
     position: relative;
 }
 
-/* Indicador de Progresso Minimalista */
+/* Indicador de Progresso */
 .progress-container {
     position: absolute;
     top: 25px;
@@ -99,8 +99,9 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Cards Estilo Glassmorphism */
+/* Cards Estilo Glassmorphism Seguros (Lógica display: none) */
 .card {
+    display: none;
     background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -112,20 +113,17 @@ body {
     box-shadow: 0 15px 35px rgba(74, 107, 82, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.5);
     z-index: 10;
-    position: absolute;
-    opacity: 0;
-    transform: scale(0.96);
-    pointer-events: none;
-    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .card.active {
-    opacity: 1;
-    transform: scale(1);
-    pointer-events: auto;
-    position: relative;
+    display: block;
+    animation: fadeInCard 0.5s ease-in-out forwards;
+}
+@keyframes fadeInCard {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-/* Tipografia */
+/* Tipografia Geral */
 h1 {
     font-family: 'Playfair Display', serif;
     font-size: 30px;
@@ -148,7 +146,6 @@ h1 {
 }
 .btn-navigation:hover { transform: translateY(-1px); box-shadow: 0 6px 15px rgba(121, 58, 87, 0.3); }
 
-/* Botões de Voltar Ultra Elegantes */
 .btn-back {
     background: none;
     border: none;
@@ -172,7 +169,7 @@ h1 {
 .lock:hover { transform: scale(1.08); }
 #countdown { font-size: 24px; font-weight: 600; color: #4a6b52; padding: 10px 22px; background: var(--rosa-pastel); border-radius: 50px; display: inline-block; margin: 20px 0; }
 
-/* TELA 2: Mecânica de Alta Fidelidade do Envelope e Carta */
+/* TELA 2: Mecânica Exclusiva do Envelope e Carta */
 .envelope-container {
     position: relative;
     width: 100%;
@@ -239,14 +236,14 @@ h1 {
 .envelope-container.opened .envelope { transform: translateY(100px) scale(0.9); opacity: 0; pointer-events: none; transition-delay: 0.4s; }
 .envelope-container.opened .carta-scroller { display: block; opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
 
-/* TELA 3: Rolo de Fotos Nova Abordagem (Clean e Profissional) */
+/* TELA 3: Varal Clean de Polaroids Flutuantes (Adeus fundo preto!) */
 .spotify-btn { background: #1DB954; color: white; text-decoration: none; padding: 12px 24px; border-radius: 50px; font-weight: bold; display: inline-block; margin-bottom: 25px; font-size: 13px; }
 
 .rolo-filme { 
-    background: rgba(255, 255, 255, 0.35); /* Trilha leve estilo vidro fosco */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.4); /* Fundo vidro fosco ultraleve */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     padding: 35px 15px; 
     display: flex; 
     overflow-x: auto; 
@@ -258,7 +255,7 @@ h1 {
 .rolo-filme::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); border-radius: 10px; }
 .rolo-filme::-webkit-scrollbar-thumb { background: rgba(121, 58, 87, 0.3); border-radius: 10px; }
 
-/* Estilização Premium das Fotos em Polaroid */
+/* Cards Individuais de Polaroid */
 .foto-quadro { 
     flex-shrink: 0; 
     background: #ffffff; 
@@ -269,17 +266,17 @@ h1 {
     transform: rotate(calc(var(--r, 0) * 1deg)) translateY(0); 
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
 }
-/* Animação de Levitação e Alinhamento Suave */
+/* Efeito de flutuar e alinhar ao passar o mouse ou toque */
 .foto-quadro:hover {
-    transform: rotate(0deg) translateY(-12px) scale(1.04);
-    box-shadow: 0 16px 35px rgba(121, 58, 87, 0.16);
+    transform: rotate(0deg) translateY(-12px) scale(1.05);
+    box-shadow: 0 16px 35px rgba(121, 58, 87, 0.15);
     z-index: 5;
 }
 .foto-quadro img { 
     width: 100%; 
     height: 200px; 
     object-fit: cover; 
-    border-radius: 8px; /* Arredondamento sutil da foto interna */
+    border-radius: 8px;
 }
 .foto-quadro span { 
     display: block; 
@@ -301,7 +298,7 @@ h1 {
 .arrow-prev { left: 10px; } .arrow-next { right: 10px; }
 .texto-final { font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 20px; color: var(--roxo-orquidea); line-height: 1.5; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
 
-/* Falling Elements */
+/* Elementos Fluidos (Pétalas e Confetes) */
 .petal { position: fixed; top: -20px; animation: fall linear infinite; pointer-events: none; z-index: 1; opacity: 0.65; }
 .confeti { position: absolute; pointer-events: none; z-index: 100; animation: voar 1.2s ease-out forwards; }
 @keyframes voar { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; } }
@@ -381,12 +378,12 @@ h1 {
     <a href="https://open.spotify.com/playlist/3fhl0NZ3Tg7ipf1AczB8wg?si=0AB-eHgDT9uUucq4jvzLEw&pi=mYYPIFcvQpqCp" target="_blank" class="spotify-btn">🎵 Ouvir playlist completa no Spotify</a>
 
     <div class="rolo-filme">
-        <div class="foto-quadro" style="--r: -2"><img src="Fotoescada.jpg.jpeg"><span>MEMORIES 01</span></div>
-        <div class="foto-quadro" style="--r: 3"><img src="Foto2.jpg.jpeg"><span>MEMORIES 02</span></div>
+        <div class="foto-quadro" style="--r: -3"><img src="Fotoescada.jpg.jpeg"><span>MEMORIES 01</span></div>
+        <div class="foto-quadro" style="--r: 2"><img src="Foto2.jpg.jpeg"><span>MEMORIES 02</span></div>
         <div class="foto-quadro" style="--r: -1"><img src="Foto3.jpg.jpeg"><span>MEMORIES 03</span></div>
         <div class="foto-quadro" style="--r: 4"><img src="Foto4.jpg.jpeg"><span>MEMORIES 04</span></div>
-        <div class="foto-quadro" style="--r: -3"><img src="Foto5.png.PNG"><span>MEMORIES 05</span></div>
-        <div class="foto-quadro" style="--r: 2"><img src="Foto6.png.PNG"><span>MEMORIES 06</span></div>
+        <div class="foto-quadro" style="--r: -2"><img src="Foto5.png.PNG"><span>MEMORIES 05</span></div>
+        <div class="foto-quadro" style="--r: 3"><img src="Foto6.png.PNG"><span>MEMORIES 06</span></div>
         <div class="foto-quadro" style="--r: -1"><img src="Foto7.png.png"><span>MEMORIES 07</span></div>
     </div>
     <div class="swipe-hint">Arraste para o lado para ver mais ➔</div>
@@ -421,7 +418,7 @@ h1 {
 </div>
 
 <script>
-// SPA Engine
+// SPA Engine - Alternância Segura de Classes
 function navegarPara(telaNumero) {
     document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
     document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
@@ -444,7 +441,7 @@ function abrirEnvelope() {
     wrapper.classList.add('opened');
 }
 
-// Senha da Tela Inicial ("palomaminhamelhoramiga")
+// Nova Senha da Tela Inicial ("palomaminhamelhoramiga") validada em Base64
 function verificarTela1() {
     let senha = prompt("Digite a chave para abrir o cadeado: 🔑");
     if (!senha) return;
@@ -482,7 +479,7 @@ function dispararAudioGlobal() {
     musica.play().then(() => {
         toggleBtn.innerText = "⏸️";
         statusText.innerText = "🎵 ÁGUA-VIVA TOCANDO";
-    }).catch(e => console.log("Interação pendente."));
+    }).catch(e => console.log("Interação do usuário pendente."));
 }
 
 function controlarMusica() {
@@ -497,7 +494,7 @@ function controlarMusica() {
     }
 }
 
-// Countdown JST (+09:00)
+// Countdown Estrito JST (+09:00)
 const targetDate = new Date("2026-06-21T00:00:00+09:00");
 function updateCountdown(){
     const diff = targetDate - new Date();
@@ -546,7 +543,7 @@ document.querySelectorAll('.carrossel-arrow').forEach(btn => {
     btn.addEventListener('click', () => { clearInterval(autoPlayTimer); iniciarAutoplay(); });
 });
 
-// Explosão Engine Corrigida (Sem bugs de sintaxe)
+// Explosão Engine Tratada (Sem bugs de atribuição de tokens)
 function criarExplosao() {
     const simbolos = ["🌸", "✨", "🐾", "💜", "❤️"];
     for (let i = 0; i < 80; i++) {
