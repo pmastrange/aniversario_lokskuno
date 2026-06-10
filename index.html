@@ -3,143 +3,195 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uma surpresa para minha miguxa</title>
+<title>Uma surpresa especial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
 <style>
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:
-linear-gradient(rgba(232,247,234,0.85), rgba(247,255,248,0.85)),
-url("https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=1200&q=80");
-background-size:cover;
-background-position:center;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-overflow:hidden;
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    /* Fundo verde pastel integrado com uma imagem clean do Monte Fuji */
+    background: 
+        linear-gradient(135deg, rgba(232, 247, 234, 0.8), rgba(255, 240, 243, 0.8)),
+        url("https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&w=1200&q=80");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
-.card{
-background:rgba(255,255,255,0.88);
-backdrop-filter:blur(10px);
-padding:40px;
-border-radius:30px;
-max-width:650px;
-text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,.15);
-z-index:10;
-margin:20px;
-border:1px solid rgba(255,255,255,.4);
+.card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 45px 40px;
+    border-radius: 24px;
+    max-width: 580px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(165, 185, 168, 0.25);
+    z-index: 10;
+    margin: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-.lock{
-font-size:85px;
-filter:drop-shadow(0 0 10px rgba(255,215,0,.5));
-cursor:pointer;
-margin:20px;
-animation:pulse 2s infinite;
-display: inline-block;
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #4a6b52; /* Verde sofisticado */
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
 }
 
-@keyframes pulse{
-50%{transform:scale(1.1);}
+.subtitulo {
+    font-style: italic;
+    color: #6e8a75;
+    font-size: 16px;
+    margin-bottom: 30px;
 }
 
-#countdown{
-font-size:28px;
-font-weight:bold;
-color:#4f7b57;
-margin-top:25px;
-padding:15px;
-background:rgba(255,255,255,.5);
-border-radius:20px;
+.lock {
+    font-size: 70px;
+    cursor: pointer;
+    margin: 20px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 10px rgba(217, 179, 187, 0.3));
 }
 
-.petal{
-position:fixed;
-top:-20px;
-animation:fall linear infinite;
-pointer-events:none;
+.lock:hover {
+    transform: scale(1.08);
 }
 
-@keyframes fall{
-to{
-transform:translateY(110vh) rotate(360deg);
+.instrucao-cadeado {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #a88189; /* Rosa queimado profissional */
+    font-weight: 600;
+    margin-bottom: 25px;
 }
+
+#countdown {
+    font-size: 24px;
+    font-weight: 600;
+    color: #4a6b52;
+    padding: 12px 25px;
+    background: rgba(255, 240, 243, 0.6); /* Toque rosa bebê no contador */
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 30px;
+    border: 1px solid rgba(245, 215, 220, 0.5);
+}
+
+.rodape {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.rodape .localizacao {
+    font-weight: 600;
+    color: #a88189;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.rodape .entrega {
+    font-style: italic;
+    color: #6e8a75;
+}
+
+/* Efeito sutil e profissional das pétalas caindo */
+.petal {
+    position: fixed;
+    top: -20px;
+    animation: fall linear infinite;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.75;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
 }
 </style>
 </head>
-
 <body>
 
 <div class="card">
-<h1>🌸 Uma pequena surpresa para minha miguxa 🌸</h1>
-<p>Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs. 💚</p>
+    <h1>Uma pequena surpresa para minha miguxa</h1>
+    <p class="subtitulo">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
 
-<div class="lock" id="cadeado" onclick="verificarSenha()">🔒</div>
-<p>Toque no cadeado.</p>
+    <div class="lock" id="cadeado" onclick="verificarSenha()">🔒</div>
+    <p class="instrucao-cadeado">Toque para destravar</p>
 
-<div id="countdown"></div>
-<p style="margin-top:20px;color:#5d8f66;line-height:1.8;">
-🌸 Brasil ↔ Japão 🌸<br><br>
-A chave será entregue no seu aniversário, então fica mais alegre.
-</p>
+    <div id="countdown"></div>
+
+    <div class="rodape">
+        <div class="localizacao">Brasil ↔ Japão</div>
+        <div class="entrega">A chave será entregue no seu aniversário</div>
+    </div>
 </div>
 
 <script>
+// Altere para a data exata se necessário
 const targetDate = new Date("2026-06-21T00:00:00");
 
 function updateCountdown(){
-const now = new Date();
-const diff = targetDate - now;
+    const now = new Date();
+    const diff = targetDate - now;
+    
+    if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "Chegou o momento! ✨";
+        return;
+    }
 
-const days = Math.floor(diff/(1000*60*60*24));
-const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-const minutes = Math.floor((diff%(1000*60))/(1000*60));
-const seconds = Math.floor((diff%(1000*60))/1000);
-
-document.getElementById("countdown").innerHTML =
-`${days} dias • ${hours}h • ${minutes}m • ${seconds}s`;
+    const days = Math.floor(diff/(1000*60*60*24));
+    const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const minutes = Math.floor((diff%(1000*60))/(1000*60));
+    const seconds = Math.floor((diff%(1000*60))/1000);
+    document.getElementById("countdown").innerHTML = `${days}d  ${hours}h  ${minutes}m  ${seconds}s`;
 }
-
-setInterval(updateCountdown,1000);
+setInterval(updateCountdown, 1000);
 updateCountdown();
 
-for(let i=0;i<35;i++){
-const petal=document.createElement("div");
-petal.classList.add("petal");
-petal.innerHTML="🌸";
-petal.style.left=Math.random()*100+"vw";
-petal.style.fontSize=(15+Math.random()*15)+"px";
-petal.style.animationDuration=(8+Math.random()*10)+"s";
-document.body.appendChild(petal);
+// Chuva de pétalas suave
+for(let i=0; i<30; i++){
+    const petal = document.createElement("div");
+    petal.classList.add("petal");
+    petal.innerHTML = "🌸";
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.fontSize = (12 + Math.random() * 12) + "px";
+    petal.style.animationDuration = (10 + Math.random() * 12) + "s";
+    document.body.appendChild(petal);
 }
 
-// Garante que o cadeado sempre volte a fechar ao retornar para a página
-window.addEventListener('pageshow', function (event) {
+window.addEventListener('pageshow', function () {
     document.getElementById("cadeado").innerHTML = "🔒";
 });
 
 function verificarSenha() {
     const senhaCorreta = "soumelhorqueajose";
     let senhaDigitada = prompt("Digite a chave para abrir o cadeado: 🔑");
-    
     if (senhaDigitada === null) return;
 
     if (senhaDigitada.trim().toLowerCase() === senhaCorreta.toLowerCase()) {
-        const cadeado = document.getElementById("cadeado");
-        cadeado.innerHTML = "🔓";
-        
+        document.getElementById("cadeado").innerHTML = "🔓";
         setTimeout(function() {
             window.location.href = 'mensagem.html';
         }, 800);
     } else {
-        alert("Senha incorreta! Hmmm... pensa mais um pouquinho! 😜");
+        alert("Senha incorreta! Para de ser teimosa e espera seu aniversario!");
     }
 }
 </script>
-
 </body>
 </html>
