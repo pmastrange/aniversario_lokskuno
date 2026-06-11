@@ -65,18 +65,18 @@ body:has(#telaPegadinha.active) .music-bar {
     position: absolute;
     top: 30px;
     display: flex;
-    gap: 14px;
+    gap: 12px;
     z-index: 100;
 }
 .dot {
-    width: 20px;
+    width: 16px;
     height: 2px;
     background: rgba(121, 58, 87, 0.2);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .dot.active {
     background: var(--roxo-orquidea);
-    width: 35px;
+    width: 30px;
 }
 
 /* Player de Áudio Premium */
@@ -145,9 +145,7 @@ body:has(#telaPegadinha.active) .music-bar {
 }
 
 /* ELEMENTOS DINÂMICOS DISNEY (TELA 2) */
-#tela2 {
-    position: relative;
-}
+#tela2 { position: relative; }
 .disney-cameo {
     position: absolute;
     width: 100px;
@@ -159,21 +157,9 @@ body:has(#telaPegadinha.active) .music-bar {
     filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
     opacity: 0;
 }
-#tela2.card.active .disney-cameo {
-    opacity: 1;
-}
-.cameo-enrolados {
-    left: -70px;
-    top: 15%;
-    transform: rotate(-12deg);
-    animation: floatingCharacter 4s infinite ease-in-out;
-}
-.cameo-olaf {
-    right: -65px;
-    bottom: 20%;
-    transform: rotate(10deg);
-    animation: floatingCharacter 4.5s infinite ease-in-out 0.5s;
-}
+#tela2.card.active .disney-cameo { opacity: 1; }
+.cameo-enrolados { left: -70px; top: 15%; transform: rotate(-12deg); animation: floatingCharacter 4s infinite ease-in-out; }
+.cameo-olaf { right: -65px; bottom: 20%; transform: rotate(10deg); animation: floatingCharacter 4.5s infinite ease-in-out 0.5s; }
 
 @keyframes floatingCharacter {
     0%, 100% { transform: translateY(0) rotate(var(--base-rot, -10deg)); }
@@ -189,31 +175,11 @@ body:has(#telaPegadinha.active) .music-bar {
 }
 
 /* DESIGN DINÂMICO DA ORQUÍDEA (TELA 3) */
-#tela3.card.active {
-    background: rgba(243, 237, 247, 0.92);
-    border: 1px solid rgba(121, 58, 87, 0.15);
-}
-.orchid-trigger-zone {
-    position: relative;
-    width: 100%;
-    max-width: 240px;
-    margin: 0 auto 25px auto;
-    cursor: pointer;
-    perspective: 1000px;
-}
-.orchid-img-asset {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 15px 35px rgba(121, 58, 87, 0.12);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.orchid-trigger-zone:hover .orchid-img-asset {
-    transform: scale(1.03) translateY(-2px);
-}
-.orchid-img-asset.tap-animation {
-    animation: orchidTap 0.4s ease-out;
-}
+#tela3.card.active { background: rgba(243, 237, 247, 0.92); border: 1px solid rgba(121, 58, 87, 0.15); }
+.orchid-trigger-zone { position: relative; width: 100%; max-width: 240px; margin: 0 auto 25px auto; cursor: pointer; perspective: 1000px; }
+.orchid-img-asset { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 15px 35px rgba(121, 58, 87, 0.12); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.orchid-trigger-zone:hover .orchid-img-asset { transform: scale(1.03) translateY(-2px); }
+.orchid-img-asset.tap-animation { animation: orchidTap 0.4s ease-out; }
 @keyframes orchidTap {
     0% { transform: scale(1); }
     30% { transform: scale(0.92) rotate(-3deg); }
@@ -221,317 +187,105 @@ body:has(#telaPegadinha.active) .music-bar {
     100% { transform: scale(1); }
 }
 
-.orchid-phrases-mural {
-    margin: 20px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    min-height: 60px;
-}
+.orchid-phrases-mural { margin: 20px 0; display: flex; flex-direction: column; gap: 12px; min-height: 60px; }
 .revealed-phrase {
-    font-family: var(--serifa);
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--roxo-orquidea);
-    font-style: italic;
-    background: rgba(255, 255, 255, 0.6);
-    padding: 12px 18px;
-    border-radius: 8px;
-    border-left: 3px solid var(--roxo-orquidea);
-    text-align: left;
-    box-shadow: 0 4px 15px rgba(121, 58, 87, 0.03);
-    display: none;
-    opacity: 0;
-    transform: translateY(15px);
+    font-family: var(--serifa); font-size: 14.5px; line-height: 1.6; color: var(--roxo-orquidea); font-style: italic;
+    background: rgba(255, 255, 255, 0.6); padding: 12px 18px; border-radius: 8px; border-left: 3px solid var(--roxo-orquidea);
+    text-align: left; box-shadow: 0 4px 15px rgba(121, 58, 87, 0.03); display: none; opacity: 0; transform: translateY(15px);
 }
-.revealed-phrase.show {
-    display: block;
-    animation: revealBlurText 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
+.revealed-phrase.show { display: block; animation: revealBlurText 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 @keyframes revealBlurText {
     from { opacity: 0; filter: blur(4px); transform: translateY(15px); }
     to { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 
+/* 🔒 CADEADO MECÂNICO ROTATIVO (TELA 8) */
+.heart-lock-art {
+    width: 100%; max-width: 280px; background: linear-gradient(135deg, #ffccd5, #ffb3c1);
+    margin: 20px auto; border-radius: 50% 50% 40% 40% / 40% 40% 50% 50%; padding: 40px 20px;
+    box-shadow: 0 15px 35px rgba(121, 58, 87, 0.2), inset 0 -5px 15px rgba(0,0,0,0.05);
+    border: 4px solid #fff; position: relative;
+}
+.heart-lock-art::before {
+    content: ''; position: absolute; top: -45px; left: 50%; transform: translateX(-50%);
+    width: 130px; height: 90px; border: 12px solid #ffb3c1; border-bottom: none;
+    border-radius: 85px 85px 0 0; z-index: -1;
+}
+.heart-lock-title { font-family: var(--serifa); font-size: 14px; color: var(--roxo-orquidea); margin-bottom: 15px; font-weight: 600; font-style: italic; }
+.lock-mechanic-wrapper { display: flex; justify-content: center; gap: 8px; margin: 15px 0; }
+.lock-column { display: flex; flex-direction: column; align-items: center; background: #fff; border-radius: 6px; padding: 6px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.lock-arrow { background: none; border: none; color: var(--roxo-orquidea); font-size: 16px; cursor: pointer; padding: 2px 8px; transition: transform 0.1s; }
+.lock-arrow:active { transform: scale(0.8); }
+.lock-digit { font-size: 22px; font-weight: 700; color: var(--texto-escuro); margin: 4px 0; font-family: monospace; }
+
+/* 🎫 COMPONENTE DA RASPADINHA (TELA 8 STAGE 2) */
+.scratch-layout-grid { display: flex; flex-direction: column; gap: 25px; align-items: center; margin-top: 15px; }
+.scratch-container-box { position: relative; width: 280px; height: 280px; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 3px solid #fff; background: #eee; }
+.scratch-under-image { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
+#scratchCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; cursor: crosshair; touch-action: none; }
+.scratch-text-message { text-align: left; font-family: 'Georgia', serif; font-size: 14px; line-height: 1.8; color: #444; background: rgba(255,255,255,0.5); padding: 20px; border-radius: 8px; border: 1px dashed rgba(121,58,87,0.2); }
+
 /* Expansão do Mosaico */
-#tela4.card.active {
-    max-width: 600px;
-    padding: 40px 20px;
-}
+#tela4.card.active { max-width: 600px; padding: 40px 20px; }
 
-@keyframes transitionCard {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-h1 {
-    font-family: var(--serifa);
-    font-size: 24px;
-    font-weight: 500;
-    letter-spacing: -0.3px;
-    color: var(--roxo-orquidea);
-    margin-bottom: 20px;
-    line-height: 1.4;
-}
-.italic { 
-    font-style: italic; 
-    font-family: var(--serifa);
-    color: #5c6b5f; 
-    margin-bottom: 25px; 
-    font-size: 14px;
-    line-height: 1.6;
-}
+h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spacing: -0.3px; color: var(--roxo-orquidea); margin-bottom: 20px; line-height: 1.4; }
+.italic { font-style: italic; font-family: var(--serifa); color: #5c6b5f; margin-bottom: 25px; font-size: 14px; line-height: 1.6; }
 
 /* Botões Estilo Premium */
 .btn-navigation {
-    background: var(--roxo-orquidea);
-    color: white;
-    padding: 16px 36px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    box-shadow: 0 10px 20px rgba(121, 58, 87, 0.15);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    -webkit-appearance: none;
+    background: var(--roxo-orquidea); color: white; padding: 16px 36px; border-radius: 4px; border: none; cursor: pointer;
+    font-weight: 600; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+    box-shadow: 0 10px 20px rgba(121, 58, 87, 0.15); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); -webkit-appearance: none;
 }
-.btn-navigation:hover { 
-    background: #5c2740;
-    transform: translateY(-1px); 
-    box-shadow: 0 12px 25px rgba(121, 58, 87, 0.25); 
-}
+.btn-navigation:hover { background: #5c2740; transform: translateY(-1px); box-shadow: 0 12px 25px rgba(121, 58, 87, 0.25); }
 
 .btn-back {
-    background: none;
-    border: none;
-    color: var(--roxo-orquidea);
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 25px;
-    -webkit-appearance: none;
+    background: none; border: none; color: var(--roxo-orquidea); cursor: pointer; font-weight: 700; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 25px; -webkit-appearance: none;
 }
 
 /* Tela 1 Elements */
-.lock { 
-    font-size: 45px; 
-    cursor: pointer; 
-    margin: 25px; 
-    display: inline-block;
-    transition: opacity 0.2s;
-}
+.lock { font-size: 45px; cursor: pointer; margin: 25px; display: inline-block; transition: opacity 0.2s; }
 .lock:hover { opacity: 0.7; }
-.audio-hint {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #999;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-#countdown { 
-    font-size: 16px; 
-    font-weight: 600; 
-    color: var(--roxo-orquidea); 
-    padding: 8px 20px; 
-    border: 1px solid rgba(121, 58, 87, 0.15);
-    border-radius: 4px; 
-    display: inline-block; 
-    margin: 25px 0; 
-    letter-spacing: 1px;
-}
-#countdown:empty {
-    display: none;
-}
+.audio-hint { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: #999; text-transform: uppercase; margin-bottom: 10px; }
+#countdown { font-size: 16px; font-weight: 600; color: var(--roxo-orquidea); padding: 8px 20px; border: 1px solid rgba(121, 58, 87, 0.15); border-radius: 4px; display: inline-block; margin: 25px 0; letter-spacing: 1px; }
+#countdown:empty { display: none; }
 
 /* Envelope & Carta Setup */
-.envelope-wrapper-premium {
-    position: relative;
-    width: 100%;
-    max-width: 360px;
-    margin: 20px auto;
-    cursor: pointer;
-}
-.envelope-img-asset {
-    width: 100%;
-    height: auto;
-    display: block;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-    border-radius: 4px;
-    transition: transform 0.4s ease;
-}
-.envelope-wrapper-premium:hover .envelope-img-asset {
-    transform: scale(1.02);
-}
+.envelope-wrapper-premium { position: relative; width: 100%; max-width: 360px; margin: 20px auto; cursor: pointer; }
+.envelope-img-asset { width: 100%; height: auto; display: block; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border-radius: 4px; transition: transform 0.4s ease; }
+.envelope-wrapper-premium:hover .envelope-img-asset { transform: scale(1.02); }
 .purple-wax-seal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -46%);
-    width: 84px;
-    height: 84px;
-    background: radial-gradient(circle at 30% 30%, #944d6e, var(--roxo-orquidea) 80%);
-    border-radius: 50%;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -46%); width: 84px; height: 84px;
+    background: radial-gradient(circle at 30% 30%, #944d6e, var(--roxo-orquidea) 80%); border-radius: 50%;
     box-shadow: 0 8px 22px rgba(121, 58, 87, 0.45), inset 0 2px 4px rgba(255,255,255,0.25);
-    border: 1px solid rgba(255,255,255,0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-family: var(--serifa);
-    font-weight: 700;
-    font-size: 20px;
-    letter-spacing: 0.5px;
-    transition: transform 0.3s;
+    border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;
+    color: white; font-family: var(--serifa); font-weight: 700; font-size: 20px; letter-spacing: 0.5px; transition: transform 0.3s;
 }
-.envelope-wrapper-premium:hover .purple-wax-seal {
-    transform: translate(-50%, -46%) scale(1.06);
-}
+.envelope-wrapper-premium:hover .purple-wax-seal { transform: translate(-50%, -46%) scale(1.06); }
 .carta-scroller {
-    width: 100%; 
-    max-height: 380px; 
-    overflow-y: auto; 
-    text-align: left;
-    font-family: 'Georgia', serif; 
-    font-size: 14.5px; 
-    line-height: 1.9; 
-    color: #333;
-    background: #fcfbfa; 
-    padding: 30px; 
-    border-radius: 8px;
-    border: 1px solid rgba(227, 218, 201, 0.5); 
-    display: none;
-    box-shadow: inset 0 0 30px rgba(227, 218, 201, 0.1);
+    width: 100%; max-height: 380px; overflow-y: auto; text-align: left; font-family: 'Georgia', serif; font-size: 14.5px; line-height: 1.9; color: #333;
+    background: #fcfbfa; padding: 30px; border-radius: 8px; border: 1px solid rgba(227, 218, 201, 0.5); display: none; box-shadow: inset 0 0 30px rgba(227, 218, 201, 0.1);
 }
-.quote-box { 
-    background: rgba(121, 58, 87, 0.02); 
-    border-left: 2px solid var(--roxo-orquidea); 
-    padding: 20px; 
-    margin: 25px 0; 
-    font-style: italic; 
-    color: #443;
-}
+.quote-box { background: rgba(121, 58, 87, 0.02); border-left: 2px solid var(--roxo-orquidea); padding: 20px; margin: 25px 0; font-style: italic; color: #443; }
 .carta-scroller::-webkit-scrollbar { width: 3px; }
 .carta-scroller::-webkit-scrollbar-thumb { background: rgba(121, 58, 87, 0.15); }
 
 /* Mosaico Grid */
 .mural-mosaico-container {
-    position: relative;
-    width: 100%;
-    background: #fdfbfa;
-    border-radius: 8px;
-    padding: 40px 15px;
-    margin-bottom: 30px;
-    box-shadow: inset 0 0 40px rgba(121, 58, 87, 0.02), 0 10px 30px rgba(0,0,0,0.02);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px 15px;
-    align-items: center;
+    position: relative; width: 100%; background: #fdfbfa; border-radius: 8px; padding: 40px 15px; margin-bottom: 30px;
+    box-shadow: inset 0 0 40px rgba(121, 58, 87, 0.02), 0 10px 30px rgba(0,0,0,0.02); display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px 15px; align-items: center;
 }
-.mosaico-centerpiece-text {
-    grid-column: span 2;
-    text-align: center;
-    padding: 25px 10px;
-    margin: 10px 0;
-    position: relative;
-    z-index: 5;
-}
-.mosaico-centerpiece-text h2 {
-    font-family: var(--serifa);
-    font-size: 21px;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--roxo-orquidea);
-    line-height: 1.4;
-    margin-bottom: 8px;
-}
-.mosaico-centerpiece-text p {
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #8a9c8f;
-    font-weight: 700;
-}
-.editorial-tag {
-    font-size: 8px;
-    text-transform: lowercase;
-    font-style: italic;
-    color: #999;
-    position: absolute;
-    letter-spacing: 0.5px;
-    pointer-events: none;
-}
-.foto-mosaico-frame {
-    width: 100%;
-    background: #ffffff;
-    padding: 8px;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.07);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-}
-.foto-mosaico-frame img {
-    width: 100%;
-    height: 145px;
-    object-fit: cover;
-    display: block;
-}
-.frame-style-purple {
-    border: 8px solid var(--roxo-orquidea);
-    border-image: linear-gradient(135deg, #914b6e, var(--roxo-orquidea), #4f1e34, #8c4365) 8;
-    box-shadow: 0 10px 25px rgba(121, 58, 87, 0.15), inset 0 0 8px rgba(0,0,0,0.12);
-}
-.frame-style-white {
-    border: 8px solid #f2eee6;
-    border-image: linear-gradient(135deg, #ffffff, #f4f0e8, #ded9ce, #ffffff) 8;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05), inset 0 0 6px rgba(0,0,0,0.08);
-}
-.pos-f1 { transform: rotate(-3deg); }
-.pos-f2 { transform: rotate(2deg); }
-.pos-f3 { transform: rotate(-2deg); }
-.pos-f4 { transform: rotate(4deg); }
-.pos-f5 { transform: rotate(-4deg); }
-.pos-f6 { transform: rotate(3deg); }
-.pos-f7 { transform: rotate(-1deg); }
-.pos-f8 { transform: rotate(2deg); }
-
-.foto-mosaico-frame:hover {
-    transform: rotate(0deg) scale(1.03);
-    z-index: 10;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
-
-.spotify-btn { 
-    background: linear-gradient(135deg, var(--roxo-orquidea), #5a223e);
-    color: white; 
-    text-decoration: none; 
-    padding: 14px 32px; 
-    border-radius: 4px; 
-    font-weight: 700; 
-    display: inline-block; 
-    margin-bottom: 25px; 
-    font-size: 11px; 
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    animation: pulsePremium 2s infinite ease-in-out;
-    transition: transform 0.2s;
-}
-.spotify-btn:hover { transform: scale(1.02); }
-
-@keyframes pulsePremium {
-    0% { box-shadow: 0 0 0 0 rgba(121, 58, 87, 0.5); }
-    70% { box-shadow: 0 0 0 12px rgba(121, 58, 87, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(121, 58, 87, 0); }
-}
+.mosaico-centerpiece-text { grid-column: span 2; text-align: center; padding: 25px 10px; margin: 10px 0; position: relative; z-index: 5; }
+.mosaico-centerpiece-text h2 { font-family: var(--serifa); font-size: 21px; font-weight: 400; font-style: italic; color: var(--roxo-orquidea); line-height: 1.4; margin-bottom: 8px; }
+.mosaico-centerpiece-text p { font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #8a9c8f; font-weight: 700; }
+.editorial-tag { font-size: 8px; text-transform: lowercase; font-style: italic; color: #999; position: absolute; letter-spacing: 0.5px; pointer-events: none; }
+.foto-mosaico-frame { width: 100%; background: #ffffff; padding: 8px; box-shadow: 0 12px 28px rgba(0,0,0,0.07); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; }
+.foto-mosaico-frame img { width: 100%; height: 145px; object-fit: cover; display: block; }
+.frame-style-purple { border: 8px solid var(--roxo-orquidea); border-image: linear-gradient(135deg, #914b6e, var(--roxo-orquidea), #4f1e34, #8c4365) 8; box-shadow: 0 10px 25px rgba(121, 58, 87, 0.15), inset 0 0 8px rgba(0,0,0,0.12); }
+.frame-style-white { border: 8px solid #f2eee6; border-image: linear-gradient(135deg, #ffffff, #f4f0e8, #ded9ce, #ffffff) 8; box-shadow: 0 10px 25px rgba(0,0,0,0.05), inset 0 0 6px rgba(0,0,0,0.08); }
+.pos-f1 { transform: rotate(-3deg); } .pos-f2 { transform: rotate(2deg); } .pos-f3 { transform: rotate(-2deg); } .pos-f4 { transform: rotate(4deg); } .pos-f5 { transform: rotate(-4deg); } .pos-f6 { transform: rotate(3deg); } .pos-f7 { transform: rotate(-1deg); } .pos-f8 { transform: rotate(2deg); }
+.foto-mosaico-frame:hover { transform: rotate(0deg) scale(1.03); z-index: 10; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
 
 /* Módulo Pets, Quiz e Vales */
 .carrossel-container { position: relative; width: 100%; max-width: 310px; margin: 0 auto 25px auto; overflow: hidden; border-radius: 8px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); }
@@ -543,54 +297,18 @@ h1 {
 
 .quiz-box { background: transparent; margin: 20px 0; }
 .quiz-options { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
-.quiz-btn { 
-    background: #ffffff; 
-    color: var(--texto-escuro); 
-    border: 1px solid rgba(121, 58, 87, 0.1); 
-    padding: 16px 20px; 
-    border-radius: 6px; 
-    font-weight: 600; 
-    cursor: pointer; 
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
-    text-align: left; 
-    font-size: 13px; 
-    line-height: 1.5;
-}
-.quiz-btn:hover { 
-    background: var(--rosa-pastel); 
-    border-color: var(--roxo-orquidea);
-}
+.quiz-btn { background: #ffffff; color: var(--texto-escuro); border: 1px solid rgba(121, 58, 87, 0.1); padding: 16px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); text-align: left; font-size: 13px; line-height: 1.5; }
+.quiz-btn:hover { background: var(--rosa-pastel); border-color: var(--roxo-orquidea); }
 .quiz-btn.disabled { pointer-events: none; opacity: 0.4; }
 #quizFeedback { font-size: 12.5px; font-weight: 600; color: #a94442; margin-top: 18px; min-height: 22px; line-height: 1.5; }
 #quizProgressCounter { font-size: 9px; font-weight: 700; color: var(--roxo-orquidea); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
 
 .mural-vales { display: flex; flex-direction: column; gap: 14px; margin: 25px 0; }
-.vale-card { 
-    background: #ffffff; 
-    border: 1px solid rgba(121, 58, 87, 0.08); 
-    padding: 20px; 
-    border-radius: 8px; 
-    position: relative; 
-    cursor: pointer; 
-    overflow: hidden; 
-    text-align: left;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.vale-card:hover {
-    border-color: var(--roxo-orquidea);
-    transform: translateY(-2px);
-}
+.vale-card { background: #ffffff; border: 1px solid rgba(121, 58, 87, 0.08); padding: 20px; border-radius: 8px; position: relative; cursor: pointer; overflow: hidden; text-align: left; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.vale-card:hover { border-color: var(--roxo-orquidea); transform: translateY(-2px); }
 .vale-card h3 { font-size: 13.5px; font-weight: 700; color: var(--roxo-orquidea); margin-bottom: 4px; }
 .vale-card p { font-size: 12px; color: #666; line-height: 1.5; }
-.carimbo-resgatado { 
-    position: absolute; top: 50%; left: 50%; 
-    transform: translate(-50%, -50%) scale(2) rotate(-15deg); 
-    color: #b33939; border: 1.5px solid #b33939; padding: 4px 12px; 
-    font-weight: 900; font-size: 10px; border-radius: 2px; 
-    text-transform: uppercase; opacity: 0; background: rgba(255,255,255,0.98); 
-    letter-spacing: 1px;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-}
+.carimbo-resgatado { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(2) rotate(-15deg); color: #b33939; border: 1.5px solid #b33939; padding: 4px 12px; font-weight: 900; font-size: 10px; border-radius: 2px; text-transform: uppercase; opacity: 0; background: rgba(255,255,255,0.98); letter-spacing: 1px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
 .vale-card.claimed .carimbo-resgatado { opacity: 0.9; transform: translate(-50%, -50%) scale(1) rotate(-10deg); }
 
 .petal { position: fixed; top: -20px; animation: fall linear infinite; pointer-events: none; z-index: 1; opacity: 0.4; }
@@ -615,6 +333,7 @@ h1 {
     <div class="dot" id="dot5"></div>
     <div class="dot" id="dot6"></div>
     <div class="dot" id="dot7"></div>
+    <div class="dot" id="dot8"></div>
 </div>
 
 <!-- 🔒 TELA 00: TELA PRETA INICIAL DO CADEADO -->
@@ -622,10 +341,10 @@ h1 {
     <div class="lock" onclick="verificarTelaPreta()">🔒</div>
 </div>
 
-<!-- 🃏 TELA 0: A PEGADINHA DO BOTÃO FUGITIVO COM VETOR TRIDIMENSIONAL ENDLESS -->
+<!-- 🃏 TELA 0: A PEGADINHA DO BOTÃO FUGITIVO -->
 <div class="card" id="telaPegadinha">
     <h1>Controle de Segurança</h1>
-    <p class="italic">Antes de liberar o seu acesso, precisamos de uma confirmation honesta:</p>
+    <p class="italic">Antes de liberar o seu acesso, precisamos de uma confirmação honesta:</p>
     <p style="font-weight: 700; font-size: 16px; margin-bottom: 30px; color: var(--roxo-orquidea); line-height: 1.4;">
         Você confessa que é ranzinza, estressada e tem 1,40 de altura?
     </p>
@@ -707,7 +426,6 @@ h1 {
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
-    <a href="https://open.spotify.com/playlist/3fhl0NZ3Tg7ipf1AczB8wg?si=0AB-eHgDT9uUucq4jvzLEw&pi=mYYPIFcvQpqCp" target="_blank" class="spotify-btn">Playlist no Spotify</a>
     
     <div class="mural-mosaico-container">
         <span class="editorial-tag" style="top: 15px; left: 20px;">love love</span>
@@ -820,7 +538,73 @@ h1 {
             <div class="carimbo-resgatado">Resgatado</div>
         </div>
     </div>
-    <p style="font-size: 13px; color: var(--roxo-orquidea); font-weight: bold; margin-top: 15px;">Parabéns, Big Diva! Você merece o universo! 👑💜</p>
+    <button class="btn-navigation" style="width:100%; margin-top:15px;" onclick="navegarPara(8)">Ver a última surpresa... 🤫</button>
+</div>
+
+<!-- 🎟️ TELA 8: O GRANDE FINALE (CADEADO MECÂNICO + RASPADINHA DO SPOTIFY) -->
+<div class="card" id="tela8">
+    <button class="btn-back" onclick="navegarPara(7)">← Voltar</button>
+    
+    <!-- Sub-estágio 1: O Cadeado Combinatório -->
+    <div id="wrapperCadeadoMecanico">
+        <h1>Um Último Bloqueio...</h1>
+        <p class="italic">Dica: seu dia especial</p>
+        
+        <div class="heart-lock-art">
+            <div class="heart-lock-title">The Day We Got Together</div>
+            <div class="lock-mechanic-wrapper">
+                <div class="lock-column">
+                    <button class="lock-arrow" onclick="rolarDigito(0, 1)">▲</button>
+                    <span class="lock-digit" id="dig0">0</span>
+                    <button class="lock-arrow" onclick="rolarDigito(0, -1)">▼</button>
+                </div>
+                <div class="lock-column">
+                    <button class="lock-arrow" onclick="rolarDigito(1, 1)">▲</button>
+                    <span class="lock-digit" id="dig1">0</span>
+                    <button class="lock-arrow" onclick="rolarDigito(1, -1)">▼</button>
+                </div>
+                <div class="lock-column">
+                    <button class="lock-arrow" onclick="rolarDigito(2, 1)">▲</button>
+                    <span class="lock-digit" id="dig2">0</span>
+                    <button class="lock-arrow" onclick="rolarDigito(2, -1)">▼</button>
+                </div>
+                <div class="lock-column">
+                    <button class="lock-arrow" onclick="rolarDigito(3, 1)">▲</button>
+                    <span class="lock-digit" id="dig3">0</span>
+                    <button class="lock-arrow" onclick="rolarDigito(3, -1)">▼</button>
+                </div>
+            </div>
+        </div>
+        <button class="btn-navigation" style="width:100%; margin-top:10px;" onclick="validarCadeadoMecanico()">Girar Segredo 🔐</button>
+    </div>
+
+    <!-- Sub-estágio 2: A Raspadinha Otimizada -->
+    <div id="wrapperRaspadinhaContent" style="display: none;">
+        <h1>Sua Lembrança Musical 🎵</h1>
+        <p class="italic" style="color: #b33939; font-weight: 700; margin-bottom: 10px;">
+            ⚠️ Raspe a raspadinha abaixo inteira e depois CLIQUE na foto revelada para abrir sua playlist no Spotify!
+        </p>
+        
+        <div class="scratch-layout-grid">
+            <div class="scratch-container-box">
+                <!-- Conteúdo oculto mapeado para o link externo -->
+                <a href="https://open.spotify.com/playlist/3fhl0NZ3Tg7ipf1AczB8wg?si=0AB-eHgDT9uUucq4jvzLEw&pi=mYYPIFcvQpqCp" target="_blank" style="display:block; width:100%; height:100%;">
+                    <img src="album.jpeg" class="scratch-under-image" alt="Álbum Especial">
+                </a>
+                <!-- Camada raspável interativa -->
+                <canvas id="scratchCanvas" width="280" height="280"></canvas>
+            </div>
+            
+            <div class="scratch-text-message">
+                Sei que foi a coisa mais besta que você já viu, mas foi a forma mais "próxima" (do meu jeitinho) de te mostrar o quanto você é especial, ao invés de apenas um textinho.<br><br>
+                Que jamais deixe essa data passar em branco. Obrigada por ser você, por tudo o que faz por nós e por todos que te amam. Seu coração é puro, e poder te chamar de amiga é um privilégio.<br><br>
+                Aguarde as próximas surpresas (se o Chicão já não falou tudo kkkk) e espero que goste e se sinta acolhida, mesmo de longe.<br><br>
+                Te amo muito.<br><br>
+                Com carinho,<br>
+                da sua Best. ❤️
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -873,6 +657,7 @@ const perguntasQuiz = [
 let currentQuestionIndex = 0;
 let orchidPhraseIndex = 0;
 let tentativasTelaPreta = 0;
+let comboLockDigits = [0, 0, 0, 0];
 const musica = document.getElementById('trilhaSonora');
 
 /* 🔒 LÓGICA DA TELA PRETA INICIAL */
@@ -892,17 +677,14 @@ function verificarTelaPreta() {
     }
 }
 
-/* 🃏 JAVASCRIPT REESTRUTURADO DA PEGADINHA (FLEEING ENDLESS COMPATIBLE) */
+/* 🃏 JAVASCRIPT DA PEGADINHA DO BOTÃO FUGITIVO */
 function fugirDoCursor(event) {
-    if (event) event.preventDefault(); // Impede o clique fantasma no celular
+    if (event) event.preventDefault(); 
     const btn = document.getElementById('btnFugitivo');
     
-    // Gerar deslocamentos dinâmicos massivos baseados no tamanho real do viewport
-    // Multiplicar por fatores aleatórios positivos e negativos faz ele pular para qualquer canto da tela infinitamente
     const randomX = (Math.random() - 0.5) * (window.innerWidth * 0.7);
     const randomY = (Math.random() - 0.5) * (window.innerHeight * 0.7);
     
-    // Aplicar a transformação matricial (imune aos bugs de backdrop-filter)
     btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
 }
 
@@ -1052,6 +834,67 @@ function verificarTela4() {
     } else {
         alert("Senha incorreta! Pensa mais um pouquinho!");
     }
+}
+
+/* 🔓 MOTOR DO CADEADO COMBINATÓRIO MECÂNICO */
+function rolarDigito(index, direcao) {
+    comboLockDigits[index] = (comboLockDigits[index] + direcao + 10) % 10;
+    document.getElementById(`dig${index}`).innerText = comboLockDigits[index];
+}
+
+function validarCadeadoMecanico() {
+    const senhaFormada = comboLockDigits.join("");
+    if (senhaFormada === "2106") {
+        criarExplosao();
+        document.getElementById("wrapperCadeadoMecanico").style.display = "none";
+        document.getElementById("wrapperRaspadinhaContent").style.display = "block";
+        montarMecanismoRaspadinha(); // Inicializa canvas sob demanda
+    } else {
+        alert("Segredo incorreto! Tente reajustar os números.");
+    }
+}
+
+/* 🎫 MOTOR DE RENDERIZAÇÃO DA RASPADINHA HÍBRIDA */
+function montarMecanismoRaspadinha() {
+    const canvas = document.getElementById("scratchCanvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    
+    // Setup da máscara de cobertura cinza luxo
+    ctx.fillStyle = "#cfcfcf";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Adiciona textura premium e instrução textual
+    ctx.fillStyle = "#793A57";
+    ctx.font = "bold 15px Quicksand";
+    ctx.textAlign = "center";
+    ctx.fillText("RASPE AQUI COM O DEDO ✨", canvas.width / 2, canvas.height / 2);
+    
+    let isDrawing = false;
+    
+    function limparPixel(e) {
+        if (!isDrawing) return;
+        const rect = canvas.getBoundingClientRect();
+        // Tratamento unificado de coordenadas para Mobile Touch e Mouse Desktop
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+        
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        ctx.arc(x, y, 25, 0, Math.PI * 2); // Diâmetro de raspagem otimizado
+        ctx.fill();
+    }
+    
+    canvas.addEventListener("mousedown", () => isDrawing = true);
+    canvas.addEventListener("mousemove", limparPixel);
+    window.addEventListener("mouseup", () => isDrawing = false);
+    
+    canvas.addEventListener("touchstart", (e) => { isDrawing = true; limparPixel(e); });
+    canvas.addEventListener("touchmove", limparPixel);
+    window.addEventListener("touchend", () => isDrawing = false);
 }
 
 function controlarMusica() {
