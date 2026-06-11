@@ -216,6 +216,7 @@ h1 {
     text-transform: uppercase;
     margin-bottom: 10px;
 }
+
 #countdown { 
     font-size: 16px; 
     font-weight: 600; 
@@ -226,6 +227,10 @@ h1 {
     display: inline-block; 
     margin: 25px 0; 
     letter-spacing: 1px;
+}
+/* Evita que o container vazio apareça como um quadrado sem conteúdo */
+#countdown:empty {
+    display: none;
 }
 
 /* Módulo Interativo: Envelope Vintage Real (Tela 2) */
@@ -354,7 +359,6 @@ h1 {
     align-items: center;
 }
 
-/* Bloco Tipográfico Centralizado Inter-mosaico */
 .mosaico-centerpiece-text {
     grid-column: span 2;
     text-align: center;
@@ -380,7 +384,6 @@ h1 {
     font-weight: 700;
 }
 
-/* Tags de Texto Decorativas Editorial */
 .editorial-tag {
     font-size: 8px;
     text-transform: lowercase;
@@ -391,7 +394,6 @@ h1 {
     pointer-events: none;
 }
 
-/* Molduras Clássicas em Relevo */
 .foto-mosaico-frame {
     width: 100%;
     background: #ffffff;
@@ -407,7 +409,6 @@ h1 {
     display: block;
 }
 
-/* Estilos de Molduras */
 .frame-style-purple {
     border: 8px solid var(--roxo-orquidea);
     border-image: linear-gradient(135deg, #914b6e, var(--roxo-orquidea), #4f1e34, #8c4365) 8;
@@ -419,7 +420,6 @@ h1 {
     box-shadow: 0 10px 25px rgba(0,0,0,0.05), inset 0 0 6px rgba(0,0,0,0.08);
 }
 
-/* Posicionamentos Assimétricos */
 .pos-f1 { transform: rotate(-3deg); }
 .pos-f2 { transform: rotate(2deg); }
 .pos-f3 { transform: rotate(-2deg); }
@@ -435,7 +435,6 @@ h1 {
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-/* Botão Spotify Pulsante */
 .spotify-btn { 
     background: linear-gradient(135deg, var(--roxo-orquidea), #5a223e);
     color: white; 
@@ -546,6 +545,7 @@ h1 {
     <div class="dot" id="dot7"></div>
 </div>
 
+<!-- TELA 1 -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
@@ -559,6 +559,7 @@ h1 {
     </div>
 </div>
 
+<!-- TELA 2 -->
 <div class="card" id="tela2">
     <h1>Uma Mensagem Especial</h1>
     <div class="envelope-wrapper-premium" id="envelopeInteractiveContainer" onclick="abrirEnvelope()">
@@ -591,6 +592,7 @@ h1 {
     </div>
 </div>
 
+<!-- TELA 3 -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Cores de Admirar</h1>
@@ -606,6 +608,7 @@ h1 {
     <button class="btn-navigation" id="btnProximaTelaOrquidea" style="width: 100%; visibility: hidden;" onclick="navegarPara(4)">Ver nossas lembranças</button>
 </div>
 
+<!-- TELA 4 -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
@@ -650,6 +653,7 @@ h1 {
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma última caixinha...</button>
 </div>
 
+<!-- TELA 5 -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -677,6 +681,7 @@ h1 {
     </div>
 </div>
 
+<!-- TELA 6 -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
     <h1>Quiz para risadinhas</h1>
@@ -692,6 +697,7 @@ h1 {
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="avancarQuizOuFase()">Avançar Pergunta ➔</button>
 </div>
 
+<!-- TELA 7 -->
 <div class="card" id="tela7">
     <button class="btn-back" onclick="navegarPara(6)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos</h1>
@@ -741,7 +747,7 @@ const perguntasQuiz = [
     {
         question: "Se fôssemos presas juntas em um rolê esquisito criado pelo 'Vale Rolê Aleatório', quem seria você nessa situação?",
         options: [
-            { text: "A mente brilhante que arquitetou o plano e quase conseguiu nos salvar.", isCorrect: false, feedback: "Menos, bem menos vc teria dado a ideia e ainda estaria bêbada rsrs. 🤫" },
+            { text: "A mente brilhante que architectou o plano e quase conseguiu nos salvar.", isCorrect: false, feedback: "Menos, bem menos vc teria dado a ideia e ainda estaria bêbada rsrs. 🤫" },
             { text: "A que confessaria absolutamente tudo para o policial em troca de uma água, um lanche e uma soneca.", isCorrect: true, feedback: "Pois é! Lealdade tem limite, e o limite é a fome e o desespero de ser presa kkkk!" }
         ]
     },
@@ -779,4 +785,218 @@ function navegarPara(telaNumero) {
     document.getElementById(`tela${telaNumero}`).classList.add('active');
     document.getElementById(`dot${telaNumero}`).classList.add('active');
 
-    const musicBar = document.getElementById
+    const musicBar = document.getElementById('musicBar');
+    if (telaNumero > 1) {
+        musicBar.classList.add('visible');
+    } else {
+        musicBar.classList.remove('visible');
+        document.getElementById('trilhaSonora').pause();
+    }
+}
+
+function abrirEnvelope() {
+    const wrapper = document.getElementById('envelopeInteractiveContainer');
+    wrapper.style.transition = "all 0.5s ease";
+    wrapper.style.opacity = "0";
+    setTimeout(() => {
+        wrapper.style.display = "none";
+        document.getElementById('cartaScroller').style.display = "block";
+        setTimeout(() => {
+            document.getElementById('cartaScroller').style.opacity = "1";
+            document.getElementById('cartaScroller').style.transform = "translateY(0)";
+        }, 50);
+    }, 500);
+}
+
+function revelarProximaFraseOrquidea() {
+    if (orchidPhraseIndex < 3) {
+        const frase = document.getElementById(`orchPhrase${orchidPhraseIndex}`);
+        frase.classList.add('show');
+        criarExplosao();
+        orchidPhraseIndex++;
+        
+        if (orchidPhraseIndex === 3) {
+            const btn = document.getElementById('btnProximaTelaOrquidea');
+            btn.style.visibility = "visible";
+            btn.style.animation = "transitionCard 0.4s ease forwards";
+        }
+    }
+}
+
+function inicializarQuiz() {
+    currentQuestionIndex = 0;
+    renderizarEstruturaPergunta();
+    navegarPara(6);
+}
+
+function renderizarEstruturaPergunta() {
+    const quizData = perguntasQuiz[currentQuestionIndex];
+    document.getElementById("quizProgressCounter").innerText = `Pergunta ${currentQuestionIndex + 1} de ${perguntasQuiz.length}`;
+    document.getElementById("quizQuestion").innerText = quizData.question;
+    
+    const container = document.getElementById("quizOptionsContainer");
+    container.innerHTML = "";
+    
+    document.getElementById("quizFeedback").innerText = "";
+    document.getElementById("btnIrVales").style.display = "none";
+    
+    quizData.options.forEach((opcao, idx) => {
+        const btn = document.createElement("button");
+        btn.classList.add("quiz-btn");
+        btn.innerText = opcao.text;
+        btn.onclick = () => processarSelecaoOpcao(idx, btn);
+        container.appendChild(btn);
+    });
+}
+
+function processarSelecaoOpcao(indexSelecionado, elementoBotao) {
+    const quizData = perguntasQuiz[currentQuestionIndex];
+    const opcao = quizData.options[indexSelecionado];
+    const feedback = document.getElementById("quizFeedback");
+    
+    if (opcao.isCorrect) {
+        feedback.style.color = "#2c3e2f";
+        feedback.innerText = opcao.feedback;
+        criarExplosao();
+        
+        document.querySelectorAll(".quiz-options .quiz-btn").forEach(b => b.classList.add("disabled"));
+        
+        const btnAvancar = document.getElementById("btnIrVales");
+        if (currentQuestionIndex === perguntasQuiz.length - 1) {
+            btnAvancar.innerText = "Resgatar meus mimos!";
+        } else {
+            btnAvancar.innerText = "Avançar Pergunta ➔";
+        }
+        btnAvancar.style.display = "block";
+    } else {
+        feedback.style.color = "#a94442";
+        feedback.innerText = opcao.feedback;
+    }
+}
+
+function avancarQuizOuFase() {
+    if (currentQuestionIndex < perguntasQuiz.length - 1) {
+        currentQuestionIndex++;
+        renderizarEstruturaPergunta();
+    } else {
+        navegarPara(7);
+    }
+}
+
+function claimVale(element) {
+    if(!element.classList.contains('claimed')) {
+        element.classList.add('claimed');
+        criarExplosao();
+    }
+}
+
+function verificarTela1() {
+    let senha = prompt("Digite a chave para abrir o cadeado: 🔑");
+    if (!senha) return;
+    if (btoa(senha.trim().toLowerCase()) === "cGFsb21hbWluaGFtZWxob3JhbWlnYQ==") {
+        document.getElementById("cadeado").innerHTML = "🔓";
+        dispararAudioGlobal();
+        setTimeout(() => navegarPara(2), 800);
+    } else {
+        alert("Senha incorreta! Espera seu aniversário! (ps: Chicão, site para mulherzinhas, para de tentar)😜");
+    }
+}
+
+function verificarTela4() {
+    let senha = prompt("Digite a senha secreta: 🔑");
+    if (!senha) return;
+    const hashesValidos = ["anVsbHlqdW4=", "anVsbHllanVu", "anVuZWx1bGx5", "anVuanVsbHk="];
+    if (hashesValidos.includes(btoa(senha.trim().toLowerCase()))) {
+        criarExplosao();
+        document.getElementById("pet-trancado").style.display = "none";
+        document.getElementById("pet-aberto").style.display = "block";
+        iniciarAutoplay();
+    } else {
+        alert("Senha incorreta! Pensa mais um pouquinho!");
+    }
+}
+
+const musica = document.getElementById('trilhaSonora');
+const toggleBtn = document.querySelector('.music-toggle-btn');
+const statusText = document.getElementById('musicStatus');
+
+function dispararAudioGlobal() {
+    musica.play().then(() => {
+        toggleBtn.innerText = "⏸️";
+        statusText.innerText = "🎵 ÁGUA-VIVA TOCANDO";
+    }).catch(e => console.log("Permissão de áudio pendente."));
+}
+
+function controlarMusica() {
+    if (musica.paused) {
+        musica.play();
+        toggleBtn.innerText = "⏸️";
+        statusText.innerText = "🎵 ÁGUA-VIVA TOCANDO";
+    } else {
+        musica.pause();
+        toggleBtn.innerText = "▶️";
+        statusText.innerText = "🎵 TRILHA PAUSADA";
+    }
+}
+
+const targetDate = new Date("2026-06-21T00:00:00+09:00");
+function updateCountdown(){
+    const diff = targetDate - new Date();
+    if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "Chegou o momento! ✨";
+        return;
+    }
+    const days = Math.floor(diff/(1000*60*60*24));
+    const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const minutes = Math.floor((diff%(1000*60))/(1000*60));
+    const seconds = Math.floor((diff%(1000*60))/1000);
+    document.getElementById("countdown").innerHTML = `${days}d  ${hours}h  ${minutes}m  ${seconds}s`;
+}
+setInterval(updateCountdown, 1000); updateCountdown();
+
+document.addEventListener('mousemove', (e) => {
+    const x = (window.innerWidth / 2 - e.clientX) / 45;
+    const y = (window.innerHeight / 2 - e.clientY) / 45;
+    document.body.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+});
+
+for(let i=0; i<25; i++){
+    const petal = document.createElement("div");
+    petal.classList.add("petal");
+    petal.innerHTML = "🌸";
+    petal.style.left = Math.random() * 100 + "vw";
+    if(Math.random() > 0.4) petal.style.filter = "hue-rotate(45deg) saturate(1.2)";
+    petal.style.fontSize = (12 + Math.random() * 12) + "px";
+    petal.style.animationDuration = (10 + Math.random() * 12) + "s";
+    document.body.appendChild(petal);
+}
+
+let slideIndex = 0;
+let autoPlayTimer;
+function mudarSlide(direcao) {
+    slideIndex = (slideIndex + direcao + 3) % 3;
+    document.getElementById("carouselSlides").style.transform = `translateX(${-slideIndex * 100}%)`;
+}
+function iniciarAutoplay() {
+    autoPlayTimer = setInterval(() => mudarSlide(1), 3000);
+}
+
+function criarExplosao() {
+    const simbolos = ["🌸", "✨", "💜", "❤️"];
+    for (let i = 0; i < 60; i++) {
+        const confeti = document.createElement("div");
+        confeti.classList.add("confeti");
+        confeti.innerHTML = simbolos[Math.floor(Math.random() * simbolos.length)];
+        const x = (Math.random() - 0.5) * window.innerWidth;
+        const y = (Math.random() - 0.5) * window.innerHeight;
+        confeti.style.setProperty('--x', `${x}px`);
+        confeti.style.setProperty('--y', `${y}px`);
+        confeti.style.left = "50vw"; confeti.style.top = "50vh";
+        confeti.style.fontSize = (14 + Math.random() * 22) + "px";
+        document.body.appendChild(confeti);
+        setTimeout(() => confeti.remove(), 1200);
+    }
+}
+</script>
+</body>
+</html>
