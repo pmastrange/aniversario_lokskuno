@@ -42,7 +42,7 @@ body {
     color: var(--texto-escuro);
 }
 
-/* 🕶️ ENGENHARIA DE OCULTAÇÃO DAS TELAS DE ENTRADA */
+/* ENGENHARIA DE OCULTAÇÃO DAS TELAS DE ENTRADA */
 body:has(#telaPretaInicial.active) {
     background: #000000 !important;
 }
@@ -622,16 +622,16 @@ h1 {
     <div class="lock" onclick="verificarTelaPreta()">🔒</div>
 </div>
 
-<!-- 🃏 TELA 0: A PEGADINHA DO BOTÃO FUGITIVO REAJUSTADA -->
+<!-- 🃏 TELA 0: A PEGADINHA DO BOTÃO FUGITIVO COM VETOR TRIDIMENSIONAL ENDLESS -->
 <div class="card" id="telaPegadinha">
     <h1>Controle de Segurança</h1>
-    <p class="italic">Antes de liberar o seu acesso, precisamos de uma confirmação honesta:</p>
+    <p class="italic">Antes de liberar o seu acesso, precisamos de uma confirmation honesta:</p>
     <p style="font-weight: 700; font-size: 16px; margin-bottom: 30px; color: var(--roxo-orquidea); line-height: 1.4;">
         Você confessa que é ranzinza, estressada e tem 1,40 de altura?
     </p>
     <div style="display: flex; justify-content: center; gap: 20px; min-height: 55px; position: relative; align-items: center;">
         <button class="btn-navigation" onclick="entrarNoSiteOriginal()">Sim, confesso minha diva</button>
-        <button class="btn-navigation" id="btnFugitivo" onmouseover="fugirDoCursor()" ontouchstart="fugirDoCursor(event)" style="background: #a4a4a4; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: all 0.1s cubic-bezier(0.16, 1, 0.3, 1);">Logico que não</button>
+        <button class="btn-navigation" id="btnFugitivo" onmouseover="fugirDoCursor()" ontouchstart="fugirDoCursor(event)" style="background: #a4a4a4; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 9999; will-change: transform;">Logico que não</button>
     </div>
 </div>
 
@@ -678,7 +678,7 @@ h1 {
 
             Você é uma das mulheres mais fortes que eu já conheci, estar com você alivia todas as angustias que tem porque sua amizade é leve, tem uma inteligência admirável e uma persistencia e resiliencia que eu admiro muito, uma força que pouquíssimas pessoas aguentariam, um coração que quase ninguém merece e, definitivamente, o top 1 de mulheres mais bonitas que eu conheço. Com certeza é uma das pessoas que eu mais admiro e poderia passar hours falando tudo que amo em voce e tudo que torna você tão única. Ter sua amizade é um dos maiores privileges que eu poderia ter e, realmente, rezei muito para que, se fosse para retornarmos, que fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas que isso jamais abale nossa amizade novamente. Já te pedi desculpas muitas vezes pelos erros que cometi e por ter aberto mão de algo que era muito importante para mijm e que, de fato, poderia ter salvado nós duas de tanta mágoa que veio depois... mas hoje não é dia de coisa triste. Apenas saiba que eu não cometo os mesmos erros duas vezes, não com você.
             <br><br>
-            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam eles boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, big diva, obrigada por ser e estar. Pra sempre nós por nós!
+            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam eles boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, big diva, obrigada por ser e estar. Pra sempre nós por nós!
             <br><br>
             <button class="btn-navigation" style="width:100%;" onclick="navegarPara(3)">Avançar para a Orquídea</button>
         </div>
@@ -767,7 +767,7 @@ h1 {
             <button class="carrossel-arrow arrow-next" onclick="mudarSlide(1)">❯</button>
         </div>
         <div class="texto-final">
-            Sei que é seu segundo aniversario sem eles, e que é muito recente e nem imagino como pode doer, isso não é para ser algo triste, mas sim uma lembrança de que eles sempre estarão com você, você foi a melhor que eles ponderiam ter e querer e que nunca se esqueça disso.
+            Sei que é seu segundo aniversario sem eles, e que é muito recente e nem imagino como pode doer, isso não é para ser algo triste, mas sim uma lembrança de que eles sempre estarão com você, você foi a melhor que eles poderiam ter e querer e que nunca se esqueça disso.
             “Você foi a melhor que tivemos, nossos melhores moments foram com você, e o amor mais puro que alguém poderia ter por nós. Te protegemos e amamos pra sempre mamain, feliz seu dia!”<br><span style="font-size:13px; font-weight:700; color: var(--roxo-orquidea); display:block; margin-top:15px;">Com amor: Jully e Xun...</span>
         </div>
         <div class="button-wrapper" style="padding-top:10px;">
@@ -892,23 +892,18 @@ function verificarTelaPreta() {
     }
 }
 
-/* 🃏 JAVASCRIPT DA PEGADINHA DO BOTÃO FUGITIVO */
+/* 🃏 JAVASCRIPT REESTRUTURADO DA PEGADINHA (FLEEING ENDLESS COMPATIBLE) */
 function fugirDoCursor(event) {
-    if (event) event.preventDefault(); 
+    if (event) event.preventDefault(); // Impede o clique fantasma no celular
     const btn = document.getElementById('btnFugitivo');
     
-    btn.style.position = 'fixed';
-    btn.style.zIndex = '9999';
+    // Gerar deslocamentos dinâmicos massivos baseados no tamanho real do viewport
+    // Multiplicar por fatores aleatórios positivos e negativos faz ele pular para qualquer canto da tela infinitamente
+    const randomX = (Math.random() - 0.5) * (window.innerWidth * 0.7);
+    const randomY = (Math.random() - 0.5) * (window.innerHeight * 0.7);
     
-    const margem = 60;
-    const maxX = window.innerWidth - btn.offsetWidth - margem;
-    const maxY = window.innerHeight - btn.offsetHeight - margem;
-    
-    const randomX = Math.max(margem, Math.random() * maxX);
-    const randomY = Math.max(margem, Math.random() * maxY);
-    
-    btn.style.left = `${randomX}px`;
-    btn.style.top = `${randomY}px`;
+    // Aplicar a transformação matricial (imune aos bugs de backdrop-filter)
+    btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
 }
 
 function entrarNoSiteOriginal() {
