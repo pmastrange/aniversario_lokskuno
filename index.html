@@ -339,8 +339,7 @@ h1 {
     transform: translateY(0);
 }
 
-/* 🎞️ NOVO MÓDULO: ARTE MOSAICO DE GALERIA PREMIUM (TELA 4) 🎞️ */
-/* Estrutura de colagem artística inspirada diretamente em @voilescent on Instagram_2.webp */
+/* 🎞️ MÓDULO: ARTE MOSAICO DE GALERIA PREMIUM (TELA 4) 🎞️ */
 .mural-mosaico-container {
     position: relative;
     width: 100%;
@@ -392,7 +391,7 @@ h1 {
     pointer-events: none;
 }
 
-/* Engenharia das Molduras Clássicas em Relevo (Roxo Imperial e Porcelana Branca) */
+/* Molduras Clássicas em Relevo */
 .foto-mosaico-frame {
     width: 100%;
     background: #ffffff;
@@ -408,21 +407,19 @@ h1 {
     display: block;
 }
 
-/* Tipo 1: Molduras Roxas Ornamentadas */
+/* Estilos de Molduras */
 .frame-style-purple {
     border: 8px solid var(--roxo-orquidea);
     border-image: linear-gradient(135deg, #914b6e, var(--roxo-orquidea), #4f1e34, #8c4365) 8;
     box-shadow: 0 10px 25px rgba(121, 58, 87, 0.15), inset 0 0 8px rgba(0,0,0,0.12);
 }
-
-/* Tipo 2: Molduras Brancas de Porcelana Barroca */
 .frame-style-white {
     border: 8px solid #f2eee6;
     border-image: linear-gradient(135deg, #ffffff, #f4f0e8, #ded9ce, #ffffff) 8;
     box-shadow: 0 10px 25px rgba(0,0,0,0.05), inset 0 0 6px rgba(0,0,0,0.08);
 }
 
-/* Posicionamentos e Rotações Assimétricas Controladas */
+/* Posicionamentos Assimétricos */
 .pos-f1 { transform: rotate(-3deg); }
 .pos-f2 { transform: rotate(2deg); }
 .pos-f3 { transform: rotate(-2deg); }
@@ -471,7 +468,7 @@ h1 {
 .arrow-prev { left: 10px; } .arrow-next { right: 10px; }
 .texto-final { font-family: var(--serifa); font-size: 14.5px; line-height: 1.6; color: #4a574d; margin-bottom: 25px; }
 
-/* Módulo da Tela 6 (Quiz para Risadinhas) */
+/* Módulo da Tela 6 */
 .quiz-box { background: transparent; margin: 20px 0; }
 .quiz-options { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
 .quiz-btn { 
@@ -495,7 +492,7 @@ h1 {
 #quizFeedback { font-size: 12.5px; font-weight: 600; color: #a94442; margin-top: 18px; min-height: 22px; line-height: 1.5; }
 #quizProgressCounter { font-size: 9px; font-weight: 700; color: var(--roxo-orquidea); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
 
-/* Módulo da Tela 7 (Mural de Vouchers) */
+/* Módulo da Tela 7 */
 .mural-vales { display: flex; flex-direction: column; gap: 14px; margin: 25px 0; }
 .vale-card { 
     background: #ffffff; 
@@ -549,7 +546,6 @@ h1 {
     <div class="dot" id="dot7"></div>
 </div>
 
-<!-- TELA 1 -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
@@ -563,7 +559,6 @@ h1 {
     </div>
 </div>
 
-<!-- TELA 2 -->
 <div class="card" id="tela2">
     <h1>Uma Mensagem Especial</h1>
     <div class="envelope-wrapper-premium" id="envelopeInteractiveContainer" onclick="abrirEnvelope()">
@@ -572,7 +567,7 @@ h1 {
     </div>
     <div class="cartaScrollerContainer">
         <div class="carta-scroller" id="cartaScroller">
-            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chico Bento somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é porque é seu. Sua data, seu dia, sua vida, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
+            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chico Bento somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é because é seu. Sua data, seu dia, sua vida, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
 
             Sabe, sempre que escuto Anavitória me lembro de você, mas uma música em específico por um trecho em específico, e por isso está tocando rs:
 
@@ -596,11 +591,10 @@ h1 {
     </div>
 </div>
 
-<!-- TELA 3 -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Cores de Admirar</h1>
-    <p class="italic" style="margin-bottom: 15px;">Toque na orquídea 3x para revelar coisas que você não pode se econômizar</p>
+    <p class="italic" style="margin-bottom: 15px;">Toque na orquídea 3x para revelar coisas que você não pode se esquecer</p>
     <div class="orchid-trigger-zone" onclick="revelarProximaFraseOrquidea()">
         <img src="orquidea.webp" class="orchid-img-asset" alt="Orquídea Roxa Premium">
     </div>
@@ -612,23 +606,20 @@ h1 {
     <button class="btn-navigation" id="btnProximaTelaOrquidea" style="width: 100%; visibility: hidden;" onclick="navegarPara(4)">Ver nossas lembranças</button>
 </div>
 
-<!-- TELA 4: ARTE MONTAGEM MOSAICO ESTILO EDITORIAL PREMIUM -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
     <a href="https://open.spotify.com/playlist/3fhl0NZ3Tg7ipf1AczB8wg?si=0AB-eHgDT9uUucq4jvzLEw&pi=mYYPIFcvQpqCp" target="_blank" class="spotify-btn">Playlist no Spotify</a>
     
     <div class="mural-mosaico-container">
-        <!-- Tags Editoriais em posições estratégicas livres -->
         <span class="editorial-tag" style="top: 15px; left: 20px;">love love</span>
         <span class="editorial-tag" style="bottom: 20px; right: 25px;">the heart remembers</span>
         
-        <!-- Bloco 1 de Fotos (Foto 1 a 3) -->
         <div class="foto-mosaico-frame frame-style-purple pos-f1">
-            <img src="Foto1.jpg.jpeg" alt="Memória 01">
+            <img src="Fotoescada.jpg.jpeg" alt="Memória 01">
         </div>
         <div class="foto-mosaico-frame frame-style-white pos-f2">
-            <img src="Foto2.jpg.jpg" alt="Memória 02">
+            <img src="Foto2.jpg.jpeg" alt="Memória 02">
         </div>
         <div class="foto-mosaico-frame frame-style-white pos-f3">
             <img src="Foto3.jpg.jpeg" alt="Memória 03">
@@ -637,31 +628,28 @@ h1 {
             <img src="Foto4.jpg.jpeg" alt="Memória 04">
         </div>
 
-        <!-- ARTE CENTRAL DA MONTAGEM SOLICITADA -->
         <div class="mosaico-centerpiece-text">
             <h2>"Feliz aniversario, obrigada por partilhar a vida comigo"</h2>
             <p>pieces of my heart</p>
         </div>
 
-        <!-- Bloco 2 de Fotos (Foto 5 a 8) -->
         <div class="foto-mosaico-frame frame-style-purple pos-f5">
-            <img src="Foto5.png.PNG" alt="Memória 05">
+            <img src="Foto5..jpeg" alt="Memória 05">
         </div>
         <div class="foto-mosaico-frame frame-style-white pos-f6">
-            <img src="Foto6.png.jpg" alt="Memória 06">
+            <img src="Foto6.png.PNG" alt="Memória 06">
         </div>
         <div class="foto-mosaico-frame frame-style-white pos-f7">
             <img src="Foto7.png.png" alt="Memória 07">
         </div>
         <div class="foto-mosaico-frame frame-style-purple pos-f8">
-            <img src="Foto8.jpg.jpg" alt="Memória 08">
+            <img src="Foto8.jpg.jpeg" alt="Memória 08">
         </div>
     </div>
     
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma última caixinha...</button>
 </div>
 
-<!-- TELA 5 -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -681,7 +669,7 @@ h1 {
         </div>
         <div class="texto-final">
             Sei que é seu primeiro aniversario sem eles, e nem imagino como pode doer, isso não é para ser algo triste, mas sim uma lembrança de que eles sempre estarão com você, você foi a melhor que eles poderiam ter e querer e que nunca se esqueça disso.
-            “Você foi a melhor que tivemos, nossos melhores momentos foram com você, e o amor mais puro que alguém poderia ter por nós. Te protegemos e amamos pra sempre, mamain, feliz seu dia!”<br><span style="font-size:13px; font-weight:700; color: var(--roxo-orquidea); display:block; margin-top:15px;">Com amor: Jully e Xun...</span>
+            “Você foi a melhor que tivemos, nossos melhores momentos foram com você, e o amor mais puro que alguém poderia ter por nós. Te protegemos e amamos pra sempre mamain, feliz seu dia!”<br><span style="font-size:13px; font-weight:700; color: var(--roxo-orquidea); display:block; margin-top:15px;">Com amor: Jully e Xun...</span>
         </div>
         <div class="button-wrapper" style="padding-top:10px;">
             <button class="btn-navigation" style="width:100%;" onclick="inicializarQuiz()">Avançar para o teste</button>
@@ -689,7 +677,6 @@ h1 {
     </div>
 </div>
 
-<!-- TELA 6 -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
     <h1>Quiz para risadinhas</h1>
@@ -705,7 +692,6 @@ h1 {
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="avancarQuizOuFase()">Avançar Pergunta ➔</button>
 </div>
 
-<!-- TELA 7 -->
 <div class="card" id="tela7">
     <button class="btn-back" onclick="navegarPara(6)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos</h1>
@@ -793,218 +779,4 @@ function navegarPara(telaNumero) {
     document.getElementById(`tela${telaNumero}`).classList.add('active');
     document.getElementById(`dot${telaNumero}`).classList.add('active');
 
-    const musicBar = document.getElementById('musicBar');
-    if (telaNumero > 1) {
-        musicBar.classList.add('visible');
-    } else {
-        musicBar.classList.remove('visible');
-        document.getElementById('trilhaSonora').pause();
-    }
-}
-
-function abrirEnvelope() {
-    const wrapper = document.getElementById('envelopeInteractiveContainer');
-    wrapper.style.transition = "all 0.5s ease";
-    wrapper.style.opacity = "0";
-    setTimeout(() => {
-        wrapper.style.display = "none";
-        document.getElementById('cartaScroller').style.display = "block";
-        setTimeout(() => {
-            document.getElementById('cartaScroller').style.opacity = "1";
-            document.getElementById('cartaScroller').style.transform = "translateY(0)";
-        }, 50);
-    }, 500);
-}
-
-function revelarProximaFraseOrquidea() {
-    if (orchidPhraseIndex < 3) {
-        const frase = document.getElementById(`orchPhrase${orchidPhraseIndex}`);
-        frase.classList.add('show');
-        criarExplosao();
-        orchidPhraseIndex++;
-        
-        if (orchidPhraseIndex === 3) {
-            const btn = document.getElementById('btnProximaTelaOrquidea');
-            btn.style.visibility = "visible";
-            btn.style.animation = "transitionCard 0.4s ease forwards";
-        }
-    }
-}
-
-function inicializarQuiz() {
-    currentQuestionIndex = 0;
-    renderizarEstruturaPergunta();
-    navegarPara(6);
-}
-
-function renderizarEstruturaPergunta() {
-    const quizData = perguntasQuiz[currentQuestionIndex];
-    document.getElementById("quizProgressCounter").innerText = `Pergunta ${currentQuestionIndex + 1} de ${perguntasQuiz.length}`;
-    document.getElementById("quizQuestion").innerText = quizData.question;
-    
-    const container = document.getElementById("quizOptionsContainer");
-    container.innerHTML = "";
-    
-    document.getElementById("quizFeedback").innerText = "";
-    document.getElementById("btnIrVales").style.display = "none";
-    
-    quizData.options.forEach((opcao, idx) => {
-        const btn = document.createElement("button");
-        btn.classList.add("quiz-btn");
-        btn.innerText = opcao.text;
-        btn.onclick = () => processarSelecaoOpcao(idx, btn);
-        container.appendChild(btn);
-    });
-}
-
-function processarSelecaoOpcao(indexSelecionado, elementoBotao) {
-    const quizData = perguntasQuiz[currentQuestionIndex];
-    const opcao = quizData.options[indexSelecionado];
-    const feedback = document.getElementById("quizFeedback");
-    
-    if (opcao.isCorrect) {
-        feedback.style.color = "#2c3e2f";
-        feedback.innerText = opcao.feedback;
-        criarExplosao();
-        
-        document.querySelectorAll(".quiz-options .quiz-btn").forEach(b => b.classList.add("disabled"));
-        
-        const btnAvancar = document.getElementById("btnIrVales");
-        if (currentQuestionIndex === perguntasQuiz.length - 1) {
-            btnAvancar.innerText = "Resgatar meus mimos!";
-        } else {
-            btnAvancar.innerText = "Avançar Pergunta ➔";
-        }
-        btnAvancar.style.display = "block";
-    } else {
-        feedback.style.color = "#a94442";
-        feedback.innerText = opcao.feedback;
-    }
-}
-
-function avancarQuizOuFase() {
-    if (currentQuestionIndex < perguntasQuiz.length - 1) {
-        currentQuestionIndex++;
-        renderizarEstruturaPergunta();
-    } else {
-        navegarPara(7);
-    }
-}
-
-function claimVale(element) {
-    if(!element.classList.contains('claimed')) {
-        element.classList.add('claimed');
-        criarExplosao();
-    }
-}
-
-function verificarTela1() {
-    let senha = prompt("Digite a chave para abrir o cadeado: 🔑");
-    if (!senha) return;
-    if (btoa(senha.trim().toLowerCase()) === "cGFsb21hbWluaGFtZWxob3JhbWlnYQ==") {
-        document.getElementById("cadeado").innerHTML = "🔓";
-        dispararAudioGlobal();
-        setTimeout(() => navegarPara(2), 800);
-    } else {
-        alert("Senha incorreta! Espera seu aniversário! (ps: Chicão, site para mulherzinhas, para de tentar)😜");
-    }
-}
-
-function verificarTela4() {
-    let senha = prompt("Digite a senha secreta: 🔑");
-    if (!senha) return;
-    const hashesValidos = ["anVsbHlqdW4=", "anVsbHllanVu", "anVuZWx1bGx5", "anVuanVsbHk="];
-    if (hashesValidos.includes(btoa(senha.trim().toLowerCase()))) {
-        criarExplosao();
-        document.getElementById("pet-trancado").style.display = "none";
-        document.getElementById("pet-aberto").style.display = "block";
-        iniciarAutoplay();
-    } else {
-        alert("Senha incorreta! Pensa mais um pouquinho!");
-    }
-}
-
-const musica = document.getElementById('trilhaSonora');
-const toggleBtn = document.querySelector('.music-toggle-btn');
-const statusText = document.getElementById('musicStatus');
-
-function dispararAudioGlobal() {
-    musica.play().then(() => {
-        toggleBtn.innerText = "⏸️";
-        statusText.innerText = "🎵 ÁGUA-VIVA TOCANDO";
-    }).catch(e => console.log("Permissão de áudio pendente."));
-}
-
-function controllingMusica() {
-    if (musica.paused) {
-        musica.play();
-        toggleBtn.innerText = "⏸️";
-        statusText.innerText = "🎵 ÁGUA-VIVA TOCANDO";
-    } else {
-        musica.pause();
-        toggleBtn.innerText = "▶️";
-        statusText.innerText = "🎵 TRILHA PAUSADA";
-    }
-}
-
-const targetDate = new Date("2026-06-21T00:00:00+09:00");
-function updateCountdown(){
-    const diff = targetDate - new Date();
-    if (diff <= 0) {
-        document.getElementById("countdown").innerHTML = "Chegou o momento! ✨";
-        return;
-    }
-    const days = Math.floor(diff/(1000*60*60*24));
-    const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-    const minutes = Math.floor((diff%(1000*60))/(1000*60));
-    const seconds = Math.floor((diff%(1000*60))/1000);
-    document.getElementById("countdown").innerHTML = `${days}d  ${hours}h  ${minutes}m  ${seconds}s`;
-}
-setInterval(updateCountdown, 1000); updateCountdown();
-
-document.addEventListener('mousemove', (e) => {
-    const x = (window.innerWidth / 2 - e.clientX) / 45;
-    const y = (window.innerHeight / 2 - e.clientY) / 45;
-    document.body.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
-});
-
-for(let i=0; i<25; i++){
-    const petal = document.createElement("div");
-    petal.classList.add("petal");
-    petal.innerHTML = "🌸";
-    petal.style.left = Math.random() * 100 + "vw";
-    if(Math.random() > 0.4) petal.style.filter = "hue-rotate(45deg) saturate(1.2)";
-    petal.style.fontSize = (12 + Math.random() * 12) + "px";
-    petal.style.animationDuration = (10 + Math.random() * 12) + "s";
-    document.body.appendChild(petal);
-}
-
-let slideIndex = 0;
-let autoPlayTimer;
-function mudarSlide(direcao) {
-    slideIndex = (slideIndex + direcao + 3) % 3;
-    document.getElementById("carouselSlides").style.transform = `translateX(${-slideIndex * 100}%)`;
-}
-function iniciarAutoplay() {
-    autoPlayTimer = setInterval(() => mudarSlide(1), 3000);
-}
-
-function criarExplosao() {
-    const simbolos = ["🌸", "✨", "💜", "❤️"];
-    for (let i = 0; i < 60; i++) {
-        const confeti = document.createElement("div");
-        confeti.classList.add("confeti");
-        confeti.innerHTML = simbolos[Math.floor(Math.random() * simbolos.length)];
-        const x = (Math.random() - 0.5) * window.innerWidth;
-        const y = (Math.random() - 0.5) * window.innerHeight;
-        confeti.style.setProperty('--x', `${x}px`);
-        confeti.style.setProperty('--y', `${y}px`);
-        confeti.style.left = "50vw"; confeti.style.top = "50vh";
-        confeti.style.fontSize = (14 + Math.random() * 22) + "px";
-        document.body.appendChild(confeti);
-        setTimeout(() => confeti.remove(), 1200);
-    }
-}
-</script>
-</body>
-</html>
+    const musicBar = document.getElementById
