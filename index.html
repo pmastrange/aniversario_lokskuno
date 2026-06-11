@@ -42,6 +42,24 @@ body {
     color: var(--texto-escuro);
 }
 
+/* 🕶️ ENGENHARIA DE OCULTAÇÃO DAS TELAS DE ENTRADA */
+body:has(#telaPretaInicial.active) {
+    background: #000000 !important;
+}
+body:has(#telaPretaInicial.active) .progress-container,
+body:has(#telaPretaInicial.active) .music-bar,
+body:has(#telaPegadinha.active) .progress-container,
+body:has(#telaPegadinha.active) .music-bar {
+    display: none !important;
+}
+
+#telaPretaInicial.card.active {
+    background: #000000 !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+}
+
 /* Indicadores de Linha Temporal Minimalista */
 .progress-container {
     position: absolute;
@@ -126,7 +144,7 @@ body {
     animation: transitionCard 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* 🎬 ELEMENTOS DINÂMICOS DISNEY (TELA 2) */
+/* ELEMENTOS DINÂMICOS DISNEY (TELA 2) */
 #tela2 {
     position: relative;
 }
@@ -164,17 +182,13 @@ body {
 .cameo-enrolados { --base-rot: -12deg; }
 .cameo-olaf { --base-rot: 10deg; }
 
-/* Responsive adjustments for cameos */
 @media (max-width: 620px) {
-    .disney-cameo {
-        width: 75px;
-        height: 100px;
-    }
+    .disney-cameo { width: 75px; height: 100px; }
     .cameo-enrolados { left: -35px; top: 8%; }
     .cameo-olaf { right: -30px; bottom: 12%; }
 }
 
-/* 🌸 DESIGN DINÂMICO DA ORQUÍDEA (TELA 3) */
+/* DESIGN DINÂMICO DA ORQUÍDEA (TELA 3) */
 #tela3.card.active {
     background: rgba(243, 237, 247, 0.92);
     border: 1px solid rgba(121, 58, 87, 0.15);
@@ -197,7 +211,6 @@ body {
 .orchid-trigger-zone:hover .orchid-img-asset {
     transform: scale(1.03) translateY(-2px);
 }
-/* Micro-animação disparada via JS no clique */
 .orchid-img-asset.tap-animation {
     animation: orchidTap 0.4s ease-out;
 }
@@ -604,8 +617,26 @@ h1 {
     <div class="dot" id="dot7"></div>
 </div>
 
+<!-- 🔒 TELA 00: TELA PRETA INICIAL DO CADEADO -->
+<div class="card active" id="telaPretaInicial">
+    <div class="lock" onclick="verificarTelaPreta()">🔒</div>
+</div>
+
+<!-- 🃏 TELA 0: A PEGADINHA DO BOTÃO FUGITIVO REAJUSTADA -->
+<div class="card" id="telaPegadinha">
+    <h1>Controle de Segurança</h1>
+    <p class="italic">Antes de liberar o seu acesso, precisamos de uma confirmação honesta:</p>
+    <p style="font-weight: 700; font-size: 16px; margin-bottom: 30px; color: var(--roxo-orquidea); line-height: 1.4;">
+        Você confessa que é ranzinza, estressada e tem 1,40 de altura?
+    </p>
+    <div style="display: flex; justify-content: center; gap: 20px; min-height: 55px; position: relative; align-items: center;">
+        <button class="btn-navigation" onclick="entrarNoSiteOriginal()">Sim, confesso minha diva</button>
+        <button class="btn-navigation" id="btnFugitivo" onmouseover="fugirDoCursor()" ontouchstart="fugirDoCursor(event)" style="background: #a4a4a4; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: all 0.1s cubic-bezier(0.16, 1, 0.3, 1);">Logico que não</button>
+    </div>
+</div>
+
 <!-- TELA 1 -->
-<div class="card active" id="tela1">
+<div class="card" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
     <div class="audio-hint">AUMENTE O SOM! 🔊</div>
@@ -618,9 +649,8 @@ h1 {
     </div>
 </div>
 
-<!-- TELA 2 (MEMÓRIA DISNEY COM PERSONAGENS DINÂMICOS EXTERNOS) -->
+<!-- TELA 2 -->
 <div class="card" id="tela2">
-    <!-- Personagens Dinâmicos Espiando por Fora -->
     <img src="enrolados.jpg" class="disney-cameo cameo-enrolados" alt="Rapunzel Cameo">
     <img src="olaf.jpg" class="disney-cameo cameo-olaf" alt="Olaf Cameo">
 
@@ -648,14 +678,14 @@ h1 {
 
             Você é uma das mulheres mais fortes que eu já conheci, estar com você alivia todas as angustias que tem porque sua amizade é leve, tem uma inteligência admirável e uma persistencia e resiliencia que eu admiro muito, uma força que pouquíssimas pessoas aguentariam, um coração que quase ninguém merece e, definitivamente, o top 1 de mulheres mais bonitas que eu conheço. Com certeza é uma das pessoas que eu mais admiro e poderia passar hours falando tudo que amo em voce e tudo que torna você tão única. Ter sua amizade é um dos maiores privileges que eu poderia ter e, realmente, rezei muito para que, se fosse para retornarmos, que fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas que isso jamais abale nossa amizade novamente. Já te pedi desculpas muitas vezes pelos erros que cometi e por ter aberto mão de algo que era muito importante para mijm e que, de fato, poderia ter salvado nós duas de tanta mágoa que veio depois... mas hoje não é dia de coisa triste. Apenas saiba que eu não cometo os mesmos erros duas vezes, não com você.
             <br><br>
-            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam eles boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, big diva, obrigada por ser e estar. Pra sempre nós por nós!
+            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam eles boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, big diva, obrigada por ser e estar. Pra sempre nós por nós!
             <br><br>
             <button class="btn-navigation" style="width:100%;" onclick="navegarPara(3)">Avançar para a Orquídea</button>
         </div>
     </div>
 </div>
 
-<!-- TELA 3 (ORQUÍDEA COM SISTEMA DE REVELAÇÃO CINEMÁTICO) -->
+<!-- TELA 3 -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Cores de Admirar</h1>
@@ -737,7 +767,7 @@ h1 {
             <button class="carrossel-arrow arrow-next" onclick="mudarSlide(1)">❯</button>
         </div>
         <div class="texto-final">
-            Sei que é seu segundo aniversario sem eles, e que é muito recente e nem imagino como pode doer, isso não é para ser algo triste, mas sim uma lembrança de que eles sempre estarão com você, você foi a melhor que eles poderiam ter e querer e que nunca se esqueça disso.
+            Sei que é seu segundo aniversario sem eles, e que é muito recente e nem imagino como pode doer, isso não é para ser algo triste, mas sim uma lembrança de que eles sempre estarão com você, você foi a melhor que eles ponderiam ter e querer e que nunca se esqueça disso.
             “Você foi a melhor que tivemos, nossos melhores moments foram com você, e o amor mais puro que alguém poderia ter por nós. Te protegemos e amamos pra sempre mamain, feliz seu dia!”<br><span style="font-size:13px; font-weight:700; color: var(--roxo-orquidea); display:block; margin-top:15px;">Com amor: Jully e Xun...</span>
         </div>
         <div class="button-wrapper" style="padding-top:10px;">
@@ -835,14 +865,56 @@ const perguntasQuiz = [
         options: [
             { text: "Morenos", isCorrect: false, feedback: "Esperava mais de vc loks, isso não é coisa de diva, responde direito!" },
             { text: "Loiros gostosos", isCorrect: true, feedback: "Gabaritou! Sabia que um dia cairia em si." },
-            { text: "Nenhuma das alternativas", isCorrect: false, feedback: "Achou que eu ia colocar isso só pq é seu niver? Tudo tem limites gata!" }
+            { text: "Nenhuma das alternativas", isCorrect: false, feedback: "Achou que io colocar isso só pq é seu niver? Tudo tem limites gata!" }
         ]
     }
 ];
 
 let currentQuestionIndex = 0;
 let orchidPhraseIndex = 0;
+let tentativasTelaPreta = 0;
 const musica = document.getElementById('trilhaSonora');
+
+/* 🔒 LÓGICA DA TELA PRETA INICIAL */
+function verificarTelaPreta() {
+    let senha = prompt("Digite a senha para entrar: 🔑");
+    if (!senha) return;
+    if (senha.trim().toLowerCase() === "vitor") {
+        document.getElementById('telaPretaInicial').classList.remove('active');
+        document.getElementById('telaPegadinha').classList.add('active');
+    } else {
+        tentativasTelaPreta++;
+        if (tentativasTelaPreta === 1) {
+            alert("Dica 1: curiosidade matou o gato");
+        } else {
+            alert("dica 2: pessoa que sua melhor amiga mais odeia");
+        }
+    }
+}
+
+/* 🃏 JAVASCRIPT DA PEGADINHA DO BOTÃO FUGITIVO */
+function fugirDoCursor(event) {
+    if (event) event.preventDefault(); 
+    const btn = document.getElementById('btnFugitivo');
+    
+    btn.style.position = 'fixed';
+    btn.style.zIndex = '9999';
+    
+    const margem = 60;
+    const maxX = window.innerWidth - btn.offsetWidth - margem;
+    const maxY = window.innerHeight - btn.offsetHeight - margem;
+    
+    const randomX = Math.max(margem, Math.random() * maxX);
+    const randomY = Math.max(margem, Math.random() * maxY);
+    
+    btn.style.left = `${randomX}px`;
+    btn.style.top = `${randomY}px`;
+}
+
+function entrarNoSiteOriginal() {
+    document.getElementById('telaPegadinha').classList.remove('active');
+    navegarPara(1); 
+}
 
 function navegarPara(telaNumero) {
     document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
@@ -876,10 +948,9 @@ function abrirEnvelope() {
 
 function revelarProximaFraseOrquidea(zoneElement) {
     if (orchidPhraseIndex < 3) {
-        // Disparar micro-animação física tátil na imagem
         const img = document.getElementById('orchidImgAsset');
         img.classList.remove('tap-animation');
-        void img.offsetWidth; // Forçar reflow para reiniciar animação
+        void img.offsetWidth; 
         img.classList.add('tap-animation');
 
         const frase = document.getElementById(`orchPhrase${orchidPhraseIndex}`);
@@ -1046,7 +1117,7 @@ function criarExplosao() {
     for (let i = 0; i < 40; i++) {
         const confeti = document.createElement("div");
         confeti.classList.add("confeti");
-        confeti.innerHTML = symbols = simbolos[Math.floor(Math.random() * simbolos.length)];
+        confeti.innerHTML = simbolos[Math.floor(Math.random() * simbolos.length)];
         const x = (Math.random() - 0.5) * window.innerWidth;
         const y = (Math.random() - 0.5) * window.innerHeight;
         confeti.style.setProperty('--x', `${x}px`);
