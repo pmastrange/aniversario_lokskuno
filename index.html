@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
 <style>
-/* Reset de Escopo Global */
+/* Reset de Escopo Global Puro */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -175,7 +175,7 @@ h1 {
     width: 100%;
     max-width: 380px;
     height: 260px;
-    margin: 0 auto;
+    margin: 20px auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -185,47 +185,80 @@ h1 {
     width: 100%;
     height: 100%;
     z-index: 5;
+    display: block;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .envelope-flap {
-    position: absolute; top: 0; left: 0; width: 100%; height: 130px;
-    transform-origin: top; z-index: 7; transition: transform 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 130px;
+    transform-origin: top;
+    z-index: 7;
+    transition: transform 0.5s ease;
 }
 .envelope-body {
-    position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     z-index: 2;
 }
 .wax-seal {
     position: absolute; 
-    top: 100px; left: 50%; 
+    top: 110px; 
+    left: 50%; 
     transform: translateX(-50%); 
-    width: 68px; height: 68px;
+    width: 68px; 
+    height: 68px;
     background: radial-gradient(circle at 30% 30%, #944d6e, var(--roxo-orquidea) 75%);
     border-radius: 50%; 
-    z-index: 10; cursor: pointer; display: flex; justify-content: center;
-    align-items: center; color: white; font-family: 'Playfair Display', serif;
-    font-weight: 800; font-size: 17px;
+    z-index: 10; 
+    cursor: pointer; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    color: white; 
+    font-family: 'Playfair Display', serif;
+    font-weight: 800; 
+    font-size: 17px;
     box-shadow: 0 5px 14px rgba(121, 58, 87, 0.4), inset 0 2px 4px rgba(255,255,255,0.3);
     border: 2px double rgba(255,255,255,0.15);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .wax-seal:hover { transform: translateX(-50%) scale(1.06) rotate(-4deg); }
 
+.cartaScrollerContainer {
+    width: 100%;
+    z-index: 12;
+}
 .carta-scroller {
-    width: 100%; max-height: 340px; overflow-y: auto; text-align: left;
-    font-family: 'Georgia', serif; font-size: 15px; line-height: 1.8; color: var(--texto-escuro);
-    background: #fffdf9; padding: 20px; border-radius: 12px;
-    border: 1px solid #e3dac9; display: none; opacity: 0;
-    transform: translateY(20px); transition: all 0.5s ease;
+    width: 100%; 
+    max-height: 340px; 
+    overflow-y: auto; 
+    text-align: left;
+    font-family: 'Georgia', serif; 
+    font-size: 15px; 
+    line-height: 1.8; 
+    color: var(--texto-escuro);
+    background: #fffdf9; 
+    padding: 20px; 
+    border-radius: 12px;
+    border: 1px solid #e3dac9; 
+    display: none; 
+    opacity: 0;
+    transform: translateY(20px); 
+    transition: all 0.5s ease;
 }
 .quote-box { background: rgba(121, 58, 87, 0.04); border-left: 3px solid var(--roxo-orquidea); padding: 15px; margin: 15px 0; font-style: italic; }
 .carta-scroller::-webkit-scrollbar { width: 5px; }
 .carta-scroller::-webkit-scrollbar-thumb { background: var(--roxo-orquidea); border-radius: 10px; }
 
 .envelope-container.opened .envelope-flap { transform: rotateX(180deg); z-index: 1; }
-.envelope-container.opened .envelope { transform: translateY(80px); opacity: 0; pointer-events: none; }
-.envelope-container.opened .cartaScrollerContainer { display: block; width: 100%; z-index: 12; }
-.envelope-container.opened .carta-scroller { display: block; opacity: 1; transform: translateY(0); }
+.envelope-container.opened .envelope { transform: translateY(120px); opacity: 0; pointer-events: none; }
+.envelope-container.opened .cartaScrollerContainer .carta-scroller { display: block; opacity: 1; transform: translateY(0); }
 
 /* Módulo da Tela 3 */
 .rolo-filme { display: flex; overflow-x: auto; gap: 15px; padding: 20px 5px; }
@@ -246,7 +279,7 @@ h1 {
 .carrossel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; width: 32px; height: 32px; cursor: pointer; border-radius: 50%; color: var(--roxo-orquidea); }
 .arrow-prev { left: 5px; } .arrow-next { right: 5px; }
 
-/* Módulo da Tela 5 (Quiz Interativo Otimizado) */
+/* Módulo da Tela 5 */
 .quiz-box { background: white; padding: 20px; border-radius: 16px; border: 1px solid rgba(121, 58, 87, 0.1); margin: 15px 0; }
 .quiz-options { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
 .quiz-btn { background: var(--rosa-pastel); color: var(--roxo-orquidea); border: 1px solid rgba(121, 58, 87, 0.1); padding: 12px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; -webkit-appearance: none; text-align: center; font-size: 13px; line-height: 1.4; }
@@ -305,23 +338,23 @@ h1 {
         <div class="envelope" id="envelopeControl">
             <div class="envelope-flap">
                 <svg viewBox="0 0 100 60" preserveAspectRatio="none" style="width: 100%; height: 100%; display: block;">
-                    <polygon points="0,0 100,0 50,60" fill="#f7e2e5"/>
+                    <polygon points="0,0 100,0 50,60" fill="#f7e2e5" stroke="#793A57" stroke-width="0.5"/>
                 </svg>
             </div>
             <div class="envelope-body">
                 <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width: 100%; height: 100%; display: block; border-radius: 0 0 12px 12px;">
-                    <polygon points="0,35 50,70 100,35 100,100 0,100" fill="url(#envelopeGradiente)"/>
                     <defs>
                         <linearGradient id="envelopeGradiente" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" stop-color="#fce4e8" />
-                            <stop offset="100%" stop-color="#fdf6f7" />
+                            <stop offset="100%" stop-color="#fbe4e8" />
                         </linearGradient>
                     </defs>
+                    <polygon points="0,35 50,70 100,35 100,100 0,100" fill="url(#envelopeGradiente)" stroke="#793A57" stroke-width="0.5"/>
                 </svg>
             </div>
             <div class="wax-seal" onclick="abrirEnvelope()">LK</div>
         </div>
-        <div class="cartaScrollerContainer" style="display:none; width:100%;">
+        <div class="cartaScrollerContainer">
             <div class="carta-scroller" id="cartaScroller">
                 Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chicão somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é because é seu. Sua data, seu dia, sua life, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
 
@@ -360,6 +393,7 @@ h1 {
         <div class="foto-quadro" style="--r: -2"><img src="Foto5.png.PNG"><span>MEMORIES 05</span></div>
         <div class="foto-quadro" style="--r: 3"><img src="Foto6.png.PNG"><span>MEMORIES 06</span></div>
         <div class="foto-quadro" style="--r: -1"><img src="Foto7.png.png"><span>MEMORIES 07</span></div>
+        <div class="foto-quadro" style="--r: 2"><img src="Foto8.jpg.jpeg"><span>MEMORIES 08</span></div>
     </div>
     <div class="swipe-hint">Arraste para o lado para ver mais ➔</div>
     <button class="btn-navigation" onclick="navegarPara(4)">Mais uma última caixinha... 🐾</button>
@@ -397,8 +431,7 @@ h1 {
     <div class="quiz-box">
         <div id="quizProgressCounter">Pergunta 1 de 5</div>
         <p id="quizQuestion" style="font-weight: 700; color: var(--texto-escuro); margin-bottom: 10px;"></p>
-        <div class="quiz-options" id="quizOptionsContainer">
-            </div>
+        <div class="quiz-options" id="quizOptionsContainer"></div>
         <p id="quizFeedback"></p>
     </div>
     
@@ -436,7 +469,6 @@ h1 {
 </div>
 
 <script>
-// Matriz de Objetos Estrutural do Quiz Dinâmico
 const perguntasQuiz = [
     {
         question: "Se uma ligação de vídeo nossa durar mais de duas horas, qual é o desfecho mais provável?",
@@ -477,7 +509,6 @@ const perguntasQuiz = [
 
 let currentQuestionIndex = 0;
 
-// Sistema de Renderização e Máquina de Estados da SPA
 function navegarPara(telaNumero) {
     document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
     document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
@@ -498,7 +529,6 @@ function abrirEnvelope() {
     document.getElementById('envelopeWrapper').classList.add('opened');
 }
 
-// Motor do Quiz Orientado a Dados
 function inicializarQuiz() {
     currentQuestionIndex = 0;
     renderizarEstruturaPergunta();
@@ -600,7 +630,7 @@ function dispararAudioGlobal() {
     musica.play().then(() => {
         toggleBtn.innerText = "⏸️";
         statusText.innerText = "🎵 ÁGUA-VIVA TOCANDO";
-    }).catch(e => console.log("Permissão pendente de interação do usuário."));
+    }).catch(e => console.log("Permissão de áudio pendente."));
 }
 
 function controlarMusica() {
