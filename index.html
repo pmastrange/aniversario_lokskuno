@@ -125,6 +125,13 @@ body {
     display: block;
     animation: transitionCard 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Customização Específica da Tela 3 (Fundo Lilás Sofisticado) */
+#tela3.card.active {
+    background: rgba(240, 232, 245, 0.92);
+    border: 1px solid rgba(121, 58, 87, 0.15);
+}
+
 @keyframes transitionCard {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
@@ -238,25 +245,25 @@ h1 {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -40%);
-    width: 60px;
-    height: 60px;
+    transform: translate(-50%, -46%);
+    width: 84px;
+    height: 84px;
     background: radial-gradient(circle at 30% 30%, #944d6e, var(--roxo-orquidea) 80%);
     border-radius: 50%;
-    box-shadow: 0 6px 15px rgba(121, 58, 87, 0.4), inset 0 2px 3px rgba(255,255,255,0.2);
-    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 22px rgba(121, 58, 87, 0.45), inset 0 2px 4px rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.15);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-family: var(--serifa);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 20px;
     letter-spacing: 0.5px;
     transition: transform 0.3s;
 }
 .envelope-wrapper-premium:hover .purple-wax-seal {
-    transform: translate(-50%, -40%) scale(1.08);
+    transform: translate(-50%, -46%) scale(1.06);
 }
 .carta-scroller {
     width: 100%; 
@@ -326,42 +333,75 @@ h1 {
     transform: translateY(0);
 }
 
-/* Módulo: Linha do Tempo Estilo Galeria Modern (Tela 4) */
+/* Módulo: Molduras Clássicas Ornamentadas / Galeria Roxa (Tela 4) */
 .rolo-filme { 
     display: flex; 
     overflow-x: auto; 
-    gap: 20px; 
-    padding: 20px 5px;
+    gap: 25px; 
+    padding: 25px 10px;
     scrollbar-width: none;
 }
 .rolo-filme::-webkit-scrollbar { display: none; }
 .foto-quadro { 
-    flex-shrink: 0; background: #ffffff; padding: 10px 10px 30px 10px; width: 180px; 
-    border-radius: 2px; box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-    transform: rotate(calc(var(--r, 0) * 1deg)); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    flex-shrink: 0; 
+    background: #fcfbf7; 
+    padding: 12px 12px 14px 12px; 
+    width: 190px; 
+    border-radius: 2px;
+    /* Moldura Barroca inspirada em @voilescent on Instagram.webp */
+    border: 10px solid var(--roxo-orquidea);
+    border-image: linear-gradient(135deg, #8c4365, var(--roxo-orquidea), #4f1e34, #914b6e) 10;
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.12), 
+        inset 0 0 12px rgba(0,0,0,0.15),
+        0 4px 6px rgba(121, 58, 87, 0.15);
+    transform: rotate(calc(var(--r, 0) * 1deg)); 
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.foto-quadro:hover { transform: rotate(0deg) translateY(-6px); box-shadow: 0 15px 30px rgba(121, 58, 87, 0.08); }
-.foto-quadro img { width: 100%; height: 180px; object-fit: cover; }
-.foto-quadro span { 
-    display: block; 
-    margin-top: 10px; 
-    font-size: 9px; 
-    color: #888; 
-    font-weight: 700; 
-    letter-spacing: 1px;
+.foto-quadro:hover { 
+    transform: rotate(0deg) translateY(-8px); 
+    box-shadow: 0 25px 45px rgba(0,0,0,0.18), inset 0 0 6px rgba(0,0,0,0.1); 
 }
+.foto-quadro img { 
+    width: 100%; 
+    height: 180px; 
+    object-fit: cover; 
+    display: block;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Customização e Pulsação da Playlist Premium */
 .spotify-btn { 
-    background: #1DB954; 
+    background: linear-gradient(135deg, var(--roxo-orquidea), #5a223e);
     color: white; 
     text-decoration: none; 
-    padding: 12px 30px; 
+    padding: 14px 32px; 
     border-radius: 4px; 
     font-weight: 700; 
     display: inline-block; 
     margin-bottom: 25px; 
     font-size: 11px; 
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: pulsePremium 2s infinite ease-in-out;
+    transition: transform 0.2s;
+}
+.spotify-btn:hover {
+    transform: scale(1.02);
+}
+
+@keyframes pulsePremium {
+    0% {
+        box-shadow: 0 0 0 0 rgba(121, 58, 87, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 12px rgba(121, 58, 87, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(121, 58, 87, 0);
+    }
 }
 
 /* Módulo da Tela 5 */
@@ -490,18 +530,18 @@ h1 {
 
             Você é uma das mulheres mais fortes que eu já conheci, estar com você alivia todas as angustias que tem porque sua amizade é leve, tem uma inteligência admirável e uma persistencia e resiliencia que eu admiro muito, uma força que pouquíssimas pessoas aguentariam, um coração que quase ninguém merece e, definitivamente, o top 1 de mulheres mais bonitas que eu conheço. Com certeza é uma das pessoas que eu mais admiro e poderia passar horas falando tudo que amo em voce e tudo que torna você tão única. Ter sua amizade é um dos maiores privileges que eu poderia ter e, realmente, rezei muito para que, se fosse para retornarmos, que fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas que isso jamais abale nossa amizade novamente. Já te pedi desculpas muitas vezes pelos erros que cometi e por ter aberto mão de algo que era muito importante para mim e que, de fato, poderia ter salvado nós duas de tanta mágoa que veio depois... mas hoje não é dia de coisa triste. Apenas saiba que eu não cometo os mesmos erros duas vezes, não com você.
 
-            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam eles boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem ---> outros mil melhores. Te amo, big diva, obrigada por ser e estar. Pra sempre nós por nós!
+            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam eles boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, big diva, obrigada por ser e estar. Pra sempre nós por nós!
             <br><br>
             <button class="btn-navigation" style="width:100%;" onclick="navegarPara(3)">Avançar para a Orquídea</button>
         </div>
     </div>
 </div>
 
-<!-- TELA 3 (Nova Tela Temática Interativa) -->
+<!-- TELA 3 -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Cores de Admirar</h1>
-    <p class="italic" style="margin-bottom: 15px;">Toque na orquídea para revelar meus sentimentos</p>
+    <p class="italic" style="margin-bottom: 15px;">Toque na orquídea 3x para revelar coisas que você não pode se esquecer</p>
     <div class="orchid-trigger-zone" onclick="revelarProximaFraseOrquidea()">
         <img src="orquidea.webp" class="orchid-img-asset" alt="Orquídea Roxa Premium">
     </div>
@@ -519,14 +559,14 @@ h1 {
     <h1>Nossas Memórias</h1>
     <a href="https://open.spotify.com/playlist/3fhl0NZ3Tg7ipf1AczB8wg?si=0AB-eHgDT9uUucq4jvzLEw&pi=mYYPIFcvQpqCp" target="_blank" class="spotify-btn">Playlist no Spotify</a>
     <div class="rolo-filme">
-        <div class="foto-quadro" style="--r: -3"><img src="Fotoescada.jpg.jpeg"><span>MEMORIES 01</span></div>
-        <div class="foto-quadro" style="--r: 2"><img src="Foto2.jpg.jpeg"><span>MEMORIES 02</span></div>
-        <div class="foto-quadro" style="--r: -1"><img src="Foto3.jpg.jpeg"><span>MEMORIES 03</span></div>
-        <div class="foto-quadro" style="--r: 4"><img src="Foto4.jpg.jpeg"><span>MEMORIES 04</span></div>
-        <div class="foto-quadro" style="--r: -2"><img src="Foto5.png.PNG"><span>MEMORIES 05</span></div>
-        <div class="foto-quadro" style="--r: 3"><img src="Foto6.png.PNG"><span>MEMORIES 06</span></div>
-        <div class="foto-quadro" style="--r: -1"><img src="Foto7.png.png"><span>MEMORIES 07</span></div>
-        <div class="foto-quadro" style="--r: 2"><img src="Foto8.jpg.jpeg"><span>MEMORIES 08</span></div>
+        <div class="foto-quadro" style="--r: -2"><img src="Fotoescada.jpg.jpeg"></div>
+        <div class="foto-quadro" style="--r: 1"><img src="Foto2.jpg.jpeg"></div>
+        <div class="foto-quadro" style="--r: -1"><img src="Foto3.jpg.jpeg"></div>
+        <div class="foto-quadro" style="--r: 2"><img src="Foto4.jpg.jpeg"></div>
+        <div class="foto-quadro" style="--r: -2"><img src="Foto5.png.PNG"></div>
+        <div class="foto-quadro" style="--r: 1"><img src="Foto6.png.PNG"></div>
+        <div class="foto-quadro" style="--r: -1"><img src="Foto7.png.png"></div>
+        <div class="foto-quadro" style="--r: 2"><img src="Foto8.jpg.jpeg"></div>
     </div>
     <div class="swipe-hint">Arraste para o lado para ver mais ➔</div>
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma última caixinha...</button>
@@ -553,18 +593,20 @@ h1 {
         <div class="texto-final">
             “Você foi a melhor que tivemos, nossos melhores momentos foram com você, e o amor mais puro que alguém poderia ter por nós. Te protegemos e amamos pra sempre mamain, feliz seu dia!”<br><span style="font-size:13px; font-weight:700; color: var(--roxo-orquidea); display:block; margin-top:15px;">Com amor: Jully e Xun...</span>
         </div>
-        <button class="btn-navigation" style="width:100%;" onclick="inicializarQuiz()">Avançar para o teste</button>
+        <div class="button-wrapper" style="padding-top:10px;">
+            <button class="btn-navigation" style="width:100%;" onclick="inicializarQuiz()">Avançar para o teste</button>
+        </div>
     </div>
 </div>
 
 <!-- TELA 6 -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
-    <h1>Teste de Sobrevivência</h1>
+    <h1>Quiz para risadinhas</h1>
     <p class="italic" style="font-size: 13px;">Respira... hoje é um bom dia! Responda corretamente as perguntinhas para liberar os seus "presentes" finais!</p>
     
     <div class="quiz-box">
-        <div id="quizProgressCounter">Pergunta 1 de 5</div>
+        <div id="quizProgressCounter">Pergunta 1 de 6</div>
         <p id="quizQuestion" style="font-weight: 700; color: var(--texto-escuro); margin-bottom: 15px; font-family: var(--serifa); font-size: 16px; line-height: 1.4;"></p>
         <div class="quiz-options" id="quizOptionsContainer"></div>
         <p id="quizFeedback"></p>
@@ -614,7 +656,7 @@ const perguntasQuiz = [
         ]
     },
     {
-        question: "Quando uma de nós manda um áudio que começa with 'Amiga, não repara no tamanho, mas...' ou 'Não briga comigo', qual é o protocolo oficial?",
+        question: "Quando uma de nós manda um áudio que começa com 'Amiga, não repara no tamanho, mas...' ou 'Não briga comigo', qual é o protocolo oficial?",
         options: [
             { text: "Ouvir em 2x, esquecer metade e responder com um emoji de coração.", isCorrect: false, feedback: "Isso aí é comportamento de conhecida, não de miguxa. Tente de novo! 💅" },
             { text: "Rir, brigar, rir de novo e ouvir tudo etentamente.", isCorrect: true, feedback: "Gabaritou! Analisamos ponto por ponto com direito a debate na sequência." }
@@ -639,6 +681,14 @@ const perguntasQuiz = [
         options: [
             { text: "Nenhuma.", isCorrect: false, feedback: "Larga de ser mentirosa." },
             { text: "Talvez.", isCorrect: true, feedback: "Espero que a primeira resposta tenha sido nenhuma, safada sem vergonha!" }
+        ]
+    },
+    {
+        question: "Entre loiro e moreno, quem tem mais sabor?",
+        options: [
+            { text: "Morenos", isCorrect: false, feedback: "Esperava mais de vc loks, isso não é coisa de diva, responde direito!" },
+            { text: "Loiros gostosos", isCorrect: true, feedback: "Gabaritou! Sabia que um dia cairia em si." },
+            { text: "Nenhuma das alternativas", isCorrect: false, feedback: "Achou que eu ia colocar isso só pq é seu niver? Tudo tem limites gata!" }
         ]
     }
 ];
