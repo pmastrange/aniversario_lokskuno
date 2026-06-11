@@ -199,7 +199,7 @@ body:has(#telaPegadinha.active) .music-bar {
     to { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 
-/* 🔒 CADEADO MECÂNICO ROTATIVO (TELA 8) */
+/* CADEADO MECÂNICO ROTATIVO (TELA 8) */
 .heart-lock-art {
     width: 100%; max-width: 280px; background: linear-gradient(135deg, #ffccd5, #ffb3c1);
     margin: 20px auto; border-radius: 50% 50% 40% 40% / 40% 40% 50% 50%; padding: 40px 20px;
@@ -223,7 +223,30 @@ body:has(#telaPegadinha.active) .music-bar {
 .scratch-container-box { position: relative; width: 280px; height: 280px; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 3px solid #fff; background: #eee; }
 .scratch-under-image { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
 #scratchCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; cursor: crosshair; touch-action: none; }
-.scratch-text-message { text-align: left; font-family: 'Georgia', serif; font-size: 14px; line-height: 1.8; color: #444; background: rgba(255,255,255,0.5); padding: 20px; border-radius: 8px; border: 1px dashed rgba(121,58,87,0.2); }
+
+/* ✉️ ESTILIZAÇÃO LUXO: CARTINHA DECORADA */
+.scratch-text-message { 
+    text-align: left; 
+    font-family: 'Georgia', serif; 
+    font-size: 14.5px; 
+    line-height: 1.8; 
+    color: #444; 
+    background: #fffdf9; 
+    padding: 38px 32px; 
+    border-radius: 4px; 
+    border: 1px solid #ebdcb9; 
+    outline: 4px double #ebdcb9;
+    outline-offset: -12px;
+    box-shadow: 0 12px 30px rgba(121, 58, 87, 0.06), inset 0 0 40px rgba(235, 220, 185, 0.2);
+    position: relative; 
+}
+.scratch-text-message::before {
+    content: "❤️";
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
 
 /* Expansão do Mosaico */
 #tela4.card.active { max-width: 600px; padding: 40px 20px; }
@@ -541,7 +564,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:15px;" onclick="navegarPara(8)">Ver a última surpresa... 🤫</button>
 </div>
 
-<!-- 🎟️ TELA 8: O GRANDE FINALE (CADEADO MECÂNICO + RASPADINHA DO SPOTIFY) -->
+<!-- 🎟️ TELA 8: O GRANDE FINALE (CADEADO MECÂNICO + RASPADINHA COM SISTEMA DE AUTO-DESTRUIÇÃO) -->
 <div class="card" id="tela8">
     <button class="btn-back" onclick="navegarPara(7)">← Voltar</button>
     
@@ -578,7 +601,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         <button class="btn-navigation" style="width:100%; margin-top:10px;" onclick="validarCadeadoMecanico()">Girar Segredo 🔐</button>
     </div>
 
-    <!-- Sub-estágio 2: A Raspadinha Otimizada -->
+    <!-- Sub-estágio 2: A Raspadinha Corrigida e Cartinha Otimizada -->
     <div id="wrapperRaspadinhaContent" style="display: none;">
         <h1>Sua Lembrança Musical 🎵</h1>
         <p class="italic" style="color: #b33939; font-weight: 700; margin-bottom: 10px;">
@@ -587,14 +610,14 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         
         <div class="scratch-layout-grid">
             <div class="scratch-container-box">
-                <!-- Conteúdo oculto mapeado para o link externo -->
-                <a href="https://open.spotify.com/playlist/3fhl0NZ3Tg7ipf1AczB8wg?si=0AB-eHgDT9uUucq4jvzLEw&pi=mYYPIFcvQpqCp" target="_blank" style="display:block; width:100%; height:100%;">
+                <!-- URL Atualizada Funcionando Perfeitamente -->
+                <a href="https://open.spotify.com/playlist/3fhl0NZ3Tg7ipf1AczB8wg?si=pmiFw11yQNWMwGIsyyXxaQ&pi=BRCY3zURQz2Gm" target="_blank" style="display:block; width:100%; height:100%;">
                     <img src="album.jpeg" class="scratch-under-image" alt="Álbum Especial">
                 </a>
-                <!-- Camada raspável interativa -->
                 <canvas id="scratchCanvas" width="280" height="280"></canvas>
             </div>
             
+            <!-- Papel de Carta Decorado Vintage -->
             <div class="scratch-text-message">
                 Sei que foi a coisa mais besta que você já viu, mas foi a forma mais "próxima" (do meu jeitinho) de te mostrar o quanto você é especial, ao invés de apenas um textinho.<br><br>
                 Que jamais deixe essa data passar em branco. Obrigada por ser você, por tudo o que faz por nós e por todos que te amam. Seu coração é puro, e poder te chamar de amiga é um privilégio.<br><br>
@@ -848,23 +871,21 @@ function validarCadeadoMecanico() {
         criarExplosao();
         document.getElementById("wrapperCadeadoMecanico").style.display = "none";
         document.getElementById("wrapperRaspadinhaContent").style.display = "block";
-        montarMecanismoRaspadinha(); // Inicializa canvas sob demanda
+        montarMecanismoRaspadinha(); 
     } else {
         alert("Segredo incorreto! Tente reajustar os números.");
     }
 }
 
-/* 🎫 MOTOR DE RENDERIZAÇÃO DA RASPADINHA HÍBRIDA */
+/* 🎫 MOTOR DE RENDERIZAÇÃO DA RASPADINHA COM AUTO-DESTRUIÇÃO (ANTI-BLOCKING) */
 function montarMecanismoRaspadinha() {
     const canvas = document.getElementById("scratchCanvas");
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     
-    // Setup da máscara de cobertura cinza luxo
     ctx.fillStyle = "#cfcfcf";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    // Adiciona textura premium e instrução textual
     ctx.fillStyle = "#793A57";
     ctx.font = "bold 15px Quicksand";
     ctx.textAlign = "center";
@@ -875,7 +896,6 @@ function montarMecanismoRaspadinha() {
     function limparPixel(e) {
         if (!isDrawing) return;
         const rect = canvas.getBoundingClientRect();
-        // Tratamento unificado de coordenadas para Mobile Touch e Mouse Desktop
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
         
@@ -884,17 +904,37 @@ function montarMecanismoRaspadinha() {
         
         ctx.globalCompositeOperation = "destination-out";
         ctx.beginPath();
-        ctx.arc(x, y, 25, 0, Math.PI * 2); // Diâmetro de raspagem otimizado
+        ctx.arc(x, y, 25, 0, Math.PI * 2); 
         ctx.fill();
+    }
+
+    // Varre a transparência do Canvas para destruí-lo automaticamente ao atingir o limite
+    function checkScratchPercentage() {
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixels = imageData.data;
+        let transparentPixels = 0;
+        
+        for (let i = 3; i < pixels.length; i += 4) {
+            if (pixels[i] === 0) transparentPixels++;
+        }
+        
+        // Se 40% da área foi descoberta, o canvas desaparece dando foco ao link nativo
+        if (transparentPixels > (pixels.length / 4) * 0.40) {
+            canvas.style.transition = "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+            canvas.style.opacity = "0";
+            setTimeout(() => {
+                canvas.remove();
+            }, 600);
+        }
     }
     
     canvas.addEventListener("mousedown", () => isDrawing = true);
     canvas.addEventListener("mousemove", limparPixel);
-    window.addEventListener("mouseup", () => isDrawing = false);
+    window.addEventListener("mouseup", () => { isDrawing = false; checkScratchPercentage(); });
     
     canvas.addEventListener("touchstart", (e) => { isDrawing = true; limparPixel(e); });
     canvas.addEventListener("touchmove", limparPixel);
-    window.addEventListener("touchend", () => isDrawing = false);
+    window.addEventListener("touchend", () => { isDrawing = false; checkScratchPercentage(); });
 }
 
 function controlarMusica() {
