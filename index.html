@@ -126,6 +126,36 @@ body {
     animation: transitionCard 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ✨ ESTILIZAÇÃO TEMÁTICA EXCLUSIVA DA TELA DISNEY (TELA 2) ✨ */
+#tela2.card.active {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(243, 231, 245, 0.94));
+    border: 2px solid rgba(179, 157, 219, 0.5); /* Tom místico de Enrolados */
+    box-shadow: 
+        0 0 30px rgba(212, 175, 55, 0.15), /* Brilho dourado das lanternas */
+        0 30px 70px rgba(121, 58, 87, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+/* Detalhes mágicos flutuantes abstratos (Rapunzel + Olaf) */
+#tela2.card.active::before {
+    content: '✨';
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 20px;
+    opacity: 0.6;
+    animation: pulsePremium 2s infinite ease-in-out;
+}
+#tela2.card.active::after {
+    content: '❄️';
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+    font-size: 18px;
+    opacity: 0.4;
+    animation: pulsePremium 2.5s infinite ease-in-out;
+}
+
 /* Customização Específica da Tela 3 (Fundo Lilás Sofisticado) */
 #tela3.card.active {
     background: rgba(240, 232, 245, 0.92);
@@ -228,7 +258,6 @@ h1 {
     margin: 25px 0; 
     letter-spacing: 1px;
 }
-/* Evita que o container vazio apareça como um quadrado sem conteúdo */
 #countdown:empty {
     display: none;
 }
@@ -240,6 +269,7 @@ h1 {
     max-width: 360px;
     margin: 20px auto;
     cursor: pointer;
+    z-index: 2;
 }
 .envelope-img-asset {
     width: 100%;
@@ -291,6 +321,8 @@ h1 {
     border: 1px solid rgba(227, 218, 201, 0.5); 
     display: none;
     box-shadow: inset 0 0 30px rgba(227, 218, 201, 0.1);
+    position: relative;
+    z-index: 2;
 }
 .quote-box { 
     background: rgba(121, 58, 87, 0.02); 
@@ -545,7 +577,6 @@ h1 {
     <div class="dot" id="dot7"></div>
 </div>
 
-<!-- TELA 1 -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
@@ -559,7 +590,6 @@ h1 {
     </div>
 </div>
 
-<!-- TELA 2 -->
 <div class="card" id="tela2">
     <h1>Uma Mensagem Especial</h1>
     <div class="envelope-wrapper-premium" id="envelopeInteractiveContainer" onclick="abrirEnvelope()">
@@ -568,7 +598,7 @@ h1 {
     </div>
     <div class="cartaScrollerContainer">
         <div class="carta-scroller" id="cartaScroller">
-            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chico Bento somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é because é seu. Sua data, seu dia, sua vida, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
+            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chico Bento somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é porque é seu. Sua data, seu dia, sua vida, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
 
             Sabe, sempre que escuto Anavitória me lembro de você, mas uma música em específico por um trecho em específico, e por isso está tocando rs:
 
@@ -592,7 +622,6 @@ h1 {
     </div>
 </div>
 
-<!-- TELA 3 -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Cores de Admirar</h1>
@@ -608,7 +637,6 @@ h1 {
     <button class="btn-navigation" id="btnProximaTelaOrquidea" style="width: 100%; visibility: hidden;" onclick="navegarPara(4)">Ver nossas lembranças</button>
 </div>
 
-<!-- TELA 4 -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
@@ -653,7 +681,6 @@ h1 {
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma última caixinha...</button>
 </div>
 
-<!-- TELA 5 -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -672,7 +699,7 @@ h1 {
             <button class="carrossel-arrow arrow-next" onclick="mudarSlide(1)">❯</button>
         </div>
         <div class="texto-final">
-            Sei que é seu primeiro aniversario sem eles, e nem imagino como pode doer, isso não é para ser algo triste, mas sim uma lembrança de que eles sempre estarão com você, você foi a melhor que eles poderiam ter e querer e que nunca se esqueça disso.
+            Sei que é seu segundo aniversario sem eles, e que é muito recente e nem imagino como pode doer, isso não é para ser algo triste, mas sim uma lembrança de que eles sempre estarão com você, você foi a melhor que eles poderiam ter e querer e que nunca se esqueça disso.
             “Você foi a melhor que tivemos, nossos melhores momentos foram com você, e o amor mais puro que alguém poderia ter por nós. Te protegemos e amamos pra sempre mamain, feliz seu dia!”<br><span style="font-size:13px; font-weight:700; color: var(--roxo-orquidea); display:block; margin-top:15px;">Com amor: Jully e Xun...</span>
         </div>
         <div class="button-wrapper" style="padding-top:10px;">
@@ -681,7 +708,6 @@ h1 {
     </div>
 </div>
 
-<!-- TELA 6 -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
     <h1>Quiz para risadinhas</h1>
@@ -697,7 +723,6 @@ h1 {
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="avancarQuizOuFase()">Avançar Pergunta ➔</button>
 </div>
 
-<!-- TELA 7 -->
 <div class="card" id="tela7">
     <button class="btn-back" onclick="navegarPara(6)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos</h1>
