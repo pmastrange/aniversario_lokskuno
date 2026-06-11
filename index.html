@@ -271,14 +271,12 @@ h1 {
 </head>
 <body>
 
-<!-- Elemento Unificado de Áudio -->
 <audio id="trilhaSonora" src="aguaviva.m4a" loop preload="auto"></audio>
 <div class="music-bar" id="musicBar">
     <span class="music-status" id="musicStatus">🎵 ÁGUA-VIVA TOCOU</span>
     <button class="music-toggle-btn" onclick="controlarMusica()">⏸️</button>
 </div>
 
-<!-- Container Sincronizado de Linha Temporal -->
 <div class="progress-container">
     <div class="dot active" id="dot1"></div>
     <div class="dot" id="dot2"></div>
@@ -288,7 +286,6 @@ h1 {
     <div class="dot" id="dot6"></div>
 </div>
 
-<!-- TELA 1 -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
@@ -302,7 +299,6 @@ h1 {
     </div>
 </div>
 
-<!-- TELA 2 -->
 <div class="card" id="tela2">
     <h1>Uma Mensagem Especial</h1>
     <div class="envelope-container" id="envelopeWrapper">
@@ -352,7 +348,6 @@ h1 {
     </div>
 </div>
 
-<!-- TELA 3 -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Nossas Memórias 🎞️</h1>
@@ -370,7 +365,6 @@ h1 {
     <button class="btn-navigation" onclick="navegarPara(4)">Mais uma última caixinha... 🐾</button>
 </div>
 
-<!-- TELA 4 -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -395,7 +389,6 @@ h1 {
     </div>
 </div>
 
-<!-- TELA 5: QUIZ DINÂMICO E COMPILADO (SEM HARDCODING) -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para os pets</button>
     <h1>Teste de Sobrevivência 🧠</h1>
@@ -405,15 +398,13 @@ h1 {
         <div id="quizProgressCounter">Pergunta 1 de 5</div>
         <p id="quizQuestion" style="font-weight: 700; color: var(--texto-escuro); margin-bottom: 10px;"></p>
         <div class="quiz-options" id="quizOptionsContainer">
-            <!-- Injeção Assíncrona de Elementos via JS -->
-        </div>
+            </div>
         <p id="quizFeedback"></p>
     </div>
     
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="avancarQuizOuFase()">Avançar Pergunta ➔</button>
 </div>
 
-<!-- TELA 6 -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos 🎟️</h1>
@@ -450,7 +441,7 @@ const perguntasQuiz = [
     {
         question: "Se uma ligação de vídeo nossa durar mais de duas horas, qual é o desfecho mais provável?",
         options: [
-            { text: "Uma discussão madura sobre nossos problemas e conversas adultas.", isCorrect: false, feedback: "Corta o papo furado, quando foi a última vez que isso aconteceu? 😂" },
+            { text: "Uma discussão madura sobre nossos problemas e conversas adultas.", isCorrect: false, feedback: "Corta o papo furado, quando foi a última vez que isso aconteceu?" },
             { text: "Uma de nós falando a maior atrocidade existente sobre homens e mulheres para depois falarmos sobre a vida.", isCorrect: true, feedback: "Exatamente! A fofoca é mais importante rs" }
         ]
     },
@@ -471,15 +462,15 @@ const perguntasQuiz = [
     {
         question: "Qual é a velocidade média com que uma fofoca urgente é processada entre nós?",
         options: [
-            { text: "Levamos dias para digerir e responder com calma.", isCorrect: false, feedback: "Se fosse para demorar dias, a gente mandava uma carta pelo correio tradicional. ✉️" },
-            { text: "Ligação via face time e um compartilhar tela ligado.", isCorrect: true, feedback: "Histórico! Se a NASA usasse nossa velocidade de processamento de fofoca, o homem já estaria em Marte. 🚀" }
+            { text: "Levamos dias para digerir e responder com calma.", isCorrect: false, feedback: "Se fosse para demorar dias, a gente mandava uma carta pelo correio tradicional." },
+            { text: "Ligação via face time e um compartilhar tela ligado.", isCorrect: true, feedback: "Histórico! Se a NASA usasse nossa velocidade de processamento de fofoca, o homem já estaria em Marte." }
         ]
     },
     {
         question: "Qual a probabilidade de sex* com ex?",
         options: [
-            { text: "Nenhuma.", isCorrect: false, feedback: "Larga de ser mentirosa. 🙄" },
-            { text: "Talvez.", isCorrect: true, feedback: "Espero que a primeira resposta tenha sido nenhuma, safada sem vergonha! 😜" }
+            { text: "Nenhuma.", isCorrect: false, feedback: "Larga de ser mentirosa." },
+            { text: "Talvez.", isCorrect: true, feedback: "Espero que a primeira resposta tenha sido nenhuma, safada sem vergonha!" }
         ]
     }
 ];
@@ -544,10 +535,8 @@ function processarSelecaoOpcao(indexSelecionado, elementoBotao) {
         feedback.innerText = opcao.feedback;
         criarExplosao();
         
-        // Desativa outras opções para evitar cliques duplicados pós-acerto
         document.querySelectorAll(".quiz-options .quiz-btn").forEach(b => b.classList.add("disabled"));
         
-        // Define dinamicamente o texto do botão de transição de estado
         const btnAvancar = document.getElementById("btnIrVales");
         if (currentQuestionIndex === perguntasQuiz.length - 1) {
             btnAvancar.innerText = "Resgatar meus mimos! 🎟️";
