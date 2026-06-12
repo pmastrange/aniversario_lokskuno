@@ -372,7 +372,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 
 <div class="card" id="telaPegadinha">
     <h1>Controle de Segurança</h1>
-    <p class="italic">Antes de liberar o seu acesso, precisamos de uma confirmação honesta:</p>
+    <p class="italic">Antes de liberar o seu acesso, precisamos de uma confirmation honesta:</p>
     <p style="font-weight: 700; font-size: 16px; margin-bottom: 30px; color: var(--roxo-orquidea); line-height: 1.4;">
         Você confessa que é ranzinza, estressada e tem 1,40 de altura?
     </p>
@@ -411,7 +411,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
     <div class="cartaScrollerContainer">
         <div class="carta-scroller" id="cartaScroller">
-            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chico Bento somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é porque é seu. Sua data, seu dia, sua vida, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
+            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chico Bento somos duas antas e, infelizmente, não dá para controlar tudo a mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é because é seu. Sua data, seu dia, sua vida, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
             <br><br>
             Sabe, sempre que escuto Anavitória me lembro de você, mas uma música em específico por um trecho em específico, e por isso está tocando rs:
 
@@ -499,7 +499,12 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
         <h2 style="color: var(--roxo-orquidea); font-size: 20px; font-family: var(--serifa); font-weight: 500; margin-bottom: 15px;">Uma última caixinha... Hoje choro apenas de felicidade e boas lembranças.</h2>
-        <div class="lock" onclick="verificarTela4()">🔒</div>
+        <div class="lock" onclick="mostrarInputTela4()">🔒</div>
+        <div id="containerInputTela4" style="display: none; margin-top: 15px; margin-bottom: 15px;">
+            <input type="text" id="senhaTela4" placeholder="Digite a senha" style="padding: 10px; border: 1px solid var(--roxo-orquidea); border-radius: 4px; font-family: var(--sans); width: 80%; max-width: 250px; margin-bottom: 10px; text-align: center; color: var(--texto-escuro);">
+            <br>
+            <button class="btn-navigation" onclick="validarSenhaTela4()" style="padding: 10px 20px; font-size: 11px;">Desbloquear</button>
+        </div>
         <p class="italic" style="color: var(--roxo-orquidea); margin-top: 15px;">Dica: os seus dois amores mais puros...</p>
     </div>
     <div id="pet-aberto" style="display: none;">
@@ -513,7 +518,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
             <button class="carrossel-arrow arrow-next" onclick="mudarSlide(1)">❯</button>
         </div>
         <div class="texto-final">
-            Sei que é seu segundo aniversario sem eles, e que é muito recente e nem imagino como pode doer, isso não é para ser algo triste, mas sim uma lembrança de que eles sempre estarão com você, você foi a melhor que eles poderiam ter e querer e que nunca se esqueça disso.
+            Sei que é seu segundo aniversario sem eles, e que é muito recente e nem imagino como pode doer, isso não é para ser algo triste, mas sim uma lembrança de que eles sempre estarão com você, você foi a melhor que eles ponderiam ter e querer e que nunca se esqueça disso.
             “Você foi a melhor que tivemos, nossos melhores moments foram com você, e o amor mais puro que alguém poderia ter por nós. Te protegemos e amamos pra sempre mamain, feliz seu dia!”<br><span style="font-size:13px; font-weight:700; color: var(--roxo-orquidea); display:block; margin-top:15px;">Com amor: Jully e Xun...</span>
         </div>
         <div class="button-wrapper" style="padding-top:10px;">
@@ -728,6 +733,25 @@ function validarSenhaTela1() {
         setTimeout(() => navegarPara(2), 800);
     } else {
         alert("Senha incorreta! Espera seu aniversário! (ps: Chicão, site para mulherzinhas, para de tentar)😜");
+    }
+}
+
+/* 🔒 LÓGICA DA QUINTA TELA EMBUTIDA (CADEADO DOS PETS CORRIGIDO) */
+function mostrarInputTela4() {
+    document.getElementById('containerInputTela4').style.display = 'block';
+}
+
+function validarSenhaTela4() {
+    let senha = document.getElementById('senhaTela4').value;
+    if (!senha) return;
+    const hashesValidos = ["anVsbHlqdW4=", "anVsbHllanVu", "anVuZWx1bGx5", "anVuanVsbHk="];
+    if (hashesValidos.includes(btoa(senha.trim().toLowerCase()))) {
+        criarExplosao();
+        document.getElementById("pet-trancado").style.display = "none";
+        document.getElementById("pet-aberto").style.display = "block";
+        iniciarAutoplay();
+    } else {
+        alert("Senha incorreta! Pensa mais um pouquinho!");
     }
 }
 
