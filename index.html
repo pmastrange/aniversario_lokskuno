@@ -44,7 +44,7 @@ body {
 
 /* ENGENHARIA DE OCULTAÇÃO DAS TELAS DE ENTRADA */
 body:has(#telaPretaInicial.active) {
-    background: #000000 !important;
+    background: #ffd1dc !important;
 }
 body:has(#telaPretaInicial.active) .progress-container,
 body:has(#telaPretaInicial.active) .music-bar,
@@ -54,10 +54,10 @@ body:has(#telaPegadinha.active) .music-bar {
 }
 
 #telaPretaInicial.card.active {
-    background: #000000 !important;
+    background: #ffd1dc !important;
     border: none !important;
     box-shadow: none !important;
-    color: #ffffff !important;
+    color: var(--roxo-orquidea) !important;
 }
 
 /* Indicadores de Linha Temporal Minimalista */
@@ -291,6 +291,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     background: #fcfbfa; padding: 30px; border-radius: 8px; border: 1px solid rgba(227, 218, 201, 0.5); display: none; box-shadow: inset 0 0 30px rgba(227, 218, 201, 0.1);
 }
 .quote-box { background: rgba(121, 58, 87, 0.02); border-left: 2px solid var(--roxo-orquidea); padding: 20px; margin: 25px 0; font-style: italic; color: #443; }
+.carta-scroller { overflow-y: auto; }
 .carta-scroller::-webkit-scrollbar { width: 3px; }
 .carta-scroller::-webkit-scrollbar-thumb { background: rgba(121, 58, 87, 0.15); }
 
@@ -359,12 +360,16 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <div class="dot" id="dot8"></div>
 </div>
 
-<!-- 🔒 TELA 00: TELA PRETA INICIAL DO CADEADO -->
 <div class="card active" id="telaPretaInicial">
-    <div class="lock" onclick="verificarTelaPreta()">🔒</div>
+    <div class="lock" onclick="mostrarInputTelaPreta()">🔒</div>
+    <div id="containerInputTelaPreta" style="display: none; margin-top: 15px;">
+        <input type="text" id="senhaTelaPreta" placeholder="Digite a senha" style="padding: 10px; border: 1px solid var(--roxo-orquidea); border-radius: 4px; font-family: var(--sans); width: 80%; max-width: 250px; margin-bottom: 10px; text-align: center; color: var(--texto-escuro);">
+        <br>
+        <button class="btn-navigation" onclick="validarSenhaTelaPreta()" style="padding: 10px 20px; font-size: 11px;">Desbloquear</button>
+        <p id="feedbackTelaPreta" style="font-size: 13px; color: var(--roxo-orquidea); margin-top: 10px; font-weight: 600;"></p>
+    </div>
 </div>
 
-<!-- 🃏 TELA 0: A PEGADINHA DO BOTÃO FUGITIVO -->
 <div class="card" id="telaPegadinha">
     <h1>Controle de Segurança</h1>
     <p class="italic">Antes de liberar o seu acesso, precisamos de uma confirmação honesta:</p>
@@ -377,12 +382,16 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 1 -->
 <div class="card" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
     <div class="audio-hint">AUMENTE O SOM! 🔊</div>
-    <div class="lock" id="cadeado" onclick="verificarTela1()">🔒</div>
+    <div class="lock" id="cadeado" onclick="mostrarInputTela1()">🔒</div>
+    <div id="containerInputTela1" style="display: none; margin-top: 15px; margin-bottom: 15px;">
+        <input type="text" id="senhaTela1" placeholder="descubra a senha rs" style="padding: 10px; border: 1px solid var(--roxo-orquidea); border-radius: 4px; font-family: var(--sans); width: 80%; max-width: 250px; margin-bottom: 10px; text-align: center; color: var(--texto-escuro);">
+        <br>
+        <button class="btn-navigation" onclick="validarSenhaTela1()" style="padding: 10px 20px; font-size: 11px;">Desbloquear</button>
+    </div>
     <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--roxo-orquidea); font-weight: 700;">Toque para destravar</p>
     <div id="countdown"></div>
     <div style="font-size: 13px; color: #555;">
@@ -391,7 +400,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 2 -->
 <div class="card" id="tela2">
     <img src="enrolados.jpg" class="disney-cameo cameo-enrolados" alt="Rapunzel Cameo">
     <img src="olaf.jpg" class="disney-cameo cameo-olaf" alt="Olaf Cameo">
@@ -427,7 +435,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 3 -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Cores de Admirar</h1>
@@ -445,7 +452,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnProximaTelaOrquidea" style="width: 100%; visibility: hidden;" onclick="navegarPara(4)">Ver nossas lembranças</button>
 </div>
 
-<!-- TELA 4 -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
@@ -489,7 +495,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma última caixinha...</button>
 </div>
 
-<!-- TELA 5 -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -517,7 +522,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 6 -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
     <h1>Quiz para risadinhas</h1>
@@ -533,7 +537,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="avancarQuizOuFase()">Avançar Pergunta ➔</button>
 </div>
 
-<!-- TELA 7 -->
 <div class="card" id="tela7">
     <button class="btn-back" onclick="navegarPara(6)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos</h1>
@@ -541,8 +544,8 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     
     <div class="mural-vales">
         <div class="vale-card" onclick="claimVale(this)">
-            <h3>Vale Conversas liberadas com o Chico Bento</h3>
-            <p>Direito a debater as grandes fofocas e filosofias com a participação especial do Chicão.</p>
+            <h3>Vale Conversas liberadas no zap com o Chico Bento</h3>
+            <p>Direito a ler e dar risada.</p>
             <div class="carimbo-resgatado">Resgatado</div>
         </div>
         <div class="vale-card" onclick="claimVale(this)">
@@ -556,19 +559,17 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
             <div class="carimbo-resgatado">Resgatado</div>
         </div>
         <div class="vale-card" onclick="claimVale(this)">
-            <h3>Vale um Áudio de 10 Minutos Reclamando da Vida</h3>
-            <p>Espaço livre para desabafar sobre tudo, prometo ouvir em 1x e comentar ponto por ponto.</p>
+            <h3>Vale uma noite de menininhas</h3>
+            <p>Espaço livre para todas as breguices amigaveis com direito a doce, fofoca e filme (esse voucher é ilimitado rs).</p>
             <div class="carimbo-resgatado">Resgatado</div>
         </div>
     </div>
     <button class="btn-navigation" style="width:100%; margin-top:15px;" onclick="navegarPara(8)">Ver a última surpresa... 🤫</button>
 </div>
 
-<!-- 🎟️ TELA 8: O GRANDE FINALE (CADEADO MECÂNICO + RASPADINHA COM SISTEMA DE AUTO-DESTRUIÇÃO) -->
 <div class="card" id="tela8">
     <button class="btn-back" onclick="navegarPara(7)">← Voltar</button>
     
-    <!-- Sub-estágio 1: O Cadeado Combinatório -->
     <div id="wrapperCadeadoMecanico">
         <h1>Um Último Bloqueio...</h1>
         <p class="italic">Dica: seu dia especial</p>
@@ -601,7 +602,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         <button class="btn-navigation" style="width:100%; margin-top:10px;" onclick="validarCadeadoMecanico()">Girar Segredo 🔐</button>
     </div>
 
-    <!-- Sub-estágio 2: A Raspadinha Corrigida e Cartinha Otimizada -->
     <div id="wrapperRaspadinhaContent" style="display: none;">
         <h1>Sua Lembrança Musical 🎵</h1>
         <p class="italic" style="color: #b33939; font-weight: 700; margin-bottom: 10px;">
@@ -610,14 +610,12 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         
         <div class="scratch-layout-grid">
             <div class="scratch-container-box">
-                <!-- URL Atualizada Funcionando Perfeitamente -->
                 <a href="https://open.spotify.com/playlist/3fhl0NZ3Tg7ipf1AczB8wg?si=pmiFw11yQNWMwGIsyyXxaQ&pi=BRCY3zURQz2Gm" target="_blank" style="display:block; width:100%; height:100%;">
                     <img src="album.jpeg" class="scratch-under-image" alt="Álbum Especial">
                 </a>
                 <canvas id="scratchCanvas" width="280" height="280"></canvas>
             </div>
             
-            <!-- Papel de Carta Decorado Vintage -->
             <div class="scratch-text-message">
                 Sei que foi a coisa mais besta que você já viu, mas foi a forma mais "próxima" (do meu jeitinho) de te mostrar o quanto você é especial, ao invés de apenas um textinho.<br><br>
                 Que jamais deixe essa data passar em branco. Obrigada por ser você, por tudo o que faz por nós e por todos que te amam. Seu coração é puro, e poder te chamar de amiga é um privilégio.<br><br>
@@ -627,6 +625,14 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
                 da sua Best. ❤️
             </div>
         </div>
+    </div>
+</div>
+
+<div id="popupBrilhante" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
+    <div style="background: linear-gradient(135deg, #fff0f3, #ffd1dc); padding: 40px; border-radius: 20px; border: 4px solid var(--roxo-orquidea); box-shadow: 0 0 30px rgba(121, 58, 87, 0.6); text-align: center; max-width: 400px; width: 90%;">
+        <h2 style="color: var(--roxo-orquidea); font-family: var(--serifa); font-size: 28px; margin-bottom: 20px; letter-spacing: 1px; font-weight: bold;">💡 Dica Especial:</h2>
+        <p style="font-size: 22px; font-weight: 700; color: #fff; background: var(--roxo-orquidea); padding: 15px; border-radius: 10px; box-shadow: 0 5px 15px rgba(121,58,87,0.3); text-transform: uppercase; letter-spacing: 1px;">CAMPINAS GAROUTA</p>
+        <button class="btn-navigation" onclick="fecharPopupBrilhante()" style="margin-top: 25px; padding: 12px 30px;">Entendi!</button>
     </div>
 </div>
 
@@ -649,15 +655,15 @@ const perguntasQuiz = [
     {
         question: "Se fôssemos presas juntas em um rolê esquisito criado pelo 'Vale Rolê Aleatório', quem seria você nessa situação?",
         options: [
-            { text: "A mente brilhante que architectou o plano e quase conseguiu nos salvar.", isCorrect: false, feedback: "Menos, bem menos vc teria dado a ideia e ainda estaria bêbada rsrs. 🤫" },
-            { text: "A que confessaria absolutamente tudo para o policial em troca de uma água, um lanche e uma soneca.", isCorrect: true, feedback: "Pois é! Lealdade tem limite, e o limite é a fome e o desespero de ser presa kkkk!" }
+            { text: "A mente brilhante que arquitetou o plano e quase conseguiu nos salvar.", isCorrect: false, feedback: "Menos, bem menos vc teria dado a ideia e ainda estaria bêbada rsrs. 🤫" },
+            { text: "A que confessaria absolutamente tudo para o policial em troca de uma água, um lanche e uma soneca.", isCorrect: true, feedback: "Pois é! Alcool segue sendo seu maior vilão kkkk!" }
         ]
     },
     {
-        question: "Qual é a velocidade média com que uma fofoca urgente é processada entre nós?",
+        question: "Qual a chance de inventarmos uma mentira enorme para alguém só pra salvar a pele da outra?",
         options: [
-            { text: "Levamos dias para digerir e responder com calma.", isCorrect: false, feedback: "Se fosse para demorar dias, a gente mandava uma carta pelo correio tradicional." },
-            { text: "Ligação via face time e um compartilhar tela ligado.", isCorrect: true, feedback: "Proibido segredos entre as bests." }
+            { text: "Zero.", isCorrect: false, feedback: "Mais fingir de morta do que contar algo sigiloso entre nós." },
+            { text: "Altissima.", isCorrect: true, feedback: "Ouviu a frase -Não mente..._ já prepara a maior mentira já inventada." }
         ]
     },
     {
@@ -683,20 +689,45 @@ let tentativasTelaPreta = 0;
 let comboLockDigits = [0, 0, 0, 0];
 const musica = document.getElementById('trilhaSonora');
 
-/* 🔒 LÓGICA DA TELA PRETA INICIAL */
-function verificarTelaPreta() {
-    let senha = prompt("Digite a senha para entrar: 🔑");
+/* 🔒 LÓGICA DA PRIMEIRA TELA EMBUTIDA (ROSA BEBÊ) */
+function mostrarInputTelaPreta() {
+    document.getElementById('containerInputTelaPreta').style.display = 'block';
+}
+
+function validarSenhaTelaPreta() {
+    let senha = document.getElementById('senhaTelaPreta').value;
     if (!senha) return;
-    if (senha.trim().toLowerCase() === "vitor") {
+    if (senha.trim().toLowerCase() === "shouganai") {
         document.getElementById('telaPretaInicial').classList.remove('active');
         document.getElementById('telaPegadinha').classList.add('active');
     } else {
         tentativasTelaPreta++;
         if (tentativasTelaPreta === 1) {
-            alert("Dica 1: curiosidade matou o gato");
+            document.getElementById('feedbackTelaPreta').innerText = "Dica 1: nossa palavra favorita";
         } else {
-            alert("dica 2: pessoa que sua melhor amiga mais odeia");
+            document.getElementById('popupBrilhante').style.display = 'flex';
         }
+    }
+}
+
+function fecharPopupBrilhante() {
+    document.getElementById('popupBrilhante').style.display = 'none';
+}
+
+/* 🔒 LÓGICA DA TERCEIRA TELA EMBUTIDA (SEGUNDO CADEADO) */
+function mostrarInputTela1() {
+    document.getElementById('containerInputTela1').style.display = 'block';
+}
+
+function validarSenhaTela1() {
+    let senha = document.getElementById('senhaTela1').value;
+    if (!senha) return;
+    if (btoa(senha.trim().toLowerCase()) === "cGFsb21hbWluaGFtZWxob3JhbWlnYQ==") {
+        document.getElementById("cadeado").innerHTML = "🔓";
+        musica.play().catch(e => console.log("Áudio pendente de interação."));
+        setTimeout(() => navegarPara(2), 800);
+    } else {
+        alert("Senha incorreta! Espera seu aniversário! (ps: Chicão, site para mulherzinhas, para de tentar)😜");
     }
 }
 
@@ -833,32 +864,6 @@ function claimVale(element) {
     }
 }
 
-function verificarTela1() {
-    let senha = prompt("Digite a chave para abrir o cadeado: 🔑");
-    if (!senha) return;
-    if (btoa(senha.trim().toLowerCase()) === "cGFsb21hbWluaGFtZWxob3JhbWlnYQ==") {
-        document.getElementById("cadeado").innerHTML = "🔓";
-        musica.play().catch(e => console.log("Áudio pendente de interação."));
-        setTimeout(() => navegarPara(2), 800);
-    } else {
-        alert("Senha incorreta! Espera seu aniversário! (ps: Chicão, site para mulherzinhas, para de tentar)😜");
-    }
-}
-
-function verificarTela4() {
-    let senha = prompt("Digite a senha secreta: 🔑");
-    if (!senha) return;
-    const hashesValidos = ["anVsbHlqdW4=", "anVsbHllanVu", "anVuZWx1bGx5", "anVuanVsbHk="];
-    if (hashesValidos.includes(btoa(senha.trim().toLowerCase()))) {
-        criarExplosao();
-        document.getElementById("pet-trancado").style.display = "none";
-        document.getElementById("pet-aberto").style.display = "block";
-        iniciarAutoplay();
-    } else {
-        alert("Senha incorreta! Pensa mais um pouquinho!");
-    }
-}
-
 /* 🔓 MOTOR DO CADEADO COMBINATÓRIO MECÂNICO */
 function rolarDigito(index, direcao) {
     comboLockDigits[index] = (comboLockDigits[index] + direcao + 10) % 10;
@@ -877,7 +882,7 @@ function validarCadeadoMecanico() {
     }
 }
 
-/* 🎫 MOTOR DE RENDERIZAÇÃO DA RASPADINHA COM AUTO-DESTRUIÇÃO (ANTI-BLOCKING) */
+/* 🎫 MOTOR DE RENDERIZAÇÃO DA RASPADINHA COM AUTO-DESTRUIÇÃO */
 function montarMecanismoRaspadinha() {
     const canvas = document.getElementById("scratchCanvas");
     if (!canvas) return;
@@ -908,7 +913,6 @@ function montarMecanismoRaspadinha() {
         ctx.fill();
     }
 
-    // Varre a transparência do Canvas para destruí-lo automaticamente ao atingir o limite
     function checkScratchPercentage() {
         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const pixels = imageData.data;
@@ -918,7 +922,6 @@ function montarMecanismoRaspadinha() {
             if (pixels[i] === 0) transparentPixels++;
         }
         
-        // Se 40% da área foi descoberta, o canvas desaparece dando foco ao link nativo
         if (transparentPixels > (pixels.length / 4) * 0.40) {
             canvas.style.transition = "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
             canvas.style.opacity = "0";
@@ -969,13 +972,15 @@ document.addEventListener('mousemove', (e) => {
     document.body.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
 });
 
+/* ❄️ CHUVA ATUALIZADA: OLAF E ENROLADOS CAINDO */
+const elementosCaindo = ["⛄", "☀️"];
 for(let i=0; i<25; i++){
     const petal = document.createElement("div");
     petal.classList.add("petal");
-    petal.innerHTML = "🌸";
+    petal.innerHTML = elementosCaindo[i % elementosCaindo.length];
     petal.style.left = Math.random() * 100 + "vw";
     if(Math.random() > 0.4) petal.style.filter = "hue-rotate(45deg) saturate(1.2)";
-    petal.style.fontSize = (12 + Math.random() * 12) + "px";
+    petal.style.fontSize = (18 + Math.random() * 12) + "px";
     petal.style.animationDuration = (10 + Math.random() * 12) + "s";
     document.body.appendChild(petal);
 }
