@@ -273,7 +273,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 }
 .envelope-wrapper-premium:hover .purple-wax-seal { transform: translate(-50%, -46%) scale(1.06); }
 .carta-scroller {
-    width: 100%; max-height: 380px; overflow-y: auto; text-align: left; font-family: 'Georgia', serif; font-size: 14.5px; line-height: 1.9; color: #333;
+    width: 100%; max-height: 380px; overflow-y: auto; text-align: center; /* ALTERADO: Centralizar o texto da carta */ font-family: 'Georgia', serif; font-size: 14.5px; line-height: 1.9; color: #333;
     background: #fcfbfa; padding: 30px; border-radius: 8px; border: 1px solid rgba(227, 218, 201, 0.5); display: none; box-shadow: inset 0 0 30px rgba(227, 218, 201, 0.1);
 }
 .quote-box { background: rgba(121, 58, 87, 0.02); border-left: 2px solid var(--roxo-orquidea); padding: 20px; margin: 25px 0; font-style: italic; color: #443; }
@@ -352,15 +352,53 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     border-radius: 8px; display: flex; justify-content: center; align-items: center; gap: 20px; padding: 15px; position: relative;
 }
 .truco-cards-container { display: flex; justify-content: center; gap: 12px; width: 100%; margin-top: 5px; }
+
+/* ALTERADO: Estilo para cartas de baralho reais */
 .truco-card-item {
     width: 70px; height: 100px; background: #fff; border: 2px solid #ccc; border-radius: 8px;
     display: flex; flex-direction: column; justify-content: space-between; padding: 6px; font-weight: 800;
-    font-size: 15px; cursor: pointer; box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: all 0.25s ease; user-select: none;
+    font-size: 24px; /* Aumentado para o número */ cursor: pointer; box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: all 0.25s ease; user-select: none;
+    font-family: Arial, sans-serif; /* Fonte padrão para cartas */
+    position: relative;
 }
+
+/* Criar o naipe grande no centro */
+.truco-card-item::after {
+    content: attr(data-suit);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    opacity: 0.8;
+}
+
+/* Naipe pequeno no canto */
+.card-corner-suit {
+    font-size: 16px;
+    align-self: flex-start;
+    margin-top: -5px;
+}
+
+/* Cores dos naipes */
+.truco-card-item[data-suit="♥️"], .truco-card-item[data-suit="♦️"] {
+    color: #e44145; /* Vermelho padrão de cartas */
+}
+.truco-card-item[data-suit="♠️"], .truco-card-item[data-suit="♣️"] {
+    color: #2c3e2f; /* Preto/Escuro padrão */
+}
+
 .truco-card-item:hover:not(.played) { transform: translateY(-12px) rotate(-2deg); border-color: #ffd700; box-shadow: 0 12px 20px rgba(255,215,0,0.3); }
 .truco-card-item.played { opacity: 0; pointer-events: none; transform: scale(0.8); }
 .truco-card-item.on-table { animation: cardDrop 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards; cursor: default; }
-.truco-card-item.ai-card { background: linear-gradient(135deg, #b71c1c, #880e4f); border-color: #fff; color: #fff; }
+
+/* ALTERADO: Verso da carta para IA */
+.truco-card-item.ai-card {
+    background: repeating-linear-gradient(45deg, #b71c1c, #b71c1c 10px, #880e4f 10px, #880e4f 20px);
+    border-color: #fff; color: transparent;
+}
+.truco-card-item.ai-card::after, .truco-card-item.ai-card .card-corner-suit { display: none; }
+
 
 @keyframes cardDrop { from { opacity: 0; transform: translateY(-30px) scale(0.6); } to { opacity: 1; transform: translateY(0) scale(1); } }
 #trucoFeedbackStatus { font-size: 13.5px; font-weight: 700; min-height: 38px; color: #fff; text-align: center; text-shadow: 0 1px 3px rgba(0,0,0,0.6); line-height: 1.4; padding: 0 10px; }
@@ -421,7 +459,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <div class="dot" id="dot10"></div>
 </div>
 
-<!-- 🌸 TELA 1: PORTAL ROSA INICIAL (PONTO DE ENTRADA DO SITE) -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
@@ -439,14 +476,12 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     
     <div style="font-size: 13px; color: #555;">
         <div style="font-weight:700; color: var(--roxo-orquidea); letter-spacing: 0.5px; text-transform: uppercase; font-size: 11px; margin-bottom: 2px;">Brasil ↔ Japão</div>
-        <!-- RESPONSIVIDADE CORRIGIDA: Margem controlada para evitar que o texto fique em cima do cadeado -->
         <div class="italic" style="margin-top: 80px; font-size: 13px;">A chave será entregue no seu aniversário</div>
     </div>
     
     <button class="btn-navigation" style="margin-top: 25px; font-size: 10px; background: rgba(121,58,87,0.1); color: var(--roxo-orquidea); box-shadow: none; border: 1px dashed var(--roxo-orquidea);" onclick="navegarPara(0)">Pedir ajuda ao Balão 🎈</button>
 </div>
 
-<!-- 🎈 TELA 0: BALÃO PINHATA (CHAMADO A PARTIR DA TELA ROSA) -->
 <div class="card" id="tela0">
     <button class="btn-back" onclick="navegarPara(1)">← Voltar ao Cadeado Rosa</button>
     <h1>Controle de Segurança 🎈</h1>
@@ -475,7 +510,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 2: CARTA EMOCIONAL -->
 <div class="card" id="tela2">
     <img src="enrolados.jpg" class="disney-cameo cameo-enrolados" alt="Rapunzel Cameo">
     <img src="olaf.jpg" class="disney-cameo cameo-olaf" alt="Olaf Cameo">
@@ -487,7 +521,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
     <div class="cartaScrollerContainer">
         <div class="carta-scroller" id="cartaScroller">
-            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chico Bento somos duas antas e, infelizmente, não dá para controlar tudo a quase dezoito mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é porque é seu. Sua data, seu dia, sua vida, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
+            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chico Bento somos duas antas e, infelizmente, não dá para controlar tudo a quase dezoito mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é porque é seu. Sua data, seu dia, sua life, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
             <br><br>
             Sabe, sempre que escuto Anavitória me lembro de você, mas uma música em específico por um trecho em específico, e por isso está tocando rs:
 
@@ -502,7 +536,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
                 Que me conhece assim tão bem existe."
             </div>
 
-            Se as pessoas têm dúvidas se esse negócio de alma gêmea realmente existe, eu não tenho nenhuma: você é a minha alma gêmea na amizade. Você é a mulher mais forte que eu já conheci. Eu sei o quanto a vida já foi dura com você, sei de tantas coisas tristes que você teve que enfrentar e que pouquíssimas pessoas no mundo teriam estrutura para aguentar. Mas o que me deixa completamente sem chão, de tanto orgulho e admiração, é ver como você sempre deu um jeito de juntar os seus pedacinos e se reerguer ainda mais gigante em cada uma dessas vezes. Estar com você alivia todas as angústias que tenho porque sua amizade é leve. Você tem uma inteligência admirável, um coração que quase ninguém merece e, definitivamente, é o top 1 de mulheres mais bonitas que eu conheço.
+            Se as pessoas têm dúvidas se esse negócio de alma gêmea realmente existe, eu não tenho nenhuma: você é a minha alma gêmea na amizade. Você é a mulher mais forte que eu já conheci. Eu sei o quanto a life já foi dura com você, sei de tantas coisas tristes que você teve que enfrentar e que pouquíssimas pessoas no mundo teriam estrutura para aguentar. Mas o que me deixa completamente sem chão, de tanto orgulho e admiração, é ver como você sempre deu um jeito de juntar os seus pedacinos e se reerguer ainda mais gigante em cada uma dessas vezes. Estar com você alivia todas as angústias que tenho porque sua amizade é leve. Você tem uma inteligência admirável, um coração que quase ninguém merece e, definitivamente, é o top 1 de mulheres mais bonitas que eu conheço.
             <br><br>
             Poderia passar horas falando tudo que amo em você e tudo que torna você tão única. Ter sua amizade é um dos maiores privilégios que eu poderia ter e, realmente, rezei muito para que o nosso retorno fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas isso jamais vai abalar nossa amizade novamente. O passado nos trouxe aprendizados, mas hoje eu tenho a certeza absoluta de que não cometo os mesmos erros com você. Nosso laço agora é outro, muito mais forte.
             <br><br>
@@ -513,7 +547,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 3: ORQUÍDEA INTERATIVA -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Cores de Admirar</h1>
@@ -531,7 +564,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnProximaTelaOrquidea" style="width: 100%; visibility: hidden;" onclick="navegarPara(4)">Ver nossas lembranças</button>
 </div>
 
-<!-- TELA 4: MOSAICO DE FOTOS (RESPONSIVIDADE GARANTIDA - SEM CORTES) -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
@@ -554,7 +586,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         </div>
 
         <div class="mosaico-centerpiece-text">
-            <h2>"Feliz aniversário, obrigada por partilhar a vida comigo"</h2>
+            <h2>"Feliz aniversário, obrigada por partilhar a life comigo"</h2>
             <p>pieces of my heart</p>
         </div>
 
@@ -575,7 +607,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma última caixinha...</button>
 </div>
 
-<!-- TELA 5: SESSÃO DOS PETS -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -613,7 +644,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 6: QUIZ DIVERTIDO -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
     <h1>Quiz para risadinhas 🎮</h1>
@@ -632,7 +662,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="avancarQuizOuFase()">Avançar Pergunta ➔</button>
 </div>
 
-<!-- TELA 7: VALES VALIOSOS -->
 <div class="card" id="tela7">
     <button class="btn-back" onclick="navegarPara(6)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos</h1>
@@ -663,7 +692,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:15px;" onclick="navegarPara(8)">Ver a última surpresa... 🤫</button>
 </div>
 
-<!-- TELA 8: SEGREDO NUMÉRICO E RASPADINHA -->
 <div class="card" id="tela8">
     <button class="btn-back" onclick="navegarPara(7)">← Voltar</button>
     
@@ -726,16 +754,14 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 9: AGRADECIMENTO FINAL -->
 <div class="card" id="tela9">
     <h1>Pronto! 💜</h1>
     <p class="texto-final" style="margin-top: 15px; line-height: 1.8;">
-        Espero que tenha gostado e que tenha sido algo próximo do que você esperava, sua vida vale muito, sua amizade é meu pilar. Obrigada por ser você e compartilhar a vida comigo, te amo big diva
+        Espero que tenha gostado e que tenha sido algo próximo do que você esperava, sua life vale muito, sua amizade é meu pilar. Obrigada por ser você e compartilhar a life comigo, te amo big diva
     </p>
     <button class="btn-navigation" style="width:100%; margin-top:20px;" onclick="navegarPara(10)">Jogar Truco Extra! 🃏</button>
 </div>
 
-<!-- 🃏 TELA 10: MINI-JOGO DE TRUCO INTERATIVO IMPECÁVEL -->
 <div class="card" id="tela10">
     <button class="btn-back" onclick="navegarPara(9)">← Voltar</button>
     <h1>Desafio do Truco! 🃏</h1>
@@ -755,8 +781,11 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #fff; font-weight: bold; opacity: 0.8; margin-top: 5px;">Suas Cartas</div>
         <div class="truco-cards-container" id="trucoPlayerCardsBox"></div>
     </div>
-    <button class="btn-navigation" id="btnResetTruco" style="width:100%; display:none; margin-top:10px;" onclick="resetarPartidaTruco()">Jogar Novamente 🔄</button>
-    <button class="btn-navigation" style="width:100%; margin-top:15px; background-color:#555;" onclick="reiniciarJornada()">Reiniciar Jornada Completa</button>
+    
+    <div id="trucoResetContainer" style="display:none; width:100%; margin-top:15px; flex-direction:column; gap:10px;">
+        <button class="btn-navigation" id="btnResetTruco" onclick="resetarPartidaTruco()">Reiniciar Partida 🔄</button>
+        <button class="btn-navigation" style="background-color:#555;" onclick="reiniciarJornada()">Reiniciar Jornada Completa</button>
+    </div>
 </div>
 
 <script>
@@ -914,6 +943,8 @@ function reiniciarJornada() {
     document.getElementById("pet-aberto").style.display = "none";
     document.getElementById("wrapperCadeadoMecanico").style.display = "block";
     document.getElementById("wrapperRaspadinhaContent").style.display = "none";
+    // Esconder botões de reset do truco se estiverem visíveis
+    document.getElementById('trucoResetContainer').style.display = 'none';
     navegarPara(1);
 }
 
@@ -1120,13 +1151,25 @@ function montarMecanismoRaspadinha() {
 // ==========================================
 // 🃏 ENGINE PREMIUM: JOGO DE TRUCO REATIVO
 // ==========================================
+// ALTERADO: Lógica reescrita para turnos fluidos e cartas reais
 let trucoState = {
     playerScore: 0,
     aiScore: 0,
-    rodadaIndex: 1,
-    historicoRodadas: [], // Guarda 'V' ou 'D'
+    rodadaIndex: 1, // 1, 2, 3 correspondendo as quedas
+    historicoRodadas: [], // Guarda 'V' ou 'D' para as quedas
     playerHand: [],
-    aiHand: []
+    aiHand: [],
+    playerCartaTocada: null, // Índice da carta que o jogador escolheu
+    fase: 'esperandoPlayer' // esperandoPlayer, iaPensando, resultadoQueda, fimJogo
+};
+
+const baralhoImagens = {
+    'Zap ♣️': { numero: '4', naipe: '♣️', css: 'zap' },
+    '7 Copas ❤️': { numero: '7', naipe: '❤️', css: 'copas' },
+    'Espadilha ♠️': { numero: 'A', naipe: '♠️', css: 'espadilha' },
+    '4 Ouros ♦️': { numero: '4', naipe: '♦️', css: 'ouros' },
+    'K Espadas ♠️': { numero: 'K', naipe: '♠️', css: 'ia' },
+    '7 Ouros ♦️': { numero: '7', naipe: '♦️', css: 'ia' }
 };
 
 function inicializarJogoTruco() {
@@ -1134,21 +1177,24 @@ function inicializarJogoTruco() {
     trucoState.aiScore = 0;
     trucoState.rodadaIndex = 1;
     trucoState.historicoRodadas = [];
-    document.getElementById('btnResetTruco').style.display = 'none';
+    trucoState.playerCartaTocada = null;
+    trucoState.fase = 'esperandoPlayer';
+
+    document.getElementById('trucoResetContainer').style.display = 'none';
     document.getElementById('trucoRoundsBox').innerText = "Quedas: ⚪ ⚪ ⚪";
     
     // Mão premium da Paloma (Imbatível para diversão garantida)
     trucoState.playerHand = [
-        { nome: "Zap ♣️", valor: 10, frase: "CHAMA QUE É ZAP, MARRECO!" },
-        { nome: "7 Copas ❤️", valor: 9, frase: "Meio Palo na mesa!" },
-        { nome: "Espadilha ♠️", valor: 8, frase: "Respeita a espadilha da diva!" }
+        { nome: "Zap ♣️", valor: 10, frase: "CHAMA QUE É ZAP, MARRECO!", jogada: false },
+        { nome: "7 Copas ❤️", valor: 9, frase: "Meio Palo na mesa!", jogada: false },
+        { nome: "Espadilha ♠️", valor: 8, frase: "Respeita a espadilha da diva!", jogada: false }
     ];
     
     // Mão da Inteligência Artificial
     trucoState.aiHand = [
-        { nome: "4 Ouros ♦️", valor: 1, reacao: "Eita, joguei fora kkkk" },
-        { nome: "K Espadas ♠️", valor: 4, reacao: "Vou tentar carregar essa queda!" },
-        { nome: "7 Ouros ♦️", valor: 5, reacao: "Truco! Ah não, pera..." }
+        { nome: "4 Ouros ♦️", valor: 1, reacao: "Eita, joguei fora kkkk", jogada: false },
+        { nome: "K Espadas ♠️", valor: 4, reacao: "Vou tentar carregar essa queda!", jogada: false },
+        { nome: "7 Ouros ♦️", valor: 5, reacao: "Truco! Ah não, pera...", jogada: false }
     ];
     
     renderizarCartasMaoTruco();
@@ -1157,61 +1203,127 @@ function inicializarJogoTruco() {
     atualizarPlacarInterfaceTruco();
 }
 
+// ALTERADO: Renderizar cartas de baralho reais
+function criarElementoCarta(nome, visivel = true) {
+    const cElem = document.createElement('div');
+    if (!visivel) {
+        cElem.className = 'truco-card-item ai-card';
+        return cElem;
+    }
+
+    const info = baralhoImagens[nome];
+    cElem.className = 'truco-card-item';
+    cElem.setAttribute('data-suit', info.naipe);
+    
+    const smallSuit = document.createElement('span');
+    smallSuit.className = 'card-corner-suit';
+    smallSuit.innerText = info.naipe;
+
+    const number = document.createElement('span');
+    number.innerText = info.numero;
+
+    cElem.appendChild(smallSuit);
+    cElem.appendChild(number);
+    return cElem;
+}
+
 function renderizarCartasMaoTruco() {
     const box = document.getElementById('trucoPlayerCardsBox');
     box.innerHTML = "";
     trucoState.playerHand.forEach((card, idx) => {
-        const cElem = document.createElement('div');
-        cElem.className = 'truco-card-item';
+        if (card.jogada) return; // Não renderizar cartas já jogadas
+        const cElem = criarElementoCarta(card.nome);
         cElem.id = `trucoPlayerCard-${idx}`;
-        cElem.innerHTML = `<span>${card.nome.split(' ')[0]}</span><span style="align-self:flex-end; font-size: 18px;">${card.nome.split(' ')[1]}</span>`;
         cElem.onclick = () => processarJogadaRodadaTruco(idx);
         box.appendChild(cElem);
     });
 }
 
+// ALTERADO: Lógica fluida de turnos
 function processarJogadaRodadaTruco(playerCardIdx) {
+    if (trucoState.fase !== 'esperandoPlayer') return;
+
     const pCard = trucoState.playerHand[playerCardIdx];
-    const cardElement = document.getElementById(`trucoPlayerCard-${playerCardIdx}`);
-    if (cardElement.classList.contains('played')) return;
+    pCard.jogada = true;
+    trucoState.playerCartaTocada = playerCardIdx;
+    trucoState.fase = 'iaPensando';
+
+    // Esconder a carta da mão imediatamente (efeito visual de jogar)
+    document.getElementById(`trucoPlayerCard-${playerCardIdx}`).classList.add('played');
     
-    cardElement.classList.add('played');
     const mesa = document.getElementById('trucoMesaCartas');
     document.getElementById('trucoPlaceholderText').style.display = 'none';
     
-    // Exibe sua carta na mesa
-    mesa.innerHTML = `<div class="truco-card-item on-table"><span>${pCard.nome.split(' ')[0]}</span><span style="align-self:flex-end; font-size:18px;">${pCard.nome.split(' ')[1]}</span></div>`;
-    document.getElementById('trucoFeedbackStatus').innerText = `Você jogou ${pCard.nome}! A Best está pensando...`;
+    // Exibe sua carta na mesa com animação
+    const cartaMesa = criarElementoCarta(pCard.nome);
+    cartaMesa.classList.add('on-table');
+    mesa.innerHTML = ''; // Limpa mesa anterior
+    mesa.appendChild(cartaMesa);
     
-    setTimeout(() => {
-        // IA joga a carta correspondente à rodada
-        const aiCard = trucoState.aiHand[trucoState.rodadaIndex - 1];
-        mesa.innerHTML += `<div class="truco-card-item on-table ai-card"><span>${aiCard.nome.split(' ')[0]}</span><span style="align-self:flex-end; font-size:18px; color:white;">${aiCard.nome.split(' ')[1]}</span></div>`;
-        
-        let resultadoTexto = "";
-        if (pCard.valor > aiCard.valor) {
-            trucoState.playerScore++;
-            trucoState.historicoRodadas.push('V');
-            resultadoTexto = `Você ganhou a queda! ${pCard.frase}`;
-            criarExplosao();
-        } else {
-            trucoState.aiScore++;
-            trucoState.historicoRodadas.push('D');
-            resultadoTexto = `A Best ganhou essa queda! "${aiCard.reacao}"`;
-        }
-        
-        atualizarIndicadoresQuedas();
-        trucoState.rodadaIndex++;
-        
-        document.getElementById('trucoFeedbackStatus').innerText = resultadoTexto;
-        atualizarPlacarInterfaceTruco();
-        
-        setTimeout(() => {
-            checarCondicaoFimDeJogoTruco();
-        }, 1200);
-        
-    }, 1000);
+    // Pequena mensagemzinha
+    document.getElementById('trucoFeedbackStatus').innerText = `Você jogou ${pCard.nome}! ${pCard.frase}`;
+
+    // IA "pensa" e joga
+    setTimeout(iaTurno, 1500); 
 }
+
+function iaTurno() {
+    const aiCard = trucoState.aiHand[trucoState.rodadaIndex - 1]; // IA joga em ordem fixa pra Paloma ganhar
+    aiCard.jogada = true;
+
+    const mesa = document.getElementById('trucoMesaCartas');
+    // Adiciona carta da IA na mesa com animação
+    const cartaIa = criarElementoCarta(aiCard.nome);
+    cartaIa.classList.add('on-table', 'ai-card-revealed'); // ia-card-revealed apenas se quiser diferenciar estilo
+    mesa.appendChild(cartaIa);
+
+    document.getElementById('trucoFeedbackStatus').innerText = `Best pensou... e jogou ${aiCard.nome}. "${aiCard.reacao}"`;
+
+    // Calcular resultado e ir para próxima queda
+    trucoState.fase = 'resultadoQueda';
+    setTimeout(processarResultadoQueda, 1200);
+}
+
+function processarResultadoQueda() {
+    const pCard = trucoState.playerHand[trucoState.playerCartaTocada];
+    const aiCard = trucoState.aiHand[trucoState.rodadaIndex - 1];
+
+    let quedaVencida = false;
+    if (pCard.valor > aiCard.valor) {
+        trucoState.playerScore++;
+        trucoState.historicoRodadas.push('V');
+        quedaVencida = true;
+        document.getElementById('trucoFeedbackStatus').innerText = "Você ganhou a queda! 💜";
+        criarExplosao();
+    } else {
+        // Paloma nunca perde, mas o código tá aqui rs
+        trucoState.aiScore++;
+        trucoState.historicoRodadas.push('D');
+        document.getElementById('trucoFeedbackStatus').innerText = "Best ganhou a queda... Sorte.";
+    }
+
+    atualizarIndicadoresQuedas();
+    atualizarPlacarInterfaceTruco();
+
+    // Limpar mesa e preparar próxima rodada ou fim de jogo
+    setTimeout(() => {
+        // Limpar cartas da mesa
+        document.getElementById('trucoMesaCartas').innerHTML = `<span style="color: rgba(255,255,255,0.4); font-size: 12px;" id="trucoPlaceholderText">Rodada ${trucoState.rodadaIndex + 1}</span>`;
+        
+        // Remover cartas ocultadas da mão para limpar espaço
+        renderizarCartasMaoTruco(); 
+
+        if (checarCondicaoFimDeJogoTruco()) {
+            trucoState.fase = 'fimJogo';
+        } else {
+            trucoState.rodadaIndex++;
+            trucoState.fase = 'esperandoPlayer';
+            const msgVez = quedaVencida ? "Você ganhou a anterior, joga!" : "Sua vez! Manda a boa!";
+            document.getElementById('trucoFeedbackStatus').innerText = msgVez;
+        }
+    }, 1500);
+}
+
 
 function atualizarIndicadoresQuedas() {
     const markers = trucoState.historicoRodadas.map(res => res === 'V' ? '🟢' : '🔴');
@@ -1224,23 +1336,30 @@ function atualizarPlacarInterfaceTruco() {
 }
 
 function checarCondicaoFimDeJogoTruco() {
-    const btnReset = document.getElementById('btnResetTruco');
+    const containerReset = document.getElementById('trucoResetContainer');
+    
+    // Melhor de 3
     if (trucoState.playerScore >= 2) {
         document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:16px; font-weight:bold;'>👑 TRUCO! Você é a Rainha da Mesa! Venceu! 💜</span>";
         criarExplosao();
-        btnReset.style.display = 'block';
+        containerReset.style.display = 'flex';
+        return true;
     } else if (trucoState.aiScore >= 2) {
-        document.getElementById('trucoFeedbackStatus').innerText = "Que sorte a minha kkkk! Mas você joga muito!";
-        btnReset.style.display = 'block';
-    } else if (trucoState.rodadaIndex > 3) {
-        if(trucoState.playerScore >= trucoState.aiScore) {
-            document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:16px; font-weight:bold;'>TRUCO! No desempate deu VOCÊ! 💜</span>";
-            criarExplosao();
-        } else {
-            document.getElementById('trucoFeedbackStatus').innerText = "Fim de jogo! Que sorte a minha kkkk";
-        }
-        btnReset.style.display = 'block';
+        // Isso não acontece com as cartas atuais rs
+        document.getElementById('trucoFeedbackStatus').innerText = "Fim de jogo. Best ganhou... Roubou certeza.";
+        containerReset.style.display = 'flex';
+        return true;
+    } else if (trucoState.rodadaIndex >= 3) {
+        // Empate ou fim das rodadas (com as cartas atuais, Paloma ganha 3 a 0 ou 2 a 1)
+        const feedbackFinal = trucoState.playerScore > trucoState.aiScore ? 
+            "<span style='color:#ffd700; font-size:16px; font-weight:bold;'>TRUCO! No desempate deu VOCÊ! 💜</span>" :
+            "Fim de jogo!";
+        document.getElementById('trucoFeedbackStatus').innerHTML = feedbackFinal;
+        if (trucoState.playerScore > trucoState.aiScore) criarExplosao();
+        containerReset.style.display = 'flex';
+        return true;
     }
+    return false;
 }
 
 function resetarPartidaTruco() {
@@ -1316,6 +1435,7 @@ function criarExplosao() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+    // Esconder o loader se houver, verificar aniversário, etc.
     verificarSeEhAniversario();
 });
 </script>
