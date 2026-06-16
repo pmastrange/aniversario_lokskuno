@@ -257,6 +257,10 @@ input[type="text"]:focus {
     font-size: 12px;
 }
 
+@define-placeholder balancoBalao {
+    0%, 100% { transform: rotate(-4deg); }
+    50% { transform: rotate(4deg); }
+}
 @keyframes balancoBalao {
     0%, 100% { transform: rotate(-4deg); }
     50% { transform: rotate(4deg); }
@@ -395,8 +399,8 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 #countdown:empty { display: none; }
 
 /* Envelope & Carta Setup */
-.envelope-wrapper-premium { position: relative; width: 100%; max-width: 360px; margin: 20px auto; cursor: pointer; }
-.envelope-img-asset { width: 100%; height: auto; display: block; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border-radius: 4px; transition: transform 0.4s ease; }
+.envelope-wrapper-premium { position: relative; width: 100%; max-width: 360px; margin: 20px auto; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+.envelope-img-asset { width: 100%; height: auto; display: block; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border-radius: 4px; transition: transform 0.4s ease; margin: 0 auto; }
 .envelope-wrapper-premium:hover .envelope-img-asset { transform: scale(1.02); }
 .purple-wax-seal {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -46%); width: 84px; height: 84px;
@@ -406,9 +410,17 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     color: white; font-family: var(--serifa); font-weight: 700; font-size: 20px; letter-spacing: 0.5px; transition: transform 0.3s;
 }
 .envelope-wrapper-premium:hover .purple-wax-seal { transform: translate(-50%, -46%) scale(1.06); }
+
+/* ALINHAMENTO DE PROSE PARA TELA 2 */
+.cartaScrollerContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .carta-scroller {
     width: 100%; max-height: 380px; overflow-y: auto; text-align: center; font-family: 'Georgia', serif; font-size: 14.5px; line-height: 1.9; color: #333;
     background: #fcfbfa; padding: 30px; border-radius: 8px; border: 1px solid rgba(227, 218, 201, 0.5); display: none; box-shadow: inset 0 0 30px rgba(227, 218, 201, 0.1);
+    margin: 0 auto; -webkit-overflow-scrolling: touch; word-wrap: break-word;
 }
 .quote-box { background: rgba(121, 58, 87, 0.02); border-left: 2px solid var(--roxo-orquidea); padding: 20px; margin: 25px 0; font-style: italic; color: #443; text-align: center; }
 .carta-scroller::-webkit-scrollbar { width: 3px; }
@@ -470,62 +482,70 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 @keyframes voar { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; } }
 
-/* 🃏 MESA DE TRUCO ESTILO ONLINE DE BARALHO */
+/* 🃏 TABULEIRO DE TRUCO PROFISSIONAL MOBILE-FIRST */
 .truco-board {
-    margin: 15px 0; width: 100%; background: radial-gradient(circle, #256129 0%, #133a16 100%);
-    border: 5px solid #422a1d; border-radius: 12px; padding: 15px 10px; box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-    display: flex; flex-direction: column; gap: 12px; align-items: center; position: relative;
+    margin: 15px 0; width: 100%; background: radial-gradient(circle, #1e5022 0%, #0d260f 100%);
+    border: 4px solid #321f15; border-radius: 12px; padding: 12px 8px; box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    display: flex; flex-direction: column; gap: 10px; align-items: center; position: relative;
 }
 .truco-team-label {
     font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px;
 }
 .truco-status-container {
-    display: flex; flex-direction: column; align-items: center; gap: 4px; background: rgba(0,0,0,0.4); padding: 6px 16px; border-radius: 8px; width: 90%;
+    display: flex; flex-direction: column; align-items: center; gap: 4px; background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 8px; width: 95%;
 }
-.truco-score { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
-.truco-rounds-indicators { font-size: 11px; color: #ccc; font-weight: 600; }
+.truco-score { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
+.truco-rounds-indicators { font-size: 12px; color: #ffd700; font-weight: 700; }
+
 .truco-zone {
-    width: 100%; min-height: 110px; background: rgba(0, 0, 0, 0.2); border: 2px dashed rgba(255, 255, 255, 0.15);
-    border-radius: 8px; display: flex; justify-content: center; align-items: center; gap: 15px; padding: 10px; position: relative;
+    width: 100%; min-height: 105px; background: rgba(0, 0, 0, 0.25); border: 2px dashed rgba(255, 255, 255, 0.12);
+    border-radius: 8px; display: flex; justify-content: center; align-items: center; gap: 12px; padding: 8px; position: relative;
 }
 .table-slot {
-    width: 65px; height: 90px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 6px; display: flex; justify-content: center; align-items: center;
+    width: 58px; height: 82px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 6px; display: flex; justify-content: center; align-items: center;
+    transition: all 0.3s ease;
 }
-.slot-placeholder { font-size: 9px; color: rgba(255,255,255,0.3); text-transform: uppercase; font-weight: 700; text-align: center; }
-.truco-cards-container { display: flex; justify-content: center; gap: 10px; min-height: 95px; width: 100%; align-items: center; }
+.table-slot.winner-glow {
+    box-shadow: 0 0 12px #ffd700;
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+}
+.slot-placeholder { font-size: 8px; color: rgba(255,255,255,0.25); text-transform: uppercase; font-weight: 700; text-align: center; }
+.truco-cards-container { display: flex; justify-content: center; gap: 8px; min-height: 85px; width: 100%; align-items: center; }
 
-/* DESIGN PREMIUM DA CARTA DE BARALHO REAL */
+/* RE-ESTILIZAÇÃO DAS CARTAS DE BARALHO PARA APONTAMENTO TÁTIL SEM ERROS */
 .truco-card-item {
-    width: 65px; height: 92px; background: #ffffff; border-radius: 6px; border: 1px solid #dcdcdc;
-    display: flex; flex-direction: column; justify-content: space-between; padding: 6px 5px; font-weight: 800;
-    font-size: 15px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.18); transition: all 0.2s ease; user-select: none;
-    position: relative; font-family: Arial, sans-serif; background-color: #fff;
+    width: 58px; height: 84px; background: #ffffff; border-radius: 6px; border: 1px solid #dcdcdc;
+    display: flex; flex-direction: column; justify-content: space-between; padding: 5px 4px; font-weight: 800;
+    font-size: 14px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: all 0.25s ease; user-select: none;
+    position: relative; font-family: Arial, sans-serif;
+    transform-style: preserve-3d;
 }
 .truco-card-item .card-corner-suit {
-    font-size: 11px; align-self: flex-start; line-height: 1; display: flex; flex-direction: column; align-items: center;
+    font-size: 10px; align-self: flex-start; line-height: 1; display: flex; flex-direction: column; align-items: center;
 }
 .truco-card-item .card-corner-suit::after {
-    content: attr(data-suit); font-size: 10px; margin-top: 1px;
+    content: attr(data-suit); font-size: 9px; margin-top: 1px;
 }
 .truco-card-item .card-suit-center {
-    position: absolute; top: 52%; left: 50%; transform: translate(-50%, -50%); font-size: 28px; opacity: 0.95;
+    position: absolute; top: 52%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; opacity: 0.95;
 }
 .truco-card-item[data-suit="❤️"], .truco-card-item[data-suit="♦️"] { color: #d63031; }
 .truco-card-item[data-suit="♣️"], .truco-card-item[data-suit="♠️"] { color: #2d3436; }
 
-/* VERSO DA CARTA DO OPONENTE (EU) */
+/* VERSO REAL DA CARTA DA IA COM PATTERN DE SEGURANÇA */
 .truco-card-item.facedown {
     background: repeating-linear-gradient(45deg, #793A57, #793A57 6px, #5c2740 6px, #5c2740 12px);
-    border: 2px solid #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.25); cursor: default;
+    border: 2px solid #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.3); cursor: default;
 }
 .truco-card-item.facedown * { display: none !important; }
 
-.truco-card-item:hover:not(.played):not(.facedown) { transform: translateY(-8px); border-color: #ffd700; box-shadow: 0 8px 16px rgba(255,215,0,0.3); }
+.truco-card-item:hover:not(.played):not(.facedown) { transform: translateY(-6px); border-color: #ffd700; box-shadow: 0 8px 16px rgba(255,215,0,0.35); }
 .truco-card-item.played { opacity: 0; pointer-events: none; transform: scale(0.6); }
-.truco-card-item.on-table { animation: cardDrop 0.25s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards; cursor: default; pointer-events: none; }
+.truco-card-item.on-table { animation: cardDrop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; cursor: default; pointer-events: none; }
 
-@keyframes cardDrop { from { opacity: 0; transform: translateY(-20px) scale(0.7); } to { opacity: 1; transform: translateY(0) scale(1); } }
-#trucoFeedbackStatus { font-size: 12.5px; font-weight: 700; min-height: 34px; color: #fff; text-align: center; text-shadow: 0 1px 3px rgba(0,0,0,0.7); line-height: 1.3; padding: 0 5px; }
+@keyframes cardDrop { from { opacity: 0; transform: translateY(-15px) scale(0.7); } to { opacity: 1; transform: translateY(0) scale(1); } }
+#trucoFeedbackStatus { font-size: 13px; font-weight: 700; min-height: 38px; color: #fff; text-align: center; text-shadow: 0 1px 3px rgba(0,0,0,0.8); line-height: 1.4; padding: 0 6px; display: flex; align-items: center; justify-content: center; }
 
 /* MEDIA QUERIES TOTALMENTE REESTILIZADAS PARA RENDERIZAÇÃO NO IPHONE */
 @media (max-width: 768px) {
@@ -536,10 +556,34 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     .card { 
         padding: 30px 20px !important; 
         width: 100%; 
-        max-width: 400px; /* Alinhamento dinâmico sem congelamento de tamanho */
+        max-width: 420px;
         margin: auto;
         min-height: auto;
     }
+    
+    /* Forçando a centralização da folha da carta em telas móveis */
+    .cartaScrollerContainer {
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        float: none !important;
+    }
+    .carta-scroller {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 20px 15px !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+    }
+    .envelope-wrapper-premium {
+        margin: 15px auto !important;
+        width: 100% !important;
+    }
+    .envelope-img-asset {
+        max-width: 290px !important;
+        margin: 0 auto !important;
+    }
+
     .mural-mosaico-container { grid-template-columns: 1fr !important; gap: 20px; }
     .mosaico-centerpiece-text { grid-column: span 1 !important; }
     .foto-mosaico-frame img { object-fit: contain !important; }
@@ -596,7 +640,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 <div class="card" id="tela0">
     <button class="btn-back" onclick="navegarPara(1)">← Voltar ao Cadeado Rosa</button>
     <h1>Controle de Segurança 🎈</h1>
-    <p class="italic">Toque no balão para obter as chaves de acesso ao seu portal de aniversário.</p>
+    <p class="italic">Toque no balão para obter a chave de acesso ao seu portal de aniversário.</p>
     
     <div class="pinhata-wrapper">
         <div class="pinhata-string"></div>
@@ -876,7 +920,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 <div class="card" id="tela10">
     <button class="btn-back" onclick="navegarPara(9)">← Voltar</button>
     <h1>Desafio do Truco! 🃏</h1>
-    <p class="italic">"Esse jogo é apenas para te lemnbrar da falta que sinto da minha dupla, truco n tem graça sem vc...!"</p>
+    <p class="italic">"Esse jogo é apenas para te lembrar da falta que sinto da minha dupla, truco n tem graça sem vc...!"</p>
     
     <div class="truco-board">
         <div class="truco-team-label">Eu (Sua Best) 🃏</div>
@@ -913,7 +957,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 // ==========================================
 // CONFIGURAÇÕES TIMING & SEGURANÇA ANTITAMPER
 // ==========================================
-// 21/06/2026 à meia-noite no Japão (JST / UTC+9) é o equivalente exato a 20/06/2026 às 15:00 UTC
 const targetBirthdayUTC = new Date(Date.UTC(2026, 5, 20, 15, 0, 0)); 
 let lastKnownSystemTime = Date.now();
 let tamperingDetected = false;
@@ -1269,67 +1312,107 @@ function montarMecanismoRaspadinha() {
 }
 
 // ==========================================
-// 🃏 ENGINE REESTILIZADA DE TRUCO ONLINE REAL
+// 🃏 ENGINE DE TRUCO OVERHAUL PROFISSIONAL COM IA REAL
 // ==========================================
 let trucoState = {
-    playerScore: 0,
-    aiScore: 0,
-    rodadaIndex: 1, 
-    historicoRodadas: [], 
+    playerScore: 0,   // Tentos da partida
+    aiScore: 0,       // Tentos da partida
+    roundsGanhosPlayer: 0, // Quedas da mão atual
+    roundsGanhosAi: 0,     // Quedas da mão atual
+    rodadaIndex: 1,        // Queda 1, 2 ou 3
+    historicoRodadas: [],  // ['V', 'D', 'E']
     playerHand: [],
     aiHand: [],
-    fase: 'esperandoPlayer' 
+    fase: 'esperandoPlayer',
+    maoPrimeiroJogador: 'player' // Quem inicia a primeira queda da mão
 };
 
 const dadosDoBaralho = {
-    'Zap ♣️': { numero: '4', naipe: '♣️' },
-    '7 Copas ❤️': { numero: '7', naipe: '❤️' },
-    'Espadilha ♠️': { numero: 'A', naipe: '♠️' },
-    '4 Ouros ♦️': { numero: '4', naipe: '♦️' },
-    'K Espadas ♠️': { numero: 'K', naipe: '♠️' },
-    '7 Ouros ♦️': { numero: '7', naipe: '♦️' }
+    'Zap ♣️': { numero: '4', naipe: '♣️', peso: 14 },
+    '7 Copas ❤️': { numero: '7', naipe: '❤️', peso: 13 },
+    'Espadilha ♠️': { numero: 'A', naipe: '♠️', peso: 12 },
+    '7 Ouros ♦️': { numero: '7', naipe: '♦️', peso: 11 },
+    '3 ♣️': { numero: '3', naipe: '♣️', peso: 10 },
+    '3 ❤️': { numero: '3', naipe: '❤️', peso: 10 },
+    '2 ♠️': { numero: '2', naipe: '♠️', peso: 9 },
+    '2 ♦️': { numero: '2', naipe: '♦️', peso: 9 },
+    'A ❤️': { numero: 'A', naipe: '❤️', peso: 8 },
+    'K ♣️': { numero: 'K', naipe: '♣️', peso: 7 },
+    'K ♠️': { numero: 'K', naipe: '♠️', peso: 7 },
+    'J ❤️': { numero: 'J', naipe: '❤️', peso: 6 },
+    'Q ♦️': { numero: 'Q', naipe: '♦️', peso: 5 }
+};
+
+const reacoesIA = {
+    vitoriaMao: ["Ganhei essa queda! 😜", "Chora não, diva! kkk", "Estratégia pura!", "A dupla faz falta né? kkk"],
+    derrotaMao: ["Eita, essa doeu! 😮", "Passou por cima...", "Boa jogada!", "Não vale roubar gata! kkk"],
+    pensando: ["Pensando... 🧐", "Olhando minhas cartas...", "Ih, o que eu jogo agora?", "Calculando os riscos..."]
 };
 
 function inicializarJogoTruco() {
     trucoState.playerScore = 0;
     trucoState.aiScore = 0;
+    document.getElementById('trucoResetContainer').style.display = 'none';
+    novaMaoTruco();
+}
+
+function novaMaoTruco() {
+    // Se algum dos dois atingir 12 tentos, finaliza
+    if (trucoState.playerScore >= 12) {
+        document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:14px; font-weight:bold;'>TRUCO! (Te deixando ganhar aqui pq é seu dia, n se acostuma! KKKK) </span>";
+        document.getElementById('trucoResetContainer').style.display = 'flex';
+        trucoState.fase = 'fimJogo';
+        return;
+    } else if (trucoState.aiScore >= 12) {
+        // Balanceador emocional para dar sobrevida e deixar a jogadora virar
+        trucoState.aiScore = 9; 
+    }
+
+    trucoState.roundsGanhosPlayer = 0;
+    trucoState.roundsGanhosAi = 0;
     trucoState.rodadaIndex = 1;
     trucoState.historicoRodadas = [];
-    trucoState.fase = 'esperandoPlayer';
-
-    document.getElementById('trucoResetContainer').style.display = 'none';
-    document.getElementById('trucoRoundsBox').innerText = "Rodadas: ⚪ ⚪ ⚪";
     
-    // Suas cartas imbativeis estruturadas
+    // Pool de distribuição dinâmico
+    const cartasDisponiveis = Object.keys(dadosDoBaralho).sort(() => Math.random() - 0.5);
+    
     trucoState.playerHand = [
-        { nome: "Zap ♣️", valor: 10, frase: "CHAMA QUE É ZAP, MARRECO!", jogada: false },
-        { nome: "7 Copas ❤️", valor: 9, frase: "Meio Palo na mesa!", jogada: false },
-        { nome: "Espadilha ♠️", valor: 8, frase: "Respeita a espadilha da diva!", jogada: false }
+        { nome: cartasDisponiveis[0], jogada: false },
+        { nome: cartasDisponiveis[1], jogada: false },
+        { nome: cartasDisponiveis[2], jogada: false }
     ];
     
-    // Cartas do Oponente ("Eu")
     trucoState.aiHand = [
-        { nome: "4 Ouros ♦️", valor: 1, reacao: "Eita, joguei fora kkkk", jogada: false },
-        { nome: "K Espadas ♠️", valor: 4, reacao: "Vou tentar carregar essa queda!", jogada: false },
-        { nome: "7 Ouros ♦️", valor: 5, reacao: "Truco! Ah não, pera...", jogada: false }
+        { nome: cartasDisponiveis[3], jogada: false },
+        { nome: cartasDisponiveis[4], jogada: false },
+        { nome: cartasDisponiveis[5], jogada: false }
     ];
-    
+
     limparSlotsMesaTruco();
     renderizarCartasMaoTruco();
     renderizarCartasOponenteOcultas();
-    document.getElementById('trucoFeedbackStatus').innerText = "Seu turno! Escolha uma carta do seu baralho abaixo!";
     atualizarPlacarInterfaceTruco();
+    atualizarIndicadoresQuedas();
+
+    if (trucoState.maoPrimeiroJogador === 'player') {
+        trucoState.fase = 'esperandoPlayer';
+        document.getElementById('trucoFeedbackStatus').innerText = "Seu turno! Escolha uma carta do seu baralho abaixo!";
+    } else {
+        executarTurnoIA_Primeira();
+    }
 }
 
 function limparSlotsMesaTruco() {
     document.getElementById('slotPlayerCard').innerHTML = `<span class="slot-placeholder">Sua Carta</span>`;
+    document.getElementById('slotPlayerCard').classList.remove('winner-glow');
     document.getElementById('slotAiCard').innerHTML = `<span class="slot-placeholder">Minha Carta</span>`;
+    document.getElementById('slotAiCard').classList.remove('winner-glow');
 }
 
 function renderizarCartasOponenteOcultas() {
     const box = document.getElementById('trucoAiCardsBox');
     box.innerHTML = "";
-    trucoState.aiHand.forEach((card, idx) => {
+    trucoState.aiHand.forEach((card) => {
         if (!card.jogada) {
             const cardBack = document.createElement('div');
             cardBack.className = 'truco-card-item facedown';
@@ -1363,80 +1446,164 @@ function renderizarCartasMaoTruco() {
     trucoState.playerHand.forEach((card, idx) => {
         if (!card.jogada) {
             const cElem = gerarElementoHtmlCartaBaralho(card.nome);
-            cElem.onclick = () => processarJogadaRodadaTruco(idx);
+            cElem.onclick = () => processarJogadaPlayer(idx);
             box.appendChild(cElem);
         }
     });
 }
 
-function processarJogadaRodadaTruco(playerCardIdx) {
+function processarJogadaPlayer(playerCardIdx) {
     if (trucoState.fase !== 'esperandoPlayer') return;
 
     const pCard = trucoState.playerHand[playerCardIdx];
     pCard.jogada = true;
-    trucoState.fase = 'iaPensando';
-
     renderizarCartasMaoTruco();
     
-    // Jogar carta no Slot da Mesa correspondente
     const slotPlayer = document.getElementById('slotPlayerCard');
     const cartaMesaPlayer = gerarElementoHtmlCartaBaralho(pCard.nome);
     cartaMesaPlayer.classList.add('on-table');
     slotPlayer.innerHTML = "";
     slotPlayer.appendChild(cartaMesaPlayer);
     
-    document.getElementById('trucoFeedbackStatus').innerText = `Você jogou ${pCard.nome}! Eu estou pensando na minha jogada...`;
+    // Se a IA já tiver jogado nesta rodada (Player foi o segundo a jogar)
+    if (document.getElementById('slotAiCard').querySelector('.truco-card-item')) {
+        trucoState.fase = 'processandoResultado';
+        const aiCardNome = trucoState.aiHand.find(c => c.jogadaNaRodadaAtual).nome;
+        setTimeout(() => avaliarVencedorRodada(pCard.nome, aiCardNome), 1000);
+    } else {
+        // IA vai responder ao card jogado pelo player
+        trucoState.fase = 'iaPensando';
+        document.getElementById('trucoFeedbackStatus').innerText = reacoesIA.pensando[Math.floor(Math.random() * reacoesIA.pensando.length)];
+        setTimeout(() => executarRespostaIA(pCard.nome), 1200);
+    }
+}
 
-    // Resposta automatica estruturada
+function executarTurnoIA_Primeira() {
+    trucoState.fase = 'iaPensando';
+    document.getElementById('trucoFeedbackStatus').innerText = "Eu estou escolhendo uma carta para abrir...";
+    
     setTimeout(() => {
-        const aiCard = trucoState.aiHand[trucoState.rodadaIndex - 1];
-        aiCard.jogada = true;
+        // IA escolhe a carta de menor peso estratégico para abrir
+        const cartasDisponiveis = trucoState.aiHand.filter(c => !c.jogada);
+        cartasDisponiveis.sort((a, b) => dadosDoBaralho[a.nome].peso - dadosDoBaralho[b.nome].peso);
         
+        const aiCardEscolhida = cartasDisponiveis[0]; 
+        aiCardEscolhida.jogada = true;
+        aiCardEscolhida.jogadaNaRodadaAtual = true;
+
         renderizarCartasOponenteOcultas();
-        
+
         const slotAi = document.getElementById('slotAiCard');
-        const cartaMesaAi = gerarElementoHtmlCartaBaralho(aiCard.nome);
+        const cartaMesaAi = gerarElementoHtmlCartaBaralho(aiCardEscolhida.nome);
         cartaMesaAi.classList.add('on-table');
         slotAi.innerHTML = "";
         slotAi.appendChild(cartaMesaAi);
 
-        document.getElementById('trucoFeedbackStatus').innerText = `Eu joguei ${aiCard.nome}! "${aiCard.reacao}"`;
-
-        setTimeout(() => {
-            trucoState.playerScore++;
-            trucoState.historicoRodadas.push('V');
-            document.getElementById('trucoFeedbackStatus').innerText = `Você ganhou a rodada! ${pCard.frase}`;
-            criarExplosao();
-
-            atualizarIndicadoresQuedas();
-            atualizarPlacarInterfaceTruco();
-
-            setTimeout(() => {
-                if (trucoState.playerScore >= 2 || trucoState.rodadaIndex >= 3) {
-                    document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:14px; font-weight:bold;'>TRUCO! (Te deixando ganhar aqui pq é seu dia, n se acostuma! KKKK) </span>";
-                    document.getElementById('trucoResetContainer').style.display = 'flex';
-                    trucoState.fase = 'fimJogo';
-                } else {
-                    trucoState.rodadaIndex++;
-                    trucoState.fase = 'esperandoPlayer';
-                    limparSlotsMesaTruco();
-                    document.getElementById('trucoFeedbackStatus').innerText = "Sua vez de novo! Escolha sua próxima carta!";
-                }
-            }, 1500);
-
-        }, 1200);
-
+        document.getElementById('trucoFeedbackStatus').innerText = `Eu joguei! O que você vai mandar contra meu ${aiCardEscolhida.nome}?`;
+        trucoState.fase = 'esperandoPlayer';
     }, 1200);
 }
 
+function executarRespostaIA(playerCardNome) {
+    const pesoPlayer = dadosDoBaralho[playerCardNome].peso;
+    const cartasDisponiveis = trucoState.aiHand.filter(c => !c.jogada);
+    
+    // Lógica Estratégica: Encontrar menor carta que vence a do jogador
+    cartasDisponiveis.sort((a, b) => dadosDoBaralho[a.nome].peso - dadosDoBaralho[b.nome].peso);
+    let escolhaIA = null;
+
+    for (let c of cartasDisponiveis) {
+        if (dadosDoBaralho[c.nome].peso > pesoPlayer) {
+            escolhaIA = c;
+            break;
+        }
+    }
+
+    // Se não tiver nenhuma que ganhe, joga a mais fraca ("descarta o lixo")
+    if (!escolhaIA) {
+        escolhaIA = cartasDisponiveis[0];
+    }
+
+    escolhaIA.jogada = true;
+    renderizarCartasOponenteOcultas();
+
+    const slotAi = document.getElementById('slotAiCard');
+    const cartaMesaAi = gerarElementoHtmlCartaBaralho(escolhaIA.nome);
+    cartaMesaAi.classList.add('on-table');
+    slotAi.innerHTML = "";
+    slotAi.appendChild(cartaMesaAi);
+
+    setTimeout(() => avaliarVencedorRodada(playerCardNome, escolhaIA.nome), 1000);
+}
+
+function avaliarVencedorRodada(playerCardNome, aiCardNome) {
+    const pesoP = dadosDoBaralho[playerCardNome].peso;
+    const pesoA = dadosDoBaralho[aiCardNome].peso;
+    
+    // Limpar sinalizações de rodada anterior
+    trucoState.aiHand.forEach(c => c.jogadaNaRodadaAtual = false);
+
+    let resultado = 'E';
+    if (pesoP > pesoA) {
+        resultado = 'V';
+        trucoState.roundsGanhosPlayer++;
+        document.getElementById('slotPlayerCard').classList.add('winner-glow');
+        document.getElementById('trucoFeedbackStatus').innerText = reacoesIA.derrotaMao[Math.floor(Math.random() * reacoesIA.derrotaMao.length)];
+        criarExplosao();
+    } else if (pesoA > pesoP) {
+        resultado = 'D';
+        trucoState.roundsGanhosAi++;
+        document.getElementById('slotAiCard').classList.add('winner-glow');
+        document.getElementById('trucoFeedbackStatus').innerText = reacoesIA.vitoriaMao[Math.floor(Math.random() * reacoesIA.vitoriaMao.length)];
+    } else {
+        document.getElementById('trucoFeedbackStatus').innerText = "Amarrou! Jogo embaçado! 😮";
+    }
+
+    trucoState.historicoRodadas.push(resultado);
+    atualizarIndicadoresQuedas();
+
+    setTimeout(() => {
+        // Checa fim da mão de 3 quedas
+        if (trucoState.roundsGanhosPlayer >= 2) {
+            trucoState.playerScore += 3;
+            trucoState.maoPrimeiroJogador = 'player';
+            novaMaoTruco();
+        } else if (trucoState.roundsGanhosAi >= 2) {
+            trucoState.aiScore += 3;
+            trucoState.maoPrimeiroJogador = 'ai';
+            novaMaoTruco();
+        } else if (trucoState.rodadaIndex >= 3) {
+            // Se chegou na terceira e empatou geral, decide por quem ganhou a primeira
+            if (trucoState.roundsGanhosPlayer > trucoState.roundsGanhosAi) {
+                trucoState.playerScore += 3;
+            } else {
+                trucoState.aiScore += 3;
+            }
+            novaMaoTruco();
+        } else {
+            // Continua para o próximo round da mesma mão
+            trucoState.rodadaIndex++;
+            limparSlotsMesaTruco();
+            
+            // Quem ganha a rodada joga a primeira carta da próxima
+            if (resultado === 'V' || (resultado === 'E' && trucoState.maoPrimeiroJogador === 'player')) {
+                trucoState.fase = 'esperandoPlayer';
+                document.getElementById('trucoFeedbackStatus').innerText = "Você ganhou a rodada anterior! Manda a sua próxima carta.";
+            } else {
+                executarTurnoIA_Primeira();
+            }
+        }
+    }, 1500);
+}
+
 function atualizarIndicadoresQuedas() {
-    const markers = trucoState.historicoRodadas.map(res => res === 'V' ? '🟢' : '🔴');
+    const markers = trucoState.historicoRodadas.map(res => res === 'V' ? '🟣' : (res === 'D' ? '🔴' : '🟡'));
     while(markers.length < 3) markers.push('⚪');
-    document.getElementById('trucoRoundsBox').innerText = `Rodadas: ${markers.join(' ')}`;
+    document.getElementById('trucoRoundsBox').innerText = `Mão Atual: ${markers.join(' ')}`;
 }
 
 function atualizarPlacarInterfaceTruco() {
-    document.getElementById('trucoScorePlacar').innerText = `Você: ${trucoState.playerScore} | Eu: ${trucoState.aiScore}`;
+    document.getElementById('trucoScorePlacar').innerText = `Você: ${trucoState.playerScore} PTs | Eu: ${trucoState.aiScore} PTs`;
 }
 
 function resetarPartidaTruco() {
@@ -1457,7 +1624,6 @@ function controlarMusica() {
     }
 }
 
-// Configuração absoluta baseada em 21/06/2026 à meia-noite no Japão
 const targetDate = new Date("2026-06-21T00:00:00+09:00");
 function updateCountdown(){
     const diff = targetDate - new Date();
