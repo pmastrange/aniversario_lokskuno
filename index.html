@@ -257,10 +257,6 @@ input[type="text"]:focus {
     font-size: 12px;
 }
 
-@define-placeholder balancoBalao {
-    0%, 100% { transform: rotate(-4deg); }
-    50% { transform: rotate(4deg); }
-}
 @keyframes balancoBalao {
     0%, 100% { transform: rotate(-4deg); }
     50% { transform: rotate(4deg); }
@@ -499,10 +495,10 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 
 .truco-zone {
     width: 100%; min-height: 105px; background: rgba(0, 0, 0, 0.25); border: 2px dashed rgba(255, 255, 255, 0.12);
-    border-radius: 8px; display: flex; justify-content: center; align-items: center; gap: 12px; padding: 8px; position: relative;
+    border-radius: 8px; display: flex; justify-content: center; align-items: center; gap: 8px; padding: 6px; position: relative;
 }
 .table-slot {
-    width: 58px; height: 82px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 6px; display: flex; justify-content: center; align-items: center;
+    width: 54px; height: 78px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 6px; display: flex; justify-content: center; align-items: center;
     transition: all 0.3s ease;
 }
 .table-slot.winner-glow {
@@ -515,7 +511,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 
 /* RE-ESTILIZAÇÃO DAS CARTAS DE BARALHO PARA APONTAMENTO TÁTIL SEM ERROS */
 .truco-card-item {
-    width: 58px; height: 84px; background: #ffffff; border-radius: 6px; border: 1px solid #dcdcdc;
+    width: 54px; height: 80px; background: #ffffff; border-radius: 6px; border: 1px solid #dcdcdc;
     display: flex; flex-direction: column; justify-content: space-between; padding: 5px 4px; font-weight: 800;
     font-size: 14px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: all 0.25s ease; user-select: none;
     position: relative; font-family: Arial, sans-serif;
@@ -528,7 +524,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     content: attr(data-suit); font-size: 9px; margin-top: 1px;
 }
 .truco-card-item .card-suit-center {
-    position: absolute; top: 52%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; opacity: 0.95;
+    position: absolute; top: 52%; left: 50%; transform: translate(-50%, -50%); font-size: 22px; opacity: 0.95;
 }
 .truco-card-item[data-suit="❤️"], .truco-card-item[data-suit="♦️"] { color: #d63031; }
 .truco-card-item[data-suit="♣️"], .truco-card-item[data-suit="♠️"] { color: #2d3436; }
@@ -614,6 +610,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <div class="dot" id="dot10"></div>
 </div>
 
+<!-- 🌸 TELA 1: PORTAL ROSA INICIAL (PONTO DE ENTRADA DO SITE) -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
@@ -637,6 +634,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="margin-top: 25px; font-size: 10px; background: rgba(121,58,87,0.1); color: var(--roxo-orquidea); box-shadow: none; border: 1px dashed var(--roxo-orquidea);" onclick="navegarPara(0)">Pedir ajuda ao Balão 🎈</button>
 </div>
 
+<!-- 🎈 TELA 0: BALÃO PINHATA REALMENTE PROTEGIDO (TEXTO CORRIGIDO) -->
 <div class="card" id="tela0">
     <button class="btn-back" onclick="navegarPara(1)">← Voltar ao Cadeado Rosa</button>
     <h1>Controle de Segurança 🎈</h1>
@@ -659,12 +657,13 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         <div id="balloon-message" class="balloon-message">
             <span class="password-label">🎉 PARABÉNS! SUA SENHA É:</span>
             <div class="password-text">palomaminhamelhoramiga</div>
-            <button class="copy-button" onclick="copiarSenha()">Copiar Senha</button>
+            <button class="copy-button" onclick="copyingSenha()">Copiar Senha</button>
             <div class="copy-feedback" id="copy-feedback">✓ Copiado!</div>
         </div>
     </div>
 </div>
 
+<!-- TELA 2: CARTA EMOCIONAL -->
 <div class="card" id="tela2">
     <img src="enrolados.jpg" class="disney-cameo cameo-enrolados" alt="Rapunzel Cameo">
     <img src="olaf.jpg" class="disney-cameo cameo-olaf" alt="Olaf Cameo">
@@ -702,6 +701,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
+<!-- TELA 3: ORQUÍDEA INTERATIVA -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Cores de Admirar</h1>
@@ -719,6 +719,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnProximaTelaOrquidea" style="width: 100%; visibility: hidden;" onclick="navegarPara(4)">Ver nossas lembranças</button>
 </div>
 
+<!-- TELA 4: MOSAICO DE FOTOS -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
@@ -762,6 +763,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma última caixinha...</button>
 </div>
 
+<!-- TELA 5: SESSÃO DOS PETS -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -799,6 +801,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
+<!-- TELA 6: QUIZ DIVERTIDO -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
     <h1>Quiz para risadinhas 🎮</h1>
@@ -817,6 +820,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="avancarQuizOuFase()">Avançar Pergunta ➔</button>
 </div>
 
+<!-- TELA 7: VALES VALIOSOS -->
 <div class="card" id="tela7">
     <button class="btn-back" onclick="navegarPara(6)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos</h1>
@@ -847,6 +851,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:15px;" onclick="navegarPara(8)">Ver a última surpresa... 🤫</button>
 </div>
 
+<!-- TELA 8: SEGREDO NUMÉRICO E RASPADINHA -->
 <div class="card" id="tela8">
     <button class="btn-back" onclick="navegarPara(7)">← Voltar</button>
     
@@ -909,6 +914,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
+<!-- TELA 9: AGRADECIMENTO FINAL -->
 <div class="card" id="tela9">
     <h1>Pronto! 💜</h1>
     <p class="texto-final" style="margin-top: 15px; line-height: 1.8;">
@@ -917,22 +923,29 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:20px;" onclick="navegarPara(10)">Jogar Truco Extra! 🃏</button>
 </div>
 
+<!-- 🃏 TELA 10: MINI-JOGO DE TRUCO INTERATIVO COM VIRA E MANILHAS TRADICIONAIS -->
 <div class="card" id="tela10">
     <button class="btn-back" onclick="navegarPara(9)">← Voltar</button>
     <h1>Desafio do Truco! 🃏</h1>
     <p class="italic">"Esse jogo é apenas para te lembrar da falta que sinto da minha dupla, truco n tem graça sem vc...!"</p>
     
     <div class="truco-board">
-        <div class="truco-team-label">Eu (Sua Best) 🃏</div>
+        <!-- Oponente Row (Top) - RÓTULO AJUSTADO -->
+        <div class="truco-team-label">Sua Best 🃏</div>
         <div class="truco-cards-container" id="trucoAiCardsBox"></div>
 
+        <!-- Placar Centralizado -->
         <div class="truco-status-container">
-            <div class="truco-score" id="trucoScorePlacar">Você: 0 | Eu: 0</div>
-            <div class="truco-rounds-indicators" id="trucoRoundsBox">Rodadas: ⚪ ⚪ ⚪</div>
+            <div class="truco-score" id="trucoScorePlacar">Você: 0 PTs | Eu: 0 PTs</div>
+            <div class="truco-rounds-indicators" id="trucoRoundsBox">Mão Atual: ⚪ ⚪ ⚪</div>
         </div>
         
+        <!-- Zona de Mesa Online Real com Slot do Vira -->
         <div style="font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); font-weight: bold;">Mesa de Jogo</div>
         <div class="truco-zone">
+            <div class="table-slot" id="slotViraCard" style="border-color: #ffd700; background: rgba(255,215,0,0.05);">
+                <span class="slot-placeholder">Vira</span>
+            </div>
             <div class="table-slot" id="slotPlayerCard">
                 <span class="slot-placeholder">Sua Carta</span>
             </div>
@@ -943,13 +956,15 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         
         <div id="trucoFeedbackStatus">Sua vez! Escolha uma carta do seu baralho abaixo!</div>
         
+        <!-- Seu Baralho Row (Bottom) -->
         <div class="truco-team-label">Você (Diva) 👑</div>
         <div class="truco-cards-container" id="trucoPlayerCardsBox"></div>
     </div>
     
+    <!-- Opções de Reinício Ajustadas Conforme o Pedido -->
     <div id="trucoResetContainer" style="display:none; width:100%; margin-top:12px; flex-direction:column; gap:8px;">
-        <button class="btn-navigation" id="btnResetTruco" onclick="resetarPartidaTruco()">Reiniciar Partida 🔄</button>
-        <button class="btn-navigation" style="background-color:#555;" onclick="reiniciarJornada()">Reiniciar Jornada Completa</button>
+        <button class="btn-navigation" id="btnResetTruco" onclick="resetarPartidaTruco()">Reiniciar Partida</button>
+        <button class="btn-navigation" style="background-color:#555;" onclick="reiniciarJornada()">Reiniciar Surpresa</button>
     </div>
 </div>
 
@@ -1312,36 +1327,26 @@ function montarMecanismoRaspadinha() {
 }
 
 // ==========================================
-// 🃏 ENGINE DE TRUCO OVERHAUL PROFISSIONAL COM IA REAL
+// 🃏 ENGINE DE TRUCO TRADICIONAL COM VIRA E MANILHAS DINÂMICAS
 // ==========================================
 let trucoState = {
-    playerScore: 0,   // Tentos da partida
-    aiScore: 0,       // Tentos da partida
-    roundsGanhosPlayer: 0, // Quedas da mão atual
-    roundsGanhosAi: 0,     // Quedas da mão atual
-    rodadaIndex: 1,        // Queda 1, 2 ou 3
-    historicoRodadas: [],  // ['V', 'D', 'E']
+    playerScore: 0,          // Tentos acumulados do jogo (Até 12)
+    aiScore: 0,              // Tentos acumulados da IA (Até 12)
+    roundsGanhosPlayer: 0,   // Quedas vencidas na mão atual
+    roundsGanhosAi: 0,       // Quedas vencidas na IA na mão atual
+    rodadaIndex: 1,          // Queda corrente (1, 2 ou 3)
+    historicoRodadas: [],     // Símbolos visuais ['🟣', '🔴', '🟡']
     playerHand: [],
     aiHand: [],
     fase: 'esperandoPlayer',
-    maoPrimeiroJogador: 'player' // Quem inicia a primeira queda da mão
+    maoPrimeiroJogador: 'player',
+    viraCard: '',            // String identificadora do Vira ex: "7 ❤️"
+    manilhaNumero: ''        // Caractere da manilha definida pelo Vira
 };
 
-const dadosDoBaralho = {
-    'Zap ♣️': { numero: '4', naipe: '♣️', peso: 14 },
-    '7 Copas ❤️': { numero: '7', naipe: '❤️', peso: 13 },
-    'Espadilha ♠️': { numero: 'A', naipe: '♠️', peso: 12 },
-    '7 Ouros ♦️': { numero: '7', naipe: '♦️', peso: 11 },
-    '3 ♣️': { numero: '3', naipe: '♣️', peso: 10 },
-    '3 ❤️': { numero: '3', naipe: '❤️', peso: 10 },
-    '2 ♠️': { numero: '2', naipe: '♠️', peso: 9 },
-    '2 ♦️': { numero: '2', naipe: '♦️', peso: 9 },
-    'A ❤️': { numero: 'A', naipe: '❤️', peso: 8 },
-    'K ♣️': { numero: 'K', naipe: '♣️', peso: 7 },
-    'K ♠️': { numero: 'K', naipe: '♠️', peso: 7 },
-    'J ❤️': { numero: 'J', naipe: '❤️', peso: 6 },
-    'Q ♦️': { numero: 'Q', naipe: '♦️', peso: 5 }
-};
+// Sequência oficial de forças do Truco Tradicional (Da mais fraca à mais forte antes da manilha)
+const seqNumerosTruco = ['4', '5', '6', '7', 'Q', 'J', 'K', 'A', '2', '3'];
+const naipesTruco = ['♦️', '♠️', '❤️', '♣️'];
 
 const reacoesIA = {
     vitoriaMao: ["Ganhei essa queda! 😜", "Chora não, diva! kkk", "Estratégia pura!", "A dupla faz falta né? kkk"],
@@ -1356,15 +1361,27 @@ function inicializarJogoTruco() {
     novaMaoTruco();
 }
 
+function obterForcaCarta(numero, naipe) {
+    // Se a carta for a manilha definida pelo vira, aplica o peso máximo escalonado pelos naipes oficiais
+    if (numero === trucoState.manilhaNumero) {
+        if (naipe === '♣️') return 100; // Zap ♣️
+        if (naipe === '❤️') return 90;  // Copas ❤️
+        if (naipe === '♠️') return 80;  // Espadilha ♠️
+        if (naipe === '♦️') return 70;  // Ouros ♦️
+    }
+    // Caso contrário, retorna o índice base da sequência tradicional (1 a 10)
+    return seqNumerosTruco.indexOf(numero) + 1;
+}
+
 function novaMaoTruco() {
-    // Se algum dos dois atingir 12 tentos, finaliza
+    // Validação de final de jogo baseada em 12 tentos
     if (trucoState.playerScore >= 12) {
         document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:14px; font-weight:bold;'>TRUCO! (Te deixando ganhar aqui pq é seu dia, n se acostuma! KKKK) </span>";
         document.getElementById('trucoResetContainer').style.display = 'flex';
         trucoState.fase = 'fimJogo';
         return;
     } else if (trucoState.aiScore >= 12) {
-        // Balanceador emocional para dar sobrevida e deixar a jogadora virar
+        // Freio de segurança estratégico para conceder sobrevida emocional à jogadora
         trucoState.aiScore = 9; 
     }
 
@@ -1373,30 +1390,54 @@ function novaMaoTruco() {
     trucoState.rodadaIndex = 1;
     trucoState.historicoRodadas = [];
     
-    // Pool de distribuição dinâmico
-    const cartasDisponiveis = Object.keys(dadosDoBaralho).sort(() => Math.random() - 0.5);
+    // Geração dinâmica de um baralho limpo de 40 cartas
+    let deckCompleto = [];
+    seqNumerosTruco.forEach(num => {
+        naipesTruco.forEach(naipe => {
+            deckCompleto.push(`${num} ${naipe}`);
+        });
+    });
+    // Embaralhamento randômico estruturado
+    deckCompleto.sort(() => Math.random() - 0.5);
     
+    // Definição e extração do Vira
+    trucoState.viraCard = deckCompleto.pop();
+    const partsVira = trucoState.viraCard.split(" ");
+    const numVira = partsVira[0];
+    
+    // Regra do Truco: A manilha é o número imediatamente superior ao Vira na escala cíclica
+    const idxViraInSeq = seqNumerosTruco.indexOf(numVira);
+    trucoState.manilhaNumero = seqNumerosTruco[(idxViraInSeq + 1) % seqNumerosTruco.length];
+
+    // Distribuição das mãos
     trucoState.playerHand = [
-        { nome: cartasDisponiveis[0], jogada: false },
-        { nome: cartasDisponiveis[1], jogada: false },
-        { nome: cartasDisponiveis[2], jogada: false }
+        { nome: deckCompleto.pop(), jogada: false },
+        { nome: deckCompleto.pop(), jogada: false },
+        { nome: deckCompleto.pop(), jogada: false }
     ];
     
     trucoState.aiHand = [
-        { nome: cartasDisponiveis[3], jogada: false },
-        { nome: cartasDisponiveis[4], jogada: false },
-        { nome: cartasDisponiveis[5], jogada: false }
+        { nome: deckCompleto.pop(), jogada: false },
+        { nome: deckCompleto.pop(), jogada: false },
+        { nome: deckCompleto.pop(), jogada: false }
     ];
 
+    // Renderização dos elementos gráficos da mesa
     limparSlotsMesaTruco();
-    renderizarCartasMaoTruco();
+    
+    // Inserção visual do Vira na mesa
+    const slotVira = document.getElementById('slotViraCard');
+    slotVira.innerHTML = "";
+    slotVira.appendChild(gerarElementoHtmlCartaBaralho(trucoState.viraCard));
+
+    renderVisualCartasMao();
     renderizarCartasOponenteOcultas();
     atualizarPlacarInterfaceTruco();
     atualizarIndicadoresQuedas();
 
     if (trucoState.maoPrimeiroJogador === 'player') {
         trucoState.fase = 'esperandoPlayer';
-        document.getElementById('trucoFeedbackStatus').innerText = "Seu turno! Escolha uma carta do seu baralho abaixo!";
+        document.getElementById('trucoFeedbackStatus').innerText = `O Vira é ${numVira}. Manilhas da vez: [ ${trucoState.manilhaNumero} ]. Escolha sua carta!`;
     } else {
         executarTurnoIA_Primeira();
     }
@@ -1421,26 +1462,29 @@ function renderizarCartasOponenteOcultas() {
     });
 }
 
-function gerarElementoHtmlCartaBaralho(nome) {
-    const info = dadosDoBaralho[nome];
+function gerarElementoHtmlCartaBaralho(nomeCompleto) {
+    const parts = nomeCompleto.split(" ");
+    const numero = parts[0];
+    const naipe = parts[1];
+    
     const cElem = document.createElement('div');
     cElem.className = 'truco-card-item';
-    cElem.setAttribute('data-suit', info.naipe);
+    cElem.setAttribute('data-suit', naipe);
     
     const cornerSuit = document.createElement('span');
     cornerSuit.className = 'card-corner-suit';
-    cornerSuit.innerText = info.numero;
+    cornerSuit.innerText = numero;
 
     const centerSuit = document.createElement('span');
     centerSuit.className = 'card-suit-center';
-    centerSuit.innerText = info.naipe;
+    centerSuit.innerText = naipe;
 
     cElem.appendChild(cornerSuit);
     cElem.appendChild(centerSuit);
     return cElem;
 }
 
-function renderizarCartasMaoTruco() {
+function renderVisualCartasMao() {
     const box = document.getElementById('trucoPlayerCardsBox');
     box.innerHTML = "";
     trucoState.playerHand.forEach((card, idx) => {
@@ -1457,7 +1501,7 @@ function processarJogadaPlayer(playerCardIdx) {
 
     const pCard = trucoState.playerHand[playerCardIdx];
     pCard.jogada = true;
-    renderizarCartasMaoTruco();
+    renderVisualCartasMao();
     
     const slotPlayer = document.getElementById('slotPlayerCard');
     const cartaMesaPlayer = gerarElementoHtmlCartaBaralho(pCard.nome);
@@ -1465,13 +1509,11 @@ function processarJogadaPlayer(playerCardIdx) {
     slotPlayer.innerHTML = "";
     slotPlayer.appendChild(cartaMesaPlayer);
     
-    // Se a IA já tiver jogado nesta rodada (Player foi o segundo a jogar)
     if (document.getElementById('slotAiCard').querySelector('.truco-card-item')) {
         trucoState.fase = 'processandoResultado';
         const aiCardNome = trucoState.aiHand.find(c => c.jogadaNaRodadaAtual).nome;
         setTimeout(() => avaliarVencedorRodada(pCard.nome, aiCardNome), 1000);
     } else {
-        // IA vai responder ao card jogado pelo player
         trucoState.fase = 'iaPensando';
         document.getElementById('trucoFeedbackStatus').innerText = reacoesIA.pensando[Math.floor(Math.random() * reacoesIA.pensando.length)];
         setTimeout(() => executarRespostaIA(pCard.nome), 1200);
@@ -1480,13 +1522,16 @@ function processarJogadaPlayer(playerCardIdx) {
 
 function executarTurnoIA_Primeira() {
     trucoState.fase = 'iaPensando';
-    document.getElementById('trucoFeedbackStatus').innerText = "Eu estou escolhendo uma carta para abrir...";
+    document.getElementById('trucoFeedbackStatus').innerText = "Estou escolhendo qual carta jogar para abrir a rodada...";
     
     setTimeout(() => {
-        // IA escolhe a carta de menor peso estratégico para abrir
         const cartasDisponiveis = trucoState.aiHand.filter(c => !c.jogada);
-        cartasDisponiveis.sort((a, b) => dadosDoBaralho[a.nome].peso - dadosDoBaralho[b.nome].peso);
+        cartasDisponiveis.sort((a, b) => {
+            const pA = a.nome.split(" "); const pB = b.nome.split(" ");
+            return obterForcaCarta(pA[0], pA[1]) - obterForcaCarta(pB[0], pB[1]);
+        });
         
+        // Abre jogando a menor carta estratégica disponível
         const aiCardEscolhida = cartasDisponiveis[0]; 
         aiCardEscolhida.jogada = true;
         aiCardEscolhida.jogadaNaRodadaAtual = true;
@@ -1499,27 +1544,30 @@ function executarTurnoIA_Primeira() {
         slotAi.innerHTML = "";
         slotAi.appendChild(cartaMesaAi);
 
-        document.getElementById('trucoFeedbackStatus').innerText = `Eu joguei! O que você vai mandar contra meu ${aiCardEscolhida.nome}?`;
+        document.getElementById('trucoFeedbackStatus').innerText = `Mandei ${aiCardEscolhida.nome} na mesa. Qual é o seu descarte?`;
         trucoState.fase = 'esperandoPlayer';
     }, 1200);
 }
 
 function executarRespostaIA(playerCardNome) {
-    const pesoPlayer = dadosDoBaralho[playerCardNome].peso;
+    const partsP = playerCardNome.split(" ");
+    const pesoPlayer = obterForcaCarta(partsP[0], partsP[1]);
     const cartasDisponiveis = trucoState.aiHand.filter(c => !c.jogada);
     
-    // Lógica Estratégica: Encontrar menor carta que vence a do jogador
-    cartasDisponiveis.sort((a, b) => dadosDoBaralho[a.nome].peso - dadosDoBaralho[b.nome].peso);
+    cartasDisponiveis.sort((a, b) => {
+        const pA = a.nome.split(" "); const pB = b.nome.split(" ");
+        return obterForcaCarta(pA[0], pA[1]) - obterForcaCarta(pB[0], pB[1]);
+    });
+    
     let escolhaIA = null;
-
     for (let c of cartasDisponiveis) {
-        if (dadosDoBaralho[c.nome].peso > pesoPlayer) {
+        const partsC = c.nome.split(" ");
+        if (obterForcaCarta(partsC[0], partsC[1]) > pesoPlayer) {
             escolhaIA = c;
             break;
         }
     }
 
-    // Se não tiver nenhuma que ganhe, joga a mais fraca ("descarta o lixo")
     if (!escolhaIA) {
         escolhaIA = cartasDisponiveis[0];
     }
@@ -1537,10 +1585,12 @@ function executarRespostaIA(playerCardNome) {
 }
 
 function avaliarVencedorRodada(playerCardNome, aiCardNome) {
-    const pesoP = dadosDoBaralho[playerCardNome].peso;
-    const pesoA = dadosDoBaralho[aiCardNome].peso;
+    const partsP = playerCardNome.split(" ");
+    const partsA = aiCardNome.split(" ");
     
-    // Limpar sinalizações de rodada anterior
+    const pesoP = obterForcaCarta(partsP[0], partsP[1]);
+    const pesoA = obterForcaCarta(partsA[0], partsA[1]);
+    
     trucoState.aiHand.forEach(c => c.jogadaNaRodadaAtual = false);
 
     let resultado = 'E';
@@ -1556,14 +1606,13 @@ function avaliarVencedorRodada(playerCardNome, aiCardNome) {
         document.getElementById('slotAiCard').classList.add('winner-glow');
         document.getElementById('trucoFeedbackStatus').innerText = reacoesIA.vitoriaMao[Math.floor(Math.random() * reacoesIA.vitoriaMao.length)];
     } else {
-        document.getElementById('trucoFeedbackStatus').innerText = "Amarrou! Jogo embaçado! 😮";
+        document.getElementById('trucoFeedbackStatus').innerText = "Empachou a rodada! 😮";
     }
 
     trucoState.historicoRodadas.push(resultado);
     atualizarIndicadoresQuedas();
 
     setTimeout(() => {
-        // Checa fim da mão de 3 quedas
         if (trucoState.roundsGanhosPlayer >= 2) {
             trucoState.playerScore += 3;
             trucoState.maoPrimeiroJogador = 'player';
@@ -1573,7 +1622,6 @@ function avaliarVencedorRodada(playerCardNome, aiCardNome) {
             trucoState.maoPrimeiroJogador = 'ai';
             novaMaoTruco();
         } else if (trucoState.rodadaIndex >= 3) {
-            // Se chegou na terceira e empatou geral, decide por quem ganhou a primeira
             if (trucoState.roundsGanhosPlayer > trucoState.roundsGanhosAi) {
                 trucoState.playerScore += 3;
             } else {
@@ -1581,14 +1629,12 @@ function avaliarVencedorRodada(playerCardNome, aiCardNome) {
             }
             novaMaoTruco();
         } else {
-            // Continua para o próximo round da mesma mão
             trucoState.rodadaIndex++;
             limparSlotsMesaTruco();
             
-            // Quem ganha a rodada joga a primeira carta da próxima
             if (resultado === 'V' || (resultado === 'E' && trucoState.maoPrimeiroJogador === 'player')) {
                 trucoState.fase = 'esperandoPlayer';
-                document.getElementById('trucoFeedbackStatus').innerText = "Você ganhou a rodada anterior! Manda a sua próxima carta.";
+                document.getElementById('trucoFeedbackStatus').innerText = "Você ganhou a queda anterior, faça sua próxima jogada!";
             } else {
                 executarTurnoIA_Primeira();
             }
