@@ -28,7 +28,7 @@
 body {
     font-family: var(--sans);
     background: 
-        linear-gradient(135deg, rgba(232, 247, 234, 0.75), rgba(255, 240, 243, 0.75)),
+        linear-gradient(135deg, rgba(232, 247, 234, 0.3), rgba(255, 240, 243, 0.3)),
         url("https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?auto=format&fit=crop&w=1200&q=80");
     background-size: cover;
     background-position: center;
@@ -85,8 +85,6 @@ body:has(#telaPegadinha.active) .music-bar {
     top: 25px;
     right: 25px;
     background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.6);
     padding: 8px 16px;
     border-radius: 4px;
@@ -124,24 +122,38 @@ body:has(#telaPegadinha.active) .music-bar {
     text-transform: uppercase;
 }
 
-/* Luxury Card Layout */
+/* Luxury Card Layout Sem Blur Opressivo */
 .card {
     display: none;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    background: rgba(255, 255, 255, 0.94);
     padding: 50px 40px;
     border-radius: 16px;
     max-width: 480px;
     width: 100%;
     text-align: center;
     box-shadow: 0 30px 70px rgba(121, 58, 87, 0.05), 0 10px 20px rgba(0, 0, 0, 0.01);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.9);
     z-index: 10;
 }
+
+@keyframes cardFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .card.active {
     display: block;
-    animation: transitionCard 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: cardFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* INPUT FEEDBACK VISUAL PREMIUM */
+input[type="text"] {
+    transition: all 0.3s ease;
+}
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--roxo-orquidea) !important;
+    box-shadow: 0 0 0 3px rgba(121, 58, 87, 0.15) !important;
 }
 
 /* ELEMENTOS DINÂMICOS DISNEY (TELA 2) */
@@ -168,14 +180,8 @@ body:has(#telaPegadinha.active) .music-bar {
 .cameo-enrolados { --base-rot: -12deg; }
 .cameo-olaf { --base-rot: 10deg; }
 
-@media (max-width: 620px) {
-    .disney-cameo { width: 75px; height: 100px; }
-    .cameo-enrolados { left: -35px; top: 8%; }
-    .cameo-olaf { right: -30px; bottom: 12%; }
-}
-
 /* DESIGN DINÂMICO DA ORQUÍDEA (TELA 3) */
-#tela3.card.active { background: rgba(243, 237, 247, 0.92); border: 1px solid rgba(121, 58, 87, 0.15); }
+#tela3.card.active { background: rgba(243, 237, 247, 0.95); border: 1px solid rgba(121, 58, 87, 0.15); }
 .orchid-trigger-zone { position: relative; width: 100%; max-width: 240px; margin: 0 auto 25px auto; cursor: pointer; perspective: 1000px; }
 .orchid-img-asset { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 15px 35px rgba(121, 58, 87, 0.12); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 .orchid-trigger-zone:hover .orchid-img-asset { transform: scale(1.03) translateY(-2px); }
@@ -254,13 +260,13 @@ body:has(#telaPegadinha.active) .music-bar {
 h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spacing: -0.3px; color: var(--roxo-orquidea); margin-bottom: 20px; line-height: 1.4; }
 .italic { font-style: italic; font-family: var(--serifa); color: #5c6b5f; margin-bottom: 25px; font-size: 14px; line-height: 1.6; }
 
-/* Botões Estilo Premium */
+/* Botões Estilo Premium Reativos */
 .btn-navigation {
     background: var(--roxo-orquidea); color: white; padding: 16px 36px; border-radius: 4px; border: none; cursor: pointer;
     font-weight: 600; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
     box-shadow: 0 10px 20px rgba(121, 58, 87, 0.15); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); -webkit-appearance: none;
 }
-.btn-navigation:hover { background: #5c2740; transform: translateY(-1px); box-shadow: 0 12px 25px rgba(121, 58, 87, 0.25); }
+.btn-navigation:hover { background: #5c2740; transform: translateY(-2px) scale(1.02); box-shadow: 0 12px 25px rgba(121, 58, 87, 0.25); }
 
 .btn-back {
     background: none; border: none; color: var(--roxo-orquidea); cursor: pointer; font-weight: 700; font-size: 10px;
@@ -311,7 +317,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 .pos-f1 { transform: rotate(-3deg); } .pos-f2 { transform: rotate(2deg); } .pos-f3 { transform: rotate(-2deg); } .pos-f4 { transform: rotate(4deg); } .pos-f5 { transform: rotate(-4deg); } .pos-f6 { transform: rotate(3deg); } .pos-f7 { transform: rotate(-1deg); } .pos-f8 { transform: rotate(2deg); }
 .foto-mosaico-frame:hover { transform: rotate(0deg) scale(1.03); z-index: 10; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
 
-/* Módulo Pets, Quiz e Vales */
+/* Módulo Pets, Quiz e Vales Premium */
 .carrossel-container { position: relative; width: 100%; max-width: 310px; margin: 0 auto 25px auto; overflow: hidden; border-radius: 8px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); }
 .carrossel-slides { display: flex; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
 .carrossel-slides img { width: 100%; height: 300px; object-fit: cover; flex-shrink: 0; }
@@ -319,26 +325,55 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 .arrow-prev { left: 10px; } .arrow-next { right: 10px; }
 .texto-final { font-family: var(--serifa); font-size: 14.5px; line-height: 1.6; color: #4a574d; margin-bottom: 25px; }
 
-.quiz-box { background: transparent; margin: 20px 0; }
-.quiz-options { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
-.quiz-btn { background: #ffffff; color: var(--texto-escuro); border: 1px solid rgba(121, 58, 87, 0.1); padding: 16px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); text-align: left; font-size: 13px; line-height: 1.5; }
-.quiz-btn:hover { background: var(--rosa-pastel); border-color: var(--roxo-orquidea); }
-.quiz-btn.disabled { pointer-events: none; opacity: 0.4; }
-#quizFeedback { font-size: 12.5px; font-weight: 600; color: #a94442; margin-top: 18px; min-height: 22px; line-height: 1.5; }
-#quizProgressCounter { font-size: 9px; font-weight: 700; color: var(--roxo-orquidea); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+/* QUIZ REESTILIZADO COMPLETO */
+.quiz-box { 
+    border: 1px solid rgba(121, 58, 87, 0.15); 
+    padding: 25px; 
+    border-radius: 12px; 
+    background: rgba(255, 255, 255, 0.5); 
+    box-shadow: 0 8px 24px rgba(121, 58, 87, 0.02); 
+    margin: 20px 0; 
+    position: relative; 
+}
+.quiz-progress-bar-container {
+    width: 100%;
+    height: 5px;
+    background: rgba(121, 58, 87, 0.1);
+    border-radius: 3px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+#quizProgressBar {
+    height: 100%;
+    background: var(--roxo-orquidea);
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+#quizProgressCounter { font-size: 11px; font-weight: 700; color: var(--roxo-orquidea); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
 
 .mural-vales { display: flex; flex-direction: column; gap: 14px; margin: 25px 0; }
 .vale-card { background: #ffffff; border: 1px solid rgba(121, 58, 87, 0.08); padding: 20px; border-radius: 8px; position: relative; cursor: pointer; overflow: hidden; text-align: left; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-.vale-card:hover { border-color: var(--roxo-orquidea); transform: translateY(-2px); }
+.vale-card:hover { border-color: var(--roxo-orquidea); transform: translateY(-4px) scale(1.01); box-shadow: 0 12px 24px rgba(121, 58, 87, 0.06); }
 .vale-card h3 { font-size: 13.5px; font-weight: 700; color: var(--roxo-orquidea); margin-bottom: 4px; }
 .vale-card p { font-size: 12px; color: #666; line-height: 1.5; }
 .carimbo-resgatado { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(2) rotate(-15deg); color: #b33939; border: 1.5px solid #b33939; padding: 4px 12px; font-weight: 900; font-size: 10px; border-radius: 2px; text-transform: uppercase; opacity: 0; background: rgba(255,255,255,0.98); letter-spacing: 1px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
 .vale-card.claimed .carimbo-resgatado { opacity: 0.9; transform: translate(-50%, -50%) scale(1) rotate(-10deg); }
 
 .petal { position: fixed; top: -20px; animation: fall linear infinite; pointer-events: none; z-index: 1; opacity: 0.4; }
-.confeti { position: absolute; pointer-events: none; z-index: 100; animation: voar 1.2s ease-out forwards; }
+.confeti { position: absolute; pointer-events: none; z-index: 100; animation: voar 1.8s ease-out forwards; }
 @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 @keyframes voar { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; } }
+
+/* MEDIA QUERIES PARA RESPONSIVIDADE MOBILE COMPLETA */
+@media (max-width: 768px) {
+    .card { padding: 30px 20px !important; }
+    .mural-mosaico-container { grid-template-columns: 1fr !important; gap: 20px; }
+    .mosaico-centerpiece-text { grid-column: span 1 !important; }
+    #scratchCanvas { width: 100% !important; height: auto !important; }
+    .progress-container { display: none !important; }
+    .lock-digit { font-size: 18px !important; }
+}
 </style>
 </head>
 <body>
@@ -358,6 +393,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <div class="dot" id="dot6"></div>
     <div class="dot" id="dot7"></div>
     <div class="dot" id="dot8"></div>
+    <div class="dot" id="dot9"></div>
 </div>
 
 <div class="card active" id="telaPretaInicial">
@@ -378,7 +414,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </p>
     <div style="display: flex; justify-content: center; gap: 20px; min-height: 55px; position: relative; align-items: center;">
         <button class="btn-navigation" onclick="entrarNoSiteOriginal()">Sim, confesso minha diva</button>
-        <button class="btn-navigation" id="btnFugitivo" onmouseover="fugirDoCursor()" ontouchstart="fugirDoCursor(event)" style="background: #a4a4a4; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 9999; will-change: transform;">Logico que não</button>
+        <button class="btn-navigation" id="btnFugitivo" onmouseover="fugirDoCursor()" ontouchstart="fugirDoCursor(event)" style="background: #a4a4a4; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 9999; will-change: transform;">Lógico que não</button>
     </div>
 </div>
 
@@ -400,7 +436,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- ✉️ TELA 2: TEXTO TOTALMENTE ATUALIZADO CONFORME SOLICITADO -->
 <div class="card" id="tela2">
     <img src="enrolados.jpg" class="disney-cameo cameo-enrolados" alt="Rapunzel Cameo">
     <img src="olaf.jpg" class="disney-cameo cameo-olaf" alt="Olaf Cameo">
@@ -427,7 +462,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
                 Que me conhece assim tão bem existe."
             </div>
 
-            Se as pessoas têm dúvidas se esse negócio de alma gêmea realmente existe, eu não tenho nenhuma: você é a minha alma gêmea na amizade. Você é a mulher mais forte que eu já conheci. Eu sei o quanto a vida já foi dura com você, sei de tantas coisas tristes que você teve que enfrentar e que pouquíssimas pessoas no mundo teriam estrutura para aguentar. Mas o que me deixa completamente sem chão, de tanto orgulho e admiração, é ver como você sempre deu um jeito de juntar os seus pedaço e se reerguer ainda mais gigante em cada uma dessas vezes. Estar com você alivia todas as angústias que tenho porque sua amizade é leve. Você tem uma inteligência admirável, um coração que quase ninguém merece e, definitivamente, é o top 1 de mulheres mais bonitas que eu conheço.
+            Se as pessoas têm dúvidas se esse negócio de alma gêmea realmente existe, eu não tenho nenhuma: você é a minha alma gêmea na amizade. Você é a mulher mais forte que eu já conheci. Eu sei o quanto a vida já foi dura com você, sei de tantas coisas tristes que você teve que enfrentar e que pouquíssimas pessoas no mundo teriam estrutura para aguentar. Mas o que me deixa completamente sem chão, de tanto orgulho e admiração, é ver como você sempre deu um jeito de juntar os seus pedaços e se reerguer ainda mais gigante em cada uma dessas vezes. Estar com você alivia todas as angústias que tenho porque sua amizade é leve. Você tem uma inteligência admirável, um coração que quase ninguém merece e, definitivamente, é o top 1 de mulheres mais bonitas que eu conheço.
             <br><br>
             Poderia passar horas falando tudo que amo em você e tudo que torna você tão única. Ter sua amizade é um dos maiores privilégios que eu poderia ter e, realmente, rezei muito para que o nosso retorno fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas isso jamais vai abalar nossa amizade novamente. O passado nos trouxe aprendizados, mas hoje eu tenho a certeza absoluta de que não cometo os mesmos erros com você. Nosso laço agora é outro, muito mais forte.
             <br><br>
@@ -477,7 +512,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         </div>
 
         <div class="mosaico-centerpiece-text">
-            <h2>"Feliz aniversario, obrigada por partilhar a vida comigo"</h2>
+            <h2>"Feliz aniversário, obrigada por partilhar a vida comigo"</h2>
             <p>pieces of my heart</p>
         </div>
 
@@ -498,7 +533,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma última caixinha...</button>
 </div>
 
-<!-- 🐾 TELA 5: TEXTO DOS PETS ATUALIZADO CONFORME SOLICITADO -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -538,11 +572,14 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
-    <h1>Quiz para risadinhas</h1>
+    <h1>Quiz para risadinhas 🎮</h1>
     <p class="italic" style="font-size: 13px;">Respira... hoje é um bom dia! Responda corretamente as perguntinhas para liberar os seus "presentes" finais!</p>
     
     <div class="quiz-box">
-        <div id="quizProgressCounter">Pergunta 1 de 6</div>
+        <div class="quiz-progress-bar-container">
+            <div id="quizProgressBar"></div>
+        </div>
+        <div id="quizProgressCounter">Pergunta 1 de 7</div>
         <p id="quizQuestion" style="font-weight: 700; color: var(--texto-escuro); margin-bottom: 15px; font-family: var(--serifa); font-size: 16px; line-height: 1.4;"></p>
         <div class="quiz-options" id="quizOptionsContainer"></div>
         <p id="quizFeedback"></p>
@@ -558,23 +595,23 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     
     <div class="mural-vales">
         <div class="vale-card" onclick="claimVale(this)">
-            <h3>Vale Conversas liberadas no zap com o Chico Bento</h3>
+            <h3>💬 Vale Conversas liberadas no zap com o Chico Bento</h3>
             <p>Direito a ler e dar risada.</p>
             <div class="carimbo-resgatado">Resgatado</div>
         </div>
         <div class="vale-card" onclick="claimVale(this)">
-            <h3>Vale Ligação Ilimitado</h3>
+            <h3>📱 Vale Ligação Ilimitado</h3>
             <p>Zero fuso horário vai nos parar. Ligue a qualquer hora para surtar, rir ou chorar.</p>
             <div class="carimbo-resgatado">Resgatado</div>
         </div>
         <div class="vale-card" onclick="claimVale(this)">
-            <h3>Vale 1 Noite/Festa Sem Reclamação</h3>
+            <h3>🎉 Vale 1 Noite/Festa Sem Reclamação</h3>
             <p>Eu vou aceitar ir para o rolê mais duvidoso do mundo sorrindo e sem dar um pingo de close errado.</p>
             <div class="carimbo-resgatado">Resgatado</div>
         </div>
         <div class="vale-card" onclick="claimVale(this)">
-            <h3>Vale uma noite de menininhas</h3>
-            <p>Espaço livre para todas as breguices amigaveis com direito a doce, fofoca e filme (esse voucher é ilimitado rs).</p>
+            <h3>👯‍♀️ Vale uma noite de menininhas</h3>
+            <p>Espaço livre para todas as breguices amigáveis com direito a doce, fofoca e filme (esse voucher é ilimitado rs).</p>
             <div class="carimbo-resgatado">Resgatado</div>
         </div>
     </div>
@@ -639,7 +676,16 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
                 da sua Best. ❤️
             </div>
         </div>
+        <button class="btn-navigation" style="width:100%; margin-top:25px;" onclick="navegarPara(9)">Finalizar ✨</button>
     </div>
+</div>
+
+<div class="card" id="tela9">
+    <h1>Pronto! 💜</h1>
+    <p class="texto-final" style="margin-top: 15px; line-height: 1.8;">
+        Espero que tenha gostado e que tenha sido algo próximo do que você esperava, sua vida vale muito, sua amizade é meu pilar. Obrigada por ser você e compartilhar a vida comigo, te amo big diva
+    </p>
+    <button class="btn-navigation" style="width:100%; margin-top:20px;" onclick="reiniciarJornada()">Reiniciar a jornada</button>
 </div>
 
 <div id="popupBrilhante" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
@@ -651,6 +697,9 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 </div>
 
 <script>
+// ==========================================
+// MÓDULO: ESTADOS E CONFIGURAÇÕES GLOBAIS
+// ==========================================
 const perguntasQuiz = [
     {
         question: "Se uma ligação de vídeo nossa durar mais de duas horas, qual é o desfecho mais provável?",
@@ -694,6 +743,13 @@ const perguntasQuiz = [
             { text: "Loiros gostosos", isCorrect: true, feedback: "Gabaritou! Sabia que um dia cairia em si." },
             { text: "Nenhuma das alternativas", isCorrect: false, feedback: "Achou que ia colocar isso só pq é seu niver? Tudo tem limites gata!" }
         ]
+    },
+    {
+        question: "Se você tivesse que escolher: ser minha best forever OU mais um ano no japão ?",
+        options: [
+            { text: "Japão", isCorrect: false, feedback: "Você me odeia, né?" },
+            { text: "Minha best forever", isCorrect: true, feedback: "EU ESPERO que tenha sido essa opção. Te amo." }
+        ]
     }
 ];
 
@@ -703,7 +759,40 @@ let tentativasTelaPreta = 0;
 let comboLockDigits = [0, 0, 0, 0];
 const musica = document.getElementById('trilhaSonora');
 
-/* 🔒 LÓGICA DA PRIMEIRA TELA EMBUTIDA (ROSA BEBÊ) */
+// ==========================================
+// MÓDULO: NAVEGAÇÃO ENTRE TELAS
+// ==========================================
+function navegarPara(telaNumero) {
+    document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
+    document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+    
+    const targetCard = document.getElementById(`tela${telaNumero}`);
+    const targetDot = document.getElementById(`dot${telaNumero}`);
+    
+    if (targetCard) targetCard.classList.add('active');
+    if (targetDot) targetDot.classList.add('active');
+
+    const musicBar = document.getElementById('musicBar');
+    if (telaNumero > 1) {
+        musicBar.classList.add('visible');
+    } else {
+        musicBar.classList.remove('visible');
+        musica.pause();
+    }
+}
+
+function reiniciarJornada() {
+    currentQuestionIndex = 0;
+    document.getElementById("pet-trancado").style.display = "block";
+    document.getElementById("pet-aberto").style.display = "none";
+    document.getElementById("wrapperCadeadoMecanico").style.display = "block";
+    document.getElementById("wrapperRaspadinhaContent").style.display = "none";
+    navegarPara(1);
+}
+
+// ==========================================
+// MÓDULO: SEGURANÇA E VALIDAÇÃO DE SENHAS
+// ==========================================
 function mostrarInputTelaPreta() {
     document.getElementById('containerInputTelaPreta').style.display = 'block';
 }
@@ -717,6 +806,7 @@ function validarSenhaTelaPreta() {
     } else {
         tentativasTelaPreta++;
         if (tentativasTelaPreta === 1) {
+            document.getElementById('feedbackTelaPreta').style.color = "var(--roxo-orquidea)";
             document.getElementById('feedbackTelaPreta').innerText = "Dica 1: nossa palavra favorita";
         } else {
             document.getElementById('popupBrilhante').style.display = 'flex';
@@ -728,7 +818,6 @@ function fecharPopupBrilhante() {
     document.getElementById('popupBrilhante').style.display = 'none';
 }
 
-/* 🔒 LÓGICA DA TERCEIRA TELA EMBUTIDA (SEGUNDO CADEADO) */
 function mostrarInputTela1() {
     document.getElementById('containerInputTela1').style.display = 'block';
 }
@@ -745,7 +834,6 @@ function validarSenhaTela1() {
     }
 }
 
-/* 🔒 LÓGICA DA QUINTA TELA EMBUTIDA (CADEADO DOS PETS CORRIGIDO) */
 function mostrarInputTela4() {
     document.getElementById('containerInputTela4').style.display = 'block';
 }
@@ -764,36 +852,20 @@ function validarSenhaTela4() {
     }
 }
 
-/* 🃏 JAVASCRIPT DA PEGADINHA DO BOTÃO FUGITIVO */
+// ==========================================
+// MÓDULO: PEGADINHAS E INTERAÇÕES ESTRUTURAIS
+// ==========================================
 function fugirDoCursor(event) {
     if (event) event.preventDefault(); 
     const btn = document.getElementById('btnFugitivo');
-    
     const randomX = (Math.random() - 0.5) * (window.innerWidth * 0.7);
     const randomY = (Math.random() - 0.5) * (window.innerHeight * 0.7);
-    
     btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
 }
 
 function entrarNoSiteOriginal() {
     document.getElementById('telaPegadinha').classList.remove('active');
     navegarPara(1); 
-}
-
-function navegarPara(telaNumero) {
-    document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
-    document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
-    
-    document.getElementById(`tela${telaNumero}`).classList.add('active');
-    document.getElementById(`dot${telaNumero}`).classList.add('active');
-
-    const musicBar = document.getElementById('musicBar');
-    if (telaNumero > 1) {
-        musicBar.classList.add('visible');
-    } else {
-        musicBar.classList.remove('visible');
-        musica.pause();
-    }
 }
 
 function abrirEnvelope() {
@@ -825,12 +897,14 @@ function revelarProximaFraseOrquidea(zoneElement) {
         if (orchidPhraseIndex === 3) {
             const btn = document.getElementById('btnProximaTelaOrquidea');
             btn.style.visibility = "visible";
-            btn.style.animation = "transitionCard 0.4s ease forwards";
+            btn.style.animation = "cardFadeIn 0.4s ease forwards";
         }
     }
 }
 
-/* 🏁 CONTROLES INTERNOS DO SITE EXATAMENTE IGUAIS */
+// ==========================================
+// MÓDULO: QUIZ INTERATIVO COM PROGRESS BAR
+// ==========================================
 function inicializarQuiz() {
     currentQuestionIndex = 0;
     renderizarEstruturaPergunta();
@@ -841,6 +915,10 @@ function renderizarEstruturaPergunta() {
     const quizData = perguntasQuiz[currentQuestionIndex];
     document.getElementById("quizProgressCounter").innerText = `Pergunta ${currentQuestionIndex + 1} de ${perguntasQuiz.length}`;
     document.getElementById("quizQuestion").innerText = quizData.question;
+    
+    // Atualiza barra de progresso visual dinamicamente
+    const percent = (currentQuestionIndex / perguntasQuiz.length) * 100;
+    document.getElementById("quizProgressBar").style.width = `${percent}%`;
     
     const container = document.getElementById("quizOptionsContainer");
     container.innerHTML = "";
@@ -863,11 +941,14 @@ function processarSelecaoOpcao(indexSelecionado, elementoBotao) {
     const feedback = document.getElementById("quizFeedback");
     
     if (opcao.isCorrect) {
-        feedback.style.color = "#2c3e2f";
+        feedback.style.color = "#2c5f2d";
         feedback.innerText = opcao.feedback;
         criarExplosao();
         
         document.querySelectorAll(".quiz-options .quiz-btn").forEach(b => b.classList.add("disabled"));
+        
+        const finalPercent = ((currentQuestionIndex + 1) / perguntasQuiz.length) * 100;
+        document.getElementById("quizProgressBar").style.width = `${finalPercent}%`;
         
         const btnAvancar = document.getElementById("btnIrVales");
         if (currentQuestionIndex === perguntasQuiz.length - 1) {
@@ -898,7 +979,9 @@ function claimVale(element) {
     }
 }
 
-/* 🔓 MOTOR DO CADEADO COMBINATÓRIO MECÂNICO */
+// ==========================================
+// MÓDULO: MOTOR DO CADEADO COMBINATÓRIO
+// ==========================================
 function rolarDigito(index, direcao) {
     comboLockDigits[index] = (comboLockDigits[index] + direcao + 10) % 10;
     document.getElementById(`dig${index}`).innerText = comboLockDigits[index];
@@ -916,7 +999,9 @@ function validarCadeadoMecanico() {
     }
 }
 
-/* 🎫 MOTOR DE RENDERIZAÇÃO DA RASPADINHA COM AUTO-DESTRUIÇÃO */
+// ==========================================
+// MÓDULO: MOTOR DA RASPADINHA CANVAS
+// ==========================================
 function montarMecanismoRaspadinha() {
     const canvas = document.getElementById("scratchCanvas");
     if (!canvas) return;
@@ -974,6 +1059,9 @@ function montarMecanismoRaspadinha() {
     window.addEventListener("touchend", () => { isDrawing = false; checkScratchPercentage(); });
 }
 
+// ==========================================
+// MÓDULO: EFEITOS ESPECIAIS E UTILS (OTIMIZADOS)
+// ==========================================
 function controlarMusica() {
     const toggleBtn = document.querySelector('.music-toggle-btn');
     if (musica.paused) {
@@ -1000,15 +1088,9 @@ function updateCountdown(){
 }
 setInterval(updateCountdown, 1000); updateCountdown();
 
-document.addEventListener('mousemove', (e) => {
-    const x = (window.innerWidth / 2 - e.clientX) / 45;
-    const y = (window.innerHeight / 2 - e.clientY) / 45;
-    document.body.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
-});
-
-/* ❄️ CHUVA ATUALIZADA: OLAF E ENROLADOS CAINDO */
+/* ❄️ CHUVA OTIMIZADA: REDUZIDA DE 25 PARA 10 ELEMENTOS */
 const elementosCaindo = ["⛄", "☀️"];
-for(let i=0; i<25; i++){
+for(let i=0; i<10; i++){
     const petal = document.createElement("div");
     petal.classList.add("petal");
     petal.innerHTML = elementosCaindo[i % elementosCaindo.length];
@@ -1029,9 +1111,10 @@ function iniciarAutoplay() {
     autoPlayTimer = setInterval(() => mudarSlide(1), 3000);
 }
 
+/* 🎉 EXPLOSÃO SUAVE E MENOS CAÓTICA */
 function criarExplosao() {
-    const simbolos = ["🌸", "✨", "💜", "❤️"];
-    for (let i = 0; i < 40; i++) {
+    const simbolos = ["✨", "💜"];
+    for (let i = 0; i < 22; i++) {
         const confeti = document.createElement("div");
         confeti.classList.add("confeti");
         confeti.innerHTML = simbolos[Math.floor(Math.random() * simbolos.length)];
@@ -1042,7 +1125,7 @@ function criarExplosao() {
         confeti.style.left = "50vw"; confeti.style.top = "50vh";
         confeti.style.fontSize = (14 + Math.random() * 22) + "px";
         document.body.appendChild(confeti);
-        setTimeout(() => confeti.remove(), 1200);
+        setTimeout(() => confeti.remove(), 1800);
     }
 }
 </script>
