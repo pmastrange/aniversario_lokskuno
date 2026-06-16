@@ -138,6 +138,140 @@ input[type="text"]:focus {
     box-shadow: 0 0 0 3px rgba(121, 58, 87, 0.15) !important;
 }
 
+/* 🛠️ SISTEMA VISUAL COMPLETO DO BALÃO PINHATA FIXADO */
+.pinhata-wrapper {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 25px;
+}
+.pinhata-string {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--roxo-orquidea), #ccc);
+    margin-bottom: 0;
+}
+.pinhata-balloon {
+    width: 105px;
+    height: 125px;
+    background: radial-gradient(circle at 30% 30%, #ff4d6d, #d63031 80%);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    cursor: pointer;
+    box-shadow: inset -10px -10px 20px rgba(0,0,0,0.2), 0 12px 24px rgba(0,0,0,0.15);
+    transform-origin: top center;
+    animation: balancoBalao 3s infinite ease-in-out;
+    position: relative;
+}
+.pinhata-balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 10px solid #d63031;
+}
+.balloon-locked {
+    margin-top: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #c0392b;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: 1px dashed rgba(214, 48, 49, 0.3);
+    line-height: 1.5;
+}
+.teasing-message {
+    position: absolute;
+    bottom: 20px;
+    color: var(--roxo-orquidea);
+    font-weight: 700;
+    font-size: 14px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+}
+.teasing-message.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+.balloon-message {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px dashed var(--roxo-orquidea);
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    z-index: 20;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+.balloon-message.visible {
+    display: flex !important;
+    animation: cardFadeIn 0.4s ease forwards;
+}
+.password-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--roxo-orquidea);
+    letter-spacing: 1px;
+}
+.password-text {
+    font-family: monospace;
+    font-size: 15px;
+    font-weight: 700;
+    background: #f5f5f5;
+    padding: 8px 14px;
+    border-radius: 4px;
+    color: #2d3436;
+    border: 1px solid #e0e0e0;
+}
+.copy-button {
+    background: var(--roxo-orquidea);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(121, 58, 87, 0.2);
+}
+.copy-feedback {
+    display: none;
+    color: #2c5f2d;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+@keyframes balancoBalao {
+    0%, 100% { transform: rotate(-4deg); }
+    50% { transform: rotate(4deg); }
+}
+@keyframes shakeAnima {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px) rotate(-2deg); }
+    40%, 80% { transform: translateX(6px) rotate(2deg); }
+}
+@keyframes bounceAnima {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(0); opacity: 0; display: none; }
+}
+
 /* ELEMENTOS DINÂMICOS DISNEY (TELA 2) */
 #tela2 { position: relative; }
 .disney-cameo {
@@ -436,7 +570,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <div class="dot" id="dot10"></div>
 </div>
 
-<!-- 🌸 TELA 1: PORTAL ROSA INICIAL (PONTO DE ENTRADA DO SITE) -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
@@ -460,7 +593,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="margin-top: 25px; font-size: 10px; background: rgba(121,58,87,0.1); color: var(--roxo-orquidea); box-shadow: none; border: 1px dashed var(--roxo-orquidea);" onclick="navegarPara(0)">Pedir ajuda ao Balão 🎈</button>
 </div>
 
-<!-- 🎈 TELA 0: BALÃO PINHATA (CHAMADO A PARTIR DA TELA ROSA) -->
 <div class="card" id="tela0">
     <button class="btn-back" onclick="navegarPara(1)">← Voltar ao Cadeado Rosa</button>
     <h1>Controle de Segurança 🎈</h1>
@@ -471,9 +603,9 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         <div id="pinhata-balloon" class="pinhata-balloon" onclick="revelarSenhaBalao()"></div>
         
         <div id="balloon-locked" class="balloon-locked">
-            ⏰ Abre exatamente à meia-noite do seu aniversário!
+            ⏰ Abre exatamente à meia-noite do seu aniversário! (Fuso JST 🇯🇵)
             <br>
-            <small id="time-remaining"></small>
+            <small id="time-remaining" style="display:block; margin-top:5px; font-size:14px; font-family:monospace; color:var(--roxo-orquidea);"></small>
         </div>
         
         <div id="teasing-message" class="teasing-message">
@@ -489,7 +621,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 2: CARTA EMOCIONAL -->
 <div class="card" id="tela2">
     <img src="enrolados.jpg" class="disney-cameo cameo-enrolados" alt="Rapunzel Cameo">
     <img src="olaf.jpg" class="disney-cameo cameo-olaf" alt="Olaf Cameo">
@@ -518,7 +649,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 
             Se as pessoas têm dúvidas se esse negócio de alma gêmea realmente existe, eu não tenho nenhuma: você é a minha alma gêmea na amizade. Você é a mulher mais forte que eu já conheci. Eu sei o quanto a life já foi dura com você, sei de tantas coisas tristes que você teve que enfrentar e que pouquíssimas pessoas no mundo teriam estrutura para aguentar. Mas o que me deixa completamente sem chão, de tanto orgulho e admiração, é ver como você sempre deu um jeito de juntar os seus pedacinos e se reerguer ainda mais gigante em cada uma dessas vezes. Estar com você alivia todas as angústias que tenho porque sua amizade é leve. Você tem uma inteligência admirável, um coração que quase ninguém merece e, definitivamente, é o top 1 de mulheres mais bonitas que eu conheço.
             <br><br>
-            Poderia passar horas falando tudo que amo em você e tudo que torna você tão única. Ter sua amizade é um dos maiores privileges que eu poderia ter e, realmente, rezei muito para que o nosso retorno fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas isso jamais vai abalar nossa amizade novamente. O passado nos trouxe aprendizados, mas hoje eu tenho a certeza absoluta de que não cometo os mesmos erros com você. Nosso laço agora é outro, muito mais forte.
+            Poderia passar hours falando tudo que amo em você e tudo que torna você tão única. Ter sua amizade é um dos maiores privileges que eu poderia ter e, realmente, rezei muito para que o nosso retorno fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas isso jamais vai abalar nossa amizade novamente. O passado nos trouxe aprendizados, mas hoje eu tenho a certeza absoluta de que não cometo os mesmos erros com você. Nosso laço agora é outro, muito mais forte.
             <br><br>
             Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam elas boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, minha diva, obrigada por ser e estar. Pra sempre nós por nós!
             <br><br>
@@ -527,7 +658,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 3: ORQUÍDEA INTERATIVA -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Cores de Admirar</h1>
@@ -545,7 +675,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnProximaTelaOrquidea" style="width: 100%; visibility: hidden;" onclick="navegarPara(4)">Ver nossas lembranças</button>
 </div>
 
-<!-- TELA 4: MOSAICO DE FOTOS -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
@@ -589,7 +718,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma última caixinha...</button>
 </div>
 
-<!-- TELA 5: SESSÃO DOS PETS -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -627,7 +755,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 6: QUIZ DIVERTIDO -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
     <h1>Quiz para risadinhas 🎮</h1>
@@ -646,7 +773,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="avancarQuizOuFase()">Avançar Pergunta ➔</button>
 </div>
 
-<!-- TELA 7: VALES VALIOSOS -->
 <div class="card" id="tela7">
     <button class="btn-back" onclick="navegarPara(6)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos</h1>
@@ -677,7 +803,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:15px;" onclick="navegarPara(8)">Ver a última surpresa... 🤫</button>
 </div>
 
-<!-- TELA 8: SEGREDO NUMÉRICO E RASPADINHA -->
 <div class="card" id="tela8">
     <button class="btn-back" onclick="navegarPara(7)">← Voltar</button>
     
@@ -740,7 +865,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 9: AGRADECIMENTO FINAL -->
 <div class="card" id="tela9">
     <h1>Pronto! 💜</h1>
     <p class="texto-final" style="margin-top: 15px; line-height: 1.8;">
@@ -749,24 +873,20 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:20px;" onclick="navegarPara(10)">Jogar Truco Extra! 🃏</button>
 </div>
 
-<!-- 🃏 TELA 10: MINI-JOGO DE TRUCO INTERATIVO IMPECÁVEL -->
 <div class="card" id="tela10">
     <button class="btn-back" onclick="navegarPara(9)">← Voltar</button>
     <h1>Desafio do Truco! 🃏</h1>
     <p class="italic">"Esse jogo é apenas para te lemnbrar da falta que sinto da minha dupla, truco n tem graça sem vc...!"</p>
     
     <div class="truco-board">
-        <!-- Oponente Row (Top) -->
         <div class="truco-team-label">Eu (Sua Best) 🃏</div>
         <div class="truco-cards-container" id="trucoAiCardsBox"></div>
 
-        <!-- Placar Centralizado -->
         <div class="truco-status-container">
             <div class="truco-score" id="trucoScorePlacar">Você: 0 | Eu: 0</div>
             <div class="truco-rounds-indicators" id="trucoRoundsBox">Rodadas: ⚪ ⚪ ⚪</div>
         </div>
         
-        <!-- Zona de Mesa Online Real -->
         <div style="font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); font-weight: bold;">Mesa de Jogo</div>
         <div class="truco-zone">
             <div class="table-slot" id="slotPlayerCard">
@@ -779,12 +899,10 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         
         <div id="trucoFeedbackStatus">Sua vez! Escolha uma carta do seu baralho abaixo!</div>
         
-        <!-- Seu Baralho Row (Bottom) -->
         <div class="truco-team-label">Você (Diva) 👑</div>
         <div class="truco-cards-container" id="trucoPlayerCardsBox"></div>
     </div>
     
-    <!-- Opções Estratégicas Extras de Reset -->
     <div id="trucoResetContainer" style="display:none; width:100%; margin-top:12px; flex-direction:column; gap:8px;">
         <button class="btn-navigation" id="btnResetTruco" onclick="resetarPartidaTruco()">Reiniciar Partida 🔄</button>
         <button class="btn-navigation" style="background-color:#555;" onclick="reiniciarJornada()">Reiniciar Jornada Completa</button>
@@ -795,6 +913,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 // ==========================================
 // CONFIGURAÇÕES TIMING & SEGURANÇA ANTITAMPER
 // ==========================================
+// 21/06/2026 à meia-noite no Japão (JST / UTC+9) é o equivalente exato a 20/06/2026 às 15:00 UTC
 const targetBirthdayUTC = new Date(Date.UTC(2026, 5, 20, 15, 0, 0)); 
 let lastKnownSystemTime = Date.now();
 let tamperingDetected = false;
@@ -850,7 +969,7 @@ const perguntasQuiz = [
         question: "Se você tivesse que escolher: ser minha best forever OU mais um ano no japão ?",
         options: [
             { text: "Japão", isCorrect: false, feedback: "Você me odeia, né?" },
-            { text: "Minha best forever", isCorrect: true, feedback: "EU ESPERO que tenha sido essa opção. Te amo." }
+            { text: "Minha best forever", isCorrect: true, feedback: "EU ESPERO que tenha sido essa option. Te amo." }
         ]
     }
 ];
@@ -889,7 +1008,7 @@ function revelarSenhaBalao() {
     } else {
         balloon.style.animation = 'none';
         void balloon.offsetWidth;
-        balloon.style.animation = 'bounceAnima 0.6s ease';
+        balloon.style.animation = 'bounceAnima 0.6s ease forwards';
         document.getElementById('balloon-locked').style.display = 'none';
         document.getElementById('balloon-message').classList.add('visible');
     }
@@ -1284,7 +1403,6 @@ function processarJogadaRodadaTruco(playerCardIdx) {
         document.getElementById('trucoFeedbackStatus').innerText = `Eu joguei ${aiCard.nome}! "${aiCard.reacao}"`;
 
         setTimeout(() => {
-            // Paloma sempre vence devido aos valores atribuidos estaticamente
             trucoState.playerScore++;
             trucoState.historicoRodadas.push('V');
             document.getElementById('trucoFeedbackStatus').innerText = `Você ganhou a rodada! ${pCard.frase}`;
@@ -1295,7 +1413,6 @@ function processarJogadaRodadaTruco(playerCardIdx) {
 
             setTimeout(() => {
                 if (trucoState.playerScore >= 2 || trucoState.rodadaIndex >= 3) {
-                    // MENSAGEM OBRIGATÓRIA SOLICITADA EXATAMENTE IGUAL
                     document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:14px; font-weight:bold;'>TRUCO! (Te deixando ganhar aqui pq é seu dia, n se acostuma! KKKK) </span>";
                     document.getElementById('trucoResetContainer').style.display = 'flex';
                     trucoState.fase = 'fimJogo';
@@ -1340,18 +1457,31 @@ function controlarMusica() {
     }
 }
 
+// Configuração absoluta baseada em 21/06/2026 à meia-noite no Japão
 const targetDate = new Date("2026-06-21T00:00:00+09:00");
 function updateCountdown(){
     const diff = targetDate - new Date();
+    
     if (diff <= 0) {
-        document.getElementById("countdown").innerHTML = "Chegou o momento! ✨";
+        const txtLabel = "Chegou o momento! ✨";
+        document.getElementById("countdown").innerHTML = txtLabel;
+        if(document.getElementById("time-remaining")) {
+            document.getElementById("time-remaining").innerHTML = txtLabel;
+        }
         return;
     }
+    
     const days = Math.floor(diff/(1000*60*60*24));
     const hours = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
     const minutes = Math.floor((diff%(1000*60))/(1000*60));
     const seconds = Math.floor((diff%(1000*60))/1000);
-    document.getElementById("countdown").innerHTML = `${days}d  ${hours}h  ${minutes}m  ${seconds}s`;
+    
+    const formattedStr = `${days}d  ${hours}h  ${minutes}m  ${seconds}s`;
+    document.getElementById("countdown").innerHTML = formattedStr;
+    
+    if(document.getElementById("time-remaining")) {
+        document.getElementById("time-remaining").innerHTML = formattedStr;
+    }
 }
 setInterval(updateCountdown, 1000); updateCountdown();
 
