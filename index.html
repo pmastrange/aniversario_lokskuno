@@ -1186,7 +1186,7 @@ function inicializarJogoTruco() {
     // Mão premium da Paloma (Imbatível para diversão garantida)
     trucoState.playerHand = [
         { nome: "Zap ♣️", valor: 10, frase: "CHAMA QUE É ZAP, MARRECO!", jogada: false },
-        { nome: "7 Copas ❤️", valor: 9, frase: "Meio Palo na mesa!", jogada: false },
+        { nome: "7 Copas ❤️", valor: 9, frase: "Hm, essa tb não!", jogada: false },
         { nome: "Espadilha ♠️", valor: 8, frase: "Respeita a espadilha da diva!", jogada: false }
     ];
     
@@ -1340,7 +1340,7 @@ function checarCondicaoFimDeJogoTruco() {
     
     // Melhor de 3
     if (trucoState.playerScore >= 2) {
-        document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:16px; font-weight:bold;'>👑 TRUCO! Você é a Rainha da Mesa! Venceu! 💜</span>";
+        document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:16px; font-weight:bold;'>👑 TRUCO! Te deixando ganhar aqui pq é seu dia, n se acostuma! 💜</span>";
         criarExplosao();
         containerReset.style.display = 'flex';
         return true;
