@@ -42,24 +42,6 @@ body {
     color: var(--texto-escuro);
 }
 
-/* ENGENHARIA DE OCULTAÇÃO DAS TELAS DE ENTRADA */
-body:has(#telaPretaInicial.active) {
-    background: #ffd1dc !important;
-}
-body:has(#telaPretaInicial.active) .progress-container,
-body:has(#telaPretaInicial.active) .music-bar,
-body:has(#telaPegadinha.active) .progress-container,
-body:has(#telaPegadinha.active) .music-bar {
-    display: none !important;
-}
-
-#telaPretaInicial.card.active {
-    background: #ffd1dc !important;
-    border: none !important;
-    box-shadow: none !important;
-    color: var(--roxo-orquidea) !important;
-}
-
 /* Indicadores de Linha Temporal Minimalista */
 .progress-container {
     position: absolute;
@@ -230,7 +212,6 @@ input[type="text"]:focus {
 .scratch-under-image { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
 #scratchCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; cursor: crosshair; touch-action: none; }
 
-/* ✉️ ESTILIZAÇÃO LUXO: CARTINHA DECORADA */
 .scratch-text-message { 
     text-align: left; 
     font-family: 'Georgia', serif; 
@@ -254,7 +235,6 @@ input[type="text"]:focus {
     margin-bottom: 12px;
 }
 
-/* Expansão do Mosaico */
 #tela4.card.active { max-width: 600px; padding: 40px 20px; }
 
 h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spacing: -0.3px; color: var(--roxo-orquidea); margin-bottom: 20px; line-height: 1.4; }
@@ -273,7 +253,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 25px; -webkit-appearance: none;
 }
 
-/* Tela 1 Elements */
+/* Tela 1 Elements (Rosa) */
 .lock { font-size: 45px; cursor: pointer; margin: 25px; display: inline-block; transition: opacity 0.2s; }
 .lock:hover { opacity: 0.7; }
 .audio-hint { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: #999; text-transform: uppercase; margin-bottom: 10px; }
@@ -297,7 +277,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     background: #fcfbfa; padding: 30px; border-radius: 8px; border: 1px solid rgba(227, 218, 201, 0.5); display: none; box-shadow: inset 0 0 30px rgba(227, 218, 201, 0.1);
 }
 .quote-box { background: rgba(121, 58, 87, 0.02); border-left: 2px solid var(--roxo-orquidea); padding: 20px; margin: 25px 0; font-style: italic; color: #443; }
-.carta-scroller { overflow-y: auto; }
 .carta-scroller::-webkit-scrollbar { width: 3px; }
 .carta-scroller::-webkit-scrollbar-thumb { background: rgba(121, 58, 87, 0.15); }
 
@@ -325,7 +304,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 .arrow-prev { left: 10px; } .arrow-next { right: 10px; }
 .texto-final { font-family: var(--serifa); font-size: 14.5px; line-height: 1.6; color: #4a574d; margin-bottom: 25px; }
 
-/* QUIZ REESTILIZADO COMPLETO */
+/* QUIZ REESTILIZADO */
 .quiz-box { 
     border: 1px solid rgba(121, 58, 87, 0.15); 
     padding: 25px; 
@@ -335,22 +314,14 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     margin: 20px 0; 
     position: relative; 
 }
-.quiz-progress-bar-container {
-    width: 100%;
-    height: 5px;
-    background: rgba(121, 58, 87, 0.1);
-    border-radius: 3px;
-    margin-bottom: 20px;
-    overflow: hidden;
-}
-#quizProgressBar {
-    height: 100%;
-    background: var(--roxo-orquidea);
-    width: 0%;
-    transition: width 0.4s ease;
-}
-
+.quiz-progress-bar-container { width: 100%; height: 5px; background: rgba(121, 58, 87, 0.1); border-radius: 3px; margin-bottom: 20px; overflow: hidden; }
+#quizProgressBar { height: 100%; background: var(--roxo-orquidea); width: 0%; transition: width 0.4s ease; }
 #quizProgressCounter { font-size: 11px; font-weight: 700; color: var(--roxo-orquidea); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+.quiz-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
+.quiz-btn { background: #fff; border: 1px solid rgba(121,58,87,0.2); padding: 12px 20px; border-radius: 6px; cursor: pointer; text-align: left; font-family: var(--sans); font-size: 13.5px; font-weight: 600; color: var(--texto-escuro); transition: all 0.2s; }
+.quiz-btn:hover:not(.disabled) { background: var(--rosa-pastel); border-color: var(--roxo-orquidea); }
+.quiz-btn.disabled { opacity: 0.6; cursor: not-allowed; }
+#quizFeedback { font-size: 13px; font-weight: 600; margin-top: 10px; min-height: 20px; line-height: 1.5; }
 
 .mural-vales { display: flex; flex-direction: column; gap: 14px; margin: 25px 0; }
 .vale-card { background: #ffffff; border: 1px solid rgba(121, 58, 87, 0.08); padding: 20px; border-radius: 8px; position: relative; cursor: pointer; overflow: hidden; text-align: left; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -365,212 +336,64 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 @keyframes voar { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; } }
 
-/* 🌟 DESIGN DO MINI-JOGO DE TRUCO (TELA 10) */
+/* 🃏 MESA DE TRUCO PREMIUM IMPROVED */
 .truco-board {
-    margin: 20px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
+    margin: 20px 0; width: 100%; background: radial-gradient(circle, #2e7d32 0%, #1b5e20 100%);
+    border: 6px solid #5d4037; border-radius: 16px; padding: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    display: flex; flex-direction: column; gap: 15px; align-items: center; position: relative;
 }
 .truco-score {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--roxo-orquidea);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 14px; font-weight: 800; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.3); padding: 6px 16px; border-radius: 20px; letter-spacing: 1px;
 }
+.truco-rounds-indicators { display: flex; gap: 8px; font-size: 12px; color: #fff; margin-bottom: 5px; }
 .truco-zone {
-    width: 100%;
-    min-height: 100px;
-    background: rgba(121, 58, 87, 0.04);
-    border: 1px dashed rgba(121, 58, 87, 0.2);
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    padding: 10px;
+    width: 100%; min-height: 120px; background: rgba(0, 0, 0, 0.15); border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 8px; display: flex; justify-content: center; align-items: center; gap: 20px; padding: 15px; position: relative;
 }
-.truco-cards-container {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    width: 100%;
-    margin-top: 10px;
-}
+.truco-cards-container { display: flex; justify-content: center; gap: 12px; width: 100%; margin-top: 5px; }
 .truco-card-item {
-    width: 75px;
-    height: 110px;
-    background: #fff;
-    border: 2px solid rgba(121, 58, 87, 0.2);
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 8px;
-    font-weight: 700;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: all 0.2s ease;
-    user-select: none;
+    width: 70px; height: 100px; background: #fff; border: 2px solid #ccc; border-radius: 8px;
+    display: flex; flex-direction: column; justify-content: space-between; padding: 6px; font-weight: 800;
+    font-size: 15px; cursor: pointer; box-shadow: 0 6px 12px rgba(0,0,0,0.15); transition: all 0.25s ease; user-select: none;
 }
-.truco-card-item:hover:not(.played) {
-    transform: translateY(-8px);
-    border-color: var(--roxo-orquidea);
-    box-shadow: 0 8px 16px rgba(121, 58, 87, 0.15);
-}
-.truco-card-item.played {
-    opacity: 0.3;
-    pointer-events: none;
-    transform: translateY(0);
-}
-.truco-card-item.ai-card {
-    background: linear-gradient(135deg, #ffccd5, #ffb3c1);
-    border-color: #fff;
-    color: transparent;
-}
-#trucoFeedbackStatus {
-    font-size: 14px;
-    font-weight: 600;
-    min-height: 24px;
-    color: var(--texto-escuro);
-}
+.truco-card-item:hover:not(.played) { transform: translateY(-12px) rotate(-2deg); border-color: #ffd700; box-shadow: 0 12px 20px rgba(255,215,0,0.3); }
+.truco-card-item.played { opacity: 0; pointer-events: none; transform: scale(0.8); }
+.truco-card-item.on-table { animation: cardDrop 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards; cursor: default; }
+.truco-card-item.ai-card { background: linear-gradient(135deg, #b71c1c, #880e4f); border-color: #fff; color: #fff; }
 
-/* 🎈 TELA DE SEGURANÇA: REFORMULAÇÃO PINHATA */
-.security-container {
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-}
-.security-container.active {
-    display: flex;
-}
-.pinhata-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    width: 100%;
-}
-.pinhata-string {
-    width: 2px;
-    height: 60px;
-    background-color: #793A57;
-}
+@keyframes cardDrop { from { opacity: 0; transform: translateY(-30px) scale(0.6); } to { opacity: 1; transform: translateY(0) scale(1); } }
+#trucoFeedbackStatus { font-size: 13.5px; font-weight: 700; min-height: 38px; color: #fff; text-align: center; text-shadow: 0 1px 3px rgba(0,0,0,0.6); line-height: 1.4; padding: 0 10px; }
+
+/* 🎈 SEÇÃO BALÃO PINHATA (TELA 0) */
+.pinhata-wrapper { display: flex; flex-direction: column; align-items: center; position: relative; width: 100%; }
+.pinhata-string { width: 2px; height: 60px; background-color: var(--roxo-orquidea); }
 .pinhata-balloon {
-    width: 100px;
-    height: 130px;
-    background: radial-gradient(circle at 30% 30%, #ffccd5, #793A57);
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transform-origin: top center;
+    width: 100px; height: 130px; background: radial-gradient(circle at 30% 30%, #ffccd5, var(--roxo-orquidea));
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; cursor: pointer; transition: transform 0.2s ease;
+    position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transform-origin: top center;
 }
-.pinhata-balloon:hover {
-    transform: scale(1.05) rotate(3deg);
-}
-.pinhata-balloon::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid #793A57;
-}
-.teasing-message {
-    background: linear-gradient(135deg, #ffb3cc, #ffdce6);
-    padding: 15px 25px;
-    border-radius: 15px;
-    color: #cc0066;
-    font-weight: bold;
-    font-size: 1.1em;
-    border: 2px solid #cc0066;
-    display: none !important;
-    margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(204,0,102,0.15);
-}
-.teasing-message.visible {
-    display: block !important;
-    animation: bounceAnima 0.6s ease;
-}
-.balloon-locked {
-    margin-top: 20px;
-    color: var(--roxo-orquidea);
-    font-size: 13px;
-    font-weight: 600;
-}
-.balloon-message {
-    margin-top: 20px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    border: 2px dashed #ffb3cc;
-}
-.balloon-message.visible {
-    display: flex !important;
-    animation: bounceAnima 0.6s ease;
-}
-.password-label {
-    font-weight: bold;
-    color: #cc0066;
-    font-size: 0.9em;
-}
-.password-text {
-    font-family: monospace;
-    font-size: 1.1em;
-    background-color: #f7f7f7;
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: 1px solid #ebdcb9;
-    color: #333;
-    font-weight: bold;
-    width: 100%;
-}
-.copy-button {
-    background-color: #cc0066;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    width: 100%;
-}
-.copy-feedback {
-    color: green;
-    font-size: 0.85em;
-    font-weight: bold;
-    display: none;
-}
+.pinhata-balloon:hover { transform: scale(1.05) rotate(3deg); }
+.pinhata-balloon::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 10px solid var(--roxo-orquidea); }
+.teasing-message { background: linear-gradient(135deg, #ffb3cc, #ffdce6); padding: 15px 25px; border-radius: 15px; color: #cc0066; font-weight: bold; font-size: 1.1em; border: 2px solid #cc0066; display: none !important; margin-top: 20px; box-shadow: 0 4px 10px rgba(204,0,102,0.15); }
+.teasing-message.visible { display: block !important; animation: bounceAnima 0.6s ease; }
+.balloon-locked { margin-top: 20px; color: var(--roxo-orquidea); font-size: 13px; font-weight: 600; line-height: 1.5; }
+.balloon-message { margin-top: 20px; background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: none; flex-direction: column; align-items: center; gap: 12px; width: 100%; border: 2px dashed #ffb3cc; }
+.balloon-message.visible { display: flex !important; animation: bounceAnima 0.6s ease; }
+.password-label { font-weight: bold; color: #cc0066; font-size: 0.9em; }
+.password-text { font-family: monospace; font-size: 1.1em; background-color: #f7f7f7; padding: 8px 12px; border-radius: 6px; border: 1px solid #ebdcb9; color: #333; font-weight: bold; width: 100%; text-align: center; }
+.copy-button { background-color: #cc0066; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; width: 100%; }
+.copy-feedback { color: green; font-size: 0.85em; font-weight: bold; display: none; }
 
-@keyframes bounceAnima {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-@keyframes shakeAnima {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-5deg); }
-    75% { transform: rotate(5deg); }
-}
+@keyframes bounceAnima { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes shakeAnima { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
 
-/* MEDIA QUERIES PARA RESPONSIVIDADE MOBILE COMPLETA */
+/* MEDIA QUERIES PARA RESPONSIVIDADE MOBILE COMPLETA (SEM CORTES) */
 @media (max-width: 768px) {
-    .card { padding: 30px 20px !important; }
+    .card { padding: 35px 20px !important; width: 95vw; min-height: 624px; max-width: 351px; }
     .mural-mosaico-container { grid-template-columns: 1fr !important; gap: 20px; }
     .mosaico-centerpiece-text { grid-column: span 1 !important; }
+    .foto-mosaico-frame img { object-fit: contain !important; }
     #scratchCanvas { width: 100% !important; height: auto !important; }
     .progress-container { display: none !important; }
     .lock-digit { font-size: 18px !important; }
@@ -598,15 +421,43 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <div class="dot" id="dot10"></div>
 </div>
 
-<div class="card active" id="tela0">
+<!-- 🌸 TELA 1: PORTAL ROSA INICIAL (PONTO DE ENTRADA DO SITE) -->
+<div class="card active" id="tela1">
+    <h1>Uma pequena surpresa para minha miguxa</h1>
+    <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
+    <div class="audio-hint">AUMENTE O SOM! 🔊</div>
+    <div class="lock" id="cadeado" onclick="mostrarInputTela1()">🔒</div>
+    
+    <div id="containerInputTela1" style="display: none; margin-top: 15px; margin-bottom: 15px;">
+        <input type="text" id="senhaTela1" placeholder="descubra a senha rs" style="padding: 10px; border: 1px solid var(--roxo-orquidea); border-radius: 4px; font-family: var(--sans); width: 80%; max-width: 250px; margin-bottom: 10px; text-align: center; color: var(--texto-escuro);">
+        <br>
+        <button class="btn-navigation" onclick="validarSenhaTela1()" style="padding: 10px 20px; font-size: 11px;">Desbloquear</button>
+    </div>
+    
+    <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--roxo-orquidea); font-weight: 700;">Toque para destravar</p>
+    <div id="countdown"></div>
+    
+    <div style="font-size: 13px; color: #555;">
+        <div style="font-weight:700; color: var(--roxo-orquidea); letter-spacing: 0.5px; text-transform: uppercase; font-size: 11px; margin-bottom: 2px;">Brasil ↔ Japão</div>
+        <!-- RESPONSIVIDADE CORRIGIDA: Margem controlada para evitar que o texto fique em cima do cadeado -->
+        <div class="italic" style="margin-top: 80px; font-size: 13px;">A chave será entregue no seu aniversário</div>
+    </div>
+    
+    <button class="btn-navigation" style="margin-top: 25px; font-size: 10px; background: rgba(121,58,87,0.1); color: var(--roxo-orquidea); box-shadow: none; border: 1px dashed var(--roxo-orquidea);" onclick="navegarPara(0)">Pedir ajuda ao Balão 🎈</button>
+</div>
+
+<!-- 🎈 TELA 0: BALÃO PINHATA (CHAMADO A PARTIR DA TELA ROSA) -->
+<div class="card" id="tela0">
+    <button class="btn-back" onclick="navegarPara(1)">← Voltar ao Cadeado Rosa</button>
     <h1>Controle de Segurança 🎈</h1>
     <p class="italic">Toque no balão para obter as chaves de acesso ao seu portal de aniversário.</p>
+    
     <div class="pinhata-wrapper">
         <div class="pinhata-string"></div>
         <div id="pinhata-balloon" class="pinhata-balloon" onclick="revelarSenhaBalao()"></div>
         
         <div id="balloon-locked" class="balloon-locked">
-            ⏰ Abre automaticamente no seu aniversário!
+            ⏰ Abre exatamente à meia-noite do seu aniversário!
             <br>
             <small id="time-remaining"></small>
         </div>
@@ -620,51 +471,11 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
             <div class="password-text">palomaminhamelhoramiga</div>
             <button class="copy-button" onclick="copiarSenha()">Copiar Senha</button>
             <div class="copy-feedback" id="copy-feedback">✓ Copiado!</div>
-            <button class="btn-navigation" style="margin-top: 10px; font-size: 10px;" onclick="irParaTelaPreta()">Seguir para o Portal ➔</button>
         </div>
     </div>
 </div>
 
-<div class="card" id="telaPretaInicial">
-    <div class="lock" onclick="mostrarInputTelaPreta()">🔒</div>
-    <div id="containerInputTelaPreta" style="display: none; margin-top: 15px;">
-        <input type="text" id="senhaTelaPreta" placeholder="Digite a senha obtida" style="padding: 10px; border: 1px solid var(--roxo-orquidea); border-radius: 4px; font-family: var(--sans); width: 80%; max-width: 250px; margin-bottom: 10px; text-align: center; color: var(--texto-escuro);">
-        <br>
-        <button class="btn-navigation" onclick="validarSenhaTelaPreta()" style="padding: 10px 20px; font-size: 11px;">Desbloquear</button>
-        <p id="feedbackTelaPreta" style="font-size: 13px; color: var(--roxo-orquidea); margin-top: 10px; font-weight: 600;"></p>
-    </div>
-</div>
-
-<div class="card" id="telaPegadinha">
-    <h1>Controle de Segurança</h1>
-    <p class="italic">Antes de liberar o seu acesso, precisamos de uma confirmação honesta:</p>
-    <p style="font-weight: 700; font-size: 16px; margin-bottom: 30px; color: var(--roxo-orquidea); line-height: 1.4;">
-        Você confessa que é ranzinza, estressada e tem 1,40 de altura?
-    </p>
-    <div style="display: flex; justify-content: center; gap: 20px; min-height: 55px; position: relative; align-items: center;">
-        <button class="btn-navigation" onclick="entrarNoSiteOriginal()">Sim, confesso minha diva</button>
-        <button class="btn-navigation" id="btnFugitivo" onmouseover="fugirDoCursor()" ontouchstart="fugirDoCursor(event)" style="background: #a4a4a4; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 9999; will-change: transform;">Lógico que não</button>
-    </div>
-</div>
-
-<div class="card" id="tela1">
-    <h1>Uma pequena surpresa para minha miguxa</h1>
-    <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
-    <div class="audio-hint">AUMENTE O SOM! 🔊</div>
-    <div class="lock" id="cadeado" onclick="mostrarInputTela1()">🔒</div>
-    <div id="containerInputTela1" style="display: none; margin-top: 15px; margin-bottom: 15px;">
-        <input type="text" id="senhaTela1" placeholder="descubra a senha rs" style="padding: 10px; border: 1px solid var(--roxo-orquidea); border-radius: 4px; font-family: var(--sans); width: 80%; max-width: 250px; margin-bottom: 10px; text-align: center; color: var(--texto-escuro);">
-        <br>
-        <button class="btn-navigation" onclick="validarSenhaTela1()" style="padding: 10px 20px; font-size: 11px;">Desbloquear</button>
-    </div>
-    <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--roxo-orquidea); font-weight: 700;">Toque para destravar</p>
-    <div id="countdown"></div>
-    <div style="font-size: 13px; color: #555;">
-        <div style="font-weight:700; color: var(--roxo-orquidea); letter-spacing: 0.5px; text-transform: uppercase; font-size: 11px; margin-bottom: 2px;">Brasil ↔ Japão</div>
-        <div class="italic" style="margin-top: 80px; font-size: 13px;">A chave será entregue no seu aniversário</div>
-    </div>
-</div>
-
+<!-- TELA 2: CARTA EMOCIONAL -->
 <div class="card" id="tela2">
     <img src="enrolados.jpg" class="disney-cameo cameo-enrolados" alt="Rapunzel Cameo">
     <img src="olaf.jpg" class="disney-cameo cameo-olaf" alt="Olaf Cameo">
@@ -691,9 +502,9 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
                 Que me conhece assim tão bem existe."
             </div>
 
-            Se as pessoas têm dúvidas se esse negócio de alma gêmea realmente existe, eu não tenho nenhuma: você é a minha alma gêmea na amizade. Você é a mulher mais forte que eu já conheci. Eu sei o quanto a vida já foi dura com você, sei de tantas coisas tristes que você teve que enfrentar e que pouquíssimas pessoas no mundo teriam estrutura para aguentar. Mas o que me deixa completamente sem chão, de tanto orgulho e admiração, é ver como você sempre deu um jeito de juntar os seus pedaços e se reerguer ainda mais gigante em cada uma dessas vezes. Estar com você alivia todas as angústias que tenho porque sua amizade é leve. Você tem uma inteligência admirável, um coração que quase ninguém merece e, definitivamente, é o top 1 de mulheres mais bonitas que eu conheço.
+            Se as pessoas têm dúvidas se esse negócio de alma gêmea realmente existe, eu não tenho nenhuma: você é a minha alma gêmea na amizade. Você é a mulher mais forte que eu já conheci. Eu sei o quanto a vida já foi dura com você, sei de tantas coisas tristes que você teve que enfrentar e que pouquíssimas pessoas no mundo teriam estrutura para aguentar. Mas o que me deixa completamente sem chão, de tanto orgulho e admiração, é ver como você sempre deu um jeito de juntar os seus pedacinos e se reerguer ainda mais gigante em cada uma dessas vezes. Estar com você alivia todas as angústias que tenho porque sua amizade é leve. Você tem uma inteligência admirável, um coração que quase ninguém merece e, definitivamente, é o top 1 de mulheres mais bonitas que eu conheço.
             <br><br>
-            Poderia passar horas falando tudo que amo em você e tudo que torna você tão única. Ter sua amizade é um dos maiores privileges que eu poderia ter e, realmente, rezei muito para que o nosso retorno fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas isso jamais vai abalar nossa amizade novamente. O passado nos trouxe aprendizados, mas hoje eu tenho a certeza absoluta de que não cometo os mesmos erros com você. Nosso laço agora é outro, muito mais forte.
+            Poderia passar horas falando tudo que amo em você e tudo que torna você tão única. Ter sua amizade é um dos maiores privilégios que eu poderia ter e, realmente, rezei muito para que o nosso retorno fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas isso jamais vai abalar nossa amizade novamente. O passado nos trouxe aprendizados, mas hoje eu tenho a certeza absoluta de que não cometo os mesmos erros com você. Nosso laço agora é outro, muito mais forte.
             <br><br>
             Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam elas boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, minha diva, obrigada por ser e estar. Pra sempre nós por nós!
             <br><br>
@@ -702,6 +513,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
+<!-- TELA 3: ORQUÍDEA INTERATIVA -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Cores de Admirar</h1>
@@ -719,6 +531,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnProximaTelaOrquidea" style="width: 100%; visibility: hidden;" onclick="navegarPara(4)">Ver nossas lembranças</button>
 </div>
 
+<!-- TELA 4: MOSAICO DE FOTOS (RESPONSIVIDADE GARANTIDA - SEM CORTES) -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
@@ -762,6 +575,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma última caixinha...</button>
 </div>
 
+<!-- TELA 5: SESSÃO DOS PETS -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -799,6 +613,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
+<!-- TELA 6: QUIZ DIVERTIDO -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
     <h1>Quiz para risadinhas 🎮</h1>
@@ -817,6 +632,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="avancarQuizOuFase()">Avançar Pergunta ➔</button>
 </div>
 
+<!-- TELA 7: VALES VALIOSOS -->
 <div class="card" id="tela7">
     <button class="btn-back" onclick="navegarPara(6)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos</h1>
@@ -847,6 +663,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:15px;" onclick="navegarPara(8)">Ver a última surpresa... 🤫</button>
 </div>
 
+<!-- TELA 8: SEGREDO NUMÉRICO E RASPADINHA -->
 <div class="card" id="tela8">
     <button class="btn-back" onclick="navegarPara(7)">← Voltar</button>
     
@@ -909,6 +726,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
+<!-- TELA 9: AGRADECIMENTO FINAL -->
 <div class="card" id="tela9">
     <h1>Pronto! 💜</h1>
     <p class="texto-final" style="margin-top: 15px; line-height: 1.8;">
@@ -917,6 +735,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:20px;" onclick="navegarPara(10)">Jogar Truco Extra! 🃏</button>
 </div>
 
+<!-- 🃏 TELA 10: MINI-JOGO DE TRUCO INTERATIVO IMPECÁVEL -->
 <div class="card" id="tela10">
     <button class="btn-back" onclick="navegarPara(9)">← Voltar</button>
     <h1>Desafio do Truco! 🃏</h1>
@@ -924,45 +743,33 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     
     <div class="truco-board">
         <div class="truco-score" id="trucoScorePlacar">Você: 0 | Best: 0</div>
+        <div class="truco-rounds-indicators" id="trucoRoundsBox">Quedas: ⚪ ⚪ ⚪</div>
         
-        <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888;">Mesa</div>
+        <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #fff; font-weight: bold; opacity: 0.8;">Mesa de Jogo</div>
         <div class="truco-zone" id="trucoMesaCartas">
-            <span style="color: #aaa; font-size: 12px;" id="trucoPlaceholderText">Aguardando sua jogada...</span>
+            <span style="color: rgba(255,255,255,0.4); font-size: 12px;" id="trucoPlaceholderText">Aguardando sua jogada...</span>
         </div>
         
-        <div id="trucoFeedbackStatus">Escolha uma carta para começar!</div>
+        <div id="trucoFeedbackStatus">Sua vez de trucar! Escolha uma carta abaixo!</div>
         
-        <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-top: 10px;">Suas Cartas</div>
-        <div class="truco-cards-container" id="trucoPlayerCardsBox">
-            </div>
+        <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #fff; font-weight: bold; opacity: 0.8; margin-top: 5px;">Suas Cartas</div>
+        <div class="truco-cards-container" id="trucoPlayerCardsBox"></div>
     </div>
     <button class="btn-navigation" id="btnResetTruco" style="width:100%; display:none; margin-top:10px;" onclick="resetarPartidaTruco()">Jogar Novamente 🔄</button>
     <button class="btn-navigation" style="width:100%; margin-top:15px; background-color:#555;" onclick="reiniciarJornada()">Reiniciar Jornada Completa</button>
 </div>
 
-<div id="popupBrilhante" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
-    <div style="background: linear-gradient(135deg, #fff0f3, #ffd1dc); padding: 40px; border-radius: 20px; border: 4px solid var(--roxo-orquidea); box-shadow: 0 0 30px rgba(121, 58, 87, 0.6); text-align: center; max-width: 400px; width: 90%;">
-        <h2 style="color: var(--roxo-orquidea); font-family: var(--serifa); font-size: 28px; margin-bottom: 20px; letter-spacing: 1px; font-weight: bold;">💡 Dica Especial:</h2>
-        <p style="font-size: 22px; font-weight: 700; color: #fff; background: var(--roxo-orquidea); padding: 15px; border-radius: 10px; box-shadow: 0 5px 15px rgba(121,58,87,0.3); text-transform: uppercase; letter-spacing: 1px;">CAMPINAS GAROUTA</p>
-        <button class="btn-navigation" onclick="fecharPopupBrilhante()" style="margin-top: 25px; padding: 12px 30px;">Entendi!</button>
-    </div>
-</div>
-
 <script>
 // ==========================================
-// MÓDULO: ESTADOS E CONFIGURAÇÕES GLOBAIS
+// CONFIGURAÇÕES TIMING & SEGURANÇA ANTITAMPER
 // ==========================================
 const targetBirthdayUTC = new Date(Date.UTC(2026, 5, 20, 15, 0, 0)); // 21/06/2026 00:00 JST
 let lastKnownSystemTime = Date.now();
 let tamperingDetected = false;
 
-// BACKDOOR PARA DESENVOLVEDOR: Ativa modo de teste ignorando restrições de tempo
+// Modo de testes para desenvolvedores via URL param ?teste=true
 const urlParams = new URLSearchParams(window.location.search);
 const modoDevTeste = urlParams.get('teste') === 'true';
-
-if(modoDevTeste) {
-    console.log("MODO DE TESTE ATIVO: Restrições temporais e anti-tampering ignoradas.");
-}
 
 const perguntasQuiz = [
     {
@@ -1019,13 +826,9 @@ const perguntasQuiz = [
 
 let currentQuestionIndex = 0;
 let orchidPhraseIndex = 0;
-let tentativasTelaPreta = 0;
 let comboLockDigits = [0, 0, 0, 0];
 const musica = document.getElementById('trilhaSonora');
 
-// ==========================================
-// MÓDULO: CONTROLE HORÁRIO E ANTI-TAMPERING
-// ==========================================
 function verificarTampering() {
     if (modoDevTeste) return true;
     const currentTime = Date.now();
@@ -1035,38 +838,6 @@ function verificarTampering() {
     }
     lastKnownSystemTime = currentTime;
     return !tamperingDetected;
-}
-
-function atualizarTempoConta() {
-    if (tamperingDetected || modoDevTeste) return;
-    const now = new Date();
-    const diff = targetBirthdayUTC - now;
-    const timerDisplay = document.getElementById('time-remaining');
-
-    if (diff <= 0) {
-        if (timerDisplay) timerDisplay.innerText = "Disponível! Toque no balão ✨";
-        return;
-    }
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    if (timerDisplay) timerDisplay.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-}
-
-function verificarSeEhAniversario() {
-    verificarTampering();
-    if (tamperingDetected) {
-        bloquearPorTampering();
-        return;
-    }
-    const now = new Date();
-    if (now >= targetBirthdayUTC || modoDevTeste) {
-        document.getElementById('balloon-locked').style.display = 'none';
-        document.getElementById('balloon-message').classList.add('visible');
-    } else {
-        document.getElementById('tela0').classList.add('active');
-    }
 }
 
 function revelarSenhaBalao() {
@@ -1107,27 +878,23 @@ function bloquearPorTampering() {
     document.body.innerHTML = `<div style="color:#cc0066; font-weight:bold; padding:50px; text-align:center; font-family:sans-serif;">Acesso permanentemente bloqueado por inconsistência temporal.</div>`;
 }
 
-function irParaTelaPreta() {
-    document.getElementById('tela0').classList.remove('active');
-    document.getElementById('telaPretaInicial').classList.add('active');
-}
-
-setInterval(() => {
-    verificarTampering();
-    atualizarTempoConta();
-}, 1000);
-
 // ==========================================
-// MÓDULO: NAVEGAÇÃO E SESSÕES
+// CONTROLADOR DE NAVEGAÇÃO E SESSÕES
 // ==========================================
 function navegarPara(telaNumero) {
     document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
     document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
     
-    const targetCard = document.getElementById(telaNumero === 9 ? 'tela9' : telaNumero === 10 ? 'tela10' : `tela${telaNumero}`);
+    let targetCard;
+    if (telaNumero === 0) targetCard = document.getElementById('tela0');
+    else if (telaNumero === 9) targetCard = document.getElementById('tela9');
+    else if (telaNumero === 10) targetCard = document.getElementById('tela10');
+    else targetCard = document.getElementById(`tela${telaNumero}`);
+    
     if (targetCard) targetCard.classList.add('active');
     
-    const targetDot = document.getElementById(`dot${telaNumero}`);
+    // Atualiza linha do tempo superior (se aplicável)
+    const targetDot = document.getElementById(`dot${telaNumero === 0 ? 1 : telaNumero}`);
     if (targetDot) targetDot.classList.add('active');
 
     const musicBar = document.getElementById('musicBar');
@@ -1151,50 +918,23 @@ function reiniciarJornada() {
 }
 
 // ==========================================
-// MÓDULO: PORTAL INICIAL E VALIDAÇÕES
+// COMPORTAMENTO DAS TELAS INTERATIVAS
 // ==========================================
-function mostrarInputTelaPreta() {
-    document.getElementById('containerInputTelaPreta').style.display = 'block';
-}
-
-function validarSenhaTelaPreta() {
-    let senha = document.getElementById('senhaTelaPreta').value;
-    if (!senha) return;
-    if (senha.trim().toLowerCase() === "palomaminhamelhoramiga") {
-        document.getElementById('telaPretaInicial').classList.remove('active');
-        document.getElementById('telaPegadinha').classList.add('active');
-    } else {
-        tentativasTelaPreta++;
-        if (tentativasTelaPreta === 1) {
-            document.getElementById('feedbackTelaPreta').innerText = "Senha incorreta. Confira o balão!";
-        } else {
-            document.getElementById('popupBrilhante').style.display = 'flex';
-        }
-    }
-}
-
-function fecharPopupBrilhante() {
-    document.getElementById('popupBrilhante').style.display = 'none';
-}
-
-function entrarNoSiteOriginal() {
-    document.getElementById('telaPegadinha').classList.remove('active');
-    navegarPara(1); 
-}
-
 function mostrarInputTela1() {
     document.getElementById('containerInputTela1').style.display = 'block';
 }
 
 function validarSenhaTela1() {
-    let senha = document.getElementById('senhaTela1').value;
+    let senha = document.getElementById('senhaTela1').value.trim().toLowerCase();
     if (!senha) return;
-    if (btoa(senha.trim().toLowerCase()) === "cGFsb21hbWluaGFtZWxob3JhbWlnYQ==") {
+    
+    // Aceita tanto a senha histórica ("shouganai") quanto a liberada pelo balão no aniversário ("palomaminhamelhoramiga")
+    if (senha === "shouganai" || senha === "palomaminhamelhoramiga") {
         document.getElementById("cadeado").innerHTML = "🔓";
         musica.play().catch(e => console.log("Áudio pendente."));
         setTimeout(() => navegarPara(2), 800);
     } else {
-        alert("Senha incorreta! Espera seu aniversário! (ps: Chicão, site para mulherzinhas, para de tentar)😜");
+        alert("Senha incorreta! Procure por pistas ou espere seu aniversário! 😜");
     }
 }
 
@@ -1207,7 +947,6 @@ function abrirEnvelope() {
         document.getElementById('cartaScroller').style.display = "block";
         setTimeout(() => {
             document.getElementById('cartaScroller').style.opacity = "1";
-            document.getElementById('cartaScroller').style.transform = "translateY(0)";
         }, 50);
     }, 500);
 }
@@ -1250,9 +989,6 @@ function validarSenhaTela4() {
     }
 }
 
-// ==========================================
-// MÓDULO: QUIZ INTERATIVO COM PROGRESS BAR
-// ==========================================
 function inicializarQuiz() {
     currentQuestionIndex = 0;
     renderizarEstruturaPergunta();
@@ -1269,14 +1005,13 @@ function renderizarEstruturaPergunta() {
     
     const container = document.getElementById("quizOptionsContainer");
     container.innerHTML = "";
-    
     document.getElementById("quizFeedback").innerText = "";
     document.getElementById("btnIrVales").style.display = "none";
     
     quizData.options.forEach((opcao, idx) => {
         const btn = document.createElement("button");
         btn.classList.add("quiz-btn");
-        btn.innerText = opacity = opcao.text;
+        btn.innerText = opcao.text;
         btn.onclick = () => processarSelecaoOpcao(idx, btn);
         container.appendChild(btn);
     });
@@ -1291,7 +1026,6 @@ function processarSelecaoOpcao(indexSelecionado, elementoBotao) {
         feedback.style.color = "#2c5f2d";
         feedback.innerText = opcao.feedback;
         criarExplosao();
-        
         document.querySelectorAll(".quiz-options .quiz-btn").forEach(b => b.classList.add("disabled"));
         
         const finalPercent = ((currentQuestionIndex + 1) / perguntasQuiz.length) * 100;
@@ -1346,25 +1080,20 @@ function montarMecanismoRaspadinha() {
     
     ctx.fillStyle = "#cfcfcf";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
     ctx.fillStyle = "#793A57";
     ctx.font = "bold 15px Quicksand";
     ctx.textAlign = "center";
     ctx.fillText("RASPE AQUI COM O DEDO ✨", canvas.width / 2, canvas.height / 2);
     
     let isDrawing = false;
-    
     function limparPixel(e) {
         if (!isDrawing) return;
         const rect = canvas.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        const x = clientX - rect.left;
-        const y = clientY - rect.top;
-        
         ctx.globalCompositeOperation = "destination-out";
         ctx.beginPath();
-        ctx.arc(x, y, 25, 0, Math.PI * 2); 
+        ctx.arc(clientX - rect.left, clientY - rect.top, 25, 0, Math.PI * 2); 
         ctx.fill();
     }
 
@@ -1372,11 +1101,9 @@ function montarMecanismoRaspadinha() {
         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const pixels = imageData.data;
         let transparentPixels = 0;
-        for (let i = 3; i < pixels.length; i += 4) {
-            if (pixels[i] === 0) transparentPixels++;
-        }
+        for (let i = 3; i < pixels.length; i += 4) { if (pixels[i] === 0) transparentPixels++; }
         if (transparentPixels > (pixels.length / 4) * 0.40) {
-            canvas.style.transition = "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+            canvas.style.transition = "opacity 0.6s ease";
             canvas.style.opacity = "0";
             setTimeout(() => canvas.remove(), 600);
         }
@@ -1391,127 +1118,138 @@ function montarMecanismoRaspadinha() {
 }
 
 // ==========================================
-// 🃏 MÓDULO: MINI-JOGO DE TRUCO (CRIATIVO & VENCÍVEL)
+// 🃏 ENGINE PREMIUM: JOGO DE TRUCO REATIVO
 // ==========================================
 let trucoState = {
     playerScore: 0,
     aiScore: 0,
-    rodadaAtual: 1,
-    playerCards: [],
-    aiCards: []
+    rodadaIndex: 1,
+    historicoRodadas: [], // Guarda 'V' ou 'D'
+    playerHand: [],
+    aiHand: []
 };
 
 function inicializarJogoTruco() {
     trucoState.playerScore = 0;
     trucoState.aiScore = 0;
-    trucoState.rodadaAtual = 1;
+    trucoState.rodadaIndex = 1;
+    trucoState.historicoRodadas = [];
     document.getElementById('btnResetTruco').style.display = 'none';
+    document.getElementById('trucoRoundsBox').innerText = "Quedas: ⚪ ⚪ ⚪";
     
-    // Forçamos manilhas e cartas altíssimas para ela vencer de forma divertida e controlada
-    trucoState.playerCards = [
-        { nome: "Zap ♣️", valor: 10, id: 0 },
-        { nome: "3 Copas ❤️", valor: 9, id: 1 },
-        { nome: "As Espadas ♠️", valor: 8, id: 2 }
-    ];
-    // Cartas da inteligência artificial programadas para perder sequencialmente
-    trucoState.aiCards = [
-        { nome: "4 Espadas ♠️", valor: 1, id: 0 },
-        { nome: "7 Paus ♣️", valor: 2, id: 1 },
-        { nome: "K Ouros ♦️", valor: 5, id: 2 }
+    // Mão premium da Paloma (Imbatível para diversão garantida)
+    trucoState.playerHand = [
+        { nome: "Zap ♣️", valor: 10, frase: "CHAMA QUE É ZAP, MARRECO!" },
+        { nome: "7 Copas ❤️", valor: 9, frase: "Meio Palo na mesa!" },
+        { nome: "Espadilha ♠️", valor: 8, frase: "Respeita a espadilha da diva!" }
     ];
     
-    renderizarCartasTruco();
-    atualizarPlacarTruco("Escolha uma carta para começar a rodada!");
+    // Mão da Inteligência Artificial
+    trucoState.aiHand = [
+        { nome: "4 Ouros ♦️", valor: 1, reacao: "Eita, joguei fora kkkk" },
+        { nome: "K Espadas ♠️", valor: 4, reacao: "Vou tentar carregar essa queda!" },
+        { nome: "7 Ouros ♦️", valor: 5, reacao: "Truco! Ah não, pera..." }
+    ];
+    
+    renderizarCartasMaoTruco();
+    document.getElementById('trucoMesaCartas').innerHTML = `<span style="color: rgba(255,255,255,0.4); font-size: 12px;" id="trucoPlaceholderText">Sua vez! Escolha uma carta...</span>`;
+    document.getElementById('trucoFeedbackStatus').innerText = "Mão distribuída! Jogue a primeira carta!";
+    atualizarPlacarInterfaceTruco();
 }
 
-function renderizarCartasTruco() {
+function renderizarCartasMaoTruco() {
     const box = document.getElementById('trucoPlayerCardsBox');
     box.innerHTML = "";
-    trucoState.playerCards.forEach(card => {
+    trucoState.playerHand.forEach((card, idx) => {
         const cElem = document.createElement('div');
         cElem.className = 'truco-card-item';
-        cElem.id = `pCard-${card.id}`;
-        cElem.innerHTML = `<span>${card.nome.split(' ')[0]}</span><span style="align-self:flex-end;">${card.nome.split(' ')[1]}</span>`;
-        cElem.onclick = () => jogarRodadaTruco(card.id);
+        cElem.id = `trucoPlayerCard-${idx}`;
+        cElem.innerHTML = `<span>${card.nome.split(' ')[0]}</span><span style="align-self:flex-end; font-size: 18px;">${card.nome.split(' ')[1]}</span>`;
+        cElem.onclick = () => processarJogadaRodadaTruco(idx);
         box.appendChild(cElem);
     });
 }
 
-function jogarRodadaTruco(cardId) {
-    const cardIdx = trucoState.playerCards.findIndex(c => c.id === cardId);
-    const pCard = trucoState.playerCards[cardIdx];
+function processarJogadaRodadaTruco(playerCardIdx) {
+    const pCard = trucoState.playerHand[playerCardIdx];
+    const cardElement = document.getElementById(`trucoPlayerCard-${playerCardIdx}`);
+    if (cardElement.classList.contains('played')) return;
     
-    const cardBtn = document.getElementById(`pCard-${cardId}`);
-    if (cardBtn.classList.contains('played')) return;
-    cardBtn.classList.add('played');
-    
+    cardElement.classList.add('played');
     const mesa = document.getElementById('trucoMesaCartas');
     document.getElementById('trucoPlaceholderText').style.display = 'none';
     
-    // Jogador joga
-    mesa.innerHTML = `<div class="truco-card-item"><span>${pCard.nome.split(' ')[0]}</span><span style="align-self:flex-end;">${pCard.nome.split(' ')[1]}</span></div>`;
-    
-    // IA responde em seguida
-    document.getElementById('trucoFeedbackStatus').innerText = "Eu estou pensando...";
+    // Exibe sua carta na mesa
+    mesa.innerHTML = `<div class="truco-card-item on-table"><span>${pCard.nome.split(' ')[0]}</span><span style="align-self:flex-end; font-size:18px;">${pCard.nome.split(' ')[1]}</span></div>`;
+    document.getElementById('trucoFeedbackStatus').innerText = `Você jogou ${pCard.nome}! A Best está pensando...`;
     
     setTimeout(() => {
-        const aiCard = trucoState.aiCards.shift();
-        mesa.innerHTML += `<div class="truco-card-item ai-card" style="color:#2c3e2f; background:#fff; border-color:var(--roxo-orquidea);"><span>${aiCard.nome.split(' ')[0]}</span><span style="align-self:flex-end;">${aiCard.nome.split(' ')[1]}</span></div>`;
+        // IA joga a carta correspondente à rodada
+        const aiCard = trucoState.aiHand[trucoState.rodadaIndex - 1];
+        mesa.innerHTML += `<div class="truco-card-item on-table ai-card"><span>${aiCard.nome.split(' ')[0]}</span><span style="align-self:flex-end; font-size:18px; color:white;">${aiCard.nome.split(' ')[1]}</span></div>`;
         
+        let resultadoTexto = "";
         if (pCard.valor > aiCard.valor) {
             trucoState.playerScore++;
-            document.getElementById('trucoFeedbackStatus').innerText = "Você ganhou essa queda!";
-        } else {
-            trucoState.aiScore++;
-            document.getElementById('trucoFeedbackStatus').innerText = "Eu ganhei essa queda kkkk";
-        }
-        
-        atualizarPlacarTruco();
-        verificarFimPartidaTruco();
-    }, 800);
-}
-
-function atualizarPlacarTruco(customMsg) {
-    document.getElementById('trucoScorePlacar').innerText = `Você: ${trucoState.playerScore} | Best: ${trucoState.aiScore}`;
-    if (customMsg) document.getElementById('trucoFeedbackStatus').innerText = customMsg;
-}
-
-function verificarFimPartidaTruco() {
-    if (trucoState.playerScore >= 2) {
-        document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:var(--roxo-orquidea); font-weight:bold;'>TRUCO! Você venceu! 💜</span>";
-        criarExplosao();
-        document.getElementById('btnResetTruco').style.display = 'block';
-    } else if (trucoState.aiScore >= 2) {
-        document.getElementById('trucoFeedbackStatus').innerText = "Que sorte a minha kkkk! Mas relaxa gata, você sempre ganha no meu coração!";
-        document.getElementById('btnResetTruco').style.display = 'block';
-    } else if (trucoState.playerCards.filter(c => !document.getElementById(`pCard-${c.id}`).classList.contains('played')).length === 0) {
-        // Fallback empate ou fim de cartas
-        if(trucoState.playerScore >= trucoState.aiScore) {
-            document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:var(--roxo-orquidea); font-weight:bold;'>TRUCO! Você venceu! 💜</span>";
+            trucoState.historicoRodadas.push('V');
+            resultadoTexto = `Você ganhou a queda! ${pCard.frase}`;
             criarExplosao();
         } else {
-            document.getElementById('trucoFeedbackStatus').innerText = "Que sorte a minha kkkk!";
+            trucoState.aiScore++;
+            trucoState.historicoRodadas.push('D');
+            resultadoTexto = `A Best ganhou essa queda! "${aiCard.reacao}"`;
         }
-        document.getElementById('btnResetTruco').style.display = 'block';
+        
+        atualizarIndicadoresQuedas();
+        trucoState.rodadaIndex++;
+        
+        document.getElementById('trucoFeedbackStatus').innerText = resultadoTexto;
+        atualizarPlacarInterfaceTruco();
+        
+        setTimeout(() => {
+            checarCondicaoFimDeJogoTruco();
+        }, 1200);
+        
+    }, 1000);
+}
+
+function atualizarIndicadoresQuedas() {
+    const markers = trucoState.historicoRodadas.map(res => res === 'V' ? '🟢' : '🔴');
+    while(markers.length < 3) markers.push('⚪');
+    document.getElementById('trucoRoundsBox').innerText = `Quedas: ${markers.join(' ')}`;
+}
+
+function atualizarPlacarInterfaceTruco() {
+    document.getElementById('trucoScorePlacar').innerText = `Você: ${trucoState.playerScore} | Best: ${trucoState.aiScore}`;
+}
+
+function checarCondicaoFimDeJogoTruco() {
+    const btnReset = document.getElementById('btnResetTruco');
+    if (trucoState.playerScore >= 2) {
+        document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:16px; font-weight:bold;'>👑 TRUCO! Você é a Rainha da Mesa! Venceu! 💜</span>";
+        criarExplosao();
+        btnReset.style.display = 'block';
+    } else if (trucoState.aiScore >= 2) {
+        document.getElementById('trucoFeedbackStatus').innerText = "Que sorte a minha kkkk! Mas você joga muito!";
+        btnReset.style.display = 'block';
+    } else if (trucoState.rodadaIndex > 3) {
+        if(trucoState.playerScore >= trucoState.aiScore) {
+            document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:16px; font-weight:bold;'>TRUCO! No desempate deu VOCÊ! 💜</span>";
+            criarExplosao();
+        } else {
+            document.getElementById('trucoFeedbackStatus').innerText = "Fim de jogo! Que sorte a minha kkkk";
+        }
+        btnReset.style.display = 'block';
     }
 }
 
 function resetarPartidaTruco() {
-    document.getElementById('trucoMesaCartas').innerHTML = `<span style="color: #aaa; font-size: 12px;" id="trucoPlaceholderText">Aguardando sua jogada...</span>`;
     inicializarJogoTruco();
 }
 
 // ==========================================
-// MÓDULO: UTILS E INTERAÇÕES ADICIONAIS
+// DETECTORES AUXILIARES & UTILS
 // ==========================================
-function fugirDoCursor(event) {
-    if (event) event.preventDefault(); 
-    const btn = document.getElementById('btnFugitivo');
-    const randomX = (Math.random() - 0.5) * (window.innerWidth * 0.7);
-    const randomY = (Math.random() - 0.5) * (window.innerHeight * 0.7);
-    btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
-}
-
 function controlarMusica() {
     const toggleBtn = document.querySelector('.music-toggle-btn');
     if (musica.paused) {
