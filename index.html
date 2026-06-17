@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uma Surpresa Especial para Minha Miguxa</title>
+<title>Está chegando o dia miguxa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
@@ -124,7 +124,10 @@ body {
 }
 
 .card.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     animation: cardFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -250,6 +253,7 @@ input[type="text"]:focus {
     letter-spacing: 0.5px;
     box-shadow: 0 4px 10px rgba(121, 58, 87, 0.2);
 }
+.copy-button:active { transform: scale(0.98); }
 .copy-feedback {
     display: none;
     color: #2c5f2d;
@@ -407,16 +411,34 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 }
 .envelope-wrapper-premium:hover .purple-wax-seal { transform: translate(-50%, -46%) scale(1.06); }
 
-/* ALINHAMENTO DE PROSE PARA TELA 2 */
+/* [P1] CENTRALIZAÇÃO MATEMÁTICA ABSOLUTA PARA TELA 2 (IPHONE READY) */
 .cartaScrollerContainer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 10px !important;
+    margin: 0 auto !important;
 }
 .carta-scroller {
-    width: 100%; max-height: 380px; overflow-y: auto; text-align: center; font-family: 'Georgia', serif; font-size: 14.5px; line-height: 1.9; color: #333;
-    background: #fcfbfa; padding: 30px; border-radius: 8px; border: 1px solid rgba(227, 218, 201, 0.5); display: none; box-shadow: inset 0 0 30px rgba(227, 218, 201, 0.1);
-    margin: 0 auto; -webkit-overflow-scrolling: touch; word-wrap: break-word;
+    max-width: 420px !important;
+    width: 100% !important; 
+    text-align: justify !important; 
+    padding: 25px !important; 
+    max-height: 420px !important; 
+    overflow-y: auto !important; 
+    font-family: 'Georgia', serif; 
+    font-size: 14.5px; 
+    line-height: 1.75; 
+    color: #333;
+    background: #fcfbfa; 
+    border: 1px solid rgba(227, 218, 201, 0.5); 
+    display: none; 
+    box-shadow: inset 0 0 30px rgba(227, 218, 201, 0.1);
+    margin: 0 auto !important; 
+    -webkit-overflow-scrolling: touch; 
+    word-wrap: break-word;
 }
 .quote-box { background: rgba(121, 58, 87, 0.02); border-left: 2px solid var(--roxo-orquidea); padding: 20px; margin: 25px 0; font-style: italic; color: #443; text-align: center; }
 .carta-scroller::-webkit-scrollbar { width: 3px; }
@@ -474,7 +496,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 .vale-card.claimed .carimbo-resgatado { opacity: 0.9; transform: translate(-50%, -50%) scale(1) rotate(-10deg); }
 
 .petal { position: fixed; top: -20px; animation: fall linear infinite; pointer-events: none; z-index: 1; opacity: 0.4; }
-.confeti { position: absolute; pointer-events: none; z-index: 100; animation: voar 1.8s ease-out forwards; }
+.confeti { position: absolute; pointer-events: none; z-index: 100; animation: voar 2s ease-out forwards; } 
 @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 @keyframes voar { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; } }
 
@@ -490,8 +512,9 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 .truco-status-container {
     display: flex; flex-direction: column; align-items: center; gap: 4px; background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 8px; width: 95%;
 }
-.truco-score { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
-.truco-rounds-indicators { font-size: 12px; color: #ffd700; font-weight: 700; }
+
+.truco-score { font-size: 15px; font-weight: 800; color: #ffd700; letter-spacing: 0.5px; }
+.truco-rounds-indicators { font-size: 12px; color: #e8f7ea; font-weight: 700; }
 
 .truco-zone {
     width: 100%; min-height: 105px; background: rgba(0, 0, 0, 0.25); border: 2px dashed rgba(255, 255, 255, 0.12);
@@ -501,19 +524,32 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     width: 54px; height: 78px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 6px; display: flex; justify-content: center; align-items: center;
     transition: all 0.3s ease;
 }
+
 .table-slot.winner-glow {
-    box-shadow: 0 0 12px #ffd700;
     border-color: #ffd700;
     background: rgba(255, 215, 0, 0.1);
+    animation: pulseGlow 0.6s ease infinite alternate;
 }
+@keyframes pulseGlow {
+    0% { transform: scale(1); box-shadow: 0 0 8px #ffd700; }
+    100% { transform: scale(1.02); box-shadow: 0 0 18px #ffd700; }
+}
+
+.table-slot.blinking-outline {
+    animation: blinkOutlineAnima 0.3s infinite alternate;
+}
+@keyframes blinkOutlineAnima {
+    from { border-color: rgba(255,255,255,0.2); box-shadow: none; }
+    to { border-color: #ffd700; box-shadow: 0 0 8px rgba(255, 215, 0, 0.3); }
+}
+
 .slot-placeholder { font-size: 8px; color: rgba(255,255,255,0.25); text-transform: uppercase; font-weight: 700; text-align: center; }
 .truco-cards-container { display: flex; justify-content: center; gap: 8px; min-height: 85px; width: 100%; align-items: center; }
 
-/* RE-ESTILIZAÇÃO DAS CARTAS DE BARALHO PARA APONTAMENTO TÁTIL SEM ERROS */
 .truco-card-item {
     width: 54px; height: 80px; background: #ffffff; border-radius: 6px; border: 1px solid #dcdcdc;
     display: flex; flex-direction: column; justify-content: space-between; padding: 5px 4px; font-weight: 800;
-    font-size: 14px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: all 0.25s ease; user-select: none;
+    font-size: 14px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: all 0.3s; user-select: none;
     position: relative; font-family: Arial, sans-serif;
     transform-style: preserve-3d;
 }
@@ -529,19 +565,60 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 .truco-card-item[data-suit="❤️"], .truco-card-item[data-suit="♦️"] { color: #d63031; }
 .truco-card-item[data-suit="♣️"], .truco-card-item[data-suit="♠️"] { color: #2d3436; }
 
-/* VERSO REAL DA CARTA DA IA COM PATTERN DE SEGURANÇA */
 .truco-card-item.facedown {
     background: repeating-linear-gradient(45deg, #793A57, #793A57 6px, #5c2740 6px, #5c2740 12px);
     border: 2px solid #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.3); cursor: default;
 }
 .truco-card-item.facedown * { display: none !important; }
 
-.truco-card-item:hover:not(.played):not(.facedown) { transform: translateY(-6px); border-color: #ffd700; box-shadow: 0 8px 16px rgba(255,215,0,0.35); }
+.truco-card-item:hover:not(.played):not(.facedown) { 
+    transform: translateY(-6px); 
+    border-color: #ffd700; 
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.4); 
+}
 .truco-card-item.played { opacity: 0; pointer-events: none; transform: scale(0.6); }
-.truco-card-item.on-table { animation: cardDrop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; cursor: default; pointer-events: none; }
+.truco-card-item.on-table { animation: cardDrop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; cursor: default; pointer-events: none; }
 
 @keyframes cardDrop { from { opacity: 0; transform: translateY(-15px) scale(0.7); } to { opacity: 1; transform: translateY(0) scale(1); } }
-#trucoFeedbackStatus { font-size: 13px; font-weight: 700; min-height: 38px; color: #fff; text-align: center; text-shadow: 0 1px 3px rgba(0,0,0,0.8); line-height: 1.4; padding: 0 6px; display: flex; align-items: center; justify-content: center; }
+
+#trucoFeedbackStatus { 
+    font-size: 13px; 
+    font-weight: 700; 
+    min-height: 50px; 
+    color: #fff; 
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center; 
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8); 
+    line-height: 1.4; 
+    padding: 6px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 6px;
+    width: 95%;
+    margin: 0 auto;
+    animation: slideDownAnima 0.4s ease forwards;
+}
+@keyframes slideDownAnima {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.truco-board.ia-thinking #trucoPlayerCardsBox .truco-card-item {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Painel de controle inferior do truco sempre disponível */
+.control-truco-wrapper {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
 /* MEDIA QUERIES TOTALMENTE REESTILIZADAS PARA RENDERIZAÇÃO NO IPHONE */
 @media (max-width: 768px) {
@@ -557,19 +634,21 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         min-height: auto;
     }
     
-    /* Forçando a centralização da folha da carta em telas móveis */
     .cartaScrollerContainer {
         width: 100% !important;
-        padding: 0 !important;
+        padding: 0 10px !important;
         margin: 0 auto !important;
-        float: none !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
     .carta-scroller {
+        max-width: 420px !important;
         width: 100% !important;
-        max-width: 100% !important;
-        padding: 20px 15px !important;
+        padding: 25px !important;
+        max-height: 420px !important;
+        text-align: justify !important;
         margin: 0 auto !important;
-        text-align: center !important;
     }
     .envelope-wrapper-premium {
         margin: 15px auto !important;
@@ -610,10 +689,10 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <div class="dot" id="dot10"></div>
 </div>
 
-<!-- 🌸 TELA 1: PORTAL ROSA INICIAL (PONTO DE ENTRADA DO SITE) -->
+<!-- 🌸 TELA 1: PORTAL ROSA INICIAL -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
-    <p class="italic">Tem uma surpresa pra você. Mas ainda não chegou a hora rsrsrs.</p>
+    <p class="italic">Tem uma surpresa pra você. Esta quase no dia rsrsrs.</p>
     <div class="audio-hint">AUMENTE O SOM! 🔊</div>
     <div class="lock" id="cadeado" onclick="mostrarInputTela1()">🔒</div>
     
@@ -634,7 +713,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="margin-top: 25px; font-size: 10px; background: rgba(121,58,87,0.1); color: var(--roxo-orquidea); box-shadow: none; border: 1px dashed var(--roxo-orquidea);" onclick="navegarPara(0)">Pedir ajuda ao Balão 🎈</button>
 </div>
 
-<!-- 🎈 TELA 0: BALÃO PINHATA REALMENTE PROTEGIDO (TEXTO CORRIGIDO) -->
+<!-- 🎈 TELA 0: BALÃO PINHATA -->
 <div class="card" id="tela0">
     <button class="btn-back" onclick="navegarPara(1)">← Voltar ao Cadeado Rosa</button>
     <h1>Controle de Segurança 🎈</h1>
@@ -656,8 +735,8 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         
         <div id="balloon-message" class="balloon-message">
             <span class="password-label">🎉 PARABÉNS! SUA SENHA É:</span>
-            <div class="password-text">palomaminhamelhoramiga</div>
-            <button class="copy-button" onclick="copyingSenha()">Copiar Senha</button>
+            <div class="password-text"></div>
+            <button class="copy-button" onclick="copiarSenha()">Copiar Senha</button>
             <div class="copy-feedback" id="copy-feedback">✓ Copiado!</div>
         </div>
     </div>
@@ -675,9 +754,9 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
     <div class="cartaScrollerContainer">
         <div class="carta-scroller" id="cartaScroller">
-            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chico Bento somos duas antas e, infelizmente, não dá para controlar tudo a quase dezoito mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano — e é porque é seu. Sua data, seu dia, sua life, e isso é mais que suficiente para tornar esse dia o mais especial. Isso tem que ser comemorado para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
+            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chico Bento somos duas antas e, infelizmente, não dá para controlar tudo a quase dezoito mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano, e é porque é seu. Sua data, seu dia, sua vida, e isso é mais que suficiente para tornar esse dia o mais especial. Temos que comemorar para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
             <br><br>
-            Sabe, sempre que escuto Anavitória me lembro de você, mas uma música em específico por um trecho em específico, e por isso está tocando rs:
+            Sempre que escuto Anavitória ou Anitta me lembro de você, e de boas lembranças juntas, mas uma música em específico, por um trecho em específico, e por isso está tocando rs:
 
             <div class="quote-box">
                 "Se eu puder ter um pedido a mais<br>
@@ -690,11 +769,11 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
                 Que me conhece assim tão bem existe."
             </div>
 
-            Se as pessoas têm dúvidas se esse negócio de alma gêmea realmente existe, eu não tenho nenhuma: você é a minha alma gêmea na amizade. Você é a mulher mais forte que eu já conheci. Eu sei o quanto a life já foi dura com você, sei de tantas coisas tristes que você teve que enfrentar e que pouquíssimas pessoas no mundo teriam estrutura para aguentar. Mas o que me deixa completamente sem chão, de tanto orgulho e admiração, é ver como você sempre deu um jeito de juntar os seus pedacinos e se reerguer ainda mais gigante em cada uma dessas vezes. Estar com você alivia todas as angústias que tenho porque sua amizade é leve. Você tem uma inteligência admirável, um coração que quase ninguém merece e, definitivamente, é o top 1 de mulheres mais bonitas que eu conheço.
+            Se as pessoas têm dúvidas se esse negócio de alma gêmea realmente existe, eu não tenho nenhuma: você é a minha alma gêmea na amizade e na vida. Você é a mulher mais forte que eu já conheci. Eu sei o quanto a vida já foi dura com você, sei de tantas coisas tristes que você teve que enfrentar e que pouquíssimas pessoas no mundo teriam estrutura para aguentar. Mas o que me deixa completamente sem chão, de tanto orgulho e admiração, é ver como você sempre deu um jeito de juntar os seus pedacinos e se reerguer ainda mais gigante em cada uma dessas vezes. Estar com você alivia todas as angústias que tenho porque sua amizade é leve. Você tem uma inteligência admirável, um coração que quase ninguém merece e, definitivamente, é o top 1 de mulheres mais bonitas que eu conheço.
             <br><br>
-            Poderia passar hours falando tudo que amo em você e tudo que torna você tão única. Ter sua amizade é um dos maiores privileges que eu poderia ter e, realmente, rezei muito para que o nosso retorno fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas isso jamais vai abalar nossa amizade novamente. O passado nos trouxe aprendizados, mas hoje eu tenho a certeza absoluta de que não cometo os mesmos erros com você. Nosso laço agora é outro, muito mais forte.
+            Poderia passar horas falando tudo que amo em você e tudo que torna você tão única. Ter sua amizade é um dos maiores privileges que eu poderia ter e, realmente, rezei muito para que o nosso retorno fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas isso jamais vai abalar nossa amizade novamente. O passado nos trouxe aprendizados, mas hoje eu tenho a certeza absoluta de que não cometo os mesmos erros com você. Nosso laço agora é outro, muito mais forte.
             <br><br>
-            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, e assim até ficarmos velhinhas. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam elas boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, minha diva, obrigada por ser e estar. Pra sempre nós por nós!
+            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, eu sempre estarei por nós. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam elas boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, minha diva, obrigada por ser e estar. Pra sempre nós por nós!
             <br><br>
             <button class="btn-navigation" style="width:100%;" onclick="navegarPara(3)">Avançar para a Orquídea</button>
         </div>
@@ -704,7 +783,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 <!-- TELA 3: ORQUÍDEA INTERATIVA -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
-    <h1>Cores de Admirar</h1>
+    <h1>Para nunca se esquecer</h1>
     <p class="italic" style="margin-bottom: 15px;">Toque na orquídea 3x para revelar coisas que você não pode se esquecer</p>
     
     <div class="orchid-trigger-zone" onclick="revelarProximaFraseOrquidea(this)">
@@ -712,7 +791,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
     
     <div class="orchid-phrases-mural">
-        <div class="revealed-phrase" id="orchPhrase0">"Você é especial por ser você"</div>
+        <div class="revealed-phrase" id="orchPhrase0">"Você é especial por ser você e quase ninguem merece a pureza e amor que tem pelos seus"</div>
         <div class="revealed-phrase" id="orchPhrase1">"Que esse dia te traga felicidade e a alegria que você genuinamente merece"</div>
         <div class="revealed-phrase" id="orchPhrase2">"Que todas as flores que receba a partir de hoje, sejam de alegria e de conquista"</div>
     </div>
@@ -725,8 +804,8 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <h1>Nossas Memórias</h1>
     
     <div class="mural-mosaico-container">
-        <span class="editorial-tag" style="top: 15px; left: 20px;">love love</span>
-        <span class="editorial-tag" style="bottom: 20px; right: 25px;">the heart remembers</span>
+        <span class="editorial-tag" style="top: 15px; left: 20px;">Loks Loks</span>
+        <span class="editorial-tag" style="bottom: 20px; right: 25px;">Nossos momentos de saudade</span>
         
         <div class="foto-mosaico-frame frame-style-purple pos-f1">
             <img src="Fotoescada.jpg.jpeg" alt="Memória 01">
@@ -742,8 +821,8 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         </div>
 
         <div class="mosaico-centerpiece-text">
-            <h2>"Feliz aniversário, obrigada por partilhar a life comigo"</h2>
-            <p>pieces of my heart</p>
+            <h2>"Feliz aniversário, obrigada por partilhar a vida comigo"</h2>
+            <p>pedaços do meu coração</p>
         </div>
 
         <div class="foto-mosaico-frame frame-style-purple pos-f5">
@@ -760,14 +839,14 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         </div>
     </div>
     
-    <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma última caixinha...</button>
+    <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma caixinha...</button>
 </div>
 
 <!-- TELA 5: SESSÃO DOS PETS -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
-        <h2 style="color: var(--roxo-orquidea); font-size: 20px; font-family: var(--serifa); font-weight: 500; margin-bottom: 15px;">Uma última caixinha... Hoje choro apenas de felicidade e boas lembranças.</h2>
+        <h2 style="color: var(--roxo-orquidea); font-size: 20px; font-family: var(--serifa); font-weight: 500; margin-bottom: 15px;">Mais uma caixinha... Porém hoje o choro é apenas de felicidade e boas lembranças.</h2>
         <div class="lock" onclick="mostrarInputTela4()">🔒</div>
         <div id="containerInputTela4" style="display: none; margin-top: 15px; margin-bottom: 15px;">
             <input type="text" id="senhaTela4" placeholder="Digite a senha" style="padding: 10px; border: 1px solid var(--roxo-orquidea); border-radius: 4px; font-family: var(--sans); width: 80%; max-width: 250px; margin-bottom: 10px; text-align: center; color: var(--texto-escuro);">
@@ -828,8 +907,8 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     
     <div class="mural-vales">
         <div class="vale-card" onclick="claimVale(this)">
-            <h3>💬 Vale Conversas liberadas no zap com o Chico Bento</h3>
-            <p>Direito a ler e dar risada.</p>
+            <h3>💬 Vale um date</h3>
+            <p>Nosso momento.</p>
             <div class="carimbo-resgatado">Resgatado</div>
         </div>
         <div class="vale-card" onclick="claimVale(this)">
@@ -918,29 +997,26 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 <div class="card" id="tela9">
     <h1>Pronto! 💜</h1>
     <p class="texto-final" style="margin-top: 15px; line-height: 1.8;">
-        Espero que tenha gostado e que tenha sido algo próximo do que você esperava, sua life vale muito, sua amizade é meu pilar. Obrigada por ser você e compartilhar a life comigo, te amo big diva
+        Espero que tenha gostado e que tenha sido algo próximo do que você esperava, sua vida vale muito, sua amizade é meu pilar. Obrigada por ser você e compartilhar a vida comigo, te amo big diva
     </p>
     <button class="btn-navigation" style="width:100%; margin-top:20px;" onclick="navegarPara(10)">Jogar Truco Extra! 🃏</button>
 </div>
 
-<!-- 🃏 TELA 10: MINI-JOGO DE TRUCO INTERATIVO COM VIRA E MANILHAS TRADICIONAIS -->
+<!-- 🃏 TELA 10: MINI-JOGO DE TRUCO INTERATIVO IMPECÁVEL (FIXED & SOLID) -->
 <div class="card" id="tela10">
     <button class="btn-back" onclick="navegarPara(9)">← Voltar</button>
     <h1>Desafio do Truco! 🃏</h1>
     <p class="italic">"Esse jogo é apenas para te lembrar da falta que sinto da minha dupla, truco n tem graça sem vc...!"</p>
     
-    <div class="truco-board">
-        <!-- Oponente Row (Top) - RÓTULO AJUSTADO -->
+    <div class="truco-board" id="trucoBoardWrapper">
         <div class="truco-team-label">Sua Best 🃏</div>
         <div class="truco-cards-container" id="trucoAiCardsBox"></div>
 
-        <!-- Placar Centralizado -->
         <div class="truco-status-container">
             <div class="truco-score" id="trucoScorePlacar">Você: 0 PTs | Eu: 0 PTs</div>
             <div class="truco-rounds-indicators" id="trucoRoundsBox">Mão Atual: ⚪ ⚪ ⚪</div>
         </div>
         
-        <!-- Zona de Mesa Online Real com Slot do Vira -->
         <div style="font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); font-weight: bold;">Mesa de Jogo</div>
         <div class="truco-zone">
             <div class="table-slot" id="slotViraCard" style="border-color: #ffd700; background: rgba(255,215,0,0.05);">
@@ -956,13 +1032,12 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         
         <div id="trucoFeedbackStatus">Sua vez! Escolha uma carta do seu baralho abaixo!</div>
         
-        <!-- Seu Baralho Row (Bottom) -->
         <div class="truco-team-label">Você (Diva) 👑</div>
         <div class="truco-cards-container" id="trucoPlayerCardsBox"></div>
     </div>
     
-    <!-- Opções de Reinício Ajustadas Conforme o Pedido -->
-    <div id="trucoResetContainer" style="display:none; width:100%; margin-top:12px; flex-direction:column; gap:8px;">
+    <!-- Painel de Controle de fluxo de reinício sempre acessível abaixo do jogo -->
+    <div class="control-truco-wrapper">
         <button class="btn-navigation" id="btnResetTruco" onclick="resetarPartidaTruco()">Reiniciar Partida</button>
         <button class="btn-navigation" style="background-color:#555;" onclick="reiniciarJornada()">Reiniciar Surpresa</button>
     </div>
@@ -997,7 +1072,7 @@ const perguntasQuiz = [
     {
         question: "Se fôssemos presas juntas em um rolê esquisito, quem seria você nessa situação?",
         options: [
-            { text: "A mente brilhante que arquitetou o plano e quase conseguiu nos salvar.", isCorrect: false, feedback: "Menos, bem menos vc teria dado a ideia e ainda estaria bêbada rsrs. 🤫" },
+            { text: "A mente brilhante que architectou o plano e quase conseguiu nos salvar.", isCorrect: false, feedback: "Menos, bem menos vc teria dado a ideia e ainda estaria bêbada rsrs. 🤫" },
             { text: "A que começaria a rir de nervoso e confessaria absolutamente tudo para o policial em troca de uma água, um lanche e uma soneca.", isCorrect: true, feedback: "Pois é! Álcool segue sendo seu maior vilão kkkk!" }
         ]
     },
@@ -1059,7 +1134,7 @@ function revelarSenhaBalao() {
     if (now < targetBirthdayUTC && !modoDevTeste) {
         balloon.style.animation = 'none';
         void balloon.offsetWidth;
-        balloon.style.animation = 'shakeAnima 0.5s ease';
+        balloon.style.animation = 'shakeAnima 0.4s ease'; 
         const teasing = document.getElementById('teasing-message');
         teasing.classList.add('visible');
         setTimeout(() => teasing.classList.remove('visible'), 3000);
@@ -1068,12 +1143,15 @@ function revelarSenhaBalao() {
         void balloon.offsetWidth;
         balloon.style.animation = 'bounceAnima 0.6s ease forwards';
         document.getElementById('balloon-locked').style.display = 'none';
+        
+        document.querySelector('#balloon-message .password-text').innerText = atob("cGFsb21hbWluaGFtZWxob3JhbWlnYQ==");
         document.getElementById('balloon-message').classList.add('visible');
     }
 }
 
 function copiarSenha() {
-    navigator.clipboard.writeText("palomaminhamelhoramiga").then(() => {
+    const s = atob("cGFsb21hbWluaGFtZWxob3JhbWlnYQ==");
+    navigator.clipboard.writeText(s).then(() => {
         const feedback = document.getElementById('copy-feedback');
         feedback.style.display = 'block';
         setTimeout(() => feedback.style.display = 'none', 2000);
@@ -1114,13 +1192,13 @@ function navegarPara(telaNumero) {
 }
 
 function reiniciarJornada() {
+    limparTodosOsTimeoutsTruco(); // Mata execuções pendentes para não quebrar a memória
     currentQuestionIndex = 0;
     orchidPhraseIndex = 0;
     document.getElementById("pet-trancado").style.display = "block";
     document.getElementById("pet-aberto").style.display = "none";
     document.getElementById("wrapperCadeadoMecanico").style.display = "block";
     document.getElementById("wrapperRaspadinhaContent").style.display = "none";
-    document.getElementById('trucoResetContainer').style.display = 'none';
     navegarPara(1);
 }
 
@@ -1135,7 +1213,8 @@ function validarSenhaTela1() {
     let senha = document.getElementById('senhaTela1').value.trim().toLowerCase();
     if (!senha) return;
     
-    if (senha === "shouganai" || senha === "palomaminhamelhoramiga") {
+    let inputHash = btoa(senha);
+    if (inputHash === "c2hvdWdhbmFp" || inputHash === "cGFsb21hbWluaGFtZWxob3JhbWlnYQ==") {
         document.getElementById("cadeado").innerHTML = "🔓";
         musica.play().catch(e => console.log("Áudio pendente."));
         setTimeout(() => navegarPara(2), 800);
@@ -1272,7 +1351,7 @@ function rolarDigito(index, direcao) {
 
 function validarCadeadoMecanico() {
     const senhaFormada = comboLockDigits.join("");
-    if (senhaFormada === "2106") {
+    if (btoa(senhaFormada) === "MjEwNg==") {
         criarExplosao();
         document.getElementById("wrapperCadeadoMecanico").style.display = "none";
         document.getElementById("wrapperRaspadinhaContent").style.display = "block";
@@ -1327,61 +1406,88 @@ function montarMecanismoRaspadinha() {
 }
 
 // ==========================================
-// 🃏 ENGINE DE TRUCO TRADICIONAL COM VIRA E MANILHAS DINÂMICAS
+// 🃏 ENGINE DE TRUCO ANTI-TRAVAMENTO (MÓDULO SEGURO ASSÍNCRONO)
 // ==========================================
 let trucoState = {
-    playerScore: 0,          // Tentos acumulados do jogo (Até 12)
-    aiScore: 0,              // Tentos acumulados da IA (Até 12)
-    roundsGanhosPlayer: 0,   // Quedas vencidas na mão atual
-    roundsGanhosAi: 0,       // Quedas vencidas na IA na mão atual
-    rodadaIndex: 1,          // Queda corrente (1, 2 ou 3)
-    historicoRodadas: [],     // Símbolos visuais ['🟣', '🔴', '🟡']
+    playerScore: 0,
+    aiScore: 0,
+    roundsGanhosPlayer: 0,
+    roundsGanhosAi: 0,
+    rodadaIndex: 1,
+    historicoRodadas: [],
     playerHand: [],
     aiHand: [],
     fase: 'esperandoPlayer',
     maoPrimeiroJogador: 'player',
-    viraCard: '',            // String identificadora do Vira ex: "7 ❤️"
-    manilhaNumero: ''        // Caractere da manilha definida pelo Vira
+    viraCard: '',
+    manilhaNumero: ''
 };
 
-// Sequência oficial de forças do Truco Tradicional (Da mais fraca à mais forte antes da manilha)
 const seqNumerosTruco = ['4', '5', '6', '7', 'Q', 'J', 'K', 'A', '2', '3'];
 const naipesTruco = ['♦️', '♠️', '❤️', '♣️'];
 
 const reacoesIA = {
     vitoriaMao: ["Ganhei essa queda! 😜", "Chora não, diva! kkk", "Estratégia pura!", "A dupla faz falta né? kkk"],
     derrotaMao: ["Eita, essa doeu! 😮", "Passou por cima...", "Boa jogada!", "Não vale roubar gata! kkk"],
-    pensando: ["Pensando... 🧐", "Olhando minhas cartas...", "Ih, o que eu jogo agora?", "Calculando os riscos..."]
+    pensando: ["🤔 Pensando... 🧐", "🤔 Olhando minhas cartas...", "🤔 Ih, o que eu jogo agora?", "🤔 Calculando os riscos..."]
 };
 
+// Gerenciador de Escopo de Cronômetros para interceptar estouros assíncronos
+let trucoTimeouts = [];
+function registrarTimeoutTruco(funcao, delay) {
+    let id = setTimeout(funcao, delay);
+    trucoTimeouts.push(id);
+    return id;
+}
+function limparTodosOsTimeoutsTruco() {
+    trucoTimeouts.forEach(id => clearTimeout(id));
+    trucoTimeouts = [];
+}
+
+function setTrucoFase(novaFase) {
+    trucoState.fase = novaFase;
+    const board = document.getElementById('trucoBoardWrapper');
+    const slotPlayer = document.getElementById('slotPlayerCard');
+    const slotAi = document.getElementById('slotAiCard');
+    
+    if (!board) return;
+    board.classList.remove('ia-thinking');
+    slotPlayer.classList.remove('blinking-outline');
+    slotAi.classList.remove('blinking-outline');
+
+    if (novaFase === 'iaPensando') {
+        board.classList.add('ia-thinking');
+    } else if (novaFase === 'processandoResultado') {
+        slotPlayer.classList.add('blinking-outline');
+        slotAi.classList.add('blinking-outline');
+    }
+}
+
 function inicializarJogoTruco() {
+    limparTodosOsTimeoutsTruco();
     trucoState.playerScore = 0;
     trucoState.aiScore = 0;
-    document.getElementById('trucoResetContainer').style.display = 'none';
     novaMaoTruco();
 }
 
 function obterForcaCarta(numero, naipe) {
-    // Se a carta for a manilha definida pelo vira, aplica o peso máximo escalonado pelos naipes oficiais
     if (numero === trucoState.manilhaNumero) {
-        if (naipe === '♣️') return 100; // Zap ♣️
-        if (naipe === '❤️') return 90;  // Copas ❤️
-        if (naipe === '♠️') return 80;  // Espadilha ♠️
-        if (naipe === '♦️') return 70;  // Ouros ♦️
+        if (naipe === '♣️') return 100; 
+        if (naipe === '❤️') return 90;  
+        if (naipe === '♠️') return 80;  
+        if (naipe === '♦️') return 70;  
     }
-    // Caso contrário, retorna o índice base da sequência tradicional (1 a 10)
     return seqNumerosTruco.indexOf(numero) + 1;
 }
 
 function novaMaoTruco() {
-    // Validação de final de jogo baseada em 12 tentos
+    limparTodosOsTimeoutsTruco();
+    
     if (trucoState.playerScore >= 12) {
         document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:14px; font-weight:bold;'>TRUCO! (Te deixando ganhar aqui pq é seu dia, n se acostuma! KKKK) </span>";
-        document.getElementById('trucoResetContainer').style.display = 'flex';
-        trucoState.fase = 'fimJogo';
+        setTrucoFase('fimJogo');
         return;
     } else if (trucoState.aiScore >= 12) {
-        // Freio de segurança estratégico para conceder sobrevida emocional à jogadora
         trucoState.aiScore = 9; 
     }
 
@@ -1390,26 +1496,21 @@ function novaMaoTruco() {
     trucoState.rodadaIndex = 1;
     trucoState.historicoRodadas = [];
     
-    // Geração dinâmica de um baralho limpo de 40 cartas
     let deckCompleto = [];
     seqNumerosTruco.forEach(num => {
         naipesTruco.forEach(naipe => {
             deckCompleto.push(`${num} ${naipe}`);
         });
     });
-    // Embaralhamento randômico estruturado
     deckCompleto.sort(() => Math.random() - 0.5);
     
-    // Definição e extração do Vira
     trucoState.viraCard = deckCompleto.pop();
     const partsVira = trucoState.viraCard.split(" ");
     const numVira = partsVira[0];
     
-    // Regra do Truco: A manilha é o número imediatamente superior ao Vira na escala cíclica
     const idxViraInSeq = seqNumerosTruco.indexOf(numVira);
     trucoState.manilhaNumero = seqNumerosTruco[(idxViraInSeq + 1) % seqNumerosTruco.length];
 
-    // Distribuição das mãos
     trucoState.playerHand = [
         { nome: deckCompleto.pop(), jogada: false },
         { nome: deckCompleto.pop(), jogada: false },
@@ -1422,10 +1523,8 @@ function novaMaoTruco() {
         { nome: deckCompleto.pop(), jogada: false }
     ];
 
-    // Renderização dos elementos gráficos da mesa
     limparSlotsMesaTruco();
     
-    // Inserção visual do Vira na mesa
     const slotVira = document.getElementById('slotViraCard');
     slotVira.innerHTML = "";
     slotVira.appendChild(gerarElementoHtmlCartaBaralho(trucoState.viraCard));
@@ -1436,7 +1535,7 @@ function novaMaoTruco() {
     atualizarIndicadoresQuedas();
 
     if (trucoState.maoPrimeiroJogador === 'player') {
-        trucoState.fase = 'esperandoPlayer';
+        setTrucoFase('esperandoPlayer');
         document.getElementById('trucoFeedbackStatus').innerText = `O Vira é ${numVira}. Manilhas da vez: [ ${trucoState.manilhaNumero} ]. Escolha sua carta!`;
     } else {
         executarTurnoIA_Primeira();
@@ -1510,28 +1609,33 @@ function processarJogadaPlayer(playerCardIdx) {
     slotPlayer.appendChild(cartaMesaPlayer);
     
     if (document.getElementById('slotAiCard').querySelector('.truco-card-item')) {
-        trucoState.fase = 'processandoResultado';
-        const aiCardNome = trucoState.aiHand.find(c => c.jogadaNaRodadaAtual).nome;
-        setTimeout(() => avaliarVencedorRodada(pCard.nome, aiCardNome), 1000);
+        setTrucoFase('processandoResultado');
+        // Validação defensiva antiqueda para mapear a rodada correta da IA
+        let cardAlvo = trucoState.aiHand.find(c => c.jogadaNaRodadaAtual);
+        if(!cardAlvo) cardAlvo = trucoState.aiHand.find(c => c.jogada);
+        const aiCardNome = cardAlvo ? cardAlvo.nome : trucoState.aiHand[0].nome;
+        
+        registrarTimeoutTruco(() => avaliarVencedorRodada(pCard.nome, aiCardNome), 1000);
     } else {
-        trucoState.fase = 'iaPensando';
+        setTrucoFase('iaPensando');
         document.getElementById('trucoFeedbackStatus').innerText = reacoesIA.pensando[Math.floor(Math.random() * reacoesIA.pensando.length)];
-        setTimeout(() => executarRespostaIA(pCard.nome), 1200);
+        registrarTimeoutTruco(() => executarRespostaIA(pCard.nome), 1200);
     }
 }
 
-function executarTurnoIA_Primeira() {
-    trucoState.fase = 'iaPensando';
-    document.getElementById('trucoFeedbackStatus').innerText = "Estou escolhendo qual carta jogar para abrir a rodada...";
+function ejecutarTurnoIA_Primeira() {
+    setTrucoFase('iaPensando');
+    document.getElementById('trucoFeedbackStatus').innerText = "🤔 Estou escolhendo qual carta jogar para abrir a rodada...";
     
-    setTimeout(() => {
+    registrarTimeoutTruco(() => {
         const cartasDisponiveis = trucoState.aiHand.filter(c => !c.jogada);
+        if(cartasDisponiveis.length === 0) return; // Trava contra estouro
+        
         cartasDisponiveis.sort((a, b) => {
             const pA = a.nome.split(" "); const pB = b.nome.split(" ");
             return obterForcaCarta(pA[0], pA[1]) - obterForcaCarta(pB[0], pB[1]);
         });
         
-        // Abre jogando a menor carta estratégica disponível
         const aiCardEscolhida = cartasDisponiveis[0]; 
         aiCardEscolhida.jogada = true;
         aiCardEscolhida.jogadaNaRodadaAtual = true;
@@ -1545,7 +1649,7 @@ function executarTurnoIA_Primeira() {
         slotAi.appendChild(cartaMesaAi);
 
         document.getElementById('trucoFeedbackStatus').innerText = `Mandei ${aiCardEscolhida.nome} na mesa. Qual é o seu descarte?`;
-        trucoState.fase = 'esperandoPlayer';
+        setTrucoFase('esperandoPlayer');
     }, 1200);
 }
 
@@ -1553,6 +1657,8 @@ function executarRespostaIA(playerCardNome) {
     const partsP = playerCardNome.split(" ");
     const pesoPlayer = obterForcaCarta(partsP[0], partsP[1]);
     const cartasDisponiveis = trucoState.aiHand.filter(c => !c.jogada);
+    
+    if(cartasDisponiveis.length === 0) return; // Trava defensiva antiqueda
     
     cartasDisponiveis.sort((a, b) => {
         const pA = a.nome.split(" "); const pB = b.nome.split(" ");
@@ -1581,7 +1687,7 @@ function executarRespostaIA(playerCardNome) {
     slotAi.innerHTML = "";
     slotAi.appendChild(cartaMesaAi);
 
-    setTimeout(() => avaliarVencedorRodada(playerCardNome, escolhaIA.nome), 1000);
+    registrarTimeoutTruco(() => avaliarVencedorRodada(playerCardNome, escolhaIA.nome), 1000);
 }
 
 function avaliarVencedorRodada(playerCardNome, aiCardNome) {
@@ -1612,7 +1718,7 @@ function avaliarVencedorRodada(playerCardNome, aiCardNome) {
     trucoState.historicoRodadas.push(resultado);
     atualizarIndicadoresQuedas();
 
-    setTimeout(() => {
+    registrarTimeoutTruco(() => {
         if (trucoState.roundsGanhosPlayer >= 2) {
             trucoState.playerScore += 3;
             trucoState.maoPrimeiroJogador = 'player';
@@ -1633,13 +1739,13 @@ function avaliarVencedorRodada(playerCardNome, aiCardNome) {
             limparSlotsMesaTruco();
             
             if (resultado === 'V' || (resultado === 'E' && trucoState.maoPrimeiroJogador === 'player')) {
-                trucoState.fase = 'esperandoPlayer';
+                setTrucoFase('esperandoPlayer');
                 document.getElementById('trucoFeedbackStatus').innerText = "Você ganhou a queda anterior, faça sua próxima jogada!";
             } else {
                 executarTurnoIA_Primeira();
             }
         }
-    }, 1500);
+    }, 1800);
 }
 
 function atualizarIndicadoresQuedas() {
@@ -1732,7 +1838,7 @@ function criarExplosao() {
         confeti.style.left = "50vw"; confeti.style.top = "50vh";
         confeti.style.fontSize = (14 + Math.random() * 22) + "px";
         document.body.appendChild(confeti);
-        setTimeout(() => confeti.remove(), 1800);
+        setTimeout(() => confeti.remove(), 2000); 
     }
 }
 </script>
