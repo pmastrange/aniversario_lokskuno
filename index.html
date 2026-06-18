@@ -66,7 +66,7 @@ body {
     position: fixed;
     top: 25px;
     right: 25px;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.6);
     padding: 8px 16px;
     border-radius: 4px;
@@ -104,7 +104,7 @@ body {
     text-transform: uppercase;
 }
 
-/* Luxury Card Layout Sem Blur Opressivo */
+/* Luxury Card Layout */
 .card {
     display: none;
     background: rgba(255, 255, 255, 0.94);
@@ -131,7 +131,7 @@ body {
     animation: cardFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* INPUT FEEDBACK VISUAL PREMIUM */
+/* Input Styles */
 input[type="text"] {
     transition: all 0.3s ease;
 }
@@ -141,7 +141,7 @@ input[type="text"]:focus {
     box-shadow: 0 0 0 3px rgba(121, 58, 87, 0.15) !important;
 }
 
-/* 🛠️ SISTEMA VISUAL COMPLETO DO BALÃO PINHATA FIXADO */
+/* Sistema do Balão Pinhata */
 .pinhata-wrapper {
     position: relative;
     width: 100%;
@@ -276,7 +276,7 @@ input[type="text"]:focus {
     100% { transform: scale(0); opacity: 0; display: none; }
 }
 
-/* ELEMENTOS DINÂMICOS DISNEY (TELA 2) */
+/* Elementos Disney */
 #tela2 { position: relative; }
 .disney-cameo {
     position: absolute;
@@ -300,7 +300,7 @@ input[type="text"]:focus {
 .cameo-enrolados { --base-rot: -12deg; }
 .cameo-olaf { --base-rot: 10deg; }
 
-/* DESIGN DINÂMICO DA ORQUÍDEA (TELA 3) */
+/* Orquídea */
 #tela3.card.active { background: rgba(243, 237, 247, 0.95); border: 1px solid rgba(121, 58, 87, 0.15); }
 .orchid-trigger-zone { position: relative; width: 100%; max-width: 240px; margin: 0 auto 25px auto; cursor: pointer; perspective: 1000px; }
 .orchid-img-asset { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 15px 35px rgba(121, 58, 87, 0.12); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
@@ -325,7 +325,7 @@ input[type="text"]:focus {
     to { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 
-/* CADEADO MECÂNICO ROTATIVO (TELA 8) */
+/* Cadeado Rotativo */
 .heart-lock-art {
     width: 100%; max-width: 280px; background: linear-gradient(135deg, #ffccd5, #ffb3c1);
     margin: 20px auto; border-radius: 50% 50% 40% 40% / 40% 40% 50% 50%; padding: 40px 20px;
@@ -344,7 +344,7 @@ input[type="text"]:focus {
 .lock-arrow:active { transform: scale(0.8); }
 .lock-digit { font-size: 22px; font-weight: 700; color: var(--texto-escuro); margin: 4px 0; font-family: monospace; }
 
-/* 🎫 COMPONENTE DA RASPADINHA (TELA 8 STAGE 2) */
+/* Raspadinha */
 .scratch-layout-grid { display: flex; flex-direction: column; gap: 25px; align-items: center; margin-top: 15px; }
 .scratch-container-box { position: relative; width: 280px; height: 280px; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 3px solid #fff; background: #eee; }
 .scratch-under-image { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
@@ -391,14 +391,14 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 25px; -webkit-appearance: none;
 }
 
-/* Tela 1 Elements (Rosa) */
+/* Tela 1 Elements */
 .lock { font-size: 45px; cursor: pointer; margin: 25px; display: inline-block; transition: opacity 0.2s; }
 .lock:hover { opacity: 0.7; }
 .audio-hint { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: #999; text-transform: uppercase; margin-bottom: 10px; }
 #countdown { font-size: 16px; font-weight: 600; color: var(--roxo-orquidea); padding: 8px 20px; border: 1px solid rgba(121, 58, 87, 0.15); border-radius: 4px; display: inline-block; margin: 25px 0; letter-spacing: 1px; }
 #countdown:empty { display: none; }
 
-/* Envelope & Carta Setup */
+/* Envelope Setup */
 .envelope-wrapper-premium { position: relative; width: 100%; max-width: 360px; margin: 20px auto; cursor: pointer; display: flex; justify-content: center; align-items: center; }
 .envelope-img-asset { width: 100%; height: auto; display: block; box-shadow: 0 15px 40px rgba(0,0,0,0.06); border-radius: 4px; transition: transform 0.4s ease; margin: 0 auto; }
 .envelope-wrapper-premium:hover .envelope-img-asset { transform: scale(1.02); }
@@ -411,7 +411,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 }
 .envelope-wrapper-premium:hover .purple-wax-seal { transform: translate(-50%, -46%) scale(1.06); }
 
-/* [P1] CENTRALIZAÇÃO MATEMÁTICA ABSOLUTA PARA TELA 2 (IPHONE READY) */
+/* 🛠️ [CORREÇÃO CRÍTICA] ALINHAMENTO MATEMÁTICO E VIEWPORTS ESTRUTURAIS */
 .cartaScrollerContainer {
     width: 100% !important;
     display: flex !important;
@@ -420,13 +420,14 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     justify-content: center !important;
     padding: 0 10px !important;
     margin: 0 auto !important;
+    min-height: auto !important;
 }
 .carta-scroller {
     max-width: 420px !important;
     width: 100% !important; 
     text-align: justify !important; 
     padding: 25px !important; 
-    max-height: 420px !important; 
+    max-height: 55vh !important; 
     overflow-y: auto !important; 
     font-family: 'Georgia', serif; 
     font-size: 14.5px; 
@@ -436,9 +437,10 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     border: 1px solid rgba(227, 218, 201, 0.5); 
     display: none; 
     box-shadow: inset 0 0 30px rgba(227, 218, 201, 0.1);
-    margin: 0 auto !important; 
+    margin: 15px auto !important; 
     -webkit-overflow-scrolling: touch; 
     word-wrap: break-word;
+    border-radius: 8px;
 }
 .quote-box { background: rgba(121, 58, 87, 0.02); border-left: 2px solid var(--roxo-orquidea); padding: 20px; margin: 25px 0; font-style: italic; color: #443; text-align: center; }
 .carta-scroller::-webkit-scrollbar { width: 3px; }
@@ -468,7 +470,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 .arrow-prev { left: 10px; } .arrow-next { right: 10px; }
 .texto-final { font-family: var(--serifa); font-size: 14.5px; line-height: 1.6; color: #4a574d; margin-bottom: 25px; }
 
-/* QUIZ REESTILIZADO */
+/* Quiz */
 .quiz-box { 
     border: 1px solid rgba(121, 58, 87, 0.15); 
     padding: 25px; 
@@ -500,171 +502,127 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 @keyframes voar { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; } }
 
-/* 🃏 TABULEIRO DE TRUCO PROFISSIONAL MOBILE-FIRST */
+/* 🃏 [CORREÇÃO PREMIUM] ENGENHARIA DE USABILIDADE DO TRUCO MÓVEL */
 .truco-board {
-    margin: 15px 0; width: 100%; background: radial-gradient(circle, #1e5022 0%, #0d260f 100%);
-    border: 4px solid #321f15; border-radius: 12px; padding: 12px 8px; box-shadow: 0 12px 32px rgba(0,0,0,0.4);
-    display: flex; flex-direction: column; gap: 10px; align-items: center; position: relative;
+    margin: 15px 0; width: 100%; background: radial-gradient(circle, #1a451e 0%, #0a1c0b 100%);
+    border: 4px solid #2d1b12; border-radius: 12px; padding: 14px 10px; box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; gap: 12px; align-items: center; position: relative;
 }
 .truco-team-label {
-    font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px;
+    font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1.5px;
 }
 .truco-status-container {
-    display: flex; flex-direction: column; align-items: center; gap: 4px; background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 8px; width: 95%;
+    display: flex; flex-direction: column; align-items: center; gap: 5px; background: rgba(0,0,0,0.6); padding: 10px 14px; border-radius: 8px; width: 95%; border: 1px solid rgba(255,255,255,0.05);
 }
-
 .truco-score { font-size: 15px; font-weight: 800; color: #ffd700; letter-spacing: 0.5px; }
 .truco-rounds-indicators { font-size: 12px; color: #e8f7ea; font-weight: 700; }
 
 .truco-zone {
-    width: 100%; min-height: 105px; background: rgba(0, 0, 0, 0.25); border: 2px dashed rgba(255, 255, 255, 0.12);
-    border-radius: 8px; display: flex; justify-content: center; align-items: center; gap: 8px; padding: 6px; position: relative;
+    width: 100%; min-height: 125px; background: rgba(0, 0, 0, 0.3); border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 8px; display: flex; justify-content: center; align-items: center; gap: 12px; padding: 8px; position: relative;
 }
 .table-slot {
-    width: 54px; height: 78px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 6px; display: flex; justify-content: center; align-items: center;
-    transition: all 0.3s ease;
+    width: 68px; height: 98px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 6px; display: flex; justify-content: center; align-items: center;
+    transition: all 0.3s ease; background: rgba(255,255,255,0.02);
 }
-
 .table-slot.winner-glow {
     border-color: #ffd700;
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(255, 215, 0, 0.12);
     animation: pulseGlow 0.6s ease infinite alternate;
 }
 @keyframes pulseGlow {
-    0% { transform: scale(1); box-shadow: 0 0 8px #ffd700; }
-    100% { transform: scale(1.02); box-shadow: 0 0 18px #ffd700; }
+    0% { transform: scale(1); box-shadow: 0 0 10px #ffd700; }
+    100% { transform: scale(1.03); box-shadow: 0 0 22px #ffd700; }
 }
-
 .table-slot.blinking-outline {
     animation: blinkOutlineAnima 0.3s infinite alternate;
 }
 @keyframes blinkOutlineAnima {
     from { border-color: rgba(255,255,255,0.2); box-shadow: none; }
-    to { border-color: #ffd700; box-shadow: 0 0 8px rgba(255, 215, 0, 0.3); }
+    to { border-color: #ffd700; box-shadow: 0 0 10px rgba(255, 215, 0, 0.4); }
 }
 
-.slot-placeholder { font-size: 8px; color: rgba(255,255,255,0.25); text-transform: uppercase; font-weight: 700; text-align: center; }
-.truco-cards-container { display: flex; justify-content: center; gap: 8px; min-height: 85px; width: 100%; align-items: center; }
+.slot-placeholder { font-size: 8px; color: rgba(255,255,255,0.2); text-transform: uppercase; font-weight: 700; text-align: center; letter-spacing: 0.5px; }
+.truco-cards-container { display: flex; justify-content: center; gap: 10px; min-height: 105px; width: 100%; align-items: center; }
 
+/* Cartas Redimensionadas para o Dedão Humano (Fitts Law Match) */
 .truco-card-item {
-    width: 54px; height: 80px; background: #ffffff; border-radius: 6px; border: 1px solid #dcdcdc;
-    display: flex; flex-direction: column; justify-content: space-between; padding: 5px 4px; font-weight: 800;
-    font-size: 14px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: all 0.3s; user-select: none;
-    position: relative; font-family: Arial, sans-serif;
-    transform-style: preserve-3d;
+    width: 68px; height: 98px; background: #ffffff; border-radius: 6px; border: 1px solid #d2d2d2;
+    display: flex; flex-direction: column; justify-content: space-between; padding: 7px 6px; font-weight: 800;
+    font-size: 16px; cursor: pointer; box-shadow: 0 6px 14px rgba(0,0,0,0.25); transition: all 0.25s ease; user-select: none;
+    position: relative; font-family: Arial, sans-serif; transform-style: preserve-3d;
 }
 .truco-card-item .card-corner-suit {
-    font-size: 10px; align-self: flex-start; line-height: 1; display: flex; flex-direction: column; align-items: center;
+    font-size: 11px; align-self: flex-start; line-height: 1; display: flex; flex-direction: column; align-items: center;
 }
 .truco-card-item .card-corner-suit::after {
-    content: attr(data-suit); font-size: 9px; margin-top: 1px;
+    content: attr(data-suit); font-size: 10px; margin-top: 1px;
 }
 .truco-card-item .card-suit-center {
-    position: absolute; top: 52%; left: 50%; transform: translate(-50%, -50%); font-size: 22px; opacity: 0.95;
+    position: absolute; top: 52%; left: 50%; transform: translate(-50%, -50%); font-size: 26px; opacity: 0.95;
 }
 .truco-card-item[data-suit="❤️"], .truco-card-item[data-suit="♦️"] { color: #d63031; }
 .truco-card-item[data-suit="♣️"], .truco-card-item[data-suit="♠️"] { color: #2d3436; }
 
 .truco-card-item.facedown {
     background: repeating-linear-gradient(45deg, #793A57, #793A57 6px, #5c2740 6px, #5c2740 12px);
-    border: 2px solid #ffffff; box-shadow: 0 4px 6px rgba(0,0,0,0.3); cursor: default;
+    border: 2px solid #ffffff; box-shadow: 0 5px 8px rgba(0,0,0,0.3); cursor: default;
 }
 .truco-card-item.facedown * { display: none !important; }
 
+/* Hover Premium Reativo */
 .truco-card-item:hover:not(.played):not(.facedown) { 
-    transform: translateY(-6px); 
-    border-color: #ffd700; 
-    box-shadow: 0 0 12px rgba(255, 215, 0, 0.4); 
+    transform: translateY(-8px) scale(1.04); 
+    border-color: var(--roxo-orquidea); 
+    box-shadow: 0 10px 20px rgba(121, 58, 87, 0.35); 
 }
 .truco-card-item.played { opacity: 0; pointer-events: none; transform: scale(0.6); }
 .truco-card-item.on-table { animation: cardDrop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; cursor: default; pointer-events: none; }
 
-@keyframes cardDrop { from { opacity: 0; transform: translateY(-15px) scale(0.7); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes cardDrop { from { opacity: 0; transform: translateY(-20px) scale(0.7); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
 #trucoFeedbackStatus { 
-    font-size: 13px; 
-    font-weight: 700; 
-    min-height: 50px; 
-    color: #fff; 
-    background: rgba(0, 0, 0, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    text-align: center; 
-    text-shadow: 0 1px 3px rgba(0,0,0,0.8); 
-    line-height: 1.4; 
-    padding: 6px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    border-radius: 6px;
-    width: 95%;
-    margin: 0 auto;
-    animation: slideDownAnima 0.4s ease forwards;
+    font-size: 13px; font-weight: 700; min-height: 52px; color: #fff; background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12); text-align: center; text-shadow: 0 1px 3px rgba(0,0,0,0.8); 
+    line-height: 1.4; padding: 8px; display: flex; align-items: center; justify-content: center; border-radius: 6px;
+    width: 95%; margin: 0 auto; animation: slideDownAnima 0.4s ease forwards;
 }
-@keyframes slideDownAnima {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+@keyframes slideDownAnima { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-.truco-board.ia-thinking #trucoPlayerCardsBox .truco-card-item {
-    opacity: 0.5;
-    cursor: not-allowed;
-    pointer-events: none;
-}
+.truco-board.ia-thinking #trucoPlayerCardsBox .truco-card-item { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+.control-truco-wrapper { width: 100%; margin-top: 15px; display: flex; flex-direction: column; gap: 8px; }
 
-.control-truco-wrapper {
-    width: 100%;
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-/* MEDIA QUERIES TOTALMENTE REESTILIZADAS PARA RENDERIZAÇÃO NO IPHONE */
+/* 📱 [CORREÇÃO] GRIDS MULTI-BREAKPOINT DE ALTA DENSIDADE (IPHONE SE ATÉ IPAD) */
 @media (max-width: 768px) {
-    body {
-        padding: 10px;
-        align-items: center;
-        justify-content: center;
-    }
-    .card { 
-        padding: 30px 20px !important; 
-        width: 100%; 
-        max-width: 420px;
-        margin: auto;
-        min-height: auto;
-    }
-    
-    .cartaScrollerContainer {
-        width: 100% !important;
-        padding: 0 10px !important;
-        margin: 0 auto !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    .carta-scroller {
-        max-width: 420px !important;
-        width: 100% !important;
-        padding: 25px !important;
-        max-height: 420px !important;
-        text-align: justify !important;
-        margin: 0 auto !important;
-    }
-    .envelope-wrapper-premium {
-        margin: 15px auto !important;
-        width: 100% !important;
-    }
-    .envelope-img-asset {
-        max-width: 290px !important;
-        margin: 0 auto !important;
-    }
-
+    body { padding: 12px; align-items: center; justify-content: center; }
+    .card { padding: 35px 20px !important; width: 100%; max-width: 420px; margin: auto; }
     .mural-mosaico-container { grid-template-columns: 1fr !important; gap: 20px; }
     .mosaico-centerpiece-text { grid-column: span 1 !important; }
-    .foto-mosaico-frame img { object-fit: contain !important; }
-    #scratchCanvas { width: 100% !important; height: auto !important; }
+    .foto-mosaico-frame img { height: 160px; object-fit: contain !important; }
     .progress-container { display: none !important; }
-    .lock-digit { font-size: 18px !important; }
+}
+
+@media (max-width: 480px) {
+    .card { padding: 25px 15px !important; }
+    h1 { font-size: 21px; }
+    .truco-card-item { width: 62px; height: 90px; font-size: 14px; }
+    .table-slot { width: 62px; height: 90px; }
+    .carta-scroller { max-height: 50vh !important; padding: 18px !important; font-size: 14px; }
+    .envelope-img-asset { max-width: 270px !important; }
+}
+
+@media (max-width: 320px) {
+    .card { padding: 20px 10px !important; }
+    h1 { font-size: 19px; }
+    .truco-card-item { width: 52px; height: 78px; font-size: 13px; }
+    .table-slot { width: 52px; height: 78px; }
+    .carta-scroller { max-height: 45vh !important; padding: 14px !important; }
+}
+
+@media (orientation: landscape) and (max-height: 480px) {
+    body { align-items: flex-start; padding: 20px 10px; }
+    .card { max-width: 90%; }
+    .carta-scroller { max-height: 40vh !important; }
 }
 </style>
 </head>
@@ -689,6 +647,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <div class="dot" id="dot10"></div>
 </div>
 
+<!-- TELA 1: PORTAL ROSA INICIAL -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Esta quase no dia rsrsrs.</p>
@@ -712,6 +671,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="margin-top: 25px; font-size: 10px; background: rgba(121,58,87,0.1); color: var(--roxo-orquidea); box-shadow: none; border: 1px dashed var(--roxo-orquidea);" onclick="navegarPara(0)">Pedir ajuda ao Balão 🎈</button>
 </div>
 
+<!-- 🎈 TELA 0: BALÃO PINHATA -->
 <div class="card" id="tela0">
     <button class="btn-back" onclick="navegarPara(1)">← Voltar ao Cadeado Rosa</button>
     <h1>Controle de Segurança 🎈</h1>
@@ -740,6 +700,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
+<!-- TELA 2: CARTA EMOCIONAL -->
 <div class="card" id="tela2">
     <img src="enrolados.jpg" class="disney-cameo cameo-enrolados" alt="Rapunzel Cameo">
     <img src="olaf.jpg" class="disney-cameo cameo-olaf" alt="Olaf Cameo">
@@ -777,6 +738,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
+<!-- TELA 3: ORQUÍDEA INTERATIVA -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Para nunca se esquecer</h1>
@@ -794,6 +756,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnProximaTelaOrquidea" style="width: 100%; visibility: hidden;" onclick="navegarPara(4)">Ver nossas lembranças</button>
 </div>
 
+<!-- TELA 4: MOSAICO DE FOTOS -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
@@ -837,6 +800,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma caixinha...</button>
 </div>
 
+<!-- TELA 5: SESSÃO DOS PETS -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -860,7 +824,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
             <button class="carrossel-arrow arrow-next" onclick="mudarSlide(1)">❯</button>
         </div>
         <div class="texto-final">
-            Sei que esse é o seu second aniversário sem eles e imagino o tamanho da saudade que aperta o peito, mas este espaço aqui é para te lembrar que o amor que vocês construíram não tem prazo de validade e nem distância que apague. Eles continuam com você, só que agora em forma de luz, carinho e proteção eterna. Você foi a melhor mãe que eles ponderam ter tido e desejado em todo o universo, e eu quero que você nunca, jamais se esqueça disso.
+            Sei que esse é o seu segundo aniversário sem eles e imagino o tamanho da saudade que aperta o peito, mas este espaço aqui é para te lembrar que o amor que vocês construíram não tem prazo de validade e nem distância que apague. Eles continuam com você, só que agora em forma de luz, carinho e proteção eterna. Você foi a melhor mãe que eles ponderam ter tido e desejado em todo o universo, e eu quero que você nunca, jamais se esqueça disso.
             <br><br>
             Se o plano espiritual tivesse Wi-Fi hoje, o recado deles para você seria exatamente este:
             <br><br>
@@ -874,6 +838,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
+<!-- TELA 6: QUIZ DIVERTIDO -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
     <h1>Quiz para risadinhas 🎮</h1>
@@ -892,6 +857,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="avancarQuizOuFase()">Avançar Pergunta ➔</button>
 </div>
 
+<!-- TELA 7: VALES VALIOSOS -->
 <div class="card" id="tela7">
     <button class="btn-back" onclick="navegarPara(6)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos</h1>
@@ -922,6 +888,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:15px;" onclick="navegarPara(8)">Ver a última surpresa... 🤫</button>
 </div>
 
+<!-- TELA 8: SEGREDO NUMÉRICO E RASPADINHA -->
 <div class="card" id="tela8">
     <button class="btn-back" onclick="navegarPara(7)">← Voltar</button>
     
@@ -930,7 +897,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         <p class="italic" style="margin-bottom: 50px;">Dica: seu dia especial</p>
         
         <div class="heart-lock-art">
-            <div class="heart-lock-title">The Day We Got Together</div>
+            <div class="heart-lock-title">O Dia em Que Nos Conhecemos</div>
             <div class="lock-mechanic-wrapper">
                 <div class="lock-column">
                     <button class="lock-arrow" onclick="rolarDigito(0, 1)">▲</button>
@@ -984,6 +951,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
+<!-- TELA 9: AGRADECIMENTO FINAL -->
 <div class="card" id="tela9">
     <h1>Pronto! 💜</h1>
     <p class="texto-final" style="margin-top: 15px; line-height: 1.8;">
@@ -992,6 +960,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:20px;" onclick="navegarPara(10)">Jogar Truco Extra! 🃏</button>
 </div>
 
+<!-- TELA 10: TRUCO INTERATIVO -->
 <div class="card" id="tela10">
     <button class="btn-back" onclick="navegarPara(9)">← Voltar</button>
     <h1>Desafio do Truco! 🃏</h1>
@@ -1100,6 +1069,12 @@ let orchidPhraseIndex = 0;
 let comboLockDigits = [0, 0, 0, 0];
 const musica = document.getElementById('trilhaSonora');
 
+/* [CORREÇÃO TIER 1] RECONEXÃO AUDIO GAPLESS PROGRAMÁTICA */
+musica.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play().catch(e => console.log("Erro de interação na autogestão de áudio loop:", e));
+});
+
 function verificarTampering() {
     if (modoDevTeste) return true;
     const currentTime = Date.now();
@@ -1111,8 +1086,7 @@ function verificarTampering() {
 }
 
 function revelarSenhaBalao() {
-    verificarTampering();
-    if (tamperingDetected) {
+    if (!verificarTampering()) {
         bloquearPorTampering();
         return;
     }
@@ -1176,6 +1150,11 @@ function navegarPara(telaNumero) {
         musicBar.classList.remove('visible');
         musica.pause();
     }
+    
+    /* [CORREÇÃO] Matando memory leak do carrossel ao mudar de contexto */
+    if (telaNumero !== 5 && autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+    }
     if (telaNumero === 10) inicializarJogoTruco();
 }
 
@@ -1197,14 +1176,17 @@ function mostrarInputTela1() {
     document.getElementById('containerInputTela1').style.display = 'block';
 }
 
+/* [CORREÇÃO TIER 1] NORMALIZAÇÃO COMPLETA DE INPUTS MOBILE DE TELA 1 */
 function validarSenhaTela1() {
-    let senha = document.getElementById('senhaTela1').value.trim().toLowerCase();
+    let senha = document.getElementById('senhaTela1').value;
     if (!senha) return;
     
-    let inputHash = btoa(senha);
+    let stringNormalizada = senha.trim().toLowerCase();
+    let inputHash = btoa(stringNormalizada);
+    
     if (inputHash === "c2hvdWdhbmFp" || inputHash === "cGFsb21hbWluaGFtZWxob3JhbWlnYQ==") {
         document.getElementById("cadeado").innerHTML = "🔓";
-        musica.play().catch(e => console.log("Áudio pendente."));
+        musica.play().catch(e => console.log("Interação requerida para reprodução inicial."));
         setTimeout(() => navegarPara(2), 800);
     } else {
         alert("Senha incorreta! Procure por pistas ou espere seu aniversário! 😜");
@@ -1248,11 +1230,15 @@ function mostrarInputTela4() {
     document.getElementById('containerInputTela4').style.display = 'block';
 }
 
+/* [CORREÇÃO TIER 1] NORMALIZAÇÃO COMPLETA DE INPUTS MÓVEIS DA TELA DOS PETS */
 function validarSenhaTela4() {
     let senha = document.getElementById('senhaTela4').value;
     if (!senha) return;
+    
+    let stringNormalizada = senha.trim().toLowerCase();
     const hashesValidos = ["anVsbHlqdW4=", "anVsbHllanVu", "anVuZWx1bGx5", "anVuanVsbHk="];
-    if (hashesValidos.includes(btoa(senha.trim().toLowerCase()))) {
+    
+    if (hashesValidos.includes(btoa(stringNormalizada))) {
         criarExplosao();
         document.getElementById("pet-trancado").style.display = "none";
         document.getElementById("pet-aberto").style.display = "block";
@@ -1322,9 +1308,6 @@ function avancarQuizOuFase() {
     }
 }
 
-// ==========================================
-// OUTROS HANDLERS MANUTENIDOS COMPLETAMENTE
-// ==========================================
 function claimVale(element) {
     if(!element.classList.contains('claimed')) {
         element.classList.add('claimed');
@@ -1394,13 +1377,13 @@ function montarMecanismoRaspadinha() {
 }
 
 // ==========================================
-// 🃏 ENGINE DE TRUCO SEGURO RECONSTRUIDO DO ZERO (ANTI-LOCK)
+// 🃏 ENGINE DE TRUCO PROFISSIONAL ATUALIZADO
 // ==========================================
 let trucoState = {
     playerScore: 0,
     aiScore: 0,
     rodadaIndex: 1,
-    historicoRodadas: [], // Mapeia 'V' (Você), 'D' (IA), 'E' (Empache)
+    historicoRodadas: [], 
     playerHand: [],
     aiHand: [],
     fase: 'esperandoPlayer',
@@ -1417,7 +1400,7 @@ const naipesTruco = ['♦️', '♠️', '❤️', '♣️'];
 const reacoesIA = {
     vitoriaMao: ["Ganhei essa queda! 😜", "Chora não, diva! kkk", "Estratégia pura!", "A dupla faz falta né? kkk"],
     derrotaMao: ["Eita, essa doeu! 😮", "Passou por cima...", "Boa jogada!", "Não vale roubar gata! kkk"],
-    pensando: ["🤔 Pensando... 🧐", "🤔 Olhando minhas cartas...", "🤔 Ih, o que eu jogo agora?", "🤔 Calculando os riscos..."]
+    pensando: ["🤔 Analisando as jogadas...", "🤔 Pensando qual descartar...", "🤔 IH... Deixa eu ver o que jogo...", "🤔 Calculando a probabilidade..."]
 };
 
 let trucoTimeouts = [];
@@ -1474,7 +1457,7 @@ function novaMaoTruco() {
     trucoState.cartaMesaAi = '';
     
     if (trucoState.playerScore >= 12) {
-        document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:14px; font-weight:bold;'>TRUCO! (Te deixando ganhar aqui pq é seu dia, n se acostuma! KKKK) </span>";
+        document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:14px; font-weight:bold;'>TRUCO! Você ganhou! (Te deixando ganhar pq é seu dia kkkk)</span>";
         setTrucoFase('fimJogo');
         return;
     } else if (trucoState.aiScore >= 12) {
@@ -1603,14 +1586,16 @@ function processarJogadaPlayer(playerCardIdx) {
     } else {
         setTrucoFase('iaPensando');
         document.getElementById('trucoFeedbackStatus').innerText = reacoesIA.pensando[Math.floor(Math.random() * reacoesIA.pensando.length)];
-        registrarTimeoutTruco(() => executarRespostaIA(pCard.nome), 1200);
+        /* [CORREÇÃO TIER 3] Ajustado delay da IA para 1600ms (Mais realista e humanizado) */
+        registrarTimeoutTruco(() => executarRespostaIA(pCard.nome), 1600);
     }
 }
 
-function executarTurnoIA_Primeira() {
+function ejecutarTurnoIA_Primeira() {
     setTrucoFase('iaPensando');
     document.getElementById('trucoFeedbackStatus').innerText = "🤔 Estou escolhendo qual carta jogar para abrir a rodada...";
     
+    /* [CORREÇÃO TIER 3] Ajustado delay de abertura para 1600ms */
     registrarTimeoutTruco(() => {
         const cartasDisponiveis = trucoState.aiHand.filter(c => !c.jogada);
         if(cartasDisponiveis.length === 0) return; 
@@ -1634,10 +1619,10 @@ function executarTurnoIA_Primeira() {
 
         document.getElementById('trucoFeedbackStatus').innerText = `Mandei ${aiCardEscolhida.nome} na mesa. Qual é o seu descarte?`;
         setTrucoFase('esperandoPlayer');
-    }, 1200);
+    }, 1600);
 }
 
-function executarRespostaIA(playerCardNome) {
+function ejecutarRespostaIA(playerCardNome) {
     const partsP = playerCardNome.split(" ");
     const pesoPlayer = obterForcaCarta(partsP[0], partsP[1]);
     const cartasDisponiveis = trucoState.aiHand.filter(c => !c.jogada);
@@ -1772,7 +1757,7 @@ function resetarPartidaTruco() {
 }
 
 // ==========================================
-// OUTROS LOOPS AUXILIARES COMPILADOS
+// LOOP AUXILIAR E INTERATIVIDADE
 // ==========================================
 function controlarMusica() {
     const toggleBtn = document.querySelector('.music-toggle-btn');
@@ -1830,7 +1815,10 @@ function mudarSlide(direcao) {
     slideIndex = (slideIndex + direcao + 3) % 3;
     document.getElementById("carouselSlides").style.transform = `translateX(${-slideIndex * 100}%)`;
 }
+
+/* [CORREÇÃO TIER 2] Eliminação preventiva de timers fantasmas concorrentes */
 function iniciarAutoplay() {
+    if (autoPlayTimer) clearInterval(autoPlayTimer);
     autoPlayTimer = setInterval(() => mudarSlide(1), 3000);
 }
 
