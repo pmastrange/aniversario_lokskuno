@@ -411,7 +411,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 }
 .envelope-wrapper-premium:hover .purple-wax-seal { transform: translate(-50%, -46%) scale(1.06); }
 
-/* 🛠️ [CORREÇÃO CRÍTICA] ALINHAMENTO MATEMÁTICO E VIEWPORTS ESTRUTURAIS */
+/* ALINHAMENTO MATEMÁTICO E VIEWPORTS ESTRUTURAIS */
 .cartaScrollerContainer {
     width: 100% !important;
     display: flex !important;
@@ -502,7 +502,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 @keyframes voar { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; } }
 
-/* 🃏 [CORREÇÃO PREMIUM] ENGENHARIA DE USABILIDADE DO TRUCO MÓVEL */
+/* MESA DO TRUCO */
 .truco-board {
     margin: 15px 0; width: 100%; background: radial-gradient(circle, #1a451e 0%, #0a1c0b 100%);
     border: 4px solid #2d1b12; border-radius: 12px; padding: 14px 10px; box-shadow: 0 16px 40px rgba(0,0,0,0.5);
@@ -545,7 +545,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 .slot-placeholder { font-size: 8px; color: rgba(255,255,255,0.2); text-transform: uppercase; font-weight: 700; text-align: center; letter-spacing: 0.5px; }
 .truco-cards-container { display: flex; justify-content: center; gap: 10px; min-height: 105px; width: 100%; align-items: center; }
 
-/* Cartas Redimensionadas para o Dedão Humano (Fitts Law Match) */
+/* Cartas Redimensionadas */
 .truco-card-item {
     width: 68px; height: 98px; background: #ffffff; border-radius: 6px; border: 1px solid #d2d2d2;
     display: flex; flex-direction: column; justify-content: space-between; padding: 7px 6px; font-weight: 800;
@@ -592,7 +592,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 .truco-board.ia-thinking #trucoPlayerCardsBox .truco-card-item { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
 .control-truco-wrapper { width: 100%; margin-top: 15px; display: flex; flex-direction: column; gap: 8px; }
 
-/* 📱 [CORREÇÃO] GRIDS MULTI-BREAKPOINT DE ALTA DENSIDADE (IPHONE SE ATÉ IPAD) */
+/* GRIDS MULTI-BREAKPOINT DE ALTA DENSIDADE */
 @media (max-width: 768px) {
     body { padding: 12px; align-items: center; justify-content: center; }
     .card { padding: 35px 20px !important; width: 100%; max-width: 420px; margin: auto; }
@@ -647,7 +647,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <div class="dot" id="dot10"></div>
 </div>
 
-<!-- TELA 1: PORTAL ROSA INICIAL -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Esta quase no dia rsrsrs.</p>
@@ -671,7 +670,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="margin-top: 25px; font-size: 10px; background: rgba(121,58,87,0.1); color: var(--roxo-orquidea); box-shadow: none; border: 1px dashed var(--roxo-orquidea);" onclick="navegarPara(0)">Pedir ajuda ao Balão 🎈</button>
 </div>
 
-<!-- 🎈 TELA 0: BALÃO PINHATA -->
 <div class="card" id="tela0">
     <button class="btn-back" onclick="navegarPara(1)">← Voltar ao Cadeado Rosa</button>
     <h1>Controle de Segurança 🎈</h1>
@@ -700,7 +698,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 2: CARTA EMOCIONAL -->
 <div class="card" id="tela2">
     <img src="enrolados.jpg" class="disney-cameo cameo-enrolados" alt="Rapunzel Cameo">
     <img src="olaf.jpg" class="disney-cameo cameo-olaf" alt="Olaf Cameo">
@@ -712,7 +709,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
     <div class="cartaScrollerContainer">
         <div class="carta-scroller" id="cartaScroller">
-            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, mas eu e o Chico Bento somos duas antas e, infelizmente, não dá para controlar tudo a quase dezoito mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano, e é porque é seu. Sua data, seu dia, sua vida, e isso é mais que suficiente para tornar esse dia o mais especial. Temos que comemorar para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
+            Eu não sei muito bem o que falar porque, de fato, não tenho o hábito dessa melosidade toda. Era para ser tudo uma completa surpresa, infelizmente, não dá para controlar tudo muito menos pessoas a quase dezoito mil quilômetros de distância kkkk. Essa é a primeira surpresa, algo mais simples, mas não queria de jeito nenhum que você sequer pensasse que seu aniversário não é importante ou que é só mais uma data, porque é um dos dias mais importantes do ano, e é porque é seu. Sua data, seu dia, sua vida, e isso é mais que suficiente para tornar esse dia o mais especial. Temos que comemorar para sempre e da melhor forma possível: às vezes pertinho, outras longe, mas sempre juntinhas.
             <br><br>
             Sempre que escuto Anavitória ou Anitta me lembro de você, e de boas lembranças juntas, mas uma música em específico, por um trecho em específico, e por isso está tocando rs:
 
@@ -727,18 +724,17 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
                 Que me conhece assim tão bem existe."
             </div>
 
-            Se as pessoas têm dúvidas se esse negócio de alma gêmea realmente existe, eu não tenho nenhuma: você é a minha alma gêmea na amizade e na vida. Você é a mulher mais forte que eu já conheci. Eu sei o quanto a vida já foi dura com você, sei de tantas coisas tristes que você teve que enfrentar e que pouquíssimas pessoas no mundo teriam estrutura para aguentar. Mas o que me deixa completamente sem chão, de tanto orgulho e admiração, é ver como você sempre deu um jeito de juntar os seus pedacinos e se reerguer ainda mais gigante em cada uma dessas vezes. Estar com você alivia todas as angústias que tenho porque sua amizade é leve. Você tem uma inteligência admirável, um coração que quase ninguém merece e, definitivamente, é o top 1 de mulheres mais bonitas que eu conheço.
+            Se as pessoas têm dúvidas se esse negócio de alma gêmea realmente existe, eu não tenho nenhuma: você é a minha alma gêmea na amizade e na vida. Você é a mulher mais forte que eu já conheci. Eu sei o quanto a vida já foi dura com você, sei de tantas coisas tristes que você teve que enfrentar e que pouquíssimas pessoas no mundo teriam estrutura para aguentar. Mas o que me deixa completamente sem chão, de tanto orgulho and admiração, é ver como você sempre deu um jeito de juntar os seus pedacinos e se reerguer ainda mais gigante em cada uma dessas vezes. Estar com você alivia todas as angústias que tenho porque sua amizade é leve. Você tem uma inteligência admirável, um coração que quase ninguém merece e, definitivamente, é o top 1 de mulheres mais bonitas que eu conheço.
             <br><br>
             Poderia passar horas falando tudo que amo em você e tudo que torna você tão única. Ter sua amizade é um dos maiores privileges que eu poderia ter e, realmente, rezei muito para que o nosso retorno fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas isso jamais vai abalar nossa amizade novamente. O passado nos trouxe aprendizados, mas hoje eu tenho a certeza absoluta de que não cometo os mesmos erros com você. Nosso laço agora é outro, muito mais forte.
             <br><br>
-            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar in um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, eu sempre estarei por nós. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam elas boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, minha diva, obrigada por ser e estar. Pra sempre nós por nós!
+            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, eu sempre estarei por nós. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam elas boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, minha diva, obrigada por ser e estar. Pra sempre nós por nós!
             <br><br>
             <button class="btn-navigation" style="width:100%;" onclick="navegarPara(3)">Avançar para a Orquídea</button>
         </div>
     </div>
 </div>
 
-<!-- TELA 3: ORQUÍDEA INTERATIVA -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Para nunca se esquecer</h1>
@@ -749,14 +745,13 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
     
     <div class="orchid-phrases-mural">
-        <div class="revealed-phrase" id="orchPhrase0">"Você é especial por ser você e quase ninguem merece a pureza e amor que tem pelos seus"</div>
-        <div class="revealed-phrase" id="orchPhrase1">"Que esse dia te traga felicidade e a alegria que você genuinamente merece"</div>
-        <div class="revealed-phrase" id="orchPhrase2">"Que todas as flores que receba a partir de hoje, sejam de alegria e de conquista"</div>
+        <div class="revealed-phrase" id="orchPhrase0">"Você é especial por ser você, e é uma pessoa que quase ninguém merece a pureza e amor que tem no seu coração"</div>
+        <div class="revealed-phrase" id="orchPhrase1">"Que esse dia te traga felicidade e a alegria que você merece"</div>
+        <div class="revealed-phrase" id="orchPhrase2">"Que todas as flores que receba a partir de hoje, sejam de alegria e genuinamente por amor"</div>
     </div>
     <button class="btn-navigation" id="btnProximaTelaOrquidea" style="width: 100%; visibility: hidden;" onclick="navegarPara(4)">Ver nossas lembranças</button>
 </div>
 
-<!-- TELA 4: MOSAICO DE FOTOS -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
@@ -779,7 +774,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         </div>
 
         <div class="mosaico-centerpiece-text">
-            <h2>"Feliz aniversário, obrigada por partilhar a vida comigo"</h2>
+            <h2>"Feliz aniversário e que sorte a minha"</h2>
             <p>pedaços do meu coração</p>
         </div>
 
@@ -800,7 +795,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma caixinha...</button>
 </div>
 
-<!-- TELA 5: SESSÃO DOS PETS -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -824,7 +818,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
             <button class="carrossel-arrow arrow-next" onclick="mudarSlide(1)">❯</button>
         </div>
         <div class="texto-final">
-            Sei que esse é o seu segundo aniversário sem eles e imagino o tamanho da saudade que aperta o peito, mas este espaço aqui é para te lembrar que o amor que vocês construíram não tem prazo de validade e nem distância que apague. Eles continuam com você, só que agora em forma de luz, carinho e proteção eterna. Você foi a melhor mãe que eles ponderam ter tido e desejado em todo o universo, e eu quero que você nunca, jamais se esqueça disso.
+            Sei que esse é o seu second aniversário sem eles e imagino o tamanho da saudade que aperta o peito, mas este espaço aqui é para te lembrar que o amor que vocês construíram não tem prazo de validade e nem distância que apague. Eles continuam com você, só que agora em forma de luz, carinho e proteção eterna. Você foi a melhor mãe que eles ponderam ter tido e desejado em todo o universo, e eu quero que você nunca, jamais se esqueça disso.
             <br><br>
             Se o plano espiritual tivesse Wi-Fi hoje, o recado deles para você seria exatamente este:
             <br><br>
@@ -838,7 +832,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 6: QUIZ DIVERTIDO -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
     <h1>Quiz para risadinhas 🎮</h1>
@@ -857,7 +850,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="avancarQuizOuFase()">Avançar Pergunta ➔</button>
 </div>
 
-<!-- TELA 7: VALES VALIOSOS -->
 <div class="card" id="tela7">
     <button class="btn-back" onclick="navegarPara(6)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos</h1>
@@ -888,7 +880,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:15px;" onclick="navegarPara(8)">Ver a última surpresa... 🤫</button>
 </div>
 
-<!-- TELA 8: SEGREDO NUMÉRICO E RASPADINHA -->
 <div class="card" id="tela8">
     <button class="btn-back" onclick="navegarPara(7)">← Voltar</button>
     
@@ -951,7 +942,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 9: AGRADECIMENTO FINAL -->
 <div class="card" id="tela9">
     <h1>Pronto! 💜</h1>
     <p class="texto-final" style="margin-top: 15px; line-height: 1.8;">
@@ -960,7 +950,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:20px;" onclick="navegarPara(10)">Jogar Truco Extra! 🃏</button>
 </div>
 
-<!-- TELA 10: TRUCO INTERATIVO -->
 <div class="card" id="tela10">
     <button class="btn-back" onclick="navegarPara(9)">← Voltar</button>
     <h1>Desafio do Truco! 🃏</h1>
@@ -1029,8 +1018,8 @@ const perguntasQuiz = [
     {
         question: "Se fôssemos presas juntas em um rolê esquisito, quem seria você nessa situação?",
         options: [
-            { text: "A mente brilhante que architectou o plano e quase conseguiu nos salvar.", isCorrect: false, feedback: "Menos, bem menos vc teria dado a ideia e ainda estaria bêbada rsrs. 🤫" },
-            { text: "A que começaria a rir de nervoso e confessaria absolutamente tudo para o policial em troca de uma água, um lanche e uma soneca.", isCorrect: true, feedback: "Pois é! Álcool segue sendo seu maior vilão kkkk!" }
+            { text: "A mente brilhante que arquitetou o plano e quase conseguiu nos salvar.", isCorrect: false, feedback: "Menos, vc teria dado a ideia e ainda estaria bêbada rsrs. 🤫" },
+            { text: "A que começaria a rir de nervoso e confessaria absolutamente tudo para o policial - a que brigaria com o policial e depois contaria tudo.", isCorrect: true, feedback: "Pois é! Álcool segue sendo seu maior vilão kkkk!" }
         ]
     },
     {
@@ -1242,6 +1231,7 @@ function validarSenhaTela4() {
         criarExplosao();
         document.getElementById("pet-trancado").style.display = "none";
         document.getElementById("pet-aberto").style.display = "block";
+        document.getElementById("senhaTela4").value = "";
         iniciarAutoplay();
     } else {
         alert("Senha incorreta! Pensa mais um pouquinho!");
@@ -1586,16 +1576,14 @@ function processarJogadaPlayer(playerCardIdx) {
     } else {
         setTrucoFase('iaPensando');
         document.getElementById('trucoFeedbackStatus').innerText = reacoesIA.pensando[Math.floor(Math.random() * reacoesIA.pensando.length)];
-        /* [CORREÇÃO TIER 3] Ajustado delay da IA para 1600ms (Mais realista e humanizado) */
         registrarTimeoutTruco(() => executarRespostaIA(pCard.nome), 1600);
     }
 }
 
-function ejecutarTurnoIA_Primeira() {
+function executarTurnoIA_Primeira() {
     setTrucoFase('iaPensando');
     document.getElementById('trucoFeedbackStatus').innerText = "🤔 Estou escolhendo qual carta jogar para abrir a rodada...";
     
-    /* [CORREÇÃO TIER 3] Ajustado delay de abertura para 1600ms */
     registrarTimeoutTruco(() => {
         const cartasDisponiveis = trucoState.aiHand.filter(c => !c.jogada);
         if(cartasDisponiveis.length === 0) return; 
@@ -1622,7 +1610,7 @@ function ejecutarTurnoIA_Primeira() {
     }, 1600);
 }
 
-function ejecutarRespostaIA(playerCardNome) {
+function executarRespostaIA(playerCardNome) {
     const partsP = playerCardNome.split(" ");
     const pesoPlayer = obterForcaCarta(partsP[0], partsP[1]);
     const cartasDisponiveis = trucoState.aiHand.filter(c => !c.jogada);
@@ -1682,7 +1670,9 @@ function avaliarVencedorMao() {
         if (r[0] === 'D' && r[1] === 'V' && r[2] === 'E') return 'ai';
         if (r[0] === 'E' && r[1] === 'E' && r[2] === 'V') return 'player';
         if (r[0] === 'E' && r[1] === 'E' && r[2] === 'D') return 'ai';
-        if (r[0] === 'E' && r[1] === 'E' && r[2] === 'E') return 'player'; 
+        if (r[0] === 'E' && r[1] === 'E' && r[2] === 'E') return 'player';
+        if (r[0] === 'E' && r[1] === 'V' && r[2] === 'D') return 'player';
+        if (r[0] === 'E' && r[1] === 'D' && r[2] === 'V') return 'ai';
     }
     return null; 
 }
@@ -1699,7 +1689,7 @@ function avaliarVencedorRodada() {
         resultado = 'V';
         document.getElementById('slotPlayerCard').classList.add('winner-glow');
         document.getElementById('trucoFeedbackStatus').innerText = reacoesIA.derrotaMao[Math.floor(Math.random() * reacoesIA.derrotaMao.length)];
-        criarExplosao();
+        if (typeof criarExplosao === 'function') criarExplosao();
     } else if (pesoA > pesoP) {
         resultado = 'D';
         document.getElementById('slotAiCard').classList.add('winner-glow');
@@ -1734,7 +1724,7 @@ function avaliarVencedorRodada() {
             
             if (proximoTurno === 'player') {
                 setTrucoFase('esperandoPlayer');
-                document.getElementById('trucoFeedbackStatus').innerText = "Você ganhou a queda anterior ou empatou na frente. Jogue sua próxima carta!";
+                document.getElementById('trucoFeedbackStatus').innerText = "Você joga! Mande sua próxima carta.";
             } else {
                 executarTurnoIA_Primeira();
             }
