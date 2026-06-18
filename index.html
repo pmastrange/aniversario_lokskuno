@@ -611,7 +611,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     pointer-events: none;
 }
 
-/* Painel de controle inferior do truco sempre disponível */
 .control-truco-wrapper {
     width: 100%;
     margin-top: 15px;
@@ -625,6 +624,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     body {
         padding: 10px;
         align-items: center;
+        justify-content: center;
     }
     .card { 
         padding: 30px 20px !important; 
@@ -689,7 +689,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <div class="dot" id="dot10"></div>
 </div>
 
-<!-- 🌸 TELA 1: PORTAL ROSA INICIAL -->
 <div class="card active" id="tela1">
     <h1>Uma pequena surpresa para minha miguxa</h1>
     <p class="italic">Tem uma surpresa pra você. Esta quase no dia rsrsrs.</p>
@@ -713,7 +712,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="margin-top: 25px; font-size: 10px; background: rgba(121,58,87,0.1); color: var(--roxo-orquidea); box-shadow: none; border: 1px dashed var(--roxo-orquidea);" onclick="navegarPara(0)">Pedir ajuda ao Balão 🎈</button>
 </div>
 
-<!-- 🎈 TELA 0: BALÃO PINHATA -->
 <div class="card" id="tela0">
     <button class="btn-back" onclick="navegarPara(1)">← Voltar ao Cadeado Rosa</button>
     <h1>Controle de Segurança 🎈</h1>
@@ -742,7 +740,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 2: CARTA EMOCIONAL -->
 <div class="card" id="tela2">
     <img src="enrolados.jpg" class="disney-cameo cameo-enrolados" alt="Rapunzel Cameo">
     <img src="olaf.jpg" class="disney-cameo cameo-olaf" alt="Olaf Cameo">
@@ -773,14 +770,13 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
             <br><br>
             Poderia passar horas falando tudo que amo em você e tudo que torna você tão única. Ter sua amizade é um dos maiores privileges que eu poderia ter e, realmente, rezei muito para que o nosso retorno fosse da forma mais pura possível. Obviamente haverá brigas e desentendimentos, mas isso jamais vai abalar nossa amizade novamente. O passado nos trouxe aprendizados, mas hoje eu tenho a certeza absoluta de que não cometo os mesmos erros com você. Nosso laço agora é outro, muito mais forte.
             <br><br>
-            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar em um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, eu sempre estarei por nós. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam elas boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, minha diva, obrigada por ser e estar. Pra sempre nós por nós!
+            Que todos saibam a mulher incrível que você é e que jamais sinta que deve estar in um lugar onde não é amada em alto e bom tom. Você não merece migalhas de afeto e, toda vez que cair, prometo que estarei lá para te ajudar. Quando sentir que não está sendo amada, saiba que te amo e te prezo por nós duas; quando se entristecer com coisas que não estão no seu controle, estarei lá, eu sempre estarei por nós. Você é especial porque é você, e ninguém mais poderia ocupar esse lugar. Que seu dia seja espetacular! Que não somente hoje, mas todos os dias sejam repletos de coisas boas e momentos únicos, e que possamos viver e compartilhar muitas coisas, sejam elas boas ou ruins, mas juntas. E que jamais se esqueça: da mesma forma que existem dias ruins, existem outros mil melhores. Te amo, minha diva, obrigada por ser e estar. Pra sempre nós por nós!
             <br><br>
             <button class="btn-navigation" style="width:100%;" onclick="navegarPara(3)">Avançar para a Orquídea</button>
         </div>
     </div>
 </div>
 
-<!-- TELA 3: ORQUÍDEA INTERATIVA -->
 <div class="card" id="tela3">
     <button class="btn-back" onclick="navegarPara(2)">← Voltar para a carta</button>
     <h1>Para nunca se esquecer</h1>
@@ -798,7 +794,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnProximaTelaOrquidea" style="width: 100%; visibility: hidden;" onclick="navegarPara(4)">Ver nossas lembranças</button>
 </div>
 
-<!-- TELA 4: MOSAICO DE FOTOS -->
 <div class="card" id="tela4">
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
@@ -842,7 +837,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma caixinha...</button>
 </div>
 
-<!-- TELA 5: SESSÃO DOS PETS -->
 <div class="card" id="tela5">
     <button class="btn-back" onclick="navegarPara(4)">← Voltar para as fotos</button>
     <div id="pet-trancado">
@@ -866,7 +860,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
             <button class="carrossel-arrow arrow-next" onclick="mudarSlide(1)">❯</button>
         </div>
         <div class="texto-final">
-            Sei que esse é o seu segundo aniversário sem eles e imagino o tamanho da saudade que aperta o peito, mas este espaço aqui é para te lembrar que o amor que vocês construíram não tem prazo de validade e nem distância que apague. Eles continuam com você, só que agora em forma de luz, carinho e proteção eterna. Você foi a melhor mãe que eles ponderam ter tido e desejado em todo o universo, e eu quero que você nunca, jamais se esqueça disso.
+            Sei que esse é o seu second aniversário sem eles e imagino o tamanho da saudade que aperta o peito, mas este espaço aqui é para te lembrar que o amor que vocês construíram não tem prazo de validade e nem distância que apague. Eles continuam com você, só que agora em forma de luz, carinho e proteção eterna. Você foi a melhor mãe que eles ponderam ter tido e desejado em todo o universo, e eu quero que você nunca, jamais se esqueça disso.
             <br><br>
             Se o plano espiritual tivesse Wi-Fi hoje, o recado deles para você seria exatamente este:
             <br><br>
@@ -880,7 +874,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 6: QUIZ DIVERTIDO -->
 <div class="card" id="tela6">
     <button class="btn-back" onclick="navegarPara(5)">← Voltar para os pets</button>
     <h1>Quiz para risadinhas 🎮</h1>
@@ -899,7 +892,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" id="btnIrVales" style="display:none; width:100%;" onclick="avancarQuizOuFase()">Avançar Pergunta ➔</button>
 </div>
 
-<!-- TELA 7: VALES VALIOSOS -->
 <div class="card" id="tela7">
     <button class="btn-back" onclick="navegarPara(6)">← Voltar para o teste</button>
     <h1>Seu Mural de Mimos</h1>
@@ -930,7 +922,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:15px;" onclick="navegarPara(8)">Ver a última surpresa... 🤫</button>
 </div>
 
-<!-- TELA 8: SEGREDO NUMÉRICO E RASPADINHA -->
 <div class="card" id="tela8">
     <button class="btn-back" onclick="navegarPara(7)">← Voltar</button>
     
@@ -993,7 +984,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     </div>
 </div>
 
-<!-- TELA 9: AGRADECIMENTO FINAL -->
 <div class="card" id="tela9">
     <h1>Pronto! 💜</h1>
     <p class="texto-final" style="margin-top: 15px; line-height: 1.8;">
@@ -1002,7 +992,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-navigation" style="width:100%; margin-top:20px;" onclick="navegarPara(10)">Jogar Truco Extra! 🃏</button>
 </div>
 
-<!-- 🃏 TELA 10: MINI-JOGO DE TRUCO INTERATIVO IMPECÁVEL (FIXED & SOLID) -->
 <div class="card" id="tela10">
     <button class="btn-back" onclick="navegarPara(9)">← Voltar</button>
     <h1>Desafio do Truco! 🃏</h1>
@@ -1036,7 +1025,6 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
         <div class="truco-cards-container" id="trucoPlayerCardsBox"></div>
     </div>
     
-    <!-- Painel de Controle de fluxo de reinício sempre acessível abaixo do jogo -->
     <div class="control-truco-wrapper">
         <button class="btn-navigation" id="btnResetTruco" onclick="resetarPartidaTruco()">Reiniciar Partida</button>
         <button class="btn-navigation" style="background-color:#555;" onclick="reiniciarJornada()">Reiniciar Surpresa</button>
@@ -1192,7 +1180,7 @@ function navegarPara(telaNumero) {
 }
 
 function reiniciarJornada() {
-    limparTodosOsTimeoutsTruco(); // Mata execuções pendentes para não quebrar a memória
+    limparTodosOsTimeoutsTruco(); 
     currentQuestionIndex = 0;
     orchidPhraseIndex = 0;
     document.getElementById("pet-trancado").style.display = "block";
@@ -1406,21 +1394,21 @@ function montarMecanismoRaspadinha() {
 }
 
 // ==========================================
-// 🃏 ENGINE DE TRUCO ANTI-TRAVAMENTO (MÓDULO SEGURO ASSÍNCRONO)
+// 🃏 ENGINE DE TRUCO SEGURO RECONSTRUIDO DO ZERO (ANTI-LOCK)
 // ==========================================
 let trucoState = {
     playerScore: 0,
     aiScore: 0,
-    roundsGanhosPlayer: 0,
-    roundsGanhosAi: 0,
     rodadaIndex: 1,
-    historicoRodadas: [],
+    historicoRodadas: [], // Mapeia 'V' (Você), 'D' (IA), 'E' (Empache)
     playerHand: [],
     aiHand: [],
     fase: 'esperandoPlayer',
     maoPrimeiroJogador: 'player',
     viraCard: '',
-    manilhaNumero: ''
+    manilhaNumero: '',
+    cartaMesaPlayer: '',
+    cartaMesaAi: ''
 };
 
 const seqNumerosTruco = ['4', '5', '6', '7', 'Q', 'J', 'K', 'A', '2', '3'];
@@ -1432,7 +1420,6 @@ const reacoesIA = {
     pensando: ["🤔 Pensando... 🧐", "🤔 Olhando minhas cartas...", "🤔 Ih, o que eu jogo agora?", "🤔 Calculando os riscos..."]
 };
 
-// Gerenciador de Escopo de Cronômetros para interceptar estouros assíncronos
 let trucoTimeouts = [];
 function registrarTimeoutTruco(funcao, delay) {
     let id = setTimeout(funcao, delay);
@@ -1467,6 +1454,7 @@ function inicializarJogoTruco() {
     limparTodosOsTimeoutsTruco();
     trucoState.playerScore = 0;
     trucoState.aiScore = 0;
+    trucoState.maoPrimeiroJogador = 'player';
     novaMaoTruco();
 }
 
@@ -1482,6 +1470,8 @@ function obterForcaCarta(numero, naipe) {
 
 function novaMaoTruco() {
     limparTodosOsTimeoutsTruco();
+    trucoState.cartaMesaPlayer = '';
+    trucoState.cartaMesaAi = '';
     
     if (trucoState.playerScore >= 12) {
         document.getElementById('trucoFeedbackStatus').innerHTML = "<span style='color:#ffd700; font-size:14px; font-weight:bold;'>TRUCO! (Te deixando ganhar aqui pq é seu dia, n se acostuma! KKKK) </span>";
@@ -1491,8 +1481,6 @@ function novaMaoTruco() {
         trucoState.aiScore = 9; 
     }
 
-    trucoState.roundsGanhosPlayer = 0;
-    trucoState.roundsGanhosAi = 0;
     trucoState.rodadaIndex = 1;
     trucoState.historicoRodadas = [];
     
@@ -1600,6 +1588,7 @@ function processarJogadaPlayer(playerCardIdx) {
 
     const pCard = trucoState.playerHand[playerCardIdx];
     pCard.jogada = true;
+    trucoState.cartaMesaPlayer = pCard.nome;
     renderVisualCartasMao();
     
     const slotPlayer = document.getElementById('slotPlayerCard');
@@ -1608,14 +1597,9 @@ function processarJogadaPlayer(playerCardIdx) {
     slotPlayer.innerHTML = "";
     slotPlayer.appendChild(cartaMesaPlayer);
     
-    if (document.getElementById('slotAiCard').querySelector('.truco-card-item')) {
+    if (trucoState.cartaMesaAi !== '') {
         setTrucoFase('processandoResultado');
-        // Validação defensiva antiqueda para mapear a rodada correta da IA
-        let cardAlvo = trucoState.aiHand.find(c => c.jogadaNaRodadaAtual);
-        if(!cardAlvo) cardAlvo = trucoState.aiHand.find(c => c.jogada);
-        const aiCardNome = cardAlvo ? cardAlvo.nome : trucoState.aiHand[0].nome;
-        
-        registrarTimeoutTruco(() => avaliarVencedorRodada(pCard.nome, aiCardNome), 1000);
+        registrarTimeoutTruco(() => avaliarVencedorRodada(), 1000);
     } else {
         setTrucoFase('iaPensando');
         document.getElementById('trucoFeedbackStatus').innerText = reacoesIA.pensando[Math.floor(Math.random() * reacoesIA.pensando.length)];
@@ -1623,13 +1607,13 @@ function processarJogadaPlayer(playerCardIdx) {
     }
 }
 
-function ejecutarTurnoIA_Primeira() {
+function executarTurnoIA_Primeira() {
     setTrucoFase('iaPensando');
     document.getElementById('trucoFeedbackStatus').innerText = "🤔 Estou escolhendo qual carta jogar para abrir a rodada...";
     
     registrarTimeoutTruco(() => {
         const cartasDisponiveis = trucoState.aiHand.filter(c => !c.jogada);
-        if(cartasDisponiveis.length === 0) return; // Trava contra estouro
+        if(cartasDisponiveis.length === 0) return; 
         
         cartasDisponiveis.sort((a, b) => {
             const pA = a.nome.split(" "); const pB = b.nome.split(" ");
@@ -1638,7 +1622,7 @@ function ejecutarTurnoIA_Primeira() {
         
         const aiCardEscolhida = cartasDisponiveis[0]; 
         aiCardEscolhida.jogada = true;
-        aiCardEscolhida.jogadaNaRodadaAtual = true;
+        trucoState.cartaMesaAi = aiCardEscolhida.nome;
 
         renderizarCartasOponenteOcultas();
 
@@ -1658,7 +1642,7 @@ function executarRespostaIA(playerCardNome) {
     const pesoPlayer = obterForcaCarta(partsP[0], partsP[1]);
     const cartasDisponiveis = trucoState.aiHand.filter(c => !c.jogada);
     
-    if(cartasDisponiveis.length === 0) return; // Trava defensiva antiqueda
+    if(cartasDisponiveis.length === 0) return; 
     
     cartasDisponiveis.sort((a, b) => {
         const pA = a.nome.split(" "); const pB = b.nome.split(" ");
@@ -1679,6 +1663,7 @@ function executarRespostaIA(playerCardNome) {
     }
 
     escolhaIA.jogada = true;
+    trucoState.cartaMesaAi = escolhaIA.nome;
     renderizarCartasOponenteOcultas();
 
     const slotAi = document.getElementById('slotAiCard');
@@ -1687,28 +1672,51 @@ function executarRespostaIA(playerCardNome) {
     slotAi.innerHTML = "";
     slotAi.appendChild(cartaMesaAi);
 
-    registrarTimeoutTruco(() => avaliarVencedorRodada(playerCardNome, escolhaIA.nome), 1000);
+    setTrucoFase('processandoResultado');
+    registrarTimeoutTruco(() => avaliarVencedorRodada(), 1000);
 }
 
-function avaliarVencedorRodada(playerCardNome, aiCardNome) {
-    const partsP = playerCardNome.split(" ");
-    const partsA = aiCardNome.split(" ");
+function avaliarVencedorMao() {
+    const r = trucoState.historicoRodadas;
+    const len = r.length;
+    
+    if (len === 2) {
+        if (r[0] === 'V' && r[1] === 'V') return 'player';
+        if (r[0] === 'D' && r[1] === 'D') return 'ai';
+        if (r[0] === 'E' && r[1] === 'V') return 'player';
+        if (r[0] === 'E' && r[1] === 'D') return 'ai';
+        if (r[0] === 'V' && r[1] === 'E') return 'player';
+        if (r[0] === 'D' && r[1] === 'E') return 'ai';
+    }
+    if (len === 3) {
+        if (r[0] === 'V' && r[1] === 'D' && r[2] === 'V') return 'player';
+        if (r[0] === 'V' && r[1] === 'D' && r[2] === 'D') return 'ai';
+        if (r[0] === 'D' && r[1] === 'V' && r[2] === 'V') return 'player';
+        if (r[0] === 'D' && r[1] === 'V' && r[2] === 'D') return 'ai';
+        if (r[0] === 'V' && r[1] === 'D' && r[2] === 'E') return 'player';
+        if (r[0] === 'D' && r[1] === 'V' && r[2] === 'E') return 'ai';
+        if (r[0] === 'E' && r[1] === 'E' && r[2] === 'V') return 'player';
+        if (r[0] === 'E' && r[1] === 'E' && r[2] === 'D') return 'ai';
+        if (r[0] === 'E' && r[1] === 'E' && r[2] === 'E') return 'player'; 
+    }
+    return null; 
+}
+
+function avaliarVencedorRodada() {
+    const partsP = trucoState.cartaMesaPlayer.split(" ");
+    const partsA = trucoState.cartaMesaAi.split(" ");
     
     const pesoP = obterForcaCarta(partsP[0], partsP[1]);
     const pesoA = obterForcaCarta(partsA[0], partsA[1]);
     
-    trucoState.aiHand.forEach(c => c.jogadaNaRodadaAtual = false);
-
     let resultado = 'E';
     if (pesoP > pesoA) {
         resultado = 'V';
-        trucoState.roundsGanhosPlayer++;
         document.getElementById('slotPlayerCard').classList.add('winner-glow');
         document.getElementById('trucoFeedbackStatus').innerText = reacoesIA.derrotaMao[Math.floor(Math.random() * reacoesIA.derrotaMao.length)];
         criarExplosao();
     } else if (pesoA > pesoP) {
         resultado = 'D';
-        trucoState.roundsGanhosAi++;
         document.getElementById('slotAiCard').classList.add('winner-glow');
         document.getElementById('trucoFeedbackStatus').innerText = reacoesIA.vitoriaMao[Math.floor(Math.random() * reacoesIA.vitoriaMao.length)];
     } else {
@@ -1718,29 +1726,30 @@ function avaliarVencedorRodada(playerCardNome, aiCardNome) {
     trucoState.historicoRodadas.push(resultado);
     atualizarIndicadoresQuedas();
 
+    const vencedorMao = avaliarVencedorMao();
+
     registrarTimeoutTruco(() => {
-        if (trucoState.roundsGanhosPlayer >= 2) {
+        if (vencedorMao === 'player') {
             trucoState.playerScore += 3;
             trucoState.maoPrimeiroJogador = 'player';
             novaMaoTruco();
-        } else if (trucoState.roundsGanhosAi >= 2) {
+        } else if (vencedorMao === 'ai') {
             trucoState.aiScore += 3;
             trucoState.maoPrimeiroJogador = 'ai';
             novaMaoTruco();
-        } else if (trucoState.rodadaIndex >= 3) {
-            if (trucoState.roundsGanhosPlayer > trucoState.roundsGanhosAi) {
-                trucoState.playerScore += 3;
-            } else {
-                trucoState.aiScore += 3;
-            }
-            novaMaoTruco();
         } else {
             trucoState.rodadaIndex++;
+            trucoState.cartaMesaPlayer = '';
+            trucoState.cartaMesaAi = '';
             limparSlotsMesaTruco();
             
-            if (resultado === 'V' || (resultado === 'E' && trucoState.maoPrimeiroJogador === 'player')) {
+            let proximoTurno = trucoState.maoPrimeiroJogador;
+            if (resultado === 'V') proximoTurno = 'player';
+            else if (resultado === 'D') proximoTurno = 'ai';
+            
+            if (proximoTurno === 'player') {
                 setTrucoFase('esperandoPlayer');
-                document.getElementById('trucoFeedbackStatus').innerText = "Você ganhou a queda anterior, faça sua próxima jogada!";
+                document.getElementById('trucoFeedbackStatus').innerText = "Você ganhou a queda anterior ou empatou na frente. Jogue sua próxima carta!";
             } else {
                 executarTurnoIA_Primeira();
             }
