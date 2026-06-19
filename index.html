@@ -978,40 +978,24 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
     <button class="btn-back" onclick="navegarPara(3)">← Voltar</button>
     <h1>Nossas Memórias</h1>
     
-    <div class="mural-mosaico-container">
-        <span class="editorial-tag" style="top: 15px; left: 20px;">Loks Loks</span>
-        <span class="editorial-tag" style="bottom: 20px; right: 25px;">Nossos momentos de saudade</span>
-        
-        <div class="foto-mosaico-frame frame-style-purple pos-f1">
+    <div class="carrossel-container" style="margin-top: 20px; margin-bottom: 20px;">
+        <div class="carrossel-slides" id="carouselMemoriesSlides">
             <img src="Fotoescada.jpg.jpeg" alt="Memória 01">
-        </div>
-        <div class="foto-mosaico-frame frame-style-white pos-f2">
             <img src="Foto2.jpg.jpeg" alt="Memória 02">
-        </div>
-        <div class="foto-mosaico-frame frame-style-white pos-f3">
             <img src="Foto3.jpg.jpeg" alt="Memória 03">
-        </div>
-        <div class="foto-mosaico-frame frame-style-purple pos-f4">
             <img src="Foto4.jpg.jpeg" alt="Memória 04">
-        </div>
-
-        <div class="mosaico-centerpiece-text">
-            <h2>"Feliz aniversário e que sorte a minha"</h2>
-            <p>pedaços do meu coração</p>
-        </div>
-
-        <div class="foto-mosaico-frame frame-style-purple pos-f5">
             <img src="Foto5..jpeg" alt="Memória 05">
-        </div>
-        <div class="foto-mosaico-frame frame-style-white pos-f6">
             <img src="Foto6.png.PNG" alt="Memória 06">
-        </div>
-        <div class="foto-mosaico-frame frame-style-white pos-f7">
             <img src="Foto7.png.png" alt="Memória 07">
-        </div>
-        <div class="foto-mosaico-frame frame-style-purple pos-f8">
             <img src="Foto8.jpg.jpeg" alt="Memória 08">
         </div>
+        <button class="carrossel-arrow arrow-prev" onclick="mudarSlideMemories(-1)">❮</button>
+        <button class="carrossel-arrow arrow-next" onclick="mudarSlideMemories(1)">❯</button>
+    </div>
+
+    <div style="margin-bottom: 25px;">
+        <h2 style="font-family: var(--serifa); font-size: 19px; font-weight: 400; font-style: italic; color: var(--roxo-orquidea); line-height: 1.4; margin-bottom: 6px;">"Feliz aniversário e que sorte a minha"</h2>
+        <p style="font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #8a9c8f; font-weight: 700;">parte de mim</p>
     </div>
     
     <button class="btn-navigation" style="width:100%;" onclick="navegarPara(5)">Mais uma caixinha...</button>
@@ -2048,6 +2032,15 @@ function criarExplosao() {
         document.body.appendChild(confeti);
         setTimeout(() => confeti.remove(), 2000); 
     }
+} 
+// Controlador do Carrossel de Memórias (Tela 4)
+let slideMemoriesIndex = 0;
+function mudarSlideMemories(direcao) {
+    const slidesContainer = document.getElementById("carouselMemoriesSlides");
+    const totalImagens = slidesContainer.getElementsByTagName("img").length;
+    
+    slideMemoriesIndex = (slideMemoriesIndex + direcao + totalImagens) % totalImagens;
+    slidesContainer.style.transform = `translateX(${-slideMemoriesIndex * 100}%)`;
 }
 </script>
 </body>
