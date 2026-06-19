@@ -446,21 +446,243 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 .carta-scroller::-webkit-scrollbar { width: 3px; }
 .carta-scroller::-webkit-scrollbar-thumb { background: rgba(121, 58, 87, 0.15); }
 
-/* Mosaico Grid */
+/* ===== TELA 4 - MOSAICO DE FOTOS REDESENHADO ===== */
+
+/* Container Principal com Grid Dinâmico */
 .mural-mosaico-container {
-    position: relative; width: 100%; background: #fdfbfa; border-radius: 8px; padding: 40px 15px; margin-bottom: 30px;
-    box-shadow: inset 0 0 40px rgba(121, 58, 87, 0.02), 0 10px 30px rgba(0,0,0,0.02); display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px 15px; align-items: center;
+    position: relative;
+    width: 100%;
+    background: linear-gradient(135deg, #fdfbfa 0%, #f9f7f5 100%);
+    border-radius: 12px;
+    padding: 50px 20px;
+    margin-bottom: 30px;
+    box-shadow: 
+        inset 0 0 40px rgba(121, 58, 87, 0.02), 
+        0 15px 40px rgba(0, 0, 0, 0.03);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    align-items: start;
 }
-.mosaico-centerpiece-text { grid-column: span 2; text-align: center; padding: 25px 10px; margin: 10px 0; position: relative; z-index: 5; }
-.mosaico-centerpiece-text h2 { font-family: var(--serifa); font-size: 21px; font-weight: 400; font-style: italic; color: var(--roxo-orquidea); line-height: 1.4; margin-bottom: 8px; }
-.mosaico-centerpiece-text p { font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: #8a9c8f; font-weight: 700; }
-.editorial-tag { font-size: 8px; text-transform: lowercase; font-style: italic; color: #999; position: absolute; letter-spacing: 0.5px; pointer-events: none; }
-.foto-mosaico-frame { width: 100%; background: #ffffff; padding: 8px; box-shadow: 0 12px 28px rgba(0,0,0,0.07); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; }
-.foto-mosaico-frame img { width: 100%; height: 145px; object-fit: contain; display: block; }
-.frame-style-purple { border: 8px solid var(--roxo-orquidea); border-image: linear-gradient(135deg, #914b6e, var(--roxo-orquidea), #4f1e34, #8c4365) 8; box-shadow: 0 10px 25px rgba(121, 58, 87, 0.15), inset 0 0 8px rgba(0,0,0,0.12); }
-.frame-style-white { border: 8px solid #f2eee6; border-image: linear-gradient(135deg, #ffffff, #f4f0e8, #ded9ce, #ffffff) 8; box-shadow: 0 10px 25px rgba(0,0,0,0.05), inset 0 0 6px rgba(0,0,0,0.08); }
-.pos-f1 { transform: rotate(-3deg); } .pos-f2 { transform: rotate(2deg); } .pos-f3 { transform: rotate(-2deg); } .pos-f4 { transform: rotate(4deg); } .pos-f5 { transform: rotate(-4deg); } .pos-f6 { transform: rotate(3deg); } .pos-f7 { transform: rotate(-1deg); } .pos-f8 { transform: rotate(2deg); }
-.foto-mosaico-frame:hover { transform: rotate(0deg) scale(1.03); z-index: 10; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+
+/* Texto Centerpiece - Redesenhado */
+.mosaico-centerpiece-text {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    margin: 20px 0;
+    position: relative;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    border: 2px solid rgba(121, 58, 87, 0.1);
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+.mosaico-centerpiece-text h2 {
+    font-family: var(--serifa);
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--roxo-orquidea);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.mosaico-centerpiece-text p {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: #8a9c8f;
+    font-weight: 700;
+}
+
+/* Frames de Foto - Animação em Cascata */
+.foto-mosaico-frame {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #ffffff;
+    padding: 10px;
+    box-shadow: 
+        0 12px 28px rgba(0, 0, 0, 0.07),
+        0 2px 8px rgba(121, 58, 87, 0.04);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    
+    /* Animação de entrada */
+    animation: photoFrameReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+}
+
+/* Delays em cascata para cada foto */
+.pos-f1 { animation-delay: 0.1s; }
+.pos-f2 { animation-delay: 0.25s; }
+.pos-f3 { animation-delay: 0.4s; }
+.pos-f4 { animation-delay: 0.55s; }
+.pos-f5 { animation-delay: 0.7s; }
+.pos-f6 { animation-delay: 0.85s; }
+.pos-f7 { animation-delay: 1s; }
+.pos-f8 { animation-delay: 1.15s; }
+
+.foto-mosaico-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Estilos de Frame com Gradientes */
+.frame-style-purple {
+    border: 10px solid var(--roxo-orquidea);
+    box-shadow: 
+        0 15px 35px rgba(121, 58, 87, 0.15),
+        inset 0 0 12px rgba(121, 58, 87, 0.08);
+    position: relative;
+}
+
+.frame-style-purple::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(121, 58, 87, 0) 0%, rgba(121, 58, 87, 0.05) 100%);
+    pointer-events: none;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.frame-style-white {
+    border: 10px solid #f2eee6;
+    box-shadow: 
+        0 12px 28px rgba(0, 0, 0, 0.05),
+        inset 0 0 10px rgba(0, 0, 0, 0.04);
+}
+
+.frame-style-white::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(242, 238, 230, 0.1) 100%);
+    pointer-events: none;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Rotações Leves com Propósito */
+.pos-f1 { transform: translateY(30px) scale(0.9) rotate(-2deg); }
+.pos-f2 { transform: translateY(30px) scale(0.9) rotate(1.5deg); }
+.pos-f3 { transform: translateY(30px) scale(0.9) rotate(-1deg); }
+.pos-f4 { transform: translateY(30px) scale(0.9) rotate(2deg); }
+.pos-f5 { transform: translateY(30px) scale(0.9) rotate(-1.5deg); }
+.pos-f6 { transform: translateY(30px) scale(0.9) rotate(1deg); }
+.pos-f7 { transform: translateY(30px) scale(0.9) rotate(-0.5deg); }
+.pos-f8 { transform: translateY(30px) scale(0.9) rotate(1.5deg); }
+
+/* Hover Sofisticado com Múltiplos Efeitos */
+.foto-mosaico-frame:hover {
+    transform: rotate(0deg) scale(1.08) translateY(-8px) !important;
+    z-index: 20;
+    box-shadow: 
+        0 25px 50px rgba(121, 58, 87, 0.2),
+        0 0 30px rgba(121, 58, 87, 0.15);
+}
+
+.foto-mosaico-frame:hover::before {
+    opacity: 1;
+}
+
+.foto-mosaico-frame:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.08);
+}
+
+/* Keyframes de Entrada */
+@keyframes photoFrameReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.85);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tags Editoriais com Animação Sutil */
+.editorial-tag {
+    font-size: 8px;
+    text-transform: lowercase;
+    font-style: italic;
+    color: #999;
+    position: absolute;
+    letter-spacing: 0.5px;
+    pointer-events: none;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+    opacity: 0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .mural-mosaico-container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+        padding: 35px 15px;
+    }
+    
+    .mosaico-centerpiece-text {
+        padding: 30px 15px;
+    }
+    
+    .mosaico-centerpiece-text h2 {
+        font-size: 20px;
+    }
+    
+    .foto-mosaico-frame:hover {
+        transform: rotate(0deg) scale(1.05) translateY(-4px) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .mural-mosaico-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 30px 10px;
+    }
+    
+    .mosaico-centerpiece-text {
+        padding: 25px 10px;
+    }
+    
+    .mosaico-centerpiece-text h2 {
+        font-size: 18px;
+    }
+    
+    .mosaico-centerpiece-text p {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
+}
 
 /* Módulo Pets, Quiz e Vales Premium */
 .carrossel-container { position: relative; width: 100%; max-width: 310px; margin: 0 auto 25px auto; overflow: hidden; border-radius: 8px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); }
@@ -930,9 +1152,9 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
             </div>
             
             <div class="scratch-text-message">
-                Sei que foi a coisa mais besta que você já viu, mas foi a forma mais "próxima" (do meu jeitinho) de te mostrar o quanto você é especial, ao invés de apenas um textinho.<br><br>
+                Sei que foi a coisa mais besta que você já viu, mas foi a forma mais "próxima" (do meu jeitinho) de te mostrar o quanto você é especial, ao invés de apenas um textinho. Infelizmente não foi tudo uma surpresa como deveria, mas ao menos o site pode ser...<br><br>
                 Que jamais deixe essa data passar em branco. Obrigada por ser você, por tudo o que faz por nós e por todos que te amam. Seu coração é puro, e poder te chamar de amiga é um privilégio.<br><br>
-                Aguarde as próximas surpresas (se o Chicão já não falou tudo kkkk) e espero que goste e se sinta acolhida, mesmo de longe.<br><br>
+                Espero que goste e se sinta acolhida, mesmo de longe.<br><br>
                 Te amo muito.<br><br>
                 Com carinho,<br>
                 da sua Best. ❤️
@@ -993,7 +1215,7 @@ h1 { font-family: var(--serifa); font-size: 24px; font-weight: 500; letter-spaci
 // ==========================================
 // CONFIGURAÇÕES TIMING & SEGURANÇA ANTITAMPER
 // ==========================================
-const targetBirthdayUTC = new Date(Date.UTC(2026, 5, 20, 15, 0, 0)); 
+const targetDate = new Date("2026-06-21T00:00:00+09:00");
 let lastKnownSystemTime = Date.now();
 let tamperingDetected = false;
 
@@ -1082,7 +1304,7 @@ function revelarSenhaBalao() {
     const now = new Date();
     const balloon = document.getElementById('pinhata-balloon');
     
-    if (now < targetBirthdayUTC && !modoDevTeste) {
+    if (now < targetDate && !modoDevTeste) {
         balloon.style.animation = 'none';
         void balloon.offsetWidth;
         balloon.style.animation = 'shakeAnima 0.4s ease'; 
@@ -1760,7 +1982,6 @@ function controlarMusica() {
     }
 }
 
-const targetDate = new Date("2026-06-21T00:00:00+09:00");
 function updateCountdown(){
     const diff = targetDate - new Date();
     
